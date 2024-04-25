@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import Alamofire
 import Combine
+import Alamofire
 
 final class ContactsAPIClient: BaseAPIClient {
     func getContacts() -> AnyPublisher<[User], BaseError> {

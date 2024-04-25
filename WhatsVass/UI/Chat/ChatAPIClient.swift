@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import Alamofire
 
 final class ChatAPIClient: BaseAPIClient {
     func getChatMessagesByAPI(chat: String, first: Int, limit: Int = 20) -> AnyPublisher <ChatMessage, BaseError> {

@@ -7,9 +7,8 @@
 
 import UIKit
 import Combine
-import Alamofire
 
-class SceneDelegate: UIResponder,
+final class SceneDelegate: UIResponder,
                      UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -62,7 +61,7 @@ extension SceneDelegate {
 
     func disconnectedNow(online: Bool) {
         disconnectedByAPI(online: online)
-            .sink { [weak self] completion in
+            .sink { completion in
                 if case let .failure(error) = completion {
                     print("Error \(error)")
                 }

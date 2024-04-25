@@ -69,7 +69,7 @@ private extension LoginViewModel {
         return ((username?.isEmpty) != nil)
     }
 
-    func comprobeUserAndPassword(remember: Bool)  {
+    func comprobeUserAndPassword(remember: Bool) {
         guard let username = username, !username.isEmpty,
               let password = password, !password.isEmpty else {
             loginFailureSubject.send("EmptyLoginField")
@@ -113,9 +113,9 @@ private extension LoginViewModel {
 
         let params = ["Authorization": token]
         dataManager.loginWithBiometric(params: params)
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    print("Error \(error.description())")
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    // printError
                 }
             } receiveValue: { [weak self] login in
                 UserDefaults.standard.set(login.token,

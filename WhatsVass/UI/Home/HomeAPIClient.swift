@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import Alamofire
 import Combine
+import Alamofire
 
 final class HomeAPIClient: BaseAPIClient {
     // MARK: - Public methods -

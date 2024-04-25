@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import Alamofire
 
 final class SettingsAPIClient: BaseAPIClient {
     func logout() -> AnyPublisher <LogOutResponse, BaseError> {

@@ -10,8 +10,9 @@ import FirebaseCore
 import UserNotifications
 import IQKeyboardManagerSwift
 
+typealias NotificationPresentation = (UNNotificationPresentationOptions) -> Void
 @main
-class AppDelegate: UIResponder,
+final class AppDelegate: UIResponder,
                    UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -35,7 +36,7 @@ class AppDelegate: UIResponder,
         application.registerForRemoteNotifications()
 
         let notificationOption = launchOptions?[.remoteNotification]
-        if let _ = notificationOption as? [String: AnyObject] {
+        if notificationOption as? [String: AnyObject] != nil {
         }
 
         // MARK: - Navigation Bar -
@@ -78,13 +79,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
-                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+                                withCompletionHandler completionHandler: @escaping NotificationPresentation) {
         completionHandler(UNNotificationPresentationOptions(rawValue: 0))
         print("New notification")
     }
 
     func application(_ application: UIApplication,
-                     didReceiveRemoteNotification userInfo: [AnyHashable : Any]) async -> UIBackgroundFetchResult {
+                     didReceiveRemoteNotification userInfo: [AnyHashable: Any]) async -> UIBackgroundFetchResult {
         print("New notification")
         return .newData
     }

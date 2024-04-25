@@ -9,9 +9,9 @@ import UIKit
 
 extension UITextField {
     private struct Constants {
-        static let buttonFrame = CGRect(x: -5, y: 0, 
+       static let buttonFrame = CGRect(x: -5, y: 0,
                                         width: 20, height: 20)
-        static let containerFrame = CGRect(x: 0, y: 0, 
+        static let containerFrame = CGRect(x: 0, y: 0,
                                            width: 30, height: 20)
         static let cornerRadius: CGFloat = 16.0
         static let fontSize: CGFloat = 16.0
@@ -39,7 +39,7 @@ extension UITextField {
         let toggleButton = UIButton(type: .custom)
         toggleButton.setImage(UIImage(systemName: "eye.slash.fill")?.withRenderingMode(.alwaysTemplate),
                               for: .normal)
-        toggleButton.setImage(UIImage(systemName: "eye.fill")?.withRenderingMode(.alwaysTemplate), 
+        toggleButton.setImage(UIImage(systemName: "eye.fill")?.withRenderingMode(.alwaysTemplate),
                               for: .selected)
         toggleButton.tintColor = AssetsColors.darkMode
         toggleButton.frame = Constants.buttonFrame

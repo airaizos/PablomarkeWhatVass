@@ -84,12 +84,12 @@ private extension LoginViewController {
             }).store(in: &cancellables)
 
         viewModel?.loginFailureSubject
-            .sink { [weak self] errorMessage in
+            .sink { [weak self] _ in
                 self?.showAlertSimple(title: "Login error",
                                       message: "Incorrect username or password")
             }.store(in: &cancellables)
         viewModel?.loginFailureBiometrics
-            .sink(receiveValue: { error in
+            .sink(receiveValue: { _ in
                 self.reset()
             }).store(in: &cancellables)
     }

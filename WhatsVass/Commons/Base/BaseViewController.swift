@@ -30,9 +30,9 @@ class BaseViewController: UIViewController {
                          message: String,
                          yesAction: (() -> Void)? = nil,
                          cancelAction: (() -> Void)? = nil) {
-        let alert = UIAlertController(title: NSLocalizedString(title, 
+       let alert = UIAlertController(title: NSLocalizedString(title,
                                                                comment: ""),
-                                      message: NSLocalizedString(message, 
+                                     message: NSLocalizedString(message, 
                                                                  comment: ""),
                                       preferredStyle: .alert)
 

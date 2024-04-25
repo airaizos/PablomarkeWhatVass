@@ -8,7 +8,7 @@
 import UIKit
 
 extension UILabel {
-    func chatVassStyle(text: String, size: Int = 22, textColor: UIColor = AssetsColors.customWhite ?? .white) {
+    func chatVassStyle(text: String, size: Int = 22, textColor: UIColor = AssetsColors.customWhite){
         self.text = NSLocalizedString(text,
                                       comment: "")
         self.textColor = textColor

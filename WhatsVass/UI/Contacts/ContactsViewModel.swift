@@ -56,13 +56,13 @@ final class ContactsViewModel: ObservableObject {
                         }
                         return newChat
                     }
-                    .mapError { $0.localizedDescription as? BaseError ?? .generic }
+                    .mapError { _ in .generic  }
                     .eraseToAnyPublisher()
             }
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
-                if case let .failure(error) = completion {
-                    print(error.description())
+                if case .failure(let error) = completion {
+                    // print Error
                 }
                 self?.newlyCreatedChatId = nil
             }, receiveValue: { [weak self] newChat in
@@ -89,7 +89,8 @@ final class ContactsViewModel: ObservableObject {
     }
 
     func filterContacts(searchText: String) {
-        let filtered = searchText.isEmpty ? contacts : contacts.filter { $0.nick.localizedCaseInsensitiveContains(searchText) }
+        let filtered = searchText.isEmpty ? contacts
+        : contacts.filter { $0.nick.localizedCaseInsensitiveContains(searchText) }
         var newContactsBySection: [String: [User]] = [:]
         for contact in filtered {
             let key = String(contact.nick.prefix(1)).uppercased()

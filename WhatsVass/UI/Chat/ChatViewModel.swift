@@ -25,9 +25,9 @@ final class ChatViewModel: ObservableObject {
     // MARK: Public Methods
     func getChatList(chat: String, first: Int = 0) {
         dataManager.getChats(chat: chat, first: first)
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    print(error.description())
+            .sink { completion in
+                if case .failure(let error) = completion {
+                  // print error
                 }
             } receiveValue: { [weak self] messages in
                 self?.chats = messages.rows
@@ -47,9 +47,9 @@ final class ChatViewModel: ObservableObject {
             chats?.count ?? 20
         }
         dataManager.getChats(chat: chat.chat, first: nextMessage)
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    print(error.description())
+            .sink { completion in
+                if case .failure(let error)  = completion {
+                    // print(error)
                 }
             } receiveValue: { [weak self] messages in
                 self?.chats?.append(contentsOf: messages.rows)
@@ -62,11 +62,10 @@ final class ChatViewModel: ObservableObject {
 
     func sendNewMessage(message: String) {
         let params: [String: Any] = ["chat": chat.chat,
-                                     "source": UserDefaults.standard.string(forKey: Preferences.id),
+                                     "source": UserDefaults.standard.string(forKey: Preferences.id) ?? "",
                                      "message": message]
-        print(UserDefaults.standard.string(forKey: Preferences.id))
         dataManager.sendMessage(params: params)
-            .sink { [weak self] completion in
+            .sink {  completion in
                 if case let .failure(error) = completion {
                     print(error.description())
                 }

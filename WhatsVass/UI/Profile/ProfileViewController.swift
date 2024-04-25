@@ -84,7 +84,7 @@ private extension ProfileViewController {
             ivProfile.image = redPersonImage
             ivProfile.tintColor = .main
         }
-        
+
         ivProfile.layer.cornerRadius = ivProfile.frame.height / 2
         ivProfile.contentMode = .scaleAspectFill
         btImageSelector.setImage(UIImage(systemName: "camera"),

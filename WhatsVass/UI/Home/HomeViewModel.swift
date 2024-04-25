@@ -45,9 +45,9 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Public Methods
     func getChats() {
         dataManager.getChats()
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    print(error.description())
+            .sink {  completion in
+                if case .failure(let error) = completion {
+                    // print Error
                 }
             } receiveValue: { [weak self] chat in
                 self?.chats = chat
@@ -102,9 +102,9 @@ private extension HomeViewModel {
 
     func updateLastMessages() {
         dataManager.getMessages()
-            .sink(receiveCompletion: { [weak self] completion in
-                if case let .failure(error) = completion {
-                    print(error.description())
+            .sink(receiveCompletion: { completion in
+                if case  .failure = completion {
+                    // print Error
                 }
             }, receiveValue: { [weak self] messages in
                 let lastMessages = Dictionary(grouping: messages,

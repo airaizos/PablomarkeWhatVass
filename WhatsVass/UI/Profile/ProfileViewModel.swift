@@ -16,7 +16,6 @@ final class ProfileViewModel {
     let navigateToHomeView = PassthroughSubject<Void, Never>()
     let emptyField = PassthroughSubject<Void, Never>()
 
-
     // MARK: - Init -
     init(dataManager: ProfileDataManager) {
         self.dataManager = dataManager
@@ -51,9 +50,9 @@ final class ProfileViewModel {
 private extension ProfileViewModel {
     func createAndRegister(params: [String: Any]) {
         dataManager.createAndRegisterProfile(params: params)
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    print(error.description())
+            .sink { completion in
+                if case .failure(let error) = completion {
+                  // print Error
                 }
             } receiveValue: { [weak self] register in
                 UserDefaults.standard.removeObject(forKey: Preferences.token)

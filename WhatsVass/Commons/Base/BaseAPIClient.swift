@@ -55,24 +55,24 @@ class BaseAPIClient {
         guard let urlAbsolute = url.appendingPathComponent(path).absoluteString.removingPercentEncoding else {
             return Fail(error: .noURl).eraseToAnyPublisher()
         }
-        
+
         var headers = HTTPHeaders()
         if !((UserDefaults.standard.string(forKey: Preferences.token)?.isEmpty) == nil) {
             guard let token = UserDefaults.standard.string(forKey: Preferences.token) else {
                 return Fail(error: .noToken).eraseToAnyPublisher()
             }
-            headers.add(name: "Authorization", 
+           headers.add(name: "Authorization",
                         value: token)
         }
 
-        return sesionManager.request(urlAbsolute, 
+       return sesionManager.request(urlAbsolute,
                                      method: method,
                                      parameters: parameters,
                                      encoding: urlEncoding,
                                      headers: headers)
             .validate()
 #if DEBUG
-            .cURLDescription(on: .main, calling: { p in/* print(p)*/ })
+            .cURLDescription(on: .main, calling: { _ in })
 #endif
             .publishDecodable(type: T.self, emptyResponseCodes: [204])
             .tryMap({ response in

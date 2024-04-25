@@ -37,7 +37,7 @@ final class SettingsViewModel {
         }
         logOutSuccessSubject.send()
     }
-    
+
     func notificationIsOn(bool: Bool) {
         UserDefaults.standard.setValue(bool,
                                        forKey: Preferences.notifications)
@@ -59,15 +59,15 @@ final class SettingsViewModel {
 private extension SettingsViewModel {
     func logOutByAPI() {
         dataManager.logOut()
-            .sink { [weak self] completion in
+            .sink { completion in
                 if case let .failure(error) = completion {
-                    print(error.description())
+
                 }
-            } receiveValue: { [weak self] offline in
-                print(offline.message)
+            } receiveValue: { offline in
+
             }.store(in: &cancellables)
     }
-    
+
     func activateNotifications(notifications: Bool) {
         if notifications {
             UNUserNotificationCenter.current().getNotificationSettings { settings in
@@ -76,7 +76,7 @@ private extension SettingsViewModel {
                     UNUserNotificationCenter.current().requestAuthorization(options: [.alert,
                                                                                       .badge]
                     ) { granted, error in
-                        granted ? print(granted) : print(error)
+                        granted ? print(granted) : print("\(error?.localizedDescription ?? "")")
                     }
                 }
             }
@@ -84,7 +84,7 @@ private extension SettingsViewModel {
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         }
     }
-    
+
     func toggleDarkMode(_ isEnabled: Bool) {
         isEnabled ? UIApplication.shared.windows.forEach { window in
             window.overrideUserInterfaceStyle = .dark
