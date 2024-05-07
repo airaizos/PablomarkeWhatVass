@@ -79,3 +79,6 @@ struct ChatView: View {
         self.cellCount += 1
     }
 }
+#Preview {
+    ChatView(viewModel: ChatViewModel(dataManager: ChatDataManager(apiClient: ChatAPIMock()), chat: Chat.preview))
+}

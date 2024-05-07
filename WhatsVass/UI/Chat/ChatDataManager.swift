@@ -10,11 +10,11 @@ import Combine
 
 final class ChatDataManager {
     // MARK: - Properties
-    private var apiClient: ChatAPIClient
+    private var apiClient: ChatAPI
     var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Object lifecycle
-    init(apiClient: ChatAPIClient) {
+    init(apiClient: ChatAPI) {
         self.apiClient = apiClient
     }
 
@@ -22,6 +22,7 @@ final class ChatDataManager {
     func getChats(chat: String, first: Int) -> AnyPublisher <ChatMessage, BaseError> {
         apiClient.getChatMessagesByAPI(chat: chat, first: first)
             .tryMap { messages in
+                // saveCodableToDocumentsDirectory(messages, fileName: "getChats.json")
                 return messages
             }
             .mapError { error in
@@ -33,6 +34,7 @@ final class ChatDataManager {
     func sendMessage(params: [String: Any]) -> AnyPublisher <NewMessageResponse, BaseError> {
         apiClient.sendMessage(params: params)
             .tryMap { newMessageResponse in
+                //saveCodableToDocumentsDirectory(newMessageResponse, fileName: "sendMessage.json")
                 return newMessageResponse
             }
             .mapError { error in

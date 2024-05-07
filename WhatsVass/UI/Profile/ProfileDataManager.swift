@@ -20,6 +20,7 @@ final class ProfileDataManager {
     func createAndRegisterProfile(params: [String: Any]) -> AnyPublisher<UserResponse, BaseError> {
         apiClient.createAndRegisterProfileInAPI(params: params)
             .tryMap { loginResponse in
+                //saveCodableToDocumentsDirectory(loginResponse, fileName: "createAndRegisterProfile.json")
                 return loginResponse
             }
             .mapError { error in

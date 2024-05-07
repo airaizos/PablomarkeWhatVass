@@ -21,6 +21,7 @@ final class LoginDataManager {
     func login(with credentials: [String: Any]) -> AnyPublisher <LoginResponse, BaseError> {
         apiClient.loginByAPI(with: credentials)
             .tryMap { loginResponse in
+               //saveCodableToDocumentsDirectory(loginResponse, fileName: "loginResponse.json")
                 return loginResponse
             }
             .mapError { error in
@@ -32,6 +33,7 @@ final class LoginDataManager {
     func loginWithBiometric(params: [String: Any]) -> AnyPublisher <LoginResponse, BaseError> {
         apiClient.biometricLogin(params: params)
             .tryMap { loginResponse in
+                 //saveCodableToDocumentsDirectory(loginResponse, fileName: "loginWithBiometrics.json")
                 return loginResponse
             }
             .mapError { error in

@@ -30,6 +30,7 @@ final class ContactsViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in },
                   receiveValue: { [weak self] contacts in
+                //saveCodableToDocumentsDirectory(contacts, fileName: "getContacts.json")
                 self?.contacts = contacts
                 self?.sortContactsAlphabetically()
             })
@@ -52,6 +53,7 @@ final class ContactsViewModel: ObservableObject {
                 return self.dataManager.getChats()
                     .tryMap { chats -> Chat in
                         guard let newChat = chats.first(where: { $0.chat == chatCreateResponse.chat.id }) else {
+                         
                             throw BaseError.failedChat
                         }
                         return newChat
@@ -66,6 +68,7 @@ final class ContactsViewModel: ObservableObject {
                 }
                 self?.newlyCreatedChatId = nil
             }, receiveValue: { [weak self] newChat in
+                //saveCodableToDocumentsDirectory(newChat, fileName: "newChat.json")
                 self?.chatSubject.send(newChat)
             })
             .store(in: &cancellables)

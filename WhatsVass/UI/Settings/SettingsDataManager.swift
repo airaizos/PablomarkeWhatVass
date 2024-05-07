@@ -21,6 +21,7 @@ final class SettingsDataManager {
     func logOut() -> AnyPublisher <LogOutResponse, BaseError> {
         apiClient.logout()
             .tryMap { response in
+                //saveCodableToDocumentsDirectory(response, fileName: "logOut.json")
                 return response
             }
             .mapError { error in

@@ -15,7 +15,7 @@ class BaseAPIClient {
     private var sesionManager: Alamofire.Session!
     private var baseURL: URL {
 
-        if let url = URL(string: Base.mockMovilidad) {
+        if let url = URL(string: Base.mock) {
             return url
         } else {
             return URL(string: "")!
@@ -45,7 +45,7 @@ class BaseAPIClient {
                                         parameters: Parameters? = nil,
                                         urlEncoding: ParameterEncoding = JSONEncoding.default,
                                         type: T.Type = T.self,
-                                        base: URL? = URL(string: Base.mockMovilidad),
+                                        base: URL? = URL(string: Base.mock),
                                         customHeaders: HTTPHeaders? = nil) -> AnyPublisher<T, BaseError> {
 
         guard let url = base, let path = relativePath else {

@@ -26,7 +26,7 @@ final class HomeAPIClient: BaseAPIClient {
     }
 
     func deleteChat(chatId: String) -> AnyPublisher<DeleteChatResponse, BaseError> {
-        let path = EndpointsChats.chats + "/\(chatId)"
+        let path = EndpointsChats.chats //+ "/\(chatId)"
 
         return requestPublisher(relativePath: path,
                                 method: .delete,

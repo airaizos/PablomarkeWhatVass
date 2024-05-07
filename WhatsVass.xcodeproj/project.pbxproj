@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A4329B22BEA35C20027E021 /* Preview+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4329B12BEA35C20027E021 /* Preview+Models.swift */; };
 		3A50D3042BDA9608002007A3 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50D3032BDA9608002007A3 /* NetworkSession.swift */; };
 		3A50D3062BDA9F08002007A3 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50D3052BDA9F08002007A3 /* NetworkMonitor.swift */; };
 		3A50D3082BDAA02C002007A3 /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50D3072BDAA02C002007A3 /* Interface.swift */; };
@@ -130,6 +131,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A4329B12BEA35C20027E021 /* Preview+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+Models.swift"; sourceTree = "<group>"; };
 		3A50D3032BDA9608002007A3 /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
 		3A50D3052BDA9F08002007A3 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		3A50D3072BDAA02C002007A3 /* Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
@@ -265,6 +267,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A4329B02BEA35AC0027E021 /* PrewViewContent */ = {
+			isa = PBXGroup;
+			children = (
+				3A4329B12BEA35C20027E021 /* Preview+Models.swift */,
+			);
+			path = PrewViewContent;
+			sourceTree = "<group>";
+		};
 		8313E3622BA9756A001FA804 /* Secure */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +307,7 @@
 		833889FC2B976FC9006F122D /* WhatsVass */ = {
 			isa = PBXGroup;
 			children = (
+				3A4329B02BEA35AC0027E021 /* PrewViewContent */,
 				83EF8EDC2BB32DA4001F5A28 /* WhatsVass.entitlements */,
 				83388A302B9770E1006F122D /* App */,
 				83388A322B9770F2006F122D /* Assets */,
@@ -745,6 +756,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A4329B22BEA35C20027E021 /* Preview+Models.swift in Sources */,
 				8347619F2B9F2EA400485E2F /* Messages.swift in Sources */,
 				83C2525D2B986095004455A6 /* BaseAPIClient.swift in Sources */,
 				83388A362B97715B006F122D /* LoginViewController.swift in Sources */,

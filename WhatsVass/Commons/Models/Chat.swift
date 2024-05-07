@@ -38,3 +38,4 @@ struct Chat: Codable {
 struct DeleteChatResponse: Codable {
     var success: Bool
 }
+

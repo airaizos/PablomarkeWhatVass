@@ -8,26 +8,28 @@
 import Foundation
 
 enum Base {
-    static let mockMovilidad: String = "https://mock-movilidad.vass.es/chatvass/api/"
+ //   static let mockMovilidad: String = "https://mock-movilidad.vass.es/chatvass/api/"
+    
+    static let mock: String = "https://run.mocky.io/v3/"
 }
 
 enum EndpointsUsers {
-    static let login: String = "users/login"
-    static let logOut: String = "users/logout"
-    static let online: String = "users/online/"
-    static let register: String = "users/register"
-    static let biometric: String = "users/biometric"
-    static let users: String = "users"
+    static let login: String = "52022ddf-d858-42cd-b87c-0f4db569f156" //"users/login"
+    static let logOut: String = "0e2b6d17-e83c-4535-8657-949816c60e54" //"users/logout"
+    static let online: String = "0e2b6d17-e83c-4535-8657-949816c60e54" //"users/online/"
+    static let register: String = "68a151ee-ac5b-4a8d-a69f-168d4f64cfb1"//"users/register"
+    static let biometric: String = "62e2639a-576b-4a5b-963a-53d35674bf67" //"users/biometric"
+    static let users: String = "4b8542ec-e387-44ed-a542-97895293264a" //"users"
 }
 
 enum EndpointsChats {
-    static let chats: String = "chats"
-    static let chatsView: String = "chats/view"
-    static let createChat: String = "chats"
+    static let chats: String = "588cfe52-981a-4b57-9109-e6e6e4c34647" //"chats"
+    static let chatsView: String = "9bf79488-8e7d-4bb7-bbc0-49506c4d392d" //"chats/view"
+    static let createChat: String = "6823c6a1-214c-4e70-8123-eb828b430207" // "chats"
 }
 
 enum EndpointsMessages {
-    static let view: String = "messages/view"
-    static let chat: String = "messages/list/"
-    static let newMessage: String = "messages/new"
+    static let view: String = "54bdf6fa-3189-494f-9eae-010f2aa3c823" //"messages/view"
+    static let chat: String = "9fc6d3ae-2274-4d06-a593-5386672ba2d2"//"messages/list/"
+    static let newMessage: String = "68ef2594-e025-4082-a15f-6aa3aa6c0778" //"messages/new"
 }
