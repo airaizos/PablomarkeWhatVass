@@ -98,27 +98,39 @@ class BaseAPIClient {
         .eraseToAnyPublisher()
     }
     
-    func requestPublisher<T: Decodable>(url: URL,
-                                        method: HTTPMetodos = .get,
-                                        token: String? = nil,
-                                        type: T.Type = T.self) -> AnyPublisher<T, BaseError> {
+    func requestPublisher<T: Codable>(url: URL,
+                                      method: HTTPMethods = .get,
+                                      type: T.Type) -> AnyPublisher<T, BaseError> {
         
-        var request = URLRequest(url: url)
-        request.httpMethod = method.rawValue
-        request.timeoutInterval = 30
-        request.setValue("application/json; charset=utf8", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
-        
-        if !((UserDefaults.standard.string(forKey: Preferences.token)?.isEmpty) == nil) {
-            guard let token = UserDefaults.standard.string(forKey: Preferences.token) else {
-                return Fail(error: .noToken).eraseToAnyPublisher()
-            }
+        guard let token = getToken() else {
+            return Fail(error: .noToken).eraseToAnyPublisher()
         }
+        
+        var request = URLRequest.get(url: url, token: token)
         
         return session.dataTaskPublisher(for: request)
             .tryMap({ result in
                 return try JSONDecoder().decode(T.self, from: result.data)
+            })
+            .mapError({ [weak self] error in
+                guard let self = self else { return .generic }
+                return self.handler(error: error) ?? .generic
+            })
+            .eraseToAnyPublisher()
+    }
+    
+    func requestPostPublisher<T: Codable, U:Codable>(url: URL,
+                                          method: HTTPMethods = .post,
+                                          data: T) -> AnyPublisher<U, BaseError> {
+        guard let token = getToken() else {
+            return Fail(error: .noToken).eraseToAnyPublisher()
+        }
+        
+        var request = URLRequest.post(url: url, data: data)
+        
+        return session.dataTaskPublisher(for: request)
+            .tryMap({ result in
+                return try JSONDecoder().decode(U.self, from: result.data)
             })
             .mapError({ [weak self] error in
                 guard let self = self else { return .generic }
@@ -135,4 +147,18 @@ class BaseAPIClient {
             self.isReachable = net?.isReachable ?? false
         })
     }
+    
+    private func getToken() -> String? {
+        //TODO: Cambiar a Keychain
+        if !((UserDefaults.standard.string(forKey: Preferences.token)?.isEmpty) == nil) {
+            guard let token = UserDefaults.standard.string(forKey: Preferences.token) else {
+                return nil
+            }
+            return token
+        }
+        return nil
+    }
 }
+
+
+

@@ -53,6 +53,7 @@ enum HTTPMethods: String {
 
 
 extension URLRequest {
+    
     static func get(url: URL, token: String? = nil) -> URLRequest {
         var request = URLRequest(url: url)
         request.timeoutInterval = 30
@@ -66,5 +67,23 @@ extension URLRequest {
         return request
         
     }
+    
+    
+    static func post<JSON:Codable>(url:URL,data:JSON, method:HTTPMethods = .post, token:String? = nil) -> URLRequest {
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        request.timeoutInterval = 30
+        request.setValue("application/json; charset=utf8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpBody = try? JSONEncoder().encode(data)
+        
+        if let token {
+            request.setValue("Beared \(token)", forHTTPHeaderField: "Authorization")
+        }
+        
+        return request
+    }
+    
     
 }

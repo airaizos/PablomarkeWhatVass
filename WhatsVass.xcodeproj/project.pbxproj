@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A2E17D02BEA8CB40039365A /* WhatsVassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */; };
+		3A2E17D12BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17CE2BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift */; };
 		3A38C9B62BEA6D270068D8F0 /* HomeAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */; };
+		3A38C9B82BEA7A550068D8F0 /* ChatAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38C9B72BEA7A550068D8F0 /* ChatAPIClientTests.swift */; };
 		3A4329B22BEA35C20027E021 /* Preview+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4329B12BEA35C20027E021 /* Preview+Models.swift */; };
 		3A50D3042BDA9608002007A3 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50D3032BDA9608002007A3 /* NetworkSession.swift */; };
 		3A50D3062BDA9F08002007A3 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50D3052BDA9F08002007A3 /* NetworkMonitor.swift */; };
@@ -16,9 +19,6 @@
 		833889FE2B976FC9006F122D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833889FD2B976FC9006F122D /* AppDelegate.swift */; };
 		83388A002B976FC9006F122D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833889FF2B976FC9006F122D /* SceneDelegate.swift */; };
 		83388A0A2B976FCA006F122D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83388A092B976FCA006F122D /* Assets.xcassets */; };
-		83388A182B976FCA006F122D /* WhatsVassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83388A172B976FCA006F122D /* WhatsVassTests.swift */; };
-		83388A222B976FCA006F122D /* WhatsVassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83388A212B976FCA006F122D /* WhatsVassUITests.swift */; };
-		83388A242B976FCA006F122D /* WhatsVassUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83388A232B976FCA006F122D /* WhatsVassUITestsLaunchTests.swift */; };
 		83388A362B97715B006F122D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83388A342B97715B006F122D /* LoginViewController.swift */; };
 		83388A372B97715B006F122D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83388A352B97715B006F122D /* LoginViewController.xib */; };
 		83388A3A2B9775A0006F122D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83388A392B9775A0006F122D /* LoginViewModel.swift */; };
@@ -132,8 +132,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsVassUITests.swift; sourceTree = "<group>"; };
+		3A2E17CE2BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsVassUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3A2E17D22BEA92F00039365A /* WhatsVassTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WhatsVassTests.xctestplan; sourceTree = "<group>"; };
 		3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPIClientTests.swift; sourceTree = "<group>"; };
+		3A38C9B72BEA7A550068D8F0 /* ChatAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPIClientTests.swift; sourceTree = "<group>"; };
 		3A4329B12BEA35C20027E021 /* Preview+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+Models.swift"; sourceTree = "<group>"; };
+		3A44613C2BEA8BDA00E24D3C /* WhatsVass.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WhatsVass.xctestplan; sourceTree = "<group>"; };
 		3A50D3032BDA9608002007A3 /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
 		3A50D3052BDA9F08002007A3 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		3A50D3072BDAA02C002007A3 /* Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
@@ -144,10 +149,7 @@
 		83388A092B976FCA006F122D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83388A0E2B976FCA006F122D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83388A132B976FCA006F122D /* WhatsVassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatsVassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		83388A172B976FCA006F122D /* WhatsVassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsVassTests.swift; sourceTree = "<group>"; };
 		83388A1D2B976FCA006F122D /* WhatsVassUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatsVassUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		83388A212B976FCA006F122D /* WhatsVassUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsVassUITests.swift; sourceTree = "<group>"; };
-		83388A232B976FCA006F122D /* WhatsVassUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsVassUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		83388A342B97715B006F122D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		83388A352B97715B006F122D /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		83388A392B9775A0006F122D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -269,10 +271,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A2E17CF2BEA8CB40039365A /* WhatsVassUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */,
+				3A2E17CE2BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift */,
+			);
+			path = WhatsVassUITests;
+			sourceTree = "<group>";
+		};
 		3A38C9B42BEA6D070068D8F0 /* BaseAPIClient */ = {
 			isa = PBXGroup;
 			children = (
 				3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */,
+				3A38C9B72BEA7A550068D8F0 /* ChatAPIClientTests.swift */,
 			);
 			path = BaseAPIClient;
 			sourceTree = "<group>";
@@ -297,9 +309,10 @@
 		833889F12B976FC9006F122D = {
 			isa = PBXGroup;
 			children = (
+				3A2E17D22BEA92F00039365A /* WhatsVassTests.xctestplan */,
+				3A44613C2BEA8BDA00E24D3C /* WhatsVass.xctestplan */,
 				833889FC2B976FC9006F122D /* WhatsVass */,
 				83388A162B976FCA006F122D /* WhatsVassTests */,
-				83388A202B976FCA006F122D /* WhatsVassUITests */,
 				833889FB2B976FC9006F122D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -332,19 +345,10 @@
 		83388A162B976FCA006F122D /* WhatsVassTests */ = {
 			isa = PBXGroup;
 			children = (
+				3A2E17CF2BEA8CB40039365A /* WhatsVassUITests */,
 				3A38C9B42BEA6D070068D8F0 /* BaseAPIClient */,
-				83388A172B976FCA006F122D /* WhatsVassTests.swift */,
 			);
 			path = WhatsVassTests;
-			sourceTree = "<group>";
-		};
-		83388A202B976FCA006F122D /* WhatsVassUITests */ = {
-			isa = PBXGroup;
-			children = (
-				83388A212B976FCA006F122D /* WhatsVassUITests.swift */,
-				83388A232B976FCA006F122D /* WhatsVassUITestsLaunchTests.swift */,
-			);
-			path = WhatsVassUITests;
 			sourceTree = "<group>";
 		};
 		83388A302B9770E1006F122D /* App */ = {
@@ -678,7 +682,6 @@
 					};
 					83388A1C2B976FCA006F122D = {
 						CreatedOnToolsVersion = 15.1;
-						TestTargetID = 833889F92B976FC9006F122D;
 					};
 				};
 			};
@@ -817,7 +820,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A38C9B62BEA6D270068D8F0 /* HomeAPIClientTests.swift in Sources */,
-				83388A182B976FCA006F122D /* WhatsVassTests.swift in Sources */,
+				3A2E17D12BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift in Sources */,
+				3A38C9B82BEA7A550068D8F0 /* ChatAPIClientTests.swift in Sources */,
+				3A2E17D02BEA8CB40039365A /* WhatsVassUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,8 +830,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83388A222B976FCA006F122D /* WhatsVassUITests.swift in Sources */,
-				83388A242B976FCA006F122D /* WhatsVassUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1071,10 +1074,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = VassCompany.WhatsVassUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = WhatsVass;
 			};
 			name = Debug;
 		};
@@ -1088,10 +1091,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = VassCompany.WhatsVassUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = WhatsVass;
 			};
 			name = Release;
 		};

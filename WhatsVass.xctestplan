@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "15642930-FC38-49BC-B373-E949DD921076",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:WhatsVass.xcodeproj",
+      "identifier" : "833889F92B976FC9006F122D",
+      "name" : "WhatsVass"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:WhatsVass.xcodeproj",
+        "identifier" : "83388A122B976FCA006F122D",
+        "name" : "WhatsVassTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:WhatsVass.xcodeproj",
+        "identifier" : "83388A1C2B976FCA006F122D",
+        "name" : "WhatsVassUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

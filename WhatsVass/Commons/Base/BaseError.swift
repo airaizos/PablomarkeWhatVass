@@ -20,6 +20,7 @@ enum BaseError: Error {
     case failedBiometricLogin
     case failedChatCreated
     case failedChat
+    case noCodable
 
     func description() -> String {
         switch self {
@@ -47,6 +48,8 @@ enum BaseError: Error {
             "Failed Chat Create"
         case .failedChat:
             "Failed Chat"
+        case .noCodable:
+            "Incorrect data"
         }
     }
 }

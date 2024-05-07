@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "A71621B5-7950-4122-88B9-2A5C0C8290E6",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "skippedTests" : [
+        "WhatsVassUITests",
+        "WhatsVassUITestsLaunchTests"
+      ],
+      "target" : {
+        "containerPath" : "container:WhatsVass.xcodeproj",
+        "identifier" : "83388A122B976FCA006F122D",
+        "name" : "WhatsVassTests"
+      }
+    }
+  ],
+  "version" : 1
+}

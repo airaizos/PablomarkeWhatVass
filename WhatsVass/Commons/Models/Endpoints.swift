@@ -38,4 +38,6 @@ enum EndpointsMessages {
     static let newMessage: String = "68ef2594-e025-4082-a15f-6aa3aa6c0778" //"messages/new"
     
     static let urlView = Base.baseURL.appending(path: view)
+    static let urlChat = Base.baseURL.appending(path: chat)
+    static let urlNewMessage = Base.baseURL.appending(path: newMessage)
 }

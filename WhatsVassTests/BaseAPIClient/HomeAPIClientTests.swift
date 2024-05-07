@@ -62,7 +62,7 @@ final class HomeAPIClientTests: XCTestCase {
         XCTAssertEqual(result, .completed)
     }
     
-    func testDeleteChat_ShouldBe() {
+    func testDeleteChat_ShouldBeTrue() {
         let expectation = XCTestExpectation(description: "carga de deleteChat")
         
         sut.deleteChat(chatId: "1")
