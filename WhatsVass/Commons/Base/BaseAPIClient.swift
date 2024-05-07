@@ -10,36 +10,39 @@ import Combine
 import Alamofire
 
 class BaseAPIClient {
-
+    
     private var isReachable: Bool = true
     private var sesionManager: Alamofire.Session!
+    private var session: URLSession
+    
     private var baseURL: URL {
-
+        
         if let url = URL(string: Base.mock) {
             return url
         } else {
             return URL(string: "")!
         }
     }
-
-    init() {
+    
+    init(session: URLSession = .shared) {
         self.sesionManager = Session()
+        self.session = session
         startListenerReachability()
     }
-
+    
     // MARK: - Public method
     func handler(error: Error?) -> BaseError? {
-
+        
         if !self.isReachable { return .noInternetConnection }
         var baseError: BaseError?
-
+        
         if error != nil {
             baseError = .handler
         }
-
+        
         return baseError
     }
-
+    
     func requestPublisher<T: Decodable>(relativePath: String?,
                                         method: HTTPMethod = .get,
                                         parameters: Parameters? = nil,
@@ -47,46 +50,75 @@ class BaseAPIClient {
                                         type: T.Type = T.self,
                                         base: URL? = URL(string: Base.mock),
                                         customHeaders: HTTPHeaders? = nil) -> AnyPublisher<T, BaseError> {
-
+        
         guard let url = base, let path = relativePath else {
             return Fail(error: .failedURL).eraseToAnyPublisher()
         }
-
+        
         guard let urlAbsolute = url.appendingPathComponent(path).absoluteString.removingPercentEncoding else {
             return Fail(error: .noURl).eraseToAnyPublisher()
         }
-
+        
         var headers = HTTPHeaders()
         if !((UserDefaults.standard.string(forKey: Preferences.token)?.isEmpty) == nil) {
             guard let token = UserDefaults.standard.string(forKey: Preferences.token) else {
                 return Fail(error: .noToken).eraseToAnyPublisher()
             }
-           headers.add(name: "Authorization",
+            headers.add(name: "Authorization",
                         value: token)
         }
-
-       return sesionManager.request(urlAbsolute,
+        
+        return sesionManager.request(urlAbsolute,
                                      method: method,
                                      parameters: parameters,
                                      encoding: urlEncoding,
                                      headers: headers)
-            .validate()
+        .validate()
 #if DEBUG
-            .cURLDescription(on: .main, calling: { _ in })
+        .cURLDescription(on: .main, calling: { _ in })
 #endif
-            .publishDecodable(type: T.self, emptyResponseCodes: [204])
-            .tryMap({ response in
-                // print(String(decoding: response.data!, as: UTF8.self))
-                switch response.result {
-                case let .success(result):
-                    return result
-                case let .failure(error):
-                    //   print(String(decoding: response.data!,
-                    //               as: UTF8.self))
-                  //  print(response.data)
-                    print("-----------base-----------\(error)")
-                    throw error
-                }
+        .publishDecodable(type: T.self, emptyResponseCodes: [204])
+        .tryMap({ response in
+            // print(String(decoding: response.data!, as: UTF8.self))
+            switch response.result {
+            case let .success(result):
+                return result
+            case let .failure(error):
+                //   print(String(decoding: response.data!,
+                //               as: UTF8.self))
+                //  print(response.data)
+                print("-----------base-----------\(error)")
+                throw error
+            }
+        })
+        .mapError({ [weak self] error in
+            guard let self = self else { return .generic }
+            return self.handler(error: error) ?? .generic
+        })
+        .eraseToAnyPublisher()
+    }
+    
+    func requestPublisher<T: Decodable>(url: URL,
+                                        method: HTTPMetodos = .get,
+                                        token: String? = nil,
+                                        type: T.Type = T.self) -> AnyPublisher<T, BaseError> {
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        request.timeoutInterval = 30
+        request.setValue("application/json; charset=utf8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        
+        if !((UserDefaults.standard.string(forKey: Preferences.token)?.isEmpty) == nil) {
+            guard let token = UserDefaults.standard.string(forKey: Preferences.token) else {
+                return Fail(error: .noToken).eraseToAnyPublisher()
+            }
+        }
+        
+        return session.dataTaskPublisher(for: request)
+            .tryMap({ result in
+                return try JSONDecoder().decode(T.self, from: result.data)
             })
             .mapError({ [weak self] error in
                 guard let self = self else { return .generic }
@@ -94,10 +126,10 @@ class BaseAPIClient {
             })
             .eraseToAnyPublisher()
     }
-
+    
     // MARK: - Private Method
     private func startListenerReachability() {
-
+        
         let net = NetworkReachabilityManager()
         net?.startListening(onUpdatePerforming: { _ in
             self.isReachable = net?.isReachable ?? false

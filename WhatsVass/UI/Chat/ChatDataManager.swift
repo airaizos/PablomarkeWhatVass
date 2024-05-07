@@ -20,7 +20,7 @@ final class ChatDataManager {
 
     // MARK: - Public Methods
     func getChats(chat: String, first: Int) -> AnyPublisher <ChatMessage, BaseError> {
-        apiClient.getChatMessagesByAPI(chat: chat, first: first)
+        apiClient.getChatMessagesByAPI(chat: chat, first: first, limit: 1)
             .tryMap { messages in
                 // saveCodableToDocumentsDirectory(messages, fileName: "getChats.json")
                 return messages

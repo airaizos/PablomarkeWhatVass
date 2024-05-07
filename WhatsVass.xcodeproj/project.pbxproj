@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A38C9B62BEA6D270068D8F0 /* HomeAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */; };
 		3A4329B22BEA35C20027E021 /* Preview+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4329B12BEA35C20027E021 /* Preview+Models.swift */; };
 		3A50D3042BDA9608002007A3 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50D3032BDA9608002007A3 /* NetworkSession.swift */; };
 		3A50D3062BDA9F08002007A3 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50D3052BDA9F08002007A3 /* NetworkMonitor.swift */; };
@@ -131,6 +132,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPIClientTests.swift; sourceTree = "<group>"; };
 		3A4329B12BEA35C20027E021 /* Preview+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+Models.swift"; sourceTree = "<group>"; };
 		3A50D3032BDA9608002007A3 /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
 		3A50D3052BDA9F08002007A3 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
@@ -267,6 +269,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A38C9B42BEA6D070068D8F0 /* BaseAPIClient */ = {
+			isa = PBXGroup;
+			children = (
+				3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */,
+			);
+			path = BaseAPIClient;
+			sourceTree = "<group>";
+		};
 		3A4329B02BEA35AC0027E021 /* PrewViewContent */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +332,7 @@
 		83388A162B976FCA006F122D /* WhatsVassTests */ = {
 			isa = PBXGroup;
 			children = (
+				3A38C9B42BEA6D070068D8F0 /* BaseAPIClient */,
 				83388A172B976FCA006F122D /* WhatsVassTests.swift */,
 			);
 			path = WhatsVassTests;
@@ -567,7 +578,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83388A272B976FCA006F122D /* Build configuration list for PBXNativeTarget "WhatsVass" */;
 			buildPhases = (
-				83B305882B98876D00B88ED2 /* Swiflint */,
 				833889F62B976FC9006F122D /* Sources */,
 				833889F72B976FC9006F122D /* Frameworks */,
 				833889F82B976FC9006F122D /* Resources */,
@@ -730,27 +740,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		83B305882B98876D00B88ED2 /* Swiflint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Swiflint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		833889F62B976FC9006F122D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -827,6 +816,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A38C9B62BEA6D270068D8F0 /* HomeAPIClientTests.swift in Sources */,
 				83388A182B976FCA006F122D /* WhatsVassTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

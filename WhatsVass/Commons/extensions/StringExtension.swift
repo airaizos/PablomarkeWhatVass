@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    func fakeDateToString(start: Int = 11, end: Int = 15) -> String {
+    func fakeDateToString(start: Int = 0, end: Int = 9) -> String {
         let startIndex = self.index(self.startIndex,
                                     offsetBy: start)
         let endIndex = self.index(self.startIndex,

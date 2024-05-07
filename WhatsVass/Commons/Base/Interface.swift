@@ -37,3 +37,9 @@ struct Endpoints:URLPointsProtocol {
         static let newMessaage = baseURL.appending(component: "68ef2594-e025-4082-a15f-6aa3aa6c0778")
     }
 }
+
+
+enum HTTPMetodos: String {
+    case get = "GET"
+    case post = "POST"
+}
