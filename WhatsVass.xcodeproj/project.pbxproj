@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A2E17D02BEA8CB40039365A /* WhatsVassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */; };
 		3A2E17D12BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17CE2BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift */; };
+		3A2E17D42BEA93F20039365A /* ProfileAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D32BEA93F20039365A /* ProfileAPIClientTests.swift */; };
 		3A38C9B62BEA6D270068D8F0 /* HomeAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */; };
 		3A38C9B82BEA7A550068D8F0 /* ChatAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38C9B72BEA7A550068D8F0 /* ChatAPIClientTests.swift */; };
 		3A4329B22BEA35C20027E021 /* Preview+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4329B12BEA35C20027E021 /* Preview+Models.swift */; };
@@ -122,19 +123,13 @@
 			remoteGlobalIDString = 833889F92B976FC9006F122D;
 			remoteInfo = WhatsVass;
 		};
-		83388A1E2B976FCA006F122D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 833889F22B976FC9006F122D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 833889F92B976FC9006F122D;
-			remoteInfo = WhatsVass;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsVassUITests.swift; sourceTree = "<group>"; };
 		3A2E17CE2BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsVassUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3A2E17D22BEA92F00039365A /* WhatsVassTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WhatsVassTests.xctestplan; sourceTree = "<group>"; };
+		3A2E17D32BEA93F20039365A /* ProfileAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPIClientTests.swift; sourceTree = "<group>"; };
 		3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPIClientTests.swift; sourceTree = "<group>"; };
 		3A38C9B72BEA7A550068D8F0 /* ChatAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPIClientTests.swift; sourceTree = "<group>"; };
 		3A4329B12BEA35C20027E021 /* Preview+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+Models.swift"; sourceTree = "<group>"; };
@@ -149,7 +144,6 @@
 		83388A092B976FCA006F122D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83388A0E2B976FCA006F122D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83388A132B976FCA006F122D /* WhatsVassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatsVassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		83388A1D2B976FCA006F122D /* WhatsVassUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatsVassUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83388A342B97715B006F122D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		83388A352B97715B006F122D /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		83388A392B9775A0006F122D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -261,13 +255,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		83388A1A2B976FCA006F122D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -285,6 +272,7 @@
 			children = (
 				3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */,
 				3A38C9B72BEA7A550068D8F0 /* ChatAPIClientTests.swift */,
+				3A2E17D32BEA93F20039365A /* ProfileAPIClientTests.swift */,
 			);
 			path = BaseAPIClient;
 			sourceTree = "<group>";
@@ -322,7 +310,6 @@
 			children = (
 				833889FA2B976FC9006F122D /* WhatsVass.app */,
 				83388A132B976FCA006F122D /* WhatsVassTests.xctest */,
-				83388A1D2B976FCA006F122D /* WhatsVassUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -645,24 +632,6 @@
 			productReference = 83388A132B976FCA006F122D /* WhatsVassTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		83388A1C2B976FCA006F122D /* WhatsVassUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 83388A2D2B976FCA006F122D /* Build configuration list for PBXNativeTarget "WhatsVassUITests" */;
-			buildPhases = (
-				83388A192B976FCA006F122D /* Sources */,
-				83388A1A2B976FCA006F122D /* Frameworks */,
-				83388A1B2B976FCA006F122D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				83388A1F2B976FCA006F122D /* PBXTargetDependency */,
-			);
-			name = WhatsVassUITests;
-			productName = WhatsVassUITests;
-			productReference = 83388A1D2B976FCA006F122D /* WhatsVassUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -679,9 +648,6 @@
 					83388A122B976FCA006F122D = {
 						CreatedOnToolsVersion = 15.1;
 						TestTargetID = 833889F92B976FC9006F122D;
-					};
-					83388A1C2B976FCA006F122D = {
-						CreatedOnToolsVersion = 15.1;
 					};
 				};
 			};
@@ -707,7 +673,6 @@
 			targets = (
 				833889F92B976FC9006F122D /* WhatsVass */,
 				83388A122B976FCA006F122D /* WhatsVassTests */,
-				83388A1C2B976FCA006F122D /* WhatsVassUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -728,13 +693,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		83388A112B976FCA006F122D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		83388A1B2B976FCA006F122D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -819,17 +777,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A2E17D42BEA93F20039365A /* ProfileAPIClientTests.swift in Sources */,
 				3A38C9B62BEA6D270068D8F0 /* HomeAPIClientTests.swift in Sources */,
 				3A2E17D12BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift in Sources */,
 				3A38C9B82BEA7A550068D8F0 /* ChatAPIClientTests.swift in Sources */,
 				3A2E17D02BEA8CB40039365A /* WhatsVassUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		83388A192B976FCA006F122D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -840,11 +792,6 @@
 			isa = PBXTargetDependency;
 			target = 833889F92B976FC9006F122D /* WhatsVass */;
 			targetProxy = 83388A142B976FCA006F122D /* PBXContainerItemProxy */;
-		};
-		83388A1F2B976FCA006F122D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 833889F92B976FC9006F122D /* WhatsVass */;
-			targetProxy = 83388A1E2B976FCA006F122D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1064,40 +1011,6 @@
 			};
 			name = Release;
 		};
-		83388A2E2B976FCA006F122D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = VassCompany.WhatsVassUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		83388A2F2B976FCA006F122D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = VassCompany.WhatsVassUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1124,15 +1037,6 @@
 			buildConfigurations = (
 				83388A2B2B976FCA006F122D /* Debug */,
 				83388A2C2B976FCA006F122D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		83388A2D2B976FCA006F122D /* Build configuration list for PBXNativeTarget "WhatsVassUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				83388A2E2B976FCA006F122D /* Debug */,
-				83388A2F2B976FCA006F122D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

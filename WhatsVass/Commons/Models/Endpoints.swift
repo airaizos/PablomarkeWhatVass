@@ -21,6 +21,8 @@ enum EndpointsUsers {
     static let register: String = "68a151ee-ac5b-4a8d-a69f-168d4f64cfb1"//"users/register"
     static let biometric: String = "62e2639a-576b-4a5b-963a-53d35674bf67" //"users/biometric"
     static let users: String = "4b8542ec-e387-44ed-a542-97895293264a" //"users"
+    
+    static let urlRegister = Base.baseURL.appending(path: register)
 }
 
 enum EndpointsChats {
