@@ -10,8 +10,6 @@ import Combine
 
 final class SettingsAPIClient: BaseAPIClient {
     func logout() -> AnyPublisher <LogOutResponse, BaseError> {
-        let url: String = EndpointsUsers.logOut
-        return requestPublisher(relativePath: url,
-                                method: .post)
+        requestPublisher(url: EndpointsUsers.urlLogout, type: LogOutResponse.self)
     }
 }

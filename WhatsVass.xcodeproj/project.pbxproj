@@ -11,6 +11,7 @@
 		3A2E17D12BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17CE2BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift */; };
 		3A2E17D42BEA93F20039365A /* ProfileAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D32BEA93F20039365A /* ProfileAPIClientTests.swift */; };
 		3A2E17D62BEA9BBE0039365A /* ContactsAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D52BEA9BBE0039365A /* ContactsAPIClientTests.swift */; };
+		3A2E17D82BEAA4350039365A /* SettingsAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D72BEAA4350039365A /* SettingsAPIClientTests.swift */; };
 		3A38C9B62BEA6D270068D8F0 /* HomeAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */; };
 		3A38C9B82BEA7A550068D8F0 /* ChatAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38C9B72BEA7A550068D8F0 /* ChatAPIClientTests.swift */; };
 		3A4329B22BEA35C20027E021 /* Preview+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4329B12BEA35C20027E021 /* Preview+Models.swift */; };
@@ -132,6 +133,7 @@
 		3A2E17D22BEA92F00039365A /* WhatsVassTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WhatsVassTests.xctestplan; sourceTree = "<group>"; };
 		3A2E17D32BEA93F20039365A /* ProfileAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPIClientTests.swift; sourceTree = "<group>"; };
 		3A2E17D52BEA9BBE0039365A /* ContactsAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsAPIClientTests.swift; sourceTree = "<group>"; };
+		3A2E17D72BEAA4350039365A /* SettingsAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAPIClientTests.swift; sourceTree = "<group>"; };
 		3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPIClientTests.swift; sourceTree = "<group>"; };
 		3A38C9B72BEA7A550068D8F0 /* ChatAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPIClientTests.swift; sourceTree = "<group>"; };
 		3A4329B12BEA35C20027E021 /* Preview+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+Models.swift"; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				3A38C9B72BEA7A550068D8F0 /* ChatAPIClientTests.swift */,
 				3A2E17D32BEA93F20039365A /* ProfileAPIClientTests.swift */,
 				3A2E17D52BEA9BBE0039365A /* ContactsAPIClientTests.swift */,
+				3A2E17D72BEAA4350039365A /* SettingsAPIClientTests.swift */,
 			);
 			path = BaseAPIClient;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				3A2E17D42BEA93F20039365A /* ProfileAPIClientTests.swift in Sources */,
 				3A38C9B62BEA6D270068D8F0 /* HomeAPIClientTests.swift in Sources */,
 				3A2E17D12BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift in Sources */,
+				3A2E17D82BEAA4350039365A /* SettingsAPIClientTests.swift in Sources */,
 				3A38C9B82BEA7A550068D8F0 /* ChatAPIClientTests.swift in Sources */,
 				3A2E17D02BEA8CB40039365A /* WhatsVassUITests.swift in Sources */,
 			);
