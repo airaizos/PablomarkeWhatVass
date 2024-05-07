@@ -7,32 +7,30 @@
 
 import Foundation
 import Combine
-import Alamofire
 
 final class ContactsAPIClient: BaseAPIClient {
     func getContacts() -> AnyPublisher<[User], BaseError> {
-        requestPublisher(relativePath: EndpointsUsers.users,
-                         method: .get,
-                         parameters: nil,
-                         urlEncoding: URLEncoding.default,
-                         type: [User].self)
+        requestPublisher(url: EndpointsUsers.urlUsers, type: [User].self)
     }
 
     func createChat(source: String, target: String) -> AnyPublisher<ChatCreateResponse, BaseError> {
-        let parameters: Parameters = ["source": source,
-                                      "target": target]
-        return requestPublisher(relativePath: EndpointsChats.createChat,
-                                method: .post,
-                                parameters: parameters,
-                                urlEncoding: JSONEncoding.default,
-                                type: ChatCreateResponse.self)
+        let params = ["source": source, "target": target]
+        guard let chat = encodeChat(with: params) else {
+            return Fail(error: BaseError.noCodable).eraseToAnyPublisher()
+        }
+        return requestPostPublisher(url: EndpointsChats.urlCreateChat, data: chat)
     }
 
     func getChats() -> AnyPublisher<ChatsList, BaseError> {
-        return requestPublisher(relativePath: EndpointsChats.chatsView,
-                                method: .get,
-                                parameters: nil,
-                                urlEncoding: URLEncoding.default,
-                                type: ChatsList.self)
+        requestPublisher(url: EndpointsChats.urlChats, type: ChatsList.self)
+    }
+    
+    private func encodeChat(with params: [String: Any]) -> Data? {
+        guard let source = params["source"] as? String,  let target = params["target"] as? String else { return nil }
+
+        let chat = ChatCreate(source: source, target: target)
+        guard let data = try? JSONEncoder().encode(chat) else { return nil }
+        return data
+        
     }
 }

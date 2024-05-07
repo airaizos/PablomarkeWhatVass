@@ -23,6 +23,7 @@ enum EndpointsUsers {
     static let users: String = "4b8542ec-e387-44ed-a542-97895293264a" //"users"
     
     static let urlRegister = Base.baseURL.appending(path: register)
+    static let urlUsers = Base.baseURL.appending(path: users)
 }
 
 enum EndpointsChats {
@@ -32,6 +33,7 @@ enum EndpointsChats {
     
     static let urlChats: URL = Base.baseURL.appending(path: chatsView)
     static let urlDeleteChat: URL =  Base.baseURL.appending(path: chats)
+    static let urlCreateChat: URL = Base.baseURL.appending(path: createChat)
 }
 
 enum EndpointsMessages {
