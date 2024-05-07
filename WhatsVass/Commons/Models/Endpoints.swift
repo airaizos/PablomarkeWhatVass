@@ -25,6 +25,8 @@ enum EndpointsUsers {
     static let urlRegister = Base.baseURL.appending(path: register)
     static let urlUsers = Base.baseURL.appending(path: users)
     static let urlLogout = Base.baseURL.appending(path: logOut)
+    static let urlLogin = Base.baseURL.appending(path: login)
+    static let urlBiometric = Base.baseURL.appending(path: biometric)
 }
 
 enum EndpointsChats {

@@ -29,12 +29,7 @@ final class HomeAPIClientTests: XCTestCase {
         
         sut.getChats()
             .sink { completion in
-                switch completion {
-                case .finished:
-                    expectation.fulfill()
-                case .failure(let error):
-                    XCTFail(error.description())
-                }
+                switchCompletion(completion, expectation)
             } receiveValue: { chats in
                 XCTAssertGreaterThan(chats.count, 0)
             }
@@ -48,12 +43,7 @@ final class HomeAPIClientTests: XCTestCase {
         
         sut.getMessages()
             .sink { completion in
-                switch completion {
-                case .finished:
-                    expectation.fulfill()
-                case .failure(let error):
-                    XCTFail(error.description())
-                }
+                switchCompletion(completion, expectation)
             } receiveValue: { response in
                 XCTAssertGreaterThan(response.count, 0)
             }
@@ -67,12 +57,7 @@ final class HomeAPIClientTests: XCTestCase {
         
         sut.deleteChat(chatId: "1")
             .sink { completion in
-                switch completion {
-                case .finished:
-                    expectation.fulfill()
-                case .failure(let error):
-                    XCTFail(error.description())
-                }
+                switchCompletion(completion, expectation)
             } receiveValue: { response in
                 XCTAssertEqual(response.success, true)
             }

@@ -28,12 +28,7 @@ final class SettingsAPIClientTests: XCTestCase {
         
         sut.logout()
             .sink { completion in
-                switch completion {
-                case .finished:
-                    expectation.fulfill()
-                case .failure(let error):
-                    XCTFail(error.description())
-                }
+                switchCompletion(completion, expectation)
             } receiveValue: { response in
                 XCTAssertEqual(response.message,"logout success")
             }

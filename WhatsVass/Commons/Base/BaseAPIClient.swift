@@ -106,7 +106,7 @@ class BaseAPIClient {
             return Fail(error: .noToken).eraseToAnyPublisher()
         }
         
-        var request = URLRequest.get(url: url, token: token)
+        let request = URLRequest.get(url: url, token: token)
         
         return session.dataTaskPublisher(for: request)
             .tryMap({ result in
@@ -120,13 +120,12 @@ class BaseAPIClient {
     }
     
     func requestPostPublisher<T: Codable, U:Codable>(url: URL,
-                                          method: HTTPMethods = .post,
                                           data: T) -> AnyPublisher<U, BaseError> {
         guard let token = getToken() else {
             return Fail(error: .noToken).eraseToAnyPublisher()
         }
         
-        var request = URLRequest.post(url: url, data: data)
+        let request = URLRequest.post(url: url, data: data,token: token)
         
         return session.dataTaskPublisher(for: request)
             .tryMap({ result in

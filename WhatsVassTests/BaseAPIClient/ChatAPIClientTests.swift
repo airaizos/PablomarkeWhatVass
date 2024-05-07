@@ -28,12 +28,7 @@ final class ChatAPIClientTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Carga GetChatMessage")
         sut.getChatMessagesByAPI(chat: "", first: 0)
             .sink { completion in
-                switch completion {
-                case .finished:
-                    expectation.fulfill()
-                case .failure(let error):
-                    XCTFail(error.description())
-                }
+                switchCompletion(completion, expectation)
             } receiveValue: { message in
                 XCTAssertGreaterThan(message.rows.count, 0)
             }

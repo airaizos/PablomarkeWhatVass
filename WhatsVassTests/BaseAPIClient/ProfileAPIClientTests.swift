@@ -34,12 +34,7 @@ final class ProfileAPIClientTests: XCTestCase {
         sut.createAndRegisterProfileInAPI(params: params)
        
             .sink { completion in
-                switch completion {
-                case .finished:
-                    expectation.fulfill()
-                case .failure(let error):
-                    XCTFail(error.description())
-                }
+                switchCompletion(completion, expectation)
             } receiveValue: { response in
                 XCTAssertTrue(response.success)
             }

@@ -71,12 +71,7 @@ final class ContactsAPIClientTests: XCTestCase {
         
         sut.getChats()
             .sink { completion in
-                switch completion {
-                case .finished:
-                    expectation.fulfill()
-                case .failure(let error):
-                    XCTFail(error.description())
-                }
+                switchCompletion(completion, expectation)
             } receiveValue: { chat in
                 XCTAssertGreaterThan(chat.count, 0)
             }
