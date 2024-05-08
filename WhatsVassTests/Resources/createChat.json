@@ -3,7 +3,7 @@
     "created": true,
     "chat": {
         "id": "1234567890",
-        "source": "source_id",
+        "source": "Mock Source",
         "target": "target_id",
         "created": "2024-04-25T12:00:00Z"
     }
