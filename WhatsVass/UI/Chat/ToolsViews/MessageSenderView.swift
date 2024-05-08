@@ -27,7 +27,7 @@ struct MessageSenderView: View {
                         .background(Color.contrast.opacity(0.5))
                         .clipShape(RoundedRectangle(cornerRadius: 30))
                 )
-                .onChange(of: text) { newText in
+                .onChange(of: text) { _,newText in
                     buttonDisabled = newText.textIsEmpty()
                                }
             if !buttonDisabled {

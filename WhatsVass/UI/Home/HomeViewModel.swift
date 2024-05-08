@@ -46,7 +46,7 @@ final class HomeViewModel: ObservableObject {
     func getChats() {
         dataManager.getChats()
             .sink {  completion in
-                if case .failure(let error) = completion {
+                if case .failure = completion {
                     // print Error
                 }
             } receiveValue: { [weak self] chat in
@@ -85,7 +85,7 @@ private extension HomeViewModel {
         dataManager.deleteChat(chatId: chatId)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completionStatus in
-                guard case .failure(let error) = completionStatus else { return }
+                guard case .failure = completionStatus else { return }
 
                 self?.showingDeleteError = true
                 self?.deleteErrorMessage = NSLocalizedString("NoChatDeleted",

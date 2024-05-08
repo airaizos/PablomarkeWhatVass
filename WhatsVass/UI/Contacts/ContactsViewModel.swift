@@ -63,7 +63,7 @@ final class ContactsViewModel: ObservableObject {
             }
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
-                if case .failure(let error) = completion {
+                if case .failure = completion {
                     // print Error
                 }
                 self?.newlyCreatedChatId = nil

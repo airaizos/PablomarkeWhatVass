@@ -60,7 +60,7 @@ private extension SettingsViewModel {
     func logOutByAPI() {
         dataManager.logOut()
             .sink { completion in
-                if case let .failure(error) = completion {
+                if case .failure = completion {
 
                 }
             } receiveValue: { offline in
@@ -86,6 +86,7 @@ private extension SettingsViewModel {
     }
 
     func toggleDarkMode(_ isEnabled: Bool) {
+        
         isEnabled ? UIApplication.shared.windows.forEach { window in
             window.overrideUserInterfaceStyle = .dark
         }

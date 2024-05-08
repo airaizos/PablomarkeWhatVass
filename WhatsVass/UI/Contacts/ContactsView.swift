@@ -42,7 +42,7 @@ struct ContactsView: View {
         .onAppear {
             viewModel.getContacts()
         }
-        .onChange(of: searchText) { newValue in
+        .onChange(of: searchText) { _,newValue in
             viewModel.filterContacts(searchText: newValue)
         }
     }

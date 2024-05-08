@@ -31,7 +31,7 @@ class NetworkSession {
         case true:
             do {
                 return try decoder.decode(JSON.self, from: data)
-            } catch let error {
+            } catch {
                 throw BaseError.generic //BADJSON
             }
         case false: throw BaseError.notAuthorized

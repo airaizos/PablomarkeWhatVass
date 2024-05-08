@@ -51,7 +51,7 @@ private extension ProfileViewModel {
     func createAndRegister(params: [String: Any]) {
         dataManager.createAndRegisterProfile(params: params)
             .sink { completion in
-                if case .failure(let error) = completion {
+                if case .failure = completion {
                   // print Error
                 }
             } receiveValue: { [weak self] register in

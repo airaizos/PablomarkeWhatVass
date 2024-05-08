@@ -26,7 +26,7 @@ final class ChatViewModel: ObservableObject {
     func getChatList(chat: String, first: Int = 0) {
         dataManager.getChats(chat: chat, first: first)
             .sink { completion in
-                if case .failure(let error) = completion {
+                if case .failure = completion {
                   // print error
                 }
             } receiveValue: { [weak self] messages in
@@ -48,7 +48,7 @@ final class ChatViewModel: ObservableObject {
         }
         dataManager.getChats(chat: chat.chat, first: nextMessage)
             .sink { completion in
-                if case .failure(let error)  = completion {
+                if case .failure  = completion {
                     // print(error)
                 }
             } receiveValue: { [weak self] messages in

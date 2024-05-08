@@ -114,7 +114,7 @@ private extension LoginViewModel {
         let params = ["Authorization": token]
         dataManager.loginWithBiometric(params: params)
             .sink { completion in
-                if case .failure(let error) = completion {
+                if case .failure = completion {
                     // printError
                 }
             } receiveValue: { [weak self] login in
