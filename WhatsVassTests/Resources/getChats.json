@@ -4,7 +4,7 @@
       "date" : "2024-04-25",
       "chat" : "Chat 1",
       "source" : "Source 1",
-      "message" : "Message 1",
+      "message" : "Mock Message",
       "id" : "1"
     },
     {
@@ -20,56 +20,7 @@
       "date" : "2024-04-27",
       "chat" : "Chat 3",
       "source" : "Source 3"
-    },
-    {
-      "date" : "2024-04-28",
-      "chat" : "Chat 4",
-      "id" : "4",
-      "message" : "Message 4",
-      "source" : "Source 4"
-    },
-    {
-      "id" : "5",
-      "chat" : "Chat 5",
-      "message" : "Message 5",
-      "source" : "Source 5",
-      "date" : "2024-04-29"
-    },
-    {
-      "chat" : "Chat 6",
-      "message" : "Message 6",
-      "date" : "2024-04-30",
-      "source" : "Source 6",
-      "id" : "6"
-    },
-    {
-      "id" : "7",
-      "source" : "Source 7",
-      "chat" : "Chat 7",
-      "message" : "Message 7",
-      "date" : "2024-05-01"
-    },
-    {
-      "message" : "Message 8",
-      "chat" : "Chat 8",
-      "id" : "8",
-      "date" : "2024-05-02",
-      "source" : "Source 8"
-    },
-    {
-      "chat" : "Chat 9",
-      "source" : "Source 9",
-      "id" : "9",
-      "message" : "Message 9",
-      "date" : "2024-05-03"
-    },
-    {
-      "message" : "Message 10",
-      "date" : "2024-05-04",
-      "id" : "10",
-      "chat" : "Chat 10",
-      "source" : "Source 10"
     }
   ],
-  "count" : 10
+  "count" : 3
 }

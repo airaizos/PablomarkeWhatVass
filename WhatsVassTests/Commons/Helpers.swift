@@ -24,3 +24,7 @@ let credentials = ["password": "password",
                    "firebaseToken": "fgjñdjsfgdfj"]
 
 let params = ["Authorization": "token"]
+
+let sendMessageParams = ["chat": "test chat",
+                                      "source": "source",
+                                      "message": "Test message"]

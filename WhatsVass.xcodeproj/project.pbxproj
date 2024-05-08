@@ -22,6 +22,7 @@
 		3A0416562BEBA8A70012D400 /* createChat.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0416552BEBA8A70012D400 /* createChat.json */; };
 		3A04165B2BEBBA760012D400 /* HomeDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04165A2BEBBA760012D400 /* HomeDataManagerTests.swift */; };
 		3A04165D2BEBBB3C0012D400 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04165C2BEBBB3C0012D400 /* Commons.swift */; };
+		3A04165F2BEBC0F80012D400 /* ChatDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04165E2BEBC0F80012D400 /* ChatDataManagerTests.swift */; };
 		3A2E17D02BEA8CB40039365A /* WhatsVassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */; };
 		3A2E17D12BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17CE2BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift */; };
 		3A2E17D42BEA93F20039365A /* ProfileAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D32BEA93F20039365A /* ProfileAPIClientTests.swift */; };
@@ -160,6 +161,7 @@
 		3A0416552BEBA8A70012D400 /* createChat.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = createChat.json; sourceTree = "<group>"; };
 		3A04165A2BEBBA760012D400 /* HomeDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataManagerTests.swift; sourceTree = "<group>"; };
 		3A04165C2BEBBB3C0012D400 /* Commons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
+		3A04165E2BEBC0F80012D400 /* ChatDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataManagerTests.swift; sourceTree = "<group>"; };
 		3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsVassUITests.swift; sourceTree = "<group>"; };
 		3A2E17CE2BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsVassUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3A2E17D22BEA92F00039365A /* WhatsVassTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WhatsVassTests.xctestplan; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 			children = (
 				3A0416512BEB8C010012D400 /* LoginDataManagerTests.swift */,
 				3A04165A2BEBBA760012D400 /* HomeDataManagerTests.swift */,
+				3A04165E2BEBC0F80012D400 /* ChatDataManagerTests.swift */,
 			);
 			path = DataManagersTests;
 			sourceTree = "<group>";
@@ -881,6 +884,7 @@
 				3A2E17D12BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift in Sources */,
 				3A2E17D82BEAA4350039365A /* SettingsAPIClientTests.swift in Sources */,
 				3A38C9B82BEA7A550068D8F0 /* ChatAPIClientTests.swift in Sources */,
+				3A04165F2BEBC0F80012D400 /* ChatDataManagerTests.swift in Sources */,
 				3A2E17D02BEA8CB40039365A /* WhatsVassUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
