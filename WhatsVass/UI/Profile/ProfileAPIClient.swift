@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-import Alamofire
+//import Alamofire
 
 final class ProfileAPIClient: BaseAPIClient {
     func createAndRegisterProfileInAPI(params: [String: Any]) -> AnyPublisher <UserResponse, BaseError> {

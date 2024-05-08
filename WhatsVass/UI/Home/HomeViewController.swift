@@ -18,7 +18,7 @@ final class HomeViewController: UIHostingController<HomeView> {
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         self.contactsWireframe = ContactsWireframe(newChatSubject: viewModel.navigateToChatSubject)
-        super.init(rootView: HomeView(viewModel: viewModel))
+            super.init(rootView: HomeView(viewModel: viewModel))
 
         self.viewModel.navigateToChatSubject
             .sink { [weak self] chat in

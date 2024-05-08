@@ -181,6 +181,7 @@
 		3A50D3072BDAA02C002007A3 /* Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
 		3A6806882BEBCD4E00EBD93E /* ContactsDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDataManagerTests.swift; sourceTree = "<group>"; };
 		3A68068A2BEBD17900EBD93E /* SettingsDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataManagerTests.swift; sourceTree = "<group>"; };
+		3A68068C2BEBD41E00EBD93E /* WhatsVassUnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WhatsVassUnitTests.xctestplan; sourceTree = "<group>"; };
 		8313E3632BA97591001FA804 /* KeyChainDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainDataProvider.swift; sourceTree = "<group>"; };
 		833889FA2B976FC9006F122D /* WhatsVass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsVass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		833889FD2B976FC9006F122D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -384,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				3A2E17D22BEA92F00039365A /* WhatsVassTests.xctestplan */,
+				3A68068C2BEBD41E00EBD93E /* WhatsVassUnitTests.xctestplan */,
 				3A44613C2BEA8BDA00E24D3C /* WhatsVass.xctestplan */,
 				833889FC2B976FC9006F122D /* WhatsVass */,
 				83388A162B976FCA006F122D /* WhatsVassTests */,

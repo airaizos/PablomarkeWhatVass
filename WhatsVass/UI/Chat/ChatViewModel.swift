@@ -24,7 +24,9 @@ final class ChatViewModel: ObservableObject {
 
     // MARK: Public Methods
     func getChatList(chat: String, first: Int = 0) {
+        
         dataManager.getChats(chat: chat, first: first)
+            .receive(on: DispatchQueue.main)
             .sink { completion in
                 if case .failure = completion {
                   // print error
@@ -47,6 +49,7 @@ final class ChatViewModel: ObservableObject {
             chats?.count ?? 20
         }
         dataManager.getChats(chat: chat.chat, first: nextMessage)
+            .receive(on: DispatchQueue.main)
             .sink { completion in
                 if case .failure  = completion {
                     // print(error)

@@ -51,6 +51,7 @@ final class ContactsViewModel: ObservableObject {
                 self.newlyCreatedChatId = chatCreateResponse.chat.id
 
                 return self.dataManager.getChats()
+                    .receive(on: DispatchQueue.main)
                     .tryMap { chats -> Chat in
                         guard let newChat = chats.first(where: { $0.chat == chatCreateResponse.chat.id }) else {
                          

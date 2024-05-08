@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-import FirebaseAnalytics
+//import FirebaseAnalytics
 
 final class SplashViewModel {
     // MARK: - Properties -
@@ -17,7 +17,7 @@ final class SplashViewModel {
     // MARK: Public Methods
     func initView() {
         initPreferences()
-        startAnaLyticsEvent()
+    //    startAnaLyticsEvent()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.loginExist.send()
         }
@@ -32,8 +32,8 @@ private extension SplashViewModel {
         }
     }
 
-    func startAnaLyticsEvent() {
-        Analytics.logEvent("App Start",
-                           parameters: ["message": "Run app"])
-    }
+//    func startAnaLyticsEvent() {
+//        Analytics.logEvent("App Start",
+//                           parameters: ["message": "Run app"])
+//    }
 }

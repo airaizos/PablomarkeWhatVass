@@ -33,7 +33,7 @@ final class HomeWireframe {
     }
 
     // MARK: - Public methods
-    func push(navigation: UINavigationController?) {
+   func push(navigation: UINavigationController?) {
         navigation?.setViewControllers([viewController],
                                        animated: true)
     }

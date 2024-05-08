@@ -50,9 +50,8 @@ final class SceneDelegate: UIResponder,
 
 extension SceneDelegate {
     func disconnectedByAPI(online: Bool) -> AnyPublisher <LogOutResponse, BaseError> {
-        let url = EndpointsUsers.online + String(online)
-        return apiClient.requestPublisher(relativePath: url,
-                                          method: .put)
+        let url = EndpointsUsers.urlLogout //.appending(path:String(online))
+        return apiClient.requestPostPublisher(url: url, data: "")
         .mapError { error in
             return error
         }

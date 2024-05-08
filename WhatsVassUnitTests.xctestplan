@@ -1,0 +1,34 @@
+{
+  "configurations" : [
+    {
+      "id" : "0B5083DC-7BB1-4B3F-B57B-913D24F840B3",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "ChatAPIClientTests",
+        "ContactsAPIClientTests",
+        "HomeAPIClientTests",
+        "LoginAPIClientTests",
+        "ProfileAPIClientTests",
+        "SettingsAPIClientTests",
+        "WhatsVassUITests",
+        "WhatsVassUITestsLaunchTests"
+      ],
+      "target" : {
+        "containerPath" : "container:WhatsVass.xcodeproj",
+        "identifier" : "83388A122B976FCA006F122D",
+        "name" : "WhatsVassTests"
+      }
+    }
+  ],
+  "version" : 1
+}

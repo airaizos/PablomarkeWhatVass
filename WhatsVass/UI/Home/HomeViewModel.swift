@@ -45,6 +45,7 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Public Methods
     func getChats() {
         dataManager.getChats()
+            .receive(on: DispatchQueue.main)
             .sink {  completion in
                 if case .failure = completion {
                     // print Error
@@ -102,6 +103,7 @@ private extension HomeViewModel {
 
     func updateLastMessages() {
         dataManager.getMessages()
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 if case  .failure = completion {
                     // print Error

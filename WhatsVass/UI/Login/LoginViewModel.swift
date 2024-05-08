@@ -85,12 +85,16 @@ private extension LoginViewModel {
 
     func loginWithCredentials(remember: Bool, credentials: [String: Any]) {
         dataManager.login(with: credentials)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
+                
                 if case let .failure(error) = completion {
+                    
                     self?.loginFailureSubject.send(error.localizedDescription)
                     print("Error \(error)")
                 }
             } receiveValue: { [weak self] login in
+                
                 UserDefaults.standard.set(login.token,
                                           forKey: Preferences.token)
                 UserDefaults.standard.set(login.user.id,
