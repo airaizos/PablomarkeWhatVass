@@ -26,9 +26,9 @@ final class URLSessionMock: URLProtocol {
                 EndpointsUsers.register,
                 EndpointsUsers.biometric: getMockData(from: URLJsonLocator.login)
             case EndpointsUsers.users: getMockData(from: URLJsonLocator.users)
-                
-            case EndpointsChats.chats: getMockData(from: URLJsonLocator.chats)
-            case EndpointsChats.chatsView: getMockData(from: URLJsonLocator.chatsList)
+
+            case EndpointsChats.chats:  getMockData(from: URLJsonLocator.deleteChat)
+               case EndpointsChats.chatsView: getMockData(from: URLJsonLocator.chatsList)
             case EndpointsChats.createChat: getMockData(from: URLJsonLocator.createChat)
                 
             case EndpointsMessages.view: getMockData(from: URLJsonLocator.messages)
@@ -59,8 +59,8 @@ final class URLSessionMock: URLProtocol {
 struct URLJsonLocator {
     static let login: URL = Bundle.getJsonURL("loginResponse")
     static let users: URL = Bundle.getJsonURL("getContacts")
-    static let chatsList: URL = Bundle.getJsonURL("getChats")
-    static let chats: URL = Bundle.getJsonURL("deleteChat")
+    static let chatsList: URL = Bundle.getJsonURL("ChatList")
+    static let deleteChat: URL = Bundle.getJsonURL("deleteChat")
     static let createChat: URL = Bundle.getJsonURL("createChat")
     static let messages: URL = Bundle.getJsonURL("messages")
     static let getMessages: URL = Bundle.getJsonURL("getChats")
@@ -68,7 +68,7 @@ struct URLJsonLocator {
 }
 
 extension Bundle {
-    static func getJsonURL(_ file: String, inBundle: AnyObject.Type = LoginDataManagerTests.self) -> URL {
+    static func getJsonURL(_ file: String, inBundle: AnyObject.Type = LoginDataManagersTests.self) -> URL {
         Bundle(for: inBundle).url(forResource: file, withExtension: "json")!
     }
 }

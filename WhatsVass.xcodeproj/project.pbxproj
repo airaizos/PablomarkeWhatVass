@@ -20,6 +20,8 @@
 		3A0416522BEB8C010012D400 /* LoginDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0416512BEB8C010012D400 /* LoginDataManagerTests.swift */; };
 		3A0416542BEBA3A80012D400 /* logoutResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0416532BEBA3A80012D400 /* logoutResponse.json */; };
 		3A0416562BEBA8A70012D400 /* createChat.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0416552BEBA8A70012D400 /* createChat.json */; };
+		3A04165B2BEBBA760012D400 /* HomeDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04165A2BEBBA760012D400 /* HomeDataManagerTests.swift */; };
+		3A04165D2BEBBB3C0012D400 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04165C2BEBBB3C0012D400 /* Commons.swift */; };
 		3A2E17D02BEA8CB40039365A /* WhatsVassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */; };
 		3A2E17D12BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17CE2BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift */; };
 		3A2E17D42BEA93F20039365A /* ProfileAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D32BEA93F20039365A /* ProfileAPIClientTests.swift */; };
@@ -156,6 +158,8 @@
 		3A0416512BEB8C010012D400 /* LoginDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManagerTests.swift; sourceTree = "<group>"; };
 		3A0416532BEBA3A80012D400 /* logoutResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = logoutResponse.json; sourceTree = "<group>"; };
 		3A0416552BEBA8A70012D400 /* createChat.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = createChat.json; sourceTree = "<group>"; };
+		3A04165A2BEBBA760012D400 /* HomeDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataManagerTests.swift; sourceTree = "<group>"; };
+		3A04165C2BEBBB3C0012D400 /* Commons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
 		3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsVassUITests.swift; sourceTree = "<group>"; };
 		3A2E17CE2BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsVassUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3A2E17D22BEA92F00039365A /* WhatsVassTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WhatsVassTests.xctestplan; sourceTree = "<group>"; };
@@ -323,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				3A0416512BEB8C010012D400 /* LoginDataManagerTests.swift */,
+				3A04165A2BEBBA760012D400 /* HomeDataManagerTests.swift */,
 			);
 			path = DataManagersTests;
 			sourceTree = "<group>";
@@ -425,6 +430,7 @@
 		83388A312B9770EB006F122D /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				3A04165C2BEBBB3C0012D400 /* Commons.swift */,
 				839896B42BAC3CCB001146CE /* SharedPreferences */,
 				8313E3622BA9756A001FA804 /* Secure */,
 				8396D2B62BA326E30006A4A0 /* Lenguages */,
@@ -814,6 +820,7 @@
 				8396D2AB2BA3019E0006A4A0 /* SettingsViewModel.swift in Sources */,
 				83D121D82BA82E2500D607BF /* BaseViewController.swift in Sources */,
 				838CCE902B9A16EF00D92B4C /* ProfileAPIClient.swift in Sources */,
+				3A04165D2BEBBB3C0012D400 /* Commons.swift in Sources */,
 				838CCE842B9A07A600D92B4C /* User.swift in Sources */,
 				839FC2EC2B9AF99300572D1A /* UITextFieldExtension.swift in Sources */,
 				B3810CCA2BA3124F00C30D63 /* ContactsViewController.swift in Sources */,
@@ -869,6 +876,7 @@
 				3A2E17D42BEA93F20039365A /* ProfileAPIClientTests.swift in Sources */,
 				3A38C9B62BEA6D270068D8F0 /* HomeAPIClientTests.swift in Sources */,
 				3A0416522BEB8C010012D400 /* LoginDataManagerTests.swift in Sources */,
+				3A04165B2BEBBA760012D400 /* HomeDataManagerTests.swift in Sources */,
 				3A2E17DC2BEAAE6F0039365A /* Helpers.swift in Sources */,
 				3A2E17D12BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift in Sources */,
 				3A2E17D82BEAA4350039365A /* SettingsAPIClientTests.swift in Sources */,
