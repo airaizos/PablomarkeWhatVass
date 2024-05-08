@@ -17,7 +17,7 @@
 		3A04164C2BEB89AE0012D400 /* sendMessage.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0416432BEB89AE0012D400 /* sendMessage.json */; };
 		3A04164D2BEB89AE0012D400 /* messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0416442BEB89AE0012D400 /* messages.json */; };
 		3A0416502BEB89F70012D400 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04164F2BEB89F70012D400 /* URLSessionMock.swift */; };
-		3A0416522BEB8C010012D400 /* DataManagersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0416512BEB8C010012D400 /* DataManagersTests.swift */; };
+		3A0416522BEB8C010012D400 /* LoginDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0416512BEB8C010012D400 /* LoginDataManagerTests.swift */; };
 		3A0416542BEBA3A80012D400 /* logoutResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0416532BEBA3A80012D400 /* logoutResponse.json */; };
 		3A0416562BEBA8A70012D400 /* createChat.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0416552BEBA8A70012D400 /* createChat.json */; };
 		3A2E17D02BEA8CB40039365A /* WhatsVassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */; };
@@ -153,7 +153,7 @@
 		3A0416432BEB89AE0012D400 /* sendMessage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sendMessage.json; sourceTree = "<group>"; };
 		3A0416442BEB89AE0012D400 /* messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = messages.json; sourceTree = "<group>"; };
 		3A04164F2BEB89F70012D400 /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
-		3A0416512BEB8C010012D400 /* DataManagersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagersTests.swift; sourceTree = "<group>"; };
+		3A0416512BEB8C010012D400 /* LoginDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManagerTests.swift; sourceTree = "<group>"; };
 		3A0416532BEBA3A80012D400 /* logoutResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = logoutResponse.json; sourceTree = "<group>"; };
 		3A0416552BEBA8A70012D400 /* createChat.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = createChat.json; sourceTree = "<group>"; };
 		3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsVassUITests.swift; sourceTree = "<group>"; };
@@ -314,8 +314,17 @@
 			isa = PBXGroup;
 			children = (
 				3A04164F2BEB89F70012D400 /* URLSessionMock.swift */,
+				3A2E17DB2BEAAE6F0039365A /* Helpers.swift */,
 			);
 			path = Commons;
+			sourceTree = "<group>";
+		};
+		3A0416572BEBB1130012D400 /* DataManagersTests */ = {
+			isa = PBXGroup;
+			children = (
+				3A0416512BEB8C010012D400 /* LoginDataManagerTests.swift */,
+			);
+			path = DataManagersTests;
 			sourceTree = "<group>";
 		};
 		3A2E17CF2BEA8CB40039365A /* WhatsVassUITests */ = {
@@ -336,7 +345,6 @@
 				3A2E17D52BEA9BBE0039365A /* ContactsAPIClientTests.swift */,
 				3A2E17D72BEAA4350039365A /* SettingsAPIClientTests.swift */,
 				3A2E17D92BEAABDB0039365A /* LoginAPIClientTests.swift */,
-				3A2E17DB2BEAAE6F0039365A /* Helpers.swift */,
 			);
 			path = BaseAPIClient_Integration;
 			sourceTree = "<group>";
@@ -396,11 +404,11 @@
 		83388A162B976FCA006F122D /* WhatsVassTests */ = {
 			isa = PBXGroup;
 			children = (
+				3A0416572BEBB1130012D400 /* DataManagersTests */,
 				3A04164E2BEB89EA0012D400 /* Commons */,
 				3A04163B2BEB899B0012D400 /* Resources */,
 				3A2E17CF2BEA8CB40039365A /* WhatsVassUITests */,
 				3A38C9B42BEA6D070068D8F0 /* BaseAPIClient_Integration */,
-				3A0416512BEB8C010012D400 /* DataManagersTests.swift */,
 			);
 			path = WhatsVassTests;
 			sourceTree = "<group>";
@@ -707,7 +715,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1510;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					833889F92B976FC9006F122D = {
 						CreatedOnToolsVersion = 15.1;
@@ -860,7 +868,7 @@
 				3A2E17DA2BEAABDB0039365A /* LoginAPIClientTests.swift in Sources */,
 				3A2E17D42BEA93F20039365A /* ProfileAPIClientTests.swift in Sources */,
 				3A38C9B62BEA6D270068D8F0 /* HomeAPIClientTests.swift in Sources */,
-				3A0416522BEB8C010012D400 /* DataManagersTests.swift in Sources */,
+				3A0416522BEB8C010012D400 /* LoginDataManagerTests.swift in Sources */,
 				3A2E17DC2BEAAE6F0039365A /* Helpers.swift in Sources */,
 				3A2E17D12BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift in Sources */,
 				3A2E17D82BEAA4350039365A /* SettingsAPIClientTests.swift in Sources */,
@@ -885,6 +893,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -948,6 +957,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

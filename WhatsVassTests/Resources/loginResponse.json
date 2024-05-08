@@ -1,9 +1,9 @@
 {
   "user" : {
     "avatar" : "",
-    "nick" : "tester102",
+    "nick" : "Tester Mock",
     "id" : "601",
     "online" : true
   },
-  "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMSIsImlhdCI6MTcxNTA3MjMxMywiZXhwIjoxNzE3NjY0MzEzfQ.b8KfgPABLui3-t745jHz-ggYV9BN7WLgRs5wEhdWazA"
+  "token" : "Token Mock"
 }

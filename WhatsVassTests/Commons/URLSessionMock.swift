@@ -68,7 +68,7 @@ struct URLJsonLocator {
 }
 
 extension Bundle {
-    static func getJsonURL(_ file: String, inBundle: AnyObject.Type = DataManagersTests.self) -> URL {
+    static func getJsonURL(_ file: String, inBundle: AnyObject.Type = LoginDataManagerTests.self) -> URL {
         Bundle(for: inBundle).url(forResource: file, withExtension: "json")!
     }
 }

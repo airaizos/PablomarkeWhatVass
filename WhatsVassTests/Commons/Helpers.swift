@@ -17,3 +17,10 @@ func switchCompletion(_ completion: Subscribers.Completion<BaseError>,_ expectat
         XCTFail(error.description())
     }
 }
+
+let credentials = ["password": "password",
+                   "login": "username",
+                   "platform": "ios",
+                   "firebaseToken": "fgjñdjsfgdfj"]
+
+let params = ["Authorization": "token"]
