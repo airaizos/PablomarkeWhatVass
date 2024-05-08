@@ -23,17 +23,18 @@ final class URLSessionMock: URLProtocol {
             switch url.lastPathComponent {
             case EndpointsUsers.login,
                 EndpointsUsers.logOut,
-                EndpointsUsers.register,
                 EndpointsUsers.biometric: getMockData(from: URLJsonLocator.login)
             case EndpointsUsers.users: getMockData(from: URLJsonLocator.users)
-
-            case EndpointsChats.chats:  getMockData(from: URLJsonLocator.deleteChat)
-               case EndpointsChats.chatsView: getMockData(from: URLJsonLocator.chatsList)
+                
+            case EndpointsChats.chatsView: getMockData(from: URLJsonLocator.chatsList)
             case EndpointsChats.createChat: getMockData(from: URLJsonLocator.createChat)
                 
             case EndpointsMessages.view: getMockData(from: URLJsonLocator.messages)
             case EndpointsMessages.chat: getMockData(from: URLJsonLocator.getMessages)
-            case EndpointsMessages.newMessage: getMockData(from: URLJsonLocator.newMessage)
+                
+            case EndpointsUsers.register: getMockData(from: URLJsonLocator.registerProfile)
+            case EndpointsMessages.newMessage,
+                EndpointsChats.chats : getMockData(from: URLJsonLocator.response)
                 
             default: break
             }
@@ -42,7 +43,7 @@ final class URLSessionMock: URLProtocol {
     }
     
     override func stopLoading() { }
-
+    
     
     func getMockData(from url: URL) {
         if let data = try? Data(contentsOf: url) {
@@ -60,11 +61,11 @@ struct URLJsonLocator {
     static let login: URL = Bundle.getJsonURL("loginResponse")
     static let users: URL = Bundle.getJsonURL("getContacts")
     static let chatsList: URL = Bundle.getJsonURL("ChatList")
-    static let deleteChat: URL = Bundle.getJsonURL("deleteChat")
     static let createChat: URL = Bundle.getJsonURL("createChat")
     static let messages: URL = Bundle.getJsonURL("messages")
     static let getMessages: URL = Bundle.getJsonURL("getChats")
-    static let newMessage: URL = Bundle.getJsonURL("sendMessage")
+    static let response: URL = Bundle.getJsonURL("response")
+    static let registerProfile: URL = Bundle.getJsonURL("createAndRegisterProfile")
 }
 
 extension Bundle {

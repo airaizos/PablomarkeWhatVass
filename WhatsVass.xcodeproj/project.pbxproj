@@ -13,8 +13,7 @@
 		3A0416482BEB89AE0012D400 /* newChat.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A04163F2BEB89AE0012D400 /* newChat.json */; };
 		3A0416492BEB89AE0012D400 /* ChatList.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0416402BEB89AE0012D400 /* ChatList.json */; };
 		3A04164A2BEB89AE0012D400 /* createAndRegisterProfile.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0416412BEB89AE0012D400 /* createAndRegisterProfile.json */; };
-		3A04164B2BEB89AE0012D400 /* deleteChat.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0416422BEB89AE0012D400 /* deleteChat.json */; };
-		3A04164C2BEB89AE0012D400 /* sendMessage.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0416432BEB89AE0012D400 /* sendMessage.json */; };
+		3A04164C2BEB89AE0012D400 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0416432BEB89AE0012D400 /* response.json */; };
 		3A04164D2BEB89AE0012D400 /* messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0416442BEB89AE0012D400 /* messages.json */; };
 		3A0416502BEB89F70012D400 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04164F2BEB89F70012D400 /* URLSessionMock.swift */; };
 		3A0416522BEB8C010012D400 /* LoginDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0416512BEB8C010012D400 /* LoginDataManagerTests.swift */; };
@@ -23,6 +22,7 @@
 		3A04165B2BEBBA760012D400 /* HomeDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04165A2BEBBA760012D400 /* HomeDataManagerTests.swift */; };
 		3A04165D2BEBBB3C0012D400 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04165C2BEBBB3C0012D400 /* Commons.swift */; };
 		3A04165F2BEBC0F80012D400 /* ChatDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04165E2BEBC0F80012D400 /* ChatDataManagerTests.swift */; };
+		3A0416612BEBC6970012D400 /* ProfileDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0416602BEBC6970012D400 /* ProfileDataManagerTests.swift */; };
 		3A2E17D02BEA8CB40039365A /* WhatsVassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */; };
 		3A2E17D12BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17CE2BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift */; };
 		3A2E17D42BEA93F20039365A /* ProfileAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D32BEA93F20039365A /* ProfileAPIClientTests.swift */; };
@@ -152,8 +152,7 @@
 		3A04163F2BEB89AE0012D400 /* newChat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newChat.json; sourceTree = "<group>"; };
 		3A0416402BEB89AE0012D400 /* ChatList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ChatList.json; sourceTree = "<group>"; };
 		3A0416412BEB89AE0012D400 /* createAndRegisterProfile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = createAndRegisterProfile.json; sourceTree = "<group>"; };
-		3A0416422BEB89AE0012D400 /* deleteChat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = deleteChat.json; sourceTree = "<group>"; };
-		3A0416432BEB89AE0012D400 /* sendMessage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sendMessage.json; sourceTree = "<group>"; };
+		3A0416432BEB89AE0012D400 /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
 		3A0416442BEB89AE0012D400 /* messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = messages.json; sourceTree = "<group>"; };
 		3A04164F2BEB89F70012D400 /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
 		3A0416512BEB8C010012D400 /* LoginDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManagerTests.swift; sourceTree = "<group>"; };
@@ -162,6 +161,7 @@
 		3A04165A2BEBBA760012D400 /* HomeDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataManagerTests.swift; sourceTree = "<group>"; };
 		3A04165C2BEBBB3C0012D400 /* Commons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
 		3A04165E2BEBC0F80012D400 /* ChatDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataManagerTests.swift; sourceTree = "<group>"; };
+		3A0416602BEBC6970012D400 /* ProfileDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManagerTests.swift; sourceTree = "<group>"; };
 		3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsVassUITests.swift; sourceTree = "<group>"; };
 		3A2E17CE2BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsVassUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3A2E17D22BEA92F00039365A /* WhatsVassTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WhatsVassTests.xctestplan; sourceTree = "<group>"; };
@@ -305,12 +305,11 @@
 				3A0416532BEBA3A80012D400 /* logoutResponse.json */,
 				3A0416402BEB89AE0012D400 /* ChatList.json */,
 				3A0416412BEB89AE0012D400 /* createAndRegisterProfile.json */,
-				3A0416422BEB89AE0012D400 /* deleteChat.json */,
 				3A04163C2BEB89AE0012D400 /* getChats.json */,
 				3A04163D2BEB89AE0012D400 /* getContacts.json */,
 				3A0416442BEB89AE0012D400 /* messages.json */,
 				3A04163F2BEB89AE0012D400 /* newChat.json */,
-				3A0416432BEB89AE0012D400 /* sendMessage.json */,
+				3A0416432BEB89AE0012D400 /* response.json */,
 				3A0416552BEBA8A70012D400 /* createChat.json */,
 			);
 			path = Resources;
@@ -331,6 +330,7 @@
 				3A0416512BEB8C010012D400 /* LoginDataManagerTests.swift */,
 				3A04165A2BEBBA760012D400 /* HomeDataManagerTests.swift */,
 				3A04165E2BEBC0F80012D400 /* ChatDataManagerTests.swift */,
+				3A0416602BEBC6970012D400 /* ProfileDataManagerTests.swift */,
 			);
 			path = DataManagersTests;
 			sourceTree = "<group>";
@@ -788,9 +788,8 @@
 				3A0416482BEB89AE0012D400 /* newChat.json in Resources */,
 				3A0416492BEB89AE0012D400 /* ChatList.json in Resources */,
 				3A0416562BEBA8A70012D400 /* createChat.json in Resources */,
-				3A04164B2BEB89AE0012D400 /* deleteChat.json in Resources */,
 				3A0416462BEB89AE0012D400 /* getContacts.json in Resources */,
-				3A04164C2BEB89AE0012D400 /* sendMessage.json in Resources */,
+				3A04164C2BEB89AE0012D400 /* response.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -876,6 +875,7 @@
 				3A0416502BEB89F70012D400 /* URLSessionMock.swift in Sources */,
 				3A2E17D62BEA9BBE0039365A /* ContactsAPIClientTests.swift in Sources */,
 				3A2E17DA2BEAABDB0039365A /* LoginAPIClientTests.swift in Sources */,
+				3A0416612BEBC6970012D400 /* ProfileDataManagerTests.swift in Sources */,
 				3A2E17D42BEA93F20039365A /* ProfileAPIClientTests.swift in Sources */,
 				3A38C9B62BEA6D270068D8F0 /* HomeAPIClientTests.swift in Sources */,
 				3A0416522BEB8C010012D400 /* LoginDataManagerTests.swift in Sources */,

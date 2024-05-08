@@ -5,7 +5,7 @@
     "password" : "tester102",
     "avatar" : "",
     "login" : "tester102",
-    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMSIsImlhdCI6MTcxNTA3MTk5MywiZXhwIjoxNzE3NjYzOTkzfQ.CPiBsvwb204s85yEyu-sbgjFNtphW6-cfdkX2GeSAEA",
+    "token" : "Mock Token",
     "uuid" : "NoTokenNow",
     "id" : "601",
     "platform" : "ios",
