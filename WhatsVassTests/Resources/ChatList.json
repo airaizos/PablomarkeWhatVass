@@ -1,0 +1,40 @@
+[
+  {
+    "sourcetoken" : "fgjñdjsfgdfj",
+    "targetavatar" : "",
+    "source" : "601",
+    "targetnick" : "12121211121",
+    "target" : "234",
+    "sourceonline" : true,
+    "targetonline" : true,
+    "sourcenick" : "tester102",
+    "chat" : "1292",
+    "chatcreated" : "2024-05-07T06:56:35.227Z"
+  },
+  {
+    "sourceonline" : true,
+    "chat" : "1294",
+    "source" : "601",
+    "targettoken" : "fsdfsdgsdsdgsdgsdg sdg sdg",
+    "chatcreated" : "2024-05-07T06:59:34.928Z",
+    "targetonline" : true,
+    "target" : "370",
+    "targetavatar" : "",
+    "targetnick" : "098765",
+    "sourcetoken" : "fgjñdjsfgdfj",
+    "sourcenick" : "tester102"
+  },
+  {
+    "targetavatar" : "",
+    "targettoken" : "fgjñdjsfgdfj",
+    "chat" : "1295",
+    "sourcetoken" : "fgjñdjsfgdfj",
+    "chatcreated" : "2024-05-07T06:59:41.844Z",
+    "sourcenick" : "tester102",
+    "targetnick" : "tester1",
+    "sourceonline" : true,
+    "target" : "595",
+    "targetonline" : true,
+    "source" : "601"
+  }
+]

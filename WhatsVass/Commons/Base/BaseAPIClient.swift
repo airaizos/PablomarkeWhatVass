@@ -13,21 +13,24 @@ class BaseAPIClient {
     
     private var isReachable: Bool = true
     private var sesionManager: Alamofire.Session!
-    private var session: URLSession
+    private var baseURL: URL = Base.baseURL
     
-    private var baseURL: URL {
+    var urlProtocol: URLProtocol.Type?
         
-        if let url = URL(string: Base.mock) {
-            return url
+    private var session: URLSession {
+        if let urlProtocol {
+            let configuration = URLSessionConfiguration.ephemeral
+            configuration.protocolClasses = [urlProtocol]
+            return URLSession(configuration: configuration)
         } else {
-            return URL(string: "")!
+            return URLSession.shared
         }
     }
     
-    init(session: URLSession = .shared) {
+    init(urlProtocol: URLProtocol.Type? = nil) {
         self.sesionManager = Session()
-        self.session = session
         startListenerReachability()
+        self.urlProtocol = urlProtocol
     }
     
     // MARK: - Public method
