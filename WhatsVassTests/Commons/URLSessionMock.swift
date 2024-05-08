@@ -22,7 +22,6 @@ final class URLSessionMock: URLProtocol {
         if let url = request.url {
             switch url.lastPathComponent {
             case EndpointsUsers.login,
-                EndpointsUsers.logOut,
                 EndpointsUsers.biometric: getMockData(from: URLJsonLocator.login)
             case EndpointsUsers.users: getMockData(from: URLJsonLocator.users)
                 
@@ -36,6 +35,7 @@ final class URLSessionMock: URLProtocol {
             case EndpointsMessages.newMessage,
                 EndpointsChats.chats : getMockData(from: URLJsonLocator.response)
                 
+            case EndpointsUsers.logOut: getMockData(from: URLJsonLocator.logout)
             default: break
             }
         }
@@ -66,6 +66,7 @@ struct URLJsonLocator {
     static let getMessages: URL = Bundle.getJsonURL("getChats")
     static let response: URL = Bundle.getJsonURL("response")
     static let registerProfile: URL = Bundle.getJsonURL("createAndRegisterProfile")
+    static let logout: URL = Bundle.getJsonURL("logoutResponse")
 }
 
 extension Bundle {

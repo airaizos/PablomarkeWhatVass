@@ -37,6 +37,7 @@
 		3A50D3062BDA9F08002007A3 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50D3052BDA9F08002007A3 /* NetworkMonitor.swift */; };
 		3A50D3082BDAA02C002007A3 /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50D3072BDAA02C002007A3 /* Interface.swift */; };
 		3A6806892BEBCD4E00EBD93E /* ContactsDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6806882BEBCD4E00EBD93E /* ContactsDataManagerTests.swift */; };
+		3A68068B2BEBD17900EBD93E /* SettingsDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68068A2BEBD17900EBD93E /* SettingsDataManagerTests.swift */; };
 		8313E3642BA97591001FA804 /* KeyChainDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313E3632BA97591001FA804 /* KeyChainDataProvider.swift */; };
 		833889FE2B976FC9006F122D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833889FD2B976FC9006F122D /* AppDelegate.swift */; };
 		83388A002B976FC9006F122D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833889FF2B976FC9006F122D /* SceneDelegate.swift */; };
@@ -179,6 +180,7 @@
 		3A50D3052BDA9F08002007A3 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		3A50D3072BDAA02C002007A3 /* Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
 		3A6806882BEBCD4E00EBD93E /* ContactsDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDataManagerTests.swift; sourceTree = "<group>"; };
+		3A68068A2BEBD17900EBD93E /* SettingsDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataManagerTests.swift; sourceTree = "<group>"; };
 		8313E3632BA97591001FA804 /* KeyChainDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainDataProvider.swift; sourceTree = "<group>"; };
 		833889FA2B976FC9006F122D /* WhatsVass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsVass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		833889FD2B976FC9006F122D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				3A04165E2BEBC0F80012D400 /* ChatDataManagerTests.swift */,
 				3A0416602BEBC6970012D400 /* ProfileDataManagerTests.swift */,
 				3A6806882BEBCD4E00EBD93E /* ContactsDataManagerTests.swift */,
+				3A68068A2BEBD17900EBD93E /* SettingsDataManagerTests.swift */,
 			);
 			path = DataManagersTests;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 			files = (
 				3A6806892BEBCD4E00EBD93E /* ContactsDataManagerTests.swift in Sources */,
 				3A0416502BEB89F70012D400 /* URLSessionMock.swift in Sources */,
+				3A68068B2BEBD17900EBD93E /* SettingsDataManagerTests.swift in Sources */,
 				3A2E17D62BEA9BBE0039365A /* ContactsAPIClientTests.swift in Sources */,
 				3A2E17DA2BEAABDB0039365A /* LoginAPIClientTests.swift in Sources */,
 				3A0416612BEBC6970012D400 /* ProfileDataManagerTests.swift in Sources */,
