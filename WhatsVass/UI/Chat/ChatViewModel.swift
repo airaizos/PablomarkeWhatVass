@@ -12,12 +12,12 @@ import Combine
 final class ChatViewModel: ObservableObject {
     // MARK: - Properties -
     @Published var chat: Chat
-    private var dataManager: ChatDataManager
+    private var dataManager: ChatDataManagerProtocol
     var cancellables: Set<AnyCancellable> = []
     @Published var chats: [RowMessage]?
     @Published var name: String = ""
 
-    init(dataManager: ChatDataManager, chat: Chat) {
+    init(dataManager: ChatDataManagerProtocol, chat: Chat) {
         self.dataManager = dataManager
         self.chat = chat
     }

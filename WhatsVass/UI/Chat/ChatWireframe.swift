@@ -31,7 +31,7 @@ final class ChatWireframe {
         return ChatViewController(viewModel: viewModel)
     }
 
-    private func createDataManager(apiClient: ChatAPIClient) -> ChatDataManager {
+    private func createDataManager(apiClient: ChatAPIClient) -> ChatDataManagerProtocol {
         return ChatDataManager(apiClient: apiClient)
     }
 }

@@ -50,6 +50,7 @@
 		3A6806A22BEC041200EBD93E /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6806982BEC041200EBD93E /* response.json */; };
 		3A6806A42BEC08E800EBD93E /* Preview+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6806A32BEC08E800EBD93E /* Preview+Bundle.swift */; };
 		3AFD14D72BECBE0500C86030 /* HomeDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14D62BECBE0500C86030 /* HomeDataManagerMock.swift */; };
+		3AFD14D92BECC59A00C86030 /* ChatDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14D82BECC59A00C86030 /* ChatDataManagerMock.swift */; };
 		8313E3642BA97591001FA804 /* KeyChainDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313E3632BA97591001FA804 /* KeyChainDataProvider.swift */; };
 		833889FE2B976FC9006F122D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833889FD2B976FC9006F122D /* AppDelegate.swift */; };
 		83388A002B976FC9006F122D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833889FF2B976FC9006F122D /* SceneDelegate.swift */; };
@@ -178,6 +179,7 @@
 		3A6806982BEC041200EBD93E /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = response.json; path = WhatsVassTests/Resources/response.json; sourceTree = SOURCE_ROOT; };
 		3A6806A32BEC08E800EBD93E /* Preview+Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+Bundle.swift"; sourceTree = "<group>"; };
 		3AFD14D62BECBE0500C86030 /* HomeDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataManagerMock.swift; sourceTree = "<group>"; };
+		3AFD14D82BECC59A00C86030 /* ChatDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataManagerMock.swift; sourceTree = "<group>"; };
 		8313E3632BA97591001FA804 /* KeyChainDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainDataProvider.swift; sourceTree = "<group>"; };
 		833889FA2B976FC9006F122D /* WhatsVass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsVass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		833889FD2B976FC9006F122D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				3A4329B12BEA35C20027E021 /* Preview+Models.swift */,
 				3A6806A32BEC08E800EBD93E /* Preview+Bundle.swift */,
 				3AFD14D62BECBE0500C86030 /* HomeDataManagerMock.swift */,
+				3AFD14D82BECC59A00C86030 /* ChatDataManagerMock.swift */,
 			);
 			path = PrewViewContent;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				834761902B9EED3500485E2F /* ChatView.swift in Sources */,
 				B3810CCC2BA3125D00C30D63 /* ContactsViewModel.swift in Sources */,
 				83C2525B2B98606D004455A6 /* BaseError.swift in Sources */,
+				3AFD14D92BECC59A00C86030 /* ChatDataManagerMock.swift in Sources */,
 				B3810CD42BA312B400C30D63 /* ContactsView.swift in Sources */,
 				B3810CD02BA3128000C30D63 /* ContactsAPIClient.swift in Sources */,
 				83388A002B976FC9006F122D /* SceneDelegate.swift in Sources */,

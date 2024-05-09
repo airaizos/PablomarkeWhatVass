@@ -80,5 +80,5 @@ struct ChatView: View {
     }
 }
 #Preview {
-    ChatView(viewModel: ChatViewModel(dataManager: ChatDataManager(apiClient: ChatAPIMock()), chat: Chat.preview))
+    ChatView(viewModel: ChatViewModel(dataManager: ChatDataManagerMock(), chat: Chat.preview))
 }

@@ -8,7 +8,12 @@
 import Foundation
 import Combine
 
-final class ChatDataManager {
+protocol ChatDataManagerProtocol {
+    func getChats(chat: String, first: Int) -> AnyPublisher <ChatMessage, BaseError>
+    func sendMessage(params: [String: Any]) -> AnyPublisher <NewMessageResponse, BaseError>
+}
+
+final class ChatDataManager: ChatDataManagerProtocol {
     // MARK: - Properties
     private var apiClient: ChatAPI
     var cancellables: Set<AnyCancellable> = []
@@ -22,7 +27,6 @@ final class ChatDataManager {
     func getChats(chat: String, first: Int) -> AnyPublisher <ChatMessage, BaseError> {
         apiClient.getChatMessagesByAPI(chat: chat, first: first, limit: 1)
             .tryMap { messages in
-                // saveCodableToDocumentsDirectory(messages, fileName: "getChats.json")
                 return messages
             }
             .mapError { error in
@@ -34,7 +38,6 @@ final class ChatDataManager {
     func sendMessage(params: [String: Any]) -> AnyPublisher <NewMessageResponse, BaseError> {
         apiClient.sendMessage(params: params)
             .tryMap { newMessageResponse in
-                //saveCodableToDocumentsDirectory(newMessageResponse, fileName: "sendMessage.json")
                 return newMessageResponse
             }
             .mapError { error in
@@ -43,3 +46,7 @@ final class ChatDataManager {
             .eraseToAnyPublisher()
     }
 }
+
+
+
+
