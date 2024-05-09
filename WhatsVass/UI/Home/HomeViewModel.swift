@@ -55,6 +55,23 @@ final class HomeViewModel: ObservableObject {
                 self?.updateLastMessages()
             }.store(in: &cancellables)
     }
+    
+    func getChatAsync() async throws -> ChatsList {
+              
+        try await withCheckedThrowingContinuation { continuation in
+            dataManager.getChats()
+                .sink { completion in
+                    if case .failure = completion {
+                        continuation.resume(throwing: BaseError.failedChat)
+                    }
+                } receiveValue: { [weak self] chats in
+                    self?.updateLastMessages()
+                    continuation.resume(returning: chats)
+                }
+                .store(in: &cancellables)
+        }
+    }
+    
 
     func deleteChat(at offsets: IndexSet) {
         offsets.forEach { index in

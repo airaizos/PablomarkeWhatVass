@@ -8,6 +8,13 @@
 import Foundation
 import Combine
 
+protocol HomeDataManagerProtocol {
+    func getChats() -> AnyPublisher<ChatsList, BaseError>
+    func getMessages() -> AnyPublisher<[MessageViewResponse], BaseError>
+    func deleteChat(chatId: String) -> AnyPublisher<DeleteChatResponse, BaseError>
+}
+
+
 final class HomeDataManager:HomeDataManagerProtocol {
     // MARK: - Properties
     private var apiClient: HomeAPIClient
@@ -55,13 +62,3 @@ final class HomeDataManager:HomeDataManagerProtocol {
             .eraseToAnyPublisher()
     }
 }
-
-
-protocol HomeDataManagerProtocol {
-    func getChats() -> AnyPublisher<ChatsList, BaseError>
-    func getMessages() -> AnyPublisher<[MessageViewResponse], BaseError>
-    func deleteChat(chatId: String) -> AnyPublisher<DeleteChatResponse, BaseError>
-}
-
-
-

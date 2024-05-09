@@ -81,31 +81,29 @@ struct ContactsView: View {
 
 // MARK: - ContactRow
 struct ContactRow: View {
-    var user: User
-
+    let nick: String
+    let avatar: String
     var body: some View {
         HStack(spacing: 6) {
-            userInitialsCircle
-            Text(user.nick)
+            UserInitialCircle(nick: nick, avatar: avatar)
+            Text(nick)
                 .bold()
                 .foregroundStyle(.soft)
             Spacer()
         }
         .padding(.vertical, 8)
     }
+}
 
-    private var userInitialsCircle: some View {
-        ZStack {
-            Circle()
-                .fill(Color.gray)
-                .frame(width: 60, height: 60)
-            Text(String(user.nick.prefix(1)))
-                .foregroundColor(.white)
-                .bold()
-        }
+extension ContactRow {
+    init(user: User) {
+        self.nick = user.nick
+        self.avatar = user.avatar
     }
 }
 
 #Preview {
     ContactsView(viewModel: ContactsViewModel(dataManager: ContactsDataManagerMock()))
 }
+
+

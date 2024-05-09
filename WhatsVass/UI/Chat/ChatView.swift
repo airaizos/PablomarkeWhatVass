@@ -17,7 +17,6 @@ struct ChatView: View {
         self.viewModel = viewModel
     }
 
-    // MARK: - View -
     var body: some View {
         VStack {
             VStack {
@@ -25,10 +24,9 @@ struct ChatView: View {
                     ScrollView {
                         LazyVStack(spacing: 10) {
                             if let chats = viewModel.chats, !chats.isEmpty {
-                                ForEach(chats.reversed()) { message in
-                                    MessageRow(message: message.message,
-                                               time: message.date.fakeDateToString(),
-                                               ownMessage: viewModel.messageIsMine(sentBy: message.source))
+                                ForEach(chats) { message in
+                                    MessageRow(row: message)
+                                    .frame(maxWidth: .infinity, alignment: message.isMine ? .trailing : .leading)
                                     .onAppear {
                                         moveScroll(maxCell: chats.count)
                                         if scrollToFirstMessage {
@@ -45,16 +43,15 @@ struct ChatView: View {
                                     .padding()
                             }
                         }
-                        .padding([.leading, .trailing])
+                        .padding()
                     }
                 }
             }
 
             // MARK: - NavBar -
             .navigationBarItems(leading:
-                                    HStack {
-                ImageProfileView(onlineColor: viewModel.onlineColor())
-            })
+                UserInitialCircleStatusIndicator(user: viewModel.sourceData)
+            )
             .navigationBarTitle(Text(viewModel.name),
                                 displayMode: .inline)
             MessageSenderView(viewModel: viewModel)
@@ -79,6 +76,9 @@ struct ChatView: View {
         self.cellCount += 1
     }
 }
+
 #Preview {
-    ChatView(viewModel: ChatViewModel(dataManager: ChatDataManagerMock(), chat: Chat.preview))
+    NavigationStack {
+        ChatView(viewModel: ChatViewModel(dataManager: ChatDataManagerMock(), chat: Chat.preview))
+    }
 }

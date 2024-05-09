@@ -8,50 +8,38 @@
 import SwiftUI
 
 struct ChatRow: View {
-    var chat: Chat
-    private let myID = UserDefaults.standard.string(forKey: Preferences.id) ?? "defaultID"
-
+    let nick: String
+    let message: String
+    let avatar: String
+    let sendDate: String
+    let isOnline: Bool
+   
     var body: some View {
-        HStack {
-            userStatusIndicator
+        HStack(alignment:.top) {
+            UserInitialCircleStatusIndicator(nick: nick, avatar: avatar, isOnLine: isOnline)
             VStack(alignment: .leading) {
-                Text(otherUserNick)
+                Text(nick)
                     .foregroundColor(.letter)
                     .bold()
-                Text(chat.lastMessage ?? "")
+                Text(message)
+                    .font(.subheadline)
                     .foregroundColor(.letter)
             }
             Spacer()
-            Text(chat.lastMessageTime?.fakeDateToString() ?? "")
-                .foregroundColor(.letter)
-        }
-        .padding(.vertical,
-                 8)
-    }
-
-    private var userStatusIndicator: some View {
-        ZStack(alignment: .bottomTrailing) {
-            Circle()
-                .fill(Color.gray)
-                .frame(width: 50,
-                       height: 50)
-                .overlay(Text(otherUserNick.prefix(1))
-                    .foregroundColor(.white))
-            Circle()
-                .fill(isOtherUserOnline ? Color.green : Color.red)
-                .frame(width: 15,
-                       height: 15)
-                .offset(x: 0,
-                        y: 0)
+            Text(sendDate)
+                .font(.caption)
+                .foregroundColor(.secondary)
         }
     }
+}
 
-    private var isOtherUserOnline: Bool {
-        chat.source == myID ? chat.targetonline : chat.sourceonline
-    }
-
-    private var otherUserNick: String {
-        chat.source == myID ? chat.targetnick : chat.sourcenick
+extension ChatRow {
+    init(chat: Chat) {
+        self.nick = chat.otherUserNick
+        self.message = chat.lastMessageView
+        self.sendDate = chat.showLasMesageDateInfo
+        self.avatar = chat.targetavatar
+        self.isOnline = chat.isOtherUserOnline
     }
 }
 

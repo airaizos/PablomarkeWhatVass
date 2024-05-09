@@ -10,7 +10,7 @@ import Combine
 
 
 extension Chat {
-    static let preview = Chat(chat: "1234567890", source: "source_id", sourcenick: "NombreOrigen", sourcetoken:  "source_token", target: "target_id", targetnick: "NombreDestino", targetavatar: "avatar_url", targettoken: "target_token", sourceonline: true, targetonline: false, chatcreated: "2024-04-25T12:00:00Z", lastMessage: "¡Hola! ¿Cómo estás?", lastMessageTime: "2024-04-25T12:05:00Z")
+    static let preview = Chat(chat: "1234567890", source: "source_id", sourcenick: "Nombre Origen", sourcetoken:  "source_token", target: "target_id", targetnick: "NombreDestino", targetavatar: "https://api.dicebear.com/8.x/pixel-art-neutral/png", targettoken: "target_token", sourceonline: true, targetonline: false, chatcreated: "2024-04-09T12:00:00Z", lastMessage: "¡Hola! ¿Cómo estás?", lastMessageTime: "2024-05-08T12:00:00Z")
 }
 
 extension ChatMessage {

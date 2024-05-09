@@ -16,34 +16,55 @@ struct MessageRow: View {
     // MARK: - View -
     var body: some View {
         HStack {
-            if ownMessage {
-                Spacer(minLength: 40)
-            }
-            HStack {
+            HStack(alignment:.top) {
                 Text(message)
-                    .padding()
-                    .font(.title2)
+                    .padding(.horizontal, 15)
+                    .padding(.vertical,10)
                     .foregroundStyle(.letter)
-                    .lineLimit(nil)
                     .frame(minWidth: 40,
                            minHeight: 2,
-                           alignment: .leading)
+                           alignment: ownMessage ? .leading : .trailing)
                 Text(time)
-                    .foregroundStyle(.letter)
-                    .padding(4)
+                    .font(.caption2)
+                    .foregroundStyle(.gray)
+                    .padding(10)
             }
-            .background(Color.contrast.opacity(0.2))
-            .cornerRadius(20)
+            .background(ownMessage ? Color.contrast.opacity(0.2) : .gray.opacity(0.3))
+            .cornerRadius(8)
             .opacity(0.9)
             .fixedSize(horizontal: false,
                        vertical: true)
-            if !ownMessage {
-                Spacer(minLength: 40)
-            }
         }
     }
 }
 
+extension MessageRow {
+    init(row: RowMessage) {
+        self.message = row.message
+        self.time = row.dateTime.messageDateView
+        self.ownMessage = row.isMine
+    }
+}
+
 #Preview {
-    MessageRow(message: "Hello, what are you?", time: "00:10")
+    VStack {
+        HStack {
+            MessageRow(message: "Hello, what are you?", time: "00:10",ownMessage: true)
+            Spacer()
+        }
+        HStack {
+            Spacer()
+        MessageRow(message: "Hello, what are you?", time: "00:12",ownMessage: false)
+           
+        }
+        HStack {
+        MessageRow(message: "Hello?", time: "00:14",ownMessage: true)
+            Spacer()
+        }
+        HStack {
+            Spacer()
+            MessageRow(message: "Helloooo?", time: "00:16",ownMessage: false)
+        }
+    }
+    .padding()
 }

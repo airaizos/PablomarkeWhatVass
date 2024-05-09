@@ -81,7 +81,7 @@ struct HomeView: View {
                     Image(systemName: "plus")
                         .padding()
                         .background(Color.dark)
-                        .foregroundColor(Color.contrast)
+                        .foregroundColor(.white)
                         .clipShape(Circle())
                         .padding()
                 })

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ImageProfileView: View {
+    var avatar: URL?
     var onlineColor: Color
     var body: some View {
         ZStack {
@@ -16,25 +17,28 @@ struct ImageProfileView: View {
                 .shadow(color: .black, radius: 2, x: 1, y: 2)
                 .padding()
                 .font(.title)
-            ZStack {
-                Circle()
-                    .frame(width:8)
-                    .foregroundColor(onlineColor)
-                    .blur(radius: 1)
-                    .offset(x: 12, y: 12)
+           
                 Circle()
                     .stroke(lineWidth: 1)
                     .frame(width:9)
                     .foregroundColor(onlineColor.opacity(0.7))
                     .offset(x: 12, y: 12)
-            }
-        }  
+                    .overlay (
+                        Circle()
+                            .frame(width:8)
+                            .foregroundColor(onlineColor)
+                            .blur(radius: 1)
+                            .offset(x: 12, y: 12)
+                    )
+                    
+        }
+        .background(Circle().stroke(.gray, lineWidth: 1).padding(5))
     }
 }
 
 #Preview {
     VStack {
-        ImageProfileView(onlineColor: .red)
+        ImageProfileView(avatar: nil,onlineColor: .red)
         ImageProfileView(onlineColor: .green)
     }
 }

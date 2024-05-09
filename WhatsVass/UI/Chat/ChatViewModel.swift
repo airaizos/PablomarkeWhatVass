@@ -54,13 +54,18 @@ final class ChatViewModel: ObservableObject {
                 if case .failure  = completion {
                     // print(error)
                 }
-            } receiveValue: { [weak self] messages in
-                self?.chats?.append(contentsOf: messages.rows)
+            } receiveValue: { _ in //[weak self] messages in
+                // FIXME:  se duplican al venir de un mock
+            //    self?.chats?.append(contentsOf: messages.rows)
             }.store(in: &cancellables)
     }
 
     func onlineColor() -> Color {
         self.chat.targetonline ? Color.green : Color.red
+    }
+    
+    var sourceData: User {
+        User(id: chat.target, nick: chat.targetnick, avatar: chat.targetavatar, online: chat.targetonline)
     }
 
     func sendNewMessage(message: String) {

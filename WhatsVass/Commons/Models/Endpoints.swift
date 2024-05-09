@@ -41,7 +41,7 @@ enum EndpointsChats {
 
 enum EndpointsMessages {
     static let view: String = "54bdf6fa-3189-494f-9eae-010f2aa3c823" //"messages/view"
-    static let chat: String = "9fc6d3ae-2274-4d06-a593-5386672ba2d2"//"messages/list/"
+    static let chat: String = "05652b06-7434-4336-a61b-c22e610d00c8"//"messages/list/"
     static let newMessage: String = "68ef2594-e025-4082-a15f-6aa3aa6c0778" //"messages/new"
     
     static let urlView = Base.baseURL.appending(path: view)

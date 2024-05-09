@@ -27,3 +27,16 @@ struct NewMessage: Codable {
 struct NewMessageResponse: Codable {
     var success: Bool
 }
+
+
+extension RowMessage {
+    var  isMine: Bool {
+        source == UserDefaults.standard.string(forKey: Preferences.id)
+    }
+    var dateTime: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        //TODO: Que se devuelve?
+        return dateFormatter.date(from: date) ?? Date.now
+    }
+}

@@ -51,6 +51,8 @@
 		3A6806A42BEC08E800EBD93E /* Preview+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6806A32BEC08E800EBD93E /* Preview+Bundle.swift */; };
 		3AFD14D72BECBE0500C86030 /* HomeDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14D62BECBE0500C86030 /* HomeDataManagerMock.swift */; };
 		3AFD14D92BECC59A00C86030 /* ChatDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14D82BECC59A00C86030 /* ChatDataManagerMock.swift */; };
+		3AFD14DB2BED020500C86030 /* UserInitialCircleStatusIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14DA2BED020500C86030 /* UserInitialCircleStatusIndicator.swift */; };
+		3AFD14DD2BED024600C86030 /* UserInitialCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14DC2BED024600C86030 /* UserInitialCircle.swift */; };
 		8313E3642BA97591001FA804 /* KeyChainDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313E3632BA97591001FA804 /* KeyChainDataProvider.swift */; };
 		833889FE2B976FC9006F122D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833889FD2B976FC9006F122D /* AppDelegate.swift */; };
 		83388A002B976FC9006F122D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833889FF2B976FC9006F122D /* SceneDelegate.swift */; };
@@ -180,6 +182,8 @@
 		3A6806A32BEC08E800EBD93E /* Preview+Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+Bundle.swift"; sourceTree = "<group>"; };
 		3AFD14D62BECBE0500C86030 /* HomeDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataManagerMock.swift; sourceTree = "<group>"; };
 		3AFD14D82BECC59A00C86030 /* ChatDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataManagerMock.swift; sourceTree = "<group>"; };
+		3AFD14DA2BED020500C86030 /* UserInitialCircleStatusIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInitialCircleStatusIndicator.swift; sourceTree = "<group>"; };
+		3AFD14DC2BED024600C86030 /* UserInitialCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInitialCircle.swift; sourceTree = "<group>"; };
 		8313E3632BA97591001FA804 /* KeyChainDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainDataProvider.swift; sourceTree = "<group>"; };
 		833889FA2B976FC9006F122D /* WhatsVass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsVass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		833889FD2B976FC9006F122D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -482,6 +486,8 @@
 			isa = PBXGroup;
 			children = (
 				834761992B9F224000485E2F /* MessageRow.swift */,
+				3AFD14DA2BED020500C86030 /* UserInitialCircleStatusIndicator.swift */,
+				3AFD14DC2BED024600C86030 /* UserInitialCircle.swift */,
 			);
 			path = ChatRow;
 			sourceTree = "<group>";
@@ -796,6 +802,7 @@
 				834761922B9EED4800485E2F /* ChatViewModel.swift in Sources */,
 				834761982B9EED7E00485E2F /* ChatWireframe.swift in Sources */,
 				833889FE2B976FC9006F122D /* AppDelegate.swift in Sources */,
+				3AFD14DD2BED024600C86030 /* UserInitialCircle.swift in Sources */,
 				838CCE922B9A171300D92B4C /* ProfileWireframe.swift in Sources */,
 				3A50D3082BDAA02C002007A3 /* Interface.swift in Sources */,
 				8396D2AB2BA3019E0006A4A0 /* SettingsViewModel.swift in Sources */,
@@ -839,6 +846,7 @@
 				839896BA2BAC4390001146CE /* AssetsEnum.swift in Sources */,
 				B3810C8C2B9B0A7D00C30D63 /* HomeViewModel.swift in Sources */,
 				83A71A102B98CDF300060030 /* SplashWireframe.swift in Sources */,
+				3AFD14DB2BED020500C86030 /* UserInitialCircleStatusIndicator.swift in Sources */,
 				B3810CC62BA1B97100C30D63 /* HomeViewController.swift in Sources */,
 				B3810CC32B9F1E4100C30D63 /* HomeAPIClient.swift in Sources */,
 				838CCE862B9A114A00D92B4C /* Endpoints.swift in Sources */,

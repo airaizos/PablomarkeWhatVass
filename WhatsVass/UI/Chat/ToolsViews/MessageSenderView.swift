@@ -15,17 +15,16 @@ struct MessageSenderView: View {
 
     var body: some View {
         HStack {
-                TextField(NSLocalizedString("Write your message...",
-                                            comment: ""),
+                TextField(LocalizedStringKey("Write your message..."),
                           text: $text)
                 .foregroundColor(Color.darkDarkmode)
                 .disableAutocorrection(true)
                 .padding()
                 .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.darkDarkmode)
-                        .background(Color.contrast.opacity(0.5))
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.darkDarkmode,lineWidth: 4)
+                        .background(Color.contrast.opacity(0.3))
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
                 )
                 .onChange(of: text) { _,newText in
                     buttonDisabled = newText.textIsEmpty()
@@ -45,5 +44,10 @@ struct MessageSenderView: View {
 }
 
 #Preview {
-    MessageSenderView(viewModel: ChatViewModel(dataManager: ChatDataManagerMock(), chat: .preview))
+    VStack {
+        MessageSenderView(viewModel: ChatViewModel(dataManager: ChatDataManagerMock(), chat: .preview))
+        
+        MessageSenderView(viewModel: ChatViewModel(dataManager: ChatDataManagerMock(), chat: .preview),buttonDisabled: false)
+    }
+    .padding()
 }

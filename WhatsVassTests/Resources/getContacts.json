@@ -3,18 +3,18 @@
     "nick" : "Mock Nick",
     "online" : true,
     "id" : "164",
-    "avatar" : ""
+    "avatar" : "https://api.dicebear.com/8.x/lorelei/png"
   },
   {
     "online" : true,
     "nick" : "Ramen",
-    "avatar" : "",
+    "avatar" : "https://api.dicebear.com/8.x/adventurer/png",
     "id" : "167"
   },
   {
     "id" : "166",
-    "avatar" : "images\/166_202436152956.jpg",
+    "avatar" : "https://api.dicebear.com/8.x/bottts-neutral/png",
     "online" : true,
-    "nick" : "ajajjajajadddddddd"
+    "nick" : "Ale"
   }
 ]
