@@ -22,10 +22,10 @@ struct MessageSenderView: View {
                 .disableAutocorrection(true)
                 .padding()
                 .background(
-                    RoundedRectangle(cornerRadius: 30)
+                    RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.darkDarkmode)
                         .background(Color.contrast.opacity(0.5))
-                        .clipShape(RoundedRectangle(cornerRadius: 30))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
                 )
                 .onChange(of: text) { _,newText in
                     buttonDisabled = newText.textIsEmpty()
@@ -42,4 +42,8 @@ struct MessageSenderView: View {
             }
         }
     }
+}
+
+#Preview {
+    MessageSenderView(viewModel: ChatViewModel(dataManager: ChatDataManagerMock(), chat: .preview))
 }
