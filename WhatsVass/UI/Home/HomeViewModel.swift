@@ -15,7 +15,7 @@ final class HomeViewModel: ObservableObject {
     @Published var deleteErrorMessage: String = ""
     @Published var searchText = ""
 
-    private var dataManager: HomeDataManager
+    private var dataManager: HomeDataManagerProtocol
     private var cancellables = Set<AnyCancellable>()
 
     let newChatSelectedSubject = PassthroughSubject<Void, Never>()
@@ -38,7 +38,7 @@ final class HomeViewModel: ObservableObject {
         })
     }
 
-    init(dataManager: HomeDataManager) {
+    init(dataManager: HomeDataManagerProtocol = HomeDataManagerMock()) {
         self.dataManager = dataManager
     }
 

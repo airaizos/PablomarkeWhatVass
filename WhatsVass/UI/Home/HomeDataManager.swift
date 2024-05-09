@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class HomeDataManager {
+final class HomeDataManager:HomeDataManagerProtocol {
     // MARK: - Properties
     private var apiClient: HomeAPIClient
     private var cancellables = Set<AnyCancellable>()
@@ -55,3 +55,13 @@ final class HomeDataManager {
             .eraseToAnyPublisher()
     }
 }
+
+
+protocol HomeDataManagerProtocol {
+    func getChats() -> AnyPublisher<ChatsList, BaseError>
+    func getMessages() -> AnyPublisher<[MessageViewResponse], BaseError>
+    func deleteChat(chatId: String) -> AnyPublisher<DeleteChatResponse, BaseError>
+}
+
+
+

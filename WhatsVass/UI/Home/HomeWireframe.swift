@@ -23,11 +23,11 @@ final class HomeWireframe {
     }
 
     // MARK: - Private methods
-    private func createViewModel(with dataManager: HomeDataManager) -> HomeViewModel {
+    private func createViewModel(with dataManager: HomeDataManagerProtocol) -> HomeViewModel {
         return HomeViewModel(dataManager: dataManager)
     }
 
-    private func createDataManager(apiClient: HomeAPIClient) -> HomeDataManager {
+    private func createDataManager(apiClient: HomeAPIClient) -> HomeDataManagerProtocol {
         let dataManager = HomeDataManager(apiClient: apiClient)
         return dataManager
     }
