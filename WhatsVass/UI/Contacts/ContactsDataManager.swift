@@ -8,7 +8,13 @@
 import Foundation
 import Combine
 
-final class ContactsDataManager {
+protocol ContactsDataManagerProtocol {
+    func getContacts() -> AnyPublisher<[User], BaseError>
+    func createChat(source: String, target: String) -> AnyPublisher<ChatCreateResponse, BaseError>
+    func getChats() -> AnyPublisher<ChatsList, BaseError>
+}
+
+final class ContactsDataManager: ContactsDataManagerProtocol {
     private var apiClient: ContactsAPIClient
 
     init(apiClient: ContactsAPIClient) {
@@ -26,5 +32,20 @@ final class ContactsDataManager {
 
     func getChats() -> AnyPublisher<ChatsList, BaseError> {
         apiClient.getChats()
+    }
+}
+
+
+final class ContactsDataManagerMock: ContactsDataManagerProtocol {
+    func getContacts() -> AnyPublisher<[User], BaseError> {
+        Bundle.loadJsonPublisher(type: [User].self, from: "getContacts")
+    }
+    
+    func createChat(source: String, target: String) -> AnyPublisher<ChatCreateResponse, BaseError> {
+        Bundle.loadJsonPublisher(type: ChatCreateResponse.self, from: "createChat")
+    }
+    
+    func getChats() -> AnyPublisher<ChatsList, BaseError> {
+        Bundle.loadJsonPublisher(type: ChatsList.self, from: "ChatList")
     }
 }

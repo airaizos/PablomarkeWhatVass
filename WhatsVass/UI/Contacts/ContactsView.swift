@@ -105,3 +105,7 @@ struct ContactRow: View {
         }
     }
 }
+
+#Preview {
+    ContactsView(viewModel: ContactsViewModel(dataManager: ContactsDataManagerMock()))
+}

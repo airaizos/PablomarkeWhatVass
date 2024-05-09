@@ -13,13 +13,13 @@ final class ContactsViewModel: ObservableObject {
     @Published var contacts: [User] = []
     @Published var contactsBySection: [String: [User]] = [:]
 
-    private let dataManager: ContactsDataManager
+    private let dataManager: ContactsDataManagerProtocol
     private var cancellables = Set<AnyCancellable>()
     private var newlyCreatedChatId: String?
 
     var chatSubject: PassthroughSubject<Chat, Never> = .init()
 
-    init(dataManager: ContactsDataManager) {
+    init(dataManager: ContactsDataManagerProtocol) {
         self.dataManager = dataManager
         getContacts()
     }

@@ -31,7 +31,7 @@ final class ContactsWireframe {
     }
 
     // MARK: - Private methods
-    private func createViewModel(with dataManager: ContactsDataManager) -> ContactsViewModel {
+    private func createViewModel(with dataManager: ContactsDataManagerProtocol) -> ContactsViewModel {
         let viewModel = ContactsViewModel(dataManager: dataManager)
         viewModel.chatSubject
             .sink(receiveValue: { [weak self] chat in
@@ -41,7 +41,7 @@ final class ContactsWireframe {
         return viewModel
     }
 
-    private func createDataManager(apiClient: ContactsAPIClient) -> ContactsDataManager {
+    private func createDataManager(apiClient: ContactsAPIClient) -> ContactsDataManagerProtocol {
         let dataManager = ContactsDataManager(apiClient: apiClient)
         return dataManager
     }
