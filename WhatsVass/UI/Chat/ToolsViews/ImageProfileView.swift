@@ -12,16 +12,29 @@ struct ImageProfileView: View {
     var body: some View {
         ZStack {
             Image(systemName: "person.fill")
-                .foregroundColor(.white)
+                .foregroundColor(.gray)
+                .shadow(color: .black, radius: 2, x: 1, y: 2)
                 .padding()
-                .font(.system(size: 28))
-            Image(systemName: "circle.fill")
-                .font(.system(size: 8))
-                .foregroundColor(onlineColor)
-                .offset(x: 12, y: 12)
-        }    }
+                .font(.title)
+            ZStack {
+                Circle()
+                    .frame(width:8)
+                    .foregroundColor(onlineColor)
+                    .blur(radius: 1)
+                    .offset(x: 12, y: 12)
+                Circle()
+                    .stroke(lineWidth: 1)
+                    .frame(width:9)
+                    .foregroundColor(onlineColor.opacity(0.7))
+                    .offset(x: 12, y: 12)
+            }
+        }  
+    }
 }
 
 #Preview {
-    ImageProfileView(onlineColor: .red)
+    VStack {
+        ImageProfileView(onlineColor: .red)
+        ImageProfileView(onlineColor: .green)
+    }
 }
