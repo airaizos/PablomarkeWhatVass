@@ -27,16 +27,16 @@ final class ChatDataManagerTests: XCTestCase {
         subscribers = nil
     }
 
-    func testGetChats_ShouldBe3() {
+    func testGetChats_ShouldBe4() {
         let expectation = XCTestExpectation(description: "Carga de GetChats")
         sut.getChats(chat: "", first: 1)
             .sink { completion in
                 switchCompletion(completion, expectation)
             } receiveValue: { message in
-                XCTAssertEqual(message.count, 3)
-                XCTAssertEqual(message.rows.count, 3)
+                XCTAssertEqual(message.count, 4)
+                XCTAssertEqual(message.rows.count, 4)
                 let text = try! XCTUnwrap(message.rows.first?.message)
-                XCTAssertEqual(text,"Mock Message")
+                XCTAssertEqual(text,"Hello!")
             }
             .store(in: &subscribers)
         

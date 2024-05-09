@@ -5,51 +5,40 @@
 //  Created by Pablo Marquez Marin on 6/3/24.
 //
 
-import UIKit
-import Combine
+import SwiftUI
 
-class SplashViewController: BaseViewController {
-    // MARK: - Outlets
-    @IBOutlet weak var ivLogo: UIImageView!
-    @IBOutlet weak var aiSpinner: UIActivityIndicatorView!
-    @IBOutlet weak var ivLogoBass: UIImageView!
+final class SplashViewController: BaseViewController, SplashDelegate {
 
     // MARK: - Properties
     private var viewModel: SplashViewModel?
-    var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Object lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        let splashView = SplashView(delegate: self)
+        let hostingController =  UIHostingController(rootView: splashView)
+        addChild(hostingController)
+        view.addSubview(hostingController.view)
+        
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+        hostingController.view.topAnchor.constraint(equalTo: view.topAnchor),
+        hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+        hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        hostingController.didMove(toParent: self)
+        
         prepareAndConfigView(titleForView: "",
                              navBarHidden: true)
-        configView()
-        responseViewModel()
-        viewModel?.initView()
+        viewModel?.initPreferences()
     }
 
     // MARK: - Public methods
     func set(viewModel: SplashViewModel) {
         self.viewModel = viewModel
     }
-}
-
-// MARK: - Private extension for metohds -
-private extension SplashViewController {
-    func configView() {
-        aiSpinner.startAnimating()
-        aiSpinner.style = .large
-        ivLogo.image = AssetsImages.logo
-        ivLogoBass.image = AssetsImages.vassLogo
-    }
-
-    func responseViewModel() {
-        viewModel?.loginExist.sink(receiveValue: { _ in
-             self.navigateToLogin()
-        }).store(in: &cancellables)
-    }
-
-    // MARK: - Navigation
+    
     func navigateToLogin() {
         LoginWireframe().push(navigation: self.navigationController)
     }

@@ -8,21 +8,11 @@
 import Foundation
 import Combine
 
-final class SplashViewModel {
+final class SplashViewModel: ObservableObject {
     // MARK: - Properties -
-    var cancellables: Set<AnyCancellable> = []
-    let loginExist = PassthroughSubject<Void, Never>()
+    @Published var isLoading = false
 
     // MARK: Public Methods
-    func initView() {
-        initPreferences()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.loginExist.send()
-        }
-    }
-}
-
-private extension SplashViewModel {
     func initPreferences() {
         if !UserDefaults.standard.bool(forKey: Preferences.rememberLogin) {
             UserDefaults.standard.set(false,
@@ -30,3 +20,4 @@ private extension SplashViewModel {
         }
     }
 }
+

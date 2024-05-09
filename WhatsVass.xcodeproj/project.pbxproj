@@ -53,6 +53,7 @@
 		3AFD14D92BECC59A00C86030 /* ChatDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14D82BECC59A00C86030 /* ChatDataManagerMock.swift */; };
 		3AFD14DB2BED020500C86030 /* UserInitialCircleStatusIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14DA2BED020500C86030 /* UserInitialCircleStatusIndicator.swift */; };
 		3AFD14DD2BED024600C86030 /* UserInitialCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14DC2BED024600C86030 /* UserInitialCircle.swift */; };
+		3AFD14DF2BED250700C86030 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14DE2BED250700C86030 /* SplashView.swift */; };
 		8313E3642BA97591001FA804 /* KeyChainDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313E3632BA97591001FA804 /* KeyChainDataProvider.swift */; };
 		833889FE2B976FC9006F122D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833889FD2B976FC9006F122D /* AppDelegate.swift */; };
 		83388A002B976FC9006F122D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833889FF2B976FC9006F122D /* SceneDelegate.swift */; };
@@ -101,7 +102,6 @@
 		83C2525B2B98606D004455A6 /* BaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C2525A2B98606D004455A6 /* BaseError.swift */; };
 		83C2525D2B986095004455A6 /* BaseAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C2525C2B986095004455A6 /* BaseAPIClient.swift */; };
 		83C2526B2B98643A004455A6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C252692B98643A004455A6 /* SplashViewController.swift */; };
-		83C2526C2B98643A004455A6 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C2526A2B98643A004455A6 /* SplashViewController.xib */; };
 		83D121D82BA82E2500D607BF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D121D72BA82E2500D607BF /* BaseViewController.swift */; };
 		83D121DB2BA8A58E00D607BF /* BiometricAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D121DA2BA8A58E00D607BF /* BiometricAuthentication.swift */; };
 		83EF4C792BBBE358001EBDC7 /* ChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF4C782BBBE358001EBDC7 /* ChatRow.swift */; };
@@ -184,6 +184,7 @@
 		3AFD14D82BECC59A00C86030 /* ChatDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataManagerMock.swift; sourceTree = "<group>"; };
 		3AFD14DA2BED020500C86030 /* UserInitialCircleStatusIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInitialCircleStatusIndicator.swift; sourceTree = "<group>"; };
 		3AFD14DC2BED024600C86030 /* UserInitialCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInitialCircle.swift; sourceTree = "<group>"; };
+		3AFD14DE2BED250700C86030 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		8313E3632BA97591001FA804 /* KeyChainDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainDataProvider.swift; sourceTree = "<group>"; };
 		833889FA2B976FC9006F122D /* WhatsVass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsVass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		833889FD2B976FC9006F122D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -235,7 +236,6 @@
 		83C2525A2B98606D004455A6 /* BaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseError.swift; sourceTree = "<group>"; };
 		83C2525C2B986095004455A6 /* BaseAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPIClient.swift; sourceTree = "<group>"; };
 		83C252692B98643A004455A6 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		83C2526A2B98643A004455A6 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		83D121D72BA82E2500D607BF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		83D121DA2BA8A58E00D607BF /* BiometricAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthentication.swift; sourceTree = "<group>"; };
 		83EF4C782BBBE358001EBDC7 /* ChatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRow.swift; sourceTree = "<group>"; };
@@ -559,10 +559,10 @@
 		83C252632B986318004455A6 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				83C2526A2B98643A004455A6 /* SplashViewController.xib */,
 				83C252692B98643A004455A6 /* SplashViewController.swift */,
 				83A71A0D2B98CDDF00060030 /* SplashViewModel.swift */,
 				83A71A0F2B98CDF300060030 /* SplashWireframe.swift */,
+				3AFD14DE2BED250700C86030 /* SplashView.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -748,7 +748,6 @@
 				3A6806A22BEC041200EBD93E /* response.json in Resources */,
 				3A6806A02BEC041200EBD93E /* ChatList.json in Resources */,
 				3A68069C2BEC041200EBD93E /* messages.json in Resources */,
-				83C2526C2B98643A004455A6 /* SplashViewController.xib in Resources */,
 				8396D2C02BA32A2D0006A4A0 /* Localizable.xcstrings in Resources */,
 				3A68069D2BEC041200EBD93E /* newChat.json in Resources */,
 				838CCE8A2B9A166800D92B4C /* ProfileViewController.xib in Resources */,
@@ -829,6 +828,7 @@
 				838CCE822B99E97700D92B4C /* Login.swift in Sources */,
 				838CCE8E2B9A16D900D92B4C /* ProfileDataManager.swift in Sources */,
 				8396D2B12BA301E60006A4A0 /* SettingsWireframe.swift in Sources */,
+				3AFD14DF2BED250700C86030 /* SplashView.swift in Sources */,
 				3A50D3042BDA9608002007A3 /* NetworkSession.swift in Sources */,
 				839FC2EA2B9AF98700572D1A /* UIButtonExtension.swift in Sources */,
 				839896B62BAC3CEA001146CE /* UserDefaultsEnum.swift in Sources */,
