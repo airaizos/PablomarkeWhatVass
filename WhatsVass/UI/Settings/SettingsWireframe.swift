@@ -11,7 +11,7 @@ final class SettingsWireframe {
     // MARK: - Properties
     var viewController: SettingsViewController {
         // Generating module components
-        let secureDataProvider: KeyChainDataProvider = KeyChainDataProvider()
+        let secureDataProvider: KeyChainData = KeyChainData()
         let viewController: SettingsViewController = SettingsViewController()
         let dataManager: SettingsDataManager = createDataManager(apiClient: apiClient)
         let viewModel: SettingsViewModel = createViewModel(with: dataManager,
@@ -26,7 +26,7 @@ final class SettingsWireframe {
 
     // MARK: - Private methods
     private func createViewModel(with dataManager: SettingsDataManager,
-                                 secureDataProvider: KeyChainDataProvider) -> SettingsViewModel {
+                                 secureDataProvider: KeyChainData) -> SettingsViewModel {
         return SettingsViewModel(dataManager: dataManager,
                                  secure: secureDataProvider)
     }

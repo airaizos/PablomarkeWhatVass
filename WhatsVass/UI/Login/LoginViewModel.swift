@@ -11,7 +11,7 @@ import Foundation
 final class LoginViewModel {
     // MARK: - Properties
     private var dataManager: LoginDataManager
-    private var secure: KeyChainDataProvider
+    private var secure: KeyChainData
     @Published var username: String?
     @Published var password: String?
     @Published var loginExist: Bool?
@@ -23,7 +23,7 @@ final class LoginViewModel {
     var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Init
-    init(dataManager: LoginDataManager, secure: KeyChainDataProvider) {
+    init(dataManager: LoginDataManager, secure: KeyChainData) {
         self.dataManager = dataManager
         self.secure = secure
     }

@@ -8,7 +8,14 @@
 import Foundation
 import KeychainSwift
 
-final class KeyChainDataProvider {
+protocol KeychainProvider {
+    func setStringKey(value: String, key: String)
+    func getStringKey(key: String) -> String?
+    func deleteStringKey(key: String)
+    func allKeysDelete()
+}
+
+final class KeyChainData: KeychainProvider {
     let keychain = KeychainSwift()
 
     func setStringKey(value: String, key: String ) {

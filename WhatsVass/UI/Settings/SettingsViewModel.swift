@@ -9,10 +9,10 @@ import Combine
 import UserNotifications
 import UIKit
 
-final class SettingsViewModel {
+final class SettingsViewModel: ObservableObject {
     // MARK: - Properties -
-    private var dataManager: SettingsDataManager
-    private var secure: KeyChainDataProvider
+    private var dataManager: SettingsDataManagerProtocol
+    private var secure: KeychainProvider
     @Published var notifications: Bool = UserDefaults.standard.bool(forKey: Preferences.notifications)
     @Published var themes: Bool = UserDefaults.standard.bool(forKey: Preferences.themes)
     @Published var biometrics: Bool = UserDefaults.standard.bool(forKey: Preferences.biometrics)
@@ -20,7 +20,7 @@ final class SettingsViewModel {
     var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Init -
-    init(dataManager: SettingsDataManager, secure: KeyChainDataProvider) {
+    init(dataManager: SettingsDataManagerProtocol = SettingsDataManager(), secure: KeychainProvider = KeyChainData()) {
         self.dataManager = dataManager
         self.secure = secure
     }
@@ -28,8 +28,8 @@ final class SettingsViewModel {
     // MARK: Public Methods
     func logOut() {
         logOutByAPI()
-        KeyChainDataProvider().deleteStringKey(key: KeyChainEnum.user)
-        KeyChainDataProvider().deleteStringKey(key: KeyChainEnum.password)
+        KeyChainData().deleteStringKey(key: KeyChainEnum.user)
+        KeyChainData().deleteStringKey(key: KeyChainEnum.password)
         UserDefaults.standard.set(false,
                                   forKey: Preferences.rememberLogin)
         if let bundleIdentifier = Bundle.main.bundleIdentifier {
@@ -38,19 +38,19 @@ final class SettingsViewModel {
         logOutSuccessSubject.send()
     }
 
-    func notificationIsOn(bool: Bool) {
+    func notificationIsOn(_ bool: Bool) {
         UserDefaults.standard.setValue(bool,
                                        forKey: Preferences.notifications)
         self.activateNotifications(notifications: bool)
     }
 
-    func themesIsOn(bool: Bool) {
+    func themesIsOn(_ bool: Bool) {
         UserDefaults.standard.setValue(bool,
                                        forKey: Preferences.themes)
         self.toggleDarkMode(bool)
     }
 
-    func biometricsIsOn(bool: Bool) {
+    func biometricsIsOn(_ bool: Bool) {
         UserDefaults.standard.setValue(bool,
                                        forKey: Preferences.biometrics)
     }
@@ -61,7 +61,7 @@ private extension SettingsViewModel {
         dataManager.logOut()
             .sink { completion in
                 if case .failure = completion {
-
+                    
                 }
             } receiveValue: { offline in
 

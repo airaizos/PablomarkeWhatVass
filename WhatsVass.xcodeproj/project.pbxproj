@@ -54,6 +54,13 @@
 		3AFD14DB2BED020500C86030 /* UserInitialCircleStatusIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14DA2BED020500C86030 /* UserInitialCircleStatusIndicator.swift */; };
 		3AFD14DD2BED024600C86030 /* UserInitialCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14DC2BED024600C86030 /* UserInitialCircle.swift */; };
 		3AFD14DF2BED250700C86030 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14DE2BED250700C86030 /* SplashView.swift */; };
+		3AFD14E12BED3E8200C86030 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14E02BED3E8200C86030 /* ViewExtensions.swift */; };
+		3AFD14E32BED3EB400C86030 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14E22BED3EB400C86030 /* SettingsView.swift */; };
+		3AFD14E52BED4A4F00C86030 /* SettingsDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14E42BED4A4F00C86030 /* SettingsDataManagerMock.swift */; };
+		3AFD14E72BED4B5300C86030 /* KeychainMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14E62BED4B5300C86030 /* KeychainMock.swift */; };
+		3AFD14EA2BED4CE400C86030 /* ToggleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14E92BED4CE400C86030 /* ToggleRow.swift */; };
+		3AFD14EC2BED4CFD00C86030 /* VassToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14EB2BED4CFD00C86030 /* VassToggle.swift */; };
+		3AFD14EE2BED4D0F00C86030 /* VassButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14ED2BED4D0F00C86030 /* VassButton.swift */; };
 		8313E3642BA97591001FA804 /* KeyChainDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313E3632BA97591001FA804 /* KeyChainDataProvider.swift */; };
 		833889FE2B976FC9006F122D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833889FD2B976FC9006F122D /* AppDelegate.swift */; };
 		83388A002B976FC9006F122D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833889FF2B976FC9006F122D /* SceneDelegate.swift */; };
@@ -185,6 +192,13 @@
 		3AFD14DA2BED020500C86030 /* UserInitialCircleStatusIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInitialCircleStatusIndicator.swift; sourceTree = "<group>"; };
 		3AFD14DC2BED024600C86030 /* UserInitialCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInitialCircle.swift; sourceTree = "<group>"; };
 		3AFD14DE2BED250700C86030 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		3AFD14E02BED3E8200C86030 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		3AFD14E22BED3EB400C86030 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3AFD14E42BED4A4F00C86030 /* SettingsDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataManagerMock.swift; sourceTree = "<group>"; };
+		3AFD14E62BED4B5300C86030 /* KeychainMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainMock.swift; sourceTree = "<group>"; };
+		3AFD14E92BED4CE400C86030 /* ToggleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleRow.swift; sourceTree = "<group>"; };
+		3AFD14EB2BED4CFD00C86030 /* VassToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VassToggle.swift; sourceTree = "<group>"; };
+		3AFD14ED2BED4D0F00C86030 /* VassButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VassButton.swift; sourceTree = "<group>"; };
 		8313E3632BA97591001FA804 /* KeyChainDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainDataProvider.swift; sourceTree = "<group>"; };
 		833889FA2B976FC9006F122D /* WhatsVass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsVass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		833889FD2B976FC9006F122D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -346,6 +360,7 @@
 				3A6806A32BEC08E800EBD93E /* Preview+Bundle.swift */,
 				3AFD14D62BECBE0500C86030 /* HomeDataManagerMock.swift */,
 				3AFD14D82BECC59A00C86030 /* ChatDataManagerMock.swift */,
+				3AFD14E42BED4A4F00C86030 /* SettingsDataManagerMock.swift */,
 			);
 			path = PrewViewContent;
 			sourceTree = "<group>";
@@ -363,8 +378,19 @@
 				3A6806922BEC041100EBD93E /* messages.json */,
 				3A6806932BEC041200EBD93E /* newChat.json */,
 				3A6806982BEC041200EBD93E /* response.json */,
+				3AFD14E62BED4B5300C86030 /* KeychainMock.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		3AFD14E82BED4CCB00C86030 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3AFD14E92BED4CE400C86030 /* ToggleRow.swift */,
+				3AFD14EB2BED4CFD00C86030 /* VassToggle.swift */,
+				3AFD14ED2BED4D0F00C86030 /* VassButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		8313E3622BA9756A001FA804 /* Secure */ = {
@@ -500,6 +526,7 @@
 				839BD2382BA04D6800BEA022 /* StringExtension.swift */,
 				8396D2B22BA313B70006A4A0 /* LabelExtension.swift */,
 				8396D2B42BA3173B0006A4A0 /* UISwitchExtension.swift */,
+				3AFD14E02BED3E8200C86030 /* ViewExtensions.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -584,12 +611,14 @@
 		83C252652B98632E004455A6 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				3AFD14E82BED4CCB00C86030 /* Components */,
 				8396D2A72BA301820006A4A0 /* SettingsViewController.xib */,
 				8396D2A62BA301820006A4A0 /* SettingsViewController.swift */,
 				8396D2AA2BA3019E0006A4A0 /* SettingsViewModel.swift */,
 				8396D2AC2BA301B50006A4A0 /* SettingsDataManager.swift */,
 				8396D2AE2BA301CA0006A4A0 /* SettingsAPIClient.swift */,
 				8396D2B02BA301E60006A4A0 /* SettingsWireframe.swift */,
+				3AFD14E22BED3EB400C86030 /* SettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -795,12 +824,14 @@
 				8347619A2B9F224000485E2F /* MessageRow.swift in Sources */,
 				83A71A0E2B98CDDF00060030 /* SplashViewModel.swift in Sources */,
 				8396D2B32BA313B70006A4A0 /* LabelExtension.swift in Sources */,
+				3AFD14E72BED4B5300C86030 /* KeychainMock.swift in Sources */,
 				834761942B9EED5500485E2F /* ChatDataManager.swift in Sources */,
 				B3090FA32BAC3CC900007621 /* ChatViewController.swift in Sources */,
 				83388A402B9775E2006F122D /* LoginWireframe.swift in Sources */,
 				834761922B9EED4800485E2F /* ChatViewModel.swift in Sources */,
 				834761982B9EED7E00485E2F /* ChatWireframe.swift in Sources */,
 				833889FE2B976FC9006F122D /* AppDelegate.swift in Sources */,
+				3AFD14EC2BED4CFD00C86030 /* VassToggle.swift in Sources */,
 				3AFD14DD2BED024600C86030 /* UserInitialCircle.swift in Sources */,
 				838CCE922B9A171300D92B4C /* ProfileWireframe.swift in Sources */,
 				3A50D3082BDAA02C002007A3 /* Interface.swift in Sources */,
@@ -816,6 +847,7 @@
 				83EF8EBE2BB2F707001F5A28 /* ImageProfileView.swift in Sources */,
 				8396D2B52BA3173B0006A4A0 /* UISwitchExtension.swift in Sources */,
 				838CCE892B9A166800D92B4C /* ProfileViewController.swift in Sources */,
+				3AFD14E52BED4A4F00C86030 /* SettingsDataManagerMock.swift in Sources */,
 				8347619D2B9F2A1700485E2F /* Chat.swift in Sources */,
 				83EF4C792BBBE358001EBDC7 /* ChatRow.swift in Sources */,
 				83388A3E2B9775C0006F122D /* LoginAPIClient.swift in Sources */,
@@ -826,10 +858,12 @@
 				83388A3A2B9775A0006F122D /* LoginViewModel.swift in Sources */,
 				8396D2AD2BA301B50006A4A0 /* SettingsDataManager.swift in Sources */,
 				838CCE822B99E97700D92B4C /* Login.swift in Sources */,
+				3AFD14E32BED3EB400C86030 /* SettingsView.swift in Sources */,
 				838CCE8E2B9A16D900D92B4C /* ProfileDataManager.swift in Sources */,
 				8396D2B12BA301E60006A4A0 /* SettingsWireframe.swift in Sources */,
 				3AFD14DF2BED250700C86030 /* SplashView.swift in Sources */,
 				3A50D3042BDA9608002007A3 /* NetworkSession.swift in Sources */,
+				3AFD14EE2BED4D0F00C86030 /* VassButton.swift in Sources */,
 				839FC2EA2B9AF98700572D1A /* UIButtonExtension.swift in Sources */,
 				839896B62BAC3CEA001146CE /* UserDefaultsEnum.swift in Sources */,
 				838CCE8C2B9A16BA00D92B4C /* ProfileViewModel.swift in Sources */,
@@ -842,8 +876,10 @@
 				B3810CD02BA3128000C30D63 /* ContactsAPIClient.swift in Sources */,
 				83388A002B976FC9006F122D /* SceneDelegate.swift in Sources */,
 				B3810CC42B9F1E4500C30D63 /* HomeWireframe.swift in Sources */,
+				3AFD14E12BED3E8200C86030 /* ViewExtensions.swift in Sources */,
 				3A6806A42BEC08E800EBD93E /* Preview+Bundle.swift in Sources */,
 				839896BA2BAC4390001146CE /* AssetsEnum.swift in Sources */,
+				3AFD14EA2BED4CE400C86030 /* ToggleRow.swift in Sources */,
 				B3810C8C2B9B0A7D00C30D63 /* HomeViewModel.swift in Sources */,
 				83A71A102B98CDF300060030 /* SplashWireframe.swift in Sources */,
 				3AFD14DB2BED020500C86030 /* UserInitialCircleStatusIndicator.swift in Sources */,

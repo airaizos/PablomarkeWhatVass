@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+protocol SplashDelegate: AnyObject {
+    func navigateToLogin()
+}
+
 struct SplashView: View {
     @ObservedObject var viewModel = SplashViewModel()
     var delegate: SplashDelegate?
@@ -32,10 +36,7 @@ struct SplashView: View {
                 .frame(width: 100)
                 .padding(.bottom,30)
         }
-        .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .background(
-            LinearGradient(colors: [Color.darkDarkmode.opacity(0.5),Color.darkDarkmode.opacity(0.7),Color.darkDarkmode.opacity(0.9),Color.darkDarkmode], startPoint: .top, endPoint: .bottom)
-        )
+        .vassBackground()
         .onAppear {
             Task {
                 try await Task.sleep(for: .seconds(1.5))
@@ -53,8 +54,4 @@ extension SplashView {
 
 #Preview {
     SplashView()
-}
-
-protocol SplashDelegate: AnyObject {
-    func navigateToLogin()
 }

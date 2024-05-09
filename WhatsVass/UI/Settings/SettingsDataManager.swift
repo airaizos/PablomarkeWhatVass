@@ -8,12 +8,16 @@
 import Foundation
 import Combine
 
-final class SettingsDataManager {
+protocol SettingsDataManagerProtocol {
+    func logOut() -> AnyPublisher <LogOutResponse, BaseError>
+}
+
+final class SettingsDataManager: SettingsDataManagerProtocol {
     // MARK: - Properties
     private var apiClient: SettingsAPIClient
 
     // MARK: - Object lifecycle
-    init(apiClient: SettingsAPIClient) {
+    init(apiClient: SettingsAPIClient = SettingsAPIClient()) {
         self.apiClient = apiClient
     }
 
@@ -21,7 +25,6 @@ final class SettingsDataManager {
     func logOut() -> AnyPublisher <LogOutResponse, BaseError> {
         apiClient.logout()
             .tryMap { response in
-                //saveCodableToDocumentsDirectory(response, fileName: "logOut.json")
                 return response
             }
             .mapError { error in

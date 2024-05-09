@@ -11,7 +11,7 @@ final class LoginWireframe {
     // MARK: - Properties
     var viewController: LoginViewController {
         // Generating module components
-        let secureDataProvider: KeyChainDataProvider = KeyChainDataProvider()
+        let secureDataProvider: KeyChainData = KeyChainData()
         let viewController: LoginViewController = LoginViewController()
         let dataManager: LoginDataManager = createDataManager(apiClient: apiClient)
         let viewModel: LoginViewModel = createViewModel(with: dataManager,
@@ -26,7 +26,7 @@ final class LoginWireframe {
 
     // MARK: - Private methods
     private func createViewModel(with dataManager: LoginDataManager,
-                                 secureDataProvider: KeyChainDataProvider) -> LoginViewModel {
+                                 secureDataProvider: KeyChainData) -> LoginViewModel {
         return LoginViewModel(dataManager: dataManager,
                               secure: secureDataProvider)
     }
