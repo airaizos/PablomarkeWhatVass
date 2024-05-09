@@ -6,7 +6,6 @@
 //
 
 import UIKit
-//import FirebaseCore
 import UserNotifications
 import IQKeyboardManagerSwift
 
@@ -25,7 +24,6 @@ final class AppDelegate: UIResponder,
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 80
 
         // MARK: - Firebase and notifications -
-      //  FirebaseApp.configure()
         UNUserNotificationCenter.current().delegate = self
         let authOptions: UNAuthorizationOptions = [
             .alert,

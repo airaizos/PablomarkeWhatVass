@@ -93,3 +93,7 @@ struct HomeView: View {
         viewModel.navigateToSettings()
     }
 }
+
+#Preview {
+    HomeView(viewModel: HomeViewModel(dataManager: HomeDataManagerMock()))
+}

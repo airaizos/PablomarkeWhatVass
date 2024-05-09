@@ -54,3 +54,7 @@ struct ChatRow: View {
         chat.source == myID ? chat.targetnick : chat.sourcenick
     }
 }
+
+#Preview {
+    ChatRow(chat: Chat.preview)
+}
