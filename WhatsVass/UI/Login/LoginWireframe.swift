@@ -13,7 +13,7 @@ final class LoginWireframe {
         // Generating module components
         let secureDataProvider: KeyChainData = KeyChainData()
         let viewController: LoginViewController = LoginViewController()
-        let dataManager: LoginDataManager = createDataManager(apiClient: apiClient)
+        let dataManager: LoginDataManagerProtocol = createDataManager(apiClient: apiClient)
         let viewModel: LoginViewModel = createViewModel(with: dataManager,
                                                         secureDataProvider: secureDataProvider)
         viewController.set(viewModel: viewModel)
@@ -25,15 +25,18 @@ final class LoginWireframe {
     }
 
     // MARK: - Private methods
-    private func createViewModel(with dataManager: LoginDataManager,
+    private func createViewModel(with dataManager: LoginDataManagerProtocol,
                                  secureDataProvider: KeyChainData) -> LoginViewModel {
         return LoginViewModel(dataManager: dataManager,
                               secure: secureDataProvider)
     }
 
-    private func createDataManager(apiClient: LoginAPIClient) -> LoginDataManager {
-        let dataManager = LoginDataManager(apiClient: apiClient)
-        return dataManager
+    private func createDataManager(apiClient: LoginAPIClient) -> LoginDataManagerProtocol {
+        //FIXME: NO FUNCIONA MOCKI.IO
+//        let dataManager = LoginDataManager(apiClient: apiClient)
+//        return dataManager
+        
+        LoginDataManagerMock()
     }
 
     // MARK: - Public methods

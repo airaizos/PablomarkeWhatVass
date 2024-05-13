@@ -23,6 +23,7 @@
 		3A04165D2BEBBB3C0012D400 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04165C2BEBBB3C0012D400 /* Commons.swift */; };
 		3A04165F2BEBC0F80012D400 /* ChatDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04165E2BEBC0F80012D400 /* ChatDataManagerTests.swift */; };
 		3A0416612BEBC6970012D400 /* ProfileDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0416602BEBC6970012D400 /* ProfileDataManagerTests.swift */; };
+		3A0923F42BF2692F00538A1D /* LoginDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0923F32BF2692F00538A1D /* LoginDataManagerMock.swift */; };
 		3A2E17D02BEA8CB40039365A /* WhatsVassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */; };
 		3A2E17D12BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17CE2BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift */; };
 		3A2E17D42BEA93F20039365A /* ProfileAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D32BEA93F20039365A /* ProfileAPIClientTests.swift */; };
@@ -158,6 +159,7 @@
 		3A04165C2BEBBB3C0012D400 /* Commons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
 		3A04165E2BEBC0F80012D400 /* ChatDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataManagerTests.swift; sourceTree = "<group>"; };
 		3A0416602BEBC6970012D400 /* ProfileDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManagerTests.swift; sourceTree = "<group>"; };
+		3A0923F32BF2692F00538A1D /* LoginDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManagerMock.swift; sourceTree = "<group>"; };
 		3A2E17CD2BEA8CB40039365A /* WhatsVassUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsVassUITests.swift; sourceTree = "<group>"; };
 		3A2E17CE2BEA8CB40039365A /* WhatsVassUITestsLaunchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsVassUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3A2E17D22BEA92F00039365A /* WhatsVassTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WhatsVassTests.xctestplan; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				3AFD14D62BECBE0500C86030 /* HomeDataManagerMock.swift */,
 				3AFD14D82BECC59A00C86030 /* ChatDataManagerMock.swift */,
 				3AFD14E42BED4A4F00C86030 /* SettingsDataManagerMock.swift */,
+				3A0923F32BF2692F00538A1D /* LoginDataManagerMock.swift */,
 			);
 			path = PrewViewContent;
 			sourceTree = "<group>";
@@ -856,6 +859,7 @@
 				3AFD14D72BECBE0500C86030 /* HomeDataManagerMock.swift in Sources */,
 				8396D2A82BA301820006A4A0 /* SettingsViewController.swift in Sources */,
 				83388A3A2B9775A0006F122D /* LoginViewModel.swift in Sources */,
+				3A0923F42BF2692F00538A1D /* LoginDataManagerMock.swift in Sources */,
 				8396D2AD2BA301B50006A4A0 /* SettingsDataManager.swift in Sources */,
 				838CCE822B99E97700D92B4C /* Login.swift in Sources */,
 				3AFD14E32BED3EB400C86030 /* SettingsView.swift in Sources */,

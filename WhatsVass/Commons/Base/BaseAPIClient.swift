@@ -149,16 +149,18 @@ class BaseAPIClient {
 //            self.isReachable = net?.isReachable ?? false
 //        })
     }
-    
+    //FIXME: Este da error
     private func getToken() -> String? {
         //TODO: Cambiar a Keychain
         if !((UserDefaults.standard.string(forKey: Preferences.token)?.isEmpty) == nil) {
             guard let token = UserDefaults.standard.string(forKey: Preferences.token) else {
-                return nil
+                //return nil
+                return "Mirar este token"
             }
             return token
         }
-        return nil
+       // return nil
+        return "Mirar este token"
     }
 }
 

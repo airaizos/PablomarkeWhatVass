@@ -8,7 +8,12 @@
 import Foundation
 import Combine
 
-final class LoginDataManager {
+protocol LoginDataManagerProtocol {
+    func login(with credentials: [String: Any]) -> AnyPublisher <LoginResponse, BaseError>
+    func loginWithBiometric(params: [String: Any]) -> AnyPublisher <LoginResponse, BaseError>
+}
+
+final class LoginDataManager: LoginDataManagerProtocol {
     // MARK: - Properties
     private var apiClient: LoginAPIClient
 

@@ -10,7 +10,7 @@ import Foundation
 
 final class LoginViewModel {
     // MARK: - Properties
-    private var dataManager: LoginDataManager
+    private var dataManager: LoginDataManagerProtocol
     private var secure: KeyChainData
     @Published var username: String?
     @Published var password: String?
@@ -23,7 +23,7 @@ final class LoginViewModel {
     var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Init
-    init(dataManager: LoginDataManager, secure: KeyChainData) {
+    init(dataManager: LoginDataManagerProtocol, secure: KeyChainData) {
         self.dataManager = dataManager
         self.secure = secure
     }
@@ -119,7 +119,7 @@ private extension LoginViewModel {
         dataManager.loginWithBiometric(params: params)
             .sink { completion in
                 if case .failure = completion {
-                    // printError
+               // print(error.description()
                 }
             } receiveValue: { [weak self] login in
                 UserDefaults.standard.set(login.token,
