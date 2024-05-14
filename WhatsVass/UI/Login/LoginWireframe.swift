@@ -33,10 +33,8 @@ final class LoginWireframe {
 
     private func createDataManager(apiClient: LoginAPIClient) -> LoginDataManagerProtocol {
         //FIXME: NO FUNCIONA MOCKI.IO
-//        let dataManager = LoginDataManager(apiClient: apiClient)
-//        return dataManager
-        
-        LoginDataManagerMock()
+        let dataManager = LoginDataManager(apiClient: apiClient)
+        return dataManager
     }
 
     // MARK: - Public methods

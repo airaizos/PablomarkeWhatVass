@@ -15,7 +15,11 @@ final class LoginViewModel {
     @Published var username: String?
     @Published var password: String?
     @Published var loginExist: Bool?
-    @Published var rememberLogin: Bool? = UserDefaults.standard.bool(forKey: Preferences.rememberLogin)
+    @Published var rememberLogin: Bool? {
+        didSet {
+            UserDefaults.standard.setValue(rememberLogin,forKey: Preferences.rememberLogin)
+        }
+    }
     let loginSuccessSubject = PassthroughSubject<Bool, Never>()
     let loginSuccessBiometrics = PassthroughSubject<Void, Never>()
     let loginFailureBiometrics = PassthroughSubject<Void, Never>()
@@ -26,12 +30,17 @@ final class LoginViewModel {
     init(dataManager: LoginDataManagerProtocol, secure: KeyChainData) {
         self.dataManager = dataManager
         self.secure = secure
+        //TODO: Debería ir en el dataManager?
+        self.loginExist = UserDefaults.standard.bool(forKey: Preferences.rememberLogin)
     }
 
     // MARK: - Public Methods
+    func rememberLoginPreferences(_ remember: Bool) {
+        UserDefaults.standard.setValue(remember,forKey: Preferences.rememberLogin)
+    }
+    
     func loginButtonWasTapped(remember: Bool) {
-        UserDefaults.standard.setValue(remember,
-                                       forKey: Preferences.rememberLogin)
+        rememberLoginPreferences(remember)
         comprobeUserAndPassword(remember: remember)
     }
 

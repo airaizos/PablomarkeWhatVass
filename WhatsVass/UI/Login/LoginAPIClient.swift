@@ -17,9 +17,6 @@ final class LoginAPIClient: BaseAPIClient {
     }
 
     func biometricLogin(params: [String: Any]) -> AnyPublisher <LoginResponse, BaseError> {
-//        return requestPublisher(relativePath: EndpointsUsers.biometric,
-//                                method: .post,
-//                                parameters: params)
         guard let data = encodeToken(with: params) else {
             return Fail(error: BaseError.failedLogin).eraseToAnyPublisher()
         }

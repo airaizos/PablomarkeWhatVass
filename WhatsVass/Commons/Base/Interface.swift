@@ -17,7 +17,7 @@ struct Endpoints:URLPointsProtocol {
 
     struct Users {
         static let users = baseURL.appending(component: "4b8542ec-e387-44ed-a542-97895293264a")
-        static let login = users.appending(component: "52022ddf-d858-42cd-b87c-0f4db569f156")
+        static let login = users.appending(component: "101b2e4e-6da9-4ea3-a378-77e4f6b38e06")
         static let logout = users.appending(component: "0e2b6d17-e83c-4535-8657-949816c60e54")
         static let online = users.appending(component: "0e2b6d17-e83c-4535-8657-949816c60e54")
         static let register = users.appending(component:"68a151ee-ac5b-4a8d-a69f-168d4f64cfb1")

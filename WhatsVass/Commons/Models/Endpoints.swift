@@ -10,17 +10,17 @@ import Foundation
 enum Base {
  //   static let mockMovilidad: String = "https://mock-movilidad.vass.es/chatvass/api/"
     
-    static let mock: String = "https://run.mocky.io/v3/"
+  //  static let mock: String = "https://run.mocky.io/v3/"
     static let baseURL: URL = URL(string: "https://run.mocky.io/v3/")!
 }
 
 enum EndpointsUsers {
-    static let login: String = "52022ddf-d858-42cd-b87c-0f4db569f156" //"users/login //loginResponse"
-    static let logOut: String = "0e2b6d17-e83c-4535-8657-949816c60e54" //"users/logout" //logoutResponse
+    static let login: String = "f380a68e-676f-4c8f-8d7a-479b9db32ee2" //"users/login //loginResponse"
+    static let logOut: String = "3c35da26-67f5-468e-9df5-841491b7312a" //"users/logout" //logoutResponse
     static let online: String = "0e2b6d17-e83c-4535-8657-949816c60e54" //"users/online/"
-    static let register: String = "68a151ee-ac5b-4a8d-a69f-168d4f64cfb1"//"users/register" //logoutResponse
+    static let register: String = "3c35da26-67f5-468e-9df5-841491b7312a"//"users/register" //logoutResponse
     static let biometric: String = "62e2639a-576b-4a5b-963a-53d35674bf67" //"users/biometric"
-    static let users: String = "4b8542ec-e387-44ed-a542-97895293264a" //"users" //getContacts
+    static let users: String = "4f81b431-e058-438d-ad56-da33b70828fe" //"users" //getContacts
     
     static let urlRegister = Base.baseURL.appending(path: register)
     static let urlUsers = Base.baseURL.appending(path: users)
@@ -30,9 +30,9 @@ enum EndpointsUsers {
 }
 
 enum EndpointsChats {
-    static let chats: String = "588cfe52-981a-4b57-9109-e6e6e4c34647" //"chats"
-    static let chatsView: String = "9bf79488-8e7d-4bb7-bbc0-49506c4d392d" //"chats/view"
-    static let createChat: String = "6823c6a1-214c-4e70-8123-eb828b430207" // "chats"
+    static let chats: String = "3eb0304d-b3ce-4619-8c8f-fe786be3a2fe" //"chats" //Response
+    static let chatsView: String = "0b9da98f-ebec-446a-8231-307b236f3bcf" //"chats/view" //GetChats
+    static let createChat: String = "68e19a97-52ee-4c98-87ef-5d07740cbafe" // "chats" //creteChat
     
     static let urlChats: URL = Base.baseURL.appending(path: chatsView)
     static let urlDeleteChat: URL =  Base.baseURL.appending(path: chats)
@@ -40,9 +40,9 @@ enum EndpointsChats {
 }
 
 enum EndpointsMessages {
-    static let view: String = "54bdf6fa-3189-494f-9eae-010f2aa3c823" //"messages/view"
-    static let chat: String = "05652b06-7434-4336-a61b-c22e610d00c8"//"messages/list/"
-    static let newMessage: String = "68ef2594-e025-4082-a15f-6aa3aa6c0778" //"messages/new"
+    static let view: String = "e8e28d23-31ba-4328-98ae-b9b7faf7753f" //"messages/view" //messages
+    static let chat: String = "0b9da98f-ebec-446a-8231-307b236f3bcf"//"messages/list/" //chatlist
+    static let newMessage: String = "3eb0304d-b3ce-4619-8c8f-fe786be3a2fe" //"messages/new" //response
     
     static let urlView = Base.baseURL.appending(path: view)
     static let urlChat = Base.baseURL.appending(path: chat)

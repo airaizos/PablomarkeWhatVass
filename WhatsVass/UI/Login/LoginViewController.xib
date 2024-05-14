@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,12 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="WhatsVass" customModuleProvider="target">
             <connections>
-                <outlet property="btLogin" destination="rQD-en-1CO" id="ddl-GT-4Uw"/>
-                <outlet property="btProfile" destination="QX7-o6-CR1" id="oQs-IG-K6t"/>
-                <outlet property="lbRemember" destination="DAs-Qa-6y2" id="zLy-96-IdU"/>
-                <outlet property="swRemember" destination="VUI-EN-vAO" id="8qB-wd-5BQ"/>
-                <outlet property="tfPassword" destination="qDz-np-eEX" id="aUt-mb-64I"/>
-                <outlet property="tfUser" destination="lf7-PO-SkE" id="TBO-XI-16e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -49,9 +43,6 @@
                     <color key="tintColor" name="White"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Login"/>
-                    <connections>
-                        <action selector="btLoginDidTap:" destination="-1" eventType="touchUpInside" id="o47-mj-q0u"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QX7-o6-CR1">
                     <rect key="frame" x="121.66666666666669" y="758" width="150" height="50"/>
@@ -62,9 +53,6 @@
                     <color key="tintColor" name="White"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Crear Usuario"/>
-                    <connections>
-                        <action selector="btaCreateUser:" destination="-1" eventType="touchUpInside" id="4Zp-hn-0Er"/>
-                    </connections>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qDz-np-eEX">
                     <rect key="frame" x="58.666666666666657" y="517" width="276" height="64"/>
@@ -117,7 +105,7 @@
         </view>
     </objects>
     <resources>
-        <image name="logo" width="1024" height="1024"/>
+        <image name="logo" width="166.66667175292969" height="166.66667175292969"/>
         <namedColor name="White">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

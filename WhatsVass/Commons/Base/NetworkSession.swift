@@ -10,16 +10,14 @@ import Foundation
 
 class NetworkSession {
     var monitor: NetworkMonitor
-    let endpoints: URLPointsProtocol
     let session: URLSession
     let decoder: JSONDecoder
     
     private var isReachable: Bool
     
-    init(monitor: NetworkMonitor = NetworkMonitor(), endpoints: URLPointsProtocol = Endpoints(), session: URLSession = .shared, decoder: JSONDecoder = JSONDecoder()) {
+    init(monitor: NetworkMonitor = NetworkMonitor(), session: URLSession = .shared, decoder: JSONDecoder = JSONDecoder()) {
         self.monitor = monitor
         self.isReachable = monitor.isActive
-        self.endpoints = endpoints
         self.session = session
         self.decoder = decoder
     }

@@ -38,7 +38,7 @@ final class HomeViewModel: ObservableObject {
         })
     }
 
-    init(dataManager: HomeDataManagerProtocol = HomeDataManagerMock()) {
+    init(dataManager: HomeDataManagerProtocol) {
         self.dataManager = dataManager
     }
 

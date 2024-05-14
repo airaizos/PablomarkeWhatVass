@@ -5,18 +5,11 @@
 //  Created by Juan Carlos Torrejon Cañedo on 6/3/24.
 //
 
-import UIKit
+import SwiftUI
 import Combine
 import IQKeyboardManagerSwift
 
-final class LoginViewController: BaseViewController {
-    // MARK: - Outlets
-    @IBOutlet weak var tfUser: UITextField!
-    @IBOutlet weak var tfPassword: UITextField!
-    @IBOutlet weak var btLogin: UIButton!
-    @IBOutlet weak var btProfile: UIButton!
-    @IBOutlet weak var lbRemember: UILabel!
-    @IBOutlet weak var swRemember: UISwitch!
+final class LoginViewController: BaseViewController, LoginViewDelegate {
 
     // MARK: - Properties
     var viewModel: LoginViewModel?
@@ -26,50 +19,26 @@ final class LoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configView()
+        
+        let loginView = LoginView(delegate: self)
+        let hostingController = UIHostingController(rootView: loginView)
+        setHostingControllerView(view, hostingController: hostingController)
     }
 
     // MARK: - Public methods
     func set(viewModel: LoginViewModel) {
         self.viewModel = viewModel
     }
-
-    // MARK: - Actions
-    @IBAction func btLoginDidTap(_ sender: Any) {
-        viewModel?.loginButtonWasTapped(remember: swRemember.isOn)
-    }
-
-    @IBAction func btaCreateUser(_ sender: Any) {
-        navigateToProfileView()
-    }
 }
 
-// MARK: - Private extension for setup and response methods
-private extension LoginViewController {
+extension LoginViewController {
     func initView() {
         viewModel?.initData()
         responseViewModel()
-        configRememberStack()
     }
-
-    func configView() {
-        prepareAndConfigView(titleForView: "",
-                             navBarHidden: true)
-        configTextFields()
-        configButtons()
-
-    }
-
-    func configTextFields() {
-        tfUser.chatVassStyle("User")
-        tfPassword.chatVassStyle("Password",
-                                 secure: true)
-        tfUser.delegate = self
-        tfPassword.delegate = self
+    
+    func loginTapped(remember: Bool) {
+        viewModel?.loginButtonWasTapped(remember: remember)
     }
 
     func responseViewModel() {
@@ -95,35 +64,12 @@ private extension LoginViewController {
     }
 
     func reset() {
-        DispatchQueue.main.async {
-            self.tfUser.text = ""
-            self.tfPassword.text = ""
-            self.tfUser.setNeedsDisplay()
-            self.tfPassword.setNeedsDisplay()
-        }
-    }
-
-    func configButtons() {
-        btLogin.chatVassStyle("Login")
-        btProfile.setTitle(NSLocalizedString("Sign in",
-                                             comment: ""),
-                           for: .normal)
-    }
-
-    func configRememberStack() {
-        lbRemember.chatVassStyle(text: "Remember",
-                                 size: 12)
-        lbRemember.textColor = AssetsColors.customWhite
-        swRemember.chatVassStyle(large: false)
-        if let remember = viewModel?.rememberLogin {
-            swRemember.isOn = remember
-            rememberUserAndPassword()
-        }
-    }
-
-    func rememberUserAndPassword() {
-        tfUser.text = viewModel?.username
-        tfPassword.text = viewModel?.password
+//        DispatchQueue.main.async {
+//            self.tfUser.text = ""
+//            self.tfPassword.text = ""
+//            self.tfUser.setNeedsDisplay()
+//            self.tfPassword.setNeedsDisplay()
+//        }
     }
 
     func navigateToHomeView() {
@@ -147,26 +93,41 @@ private extension LoginViewController {
             self.navigateToHomeView()
         })
     }
+    
+    //MARK: Delegate
+    func loginUser(_ user: String) {
+        viewModel?.username = user
+    }
+    
+    func loginPassword(_ pass: String) {
+        viewModel?.password = pass
+    }
+    
+    func rememberUserAndPassword(_ remember:Bool) {
+        viewModel?.rememberLoginPreferences(remember)
+    }
+    
+    //MARK: Private
+    private func setHostingControllerView(_ view: UIView, hostingController: UIHostingController<LoginView>) {
+         addChild(hostingController)
+         view.addSubview(hostingController.view)
+         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+         NSLayoutConstraint.activate([
+             hostingController.view.topAnchor.constraint(equalTo: view.topAnchor),
+             hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+             hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+             hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+         ])
+         hostingController.didMove(toParent: self)
+     }
 }
 
-extension LoginViewController {
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool {
-        guard let newText = (textField.text as NSString?)?.replacingCharacters(in: range,
-                                                                               with: string) else {
-            return true
-        }
-
-        switch textField {
-        case tfUser:
-            viewModel?.username = newText
-        case tfPassword:
-            viewModel?.password = newText
-        default:
-            break
-        }
-
-        return true
-    }
+protocol LoginViewDelegate {
+    func initView()
+    func rememberEnterWithBiometrics()
+    func loginTapped(remember: Bool)
+    func navigateToProfileView()
+    func rememberUserAndPassword(_ remember:Bool)
+    func loginUser(_ user: String)
+    func loginPassword(_ pass: String)
 }

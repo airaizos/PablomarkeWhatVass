@@ -27,7 +27,7 @@ struct VassToggle: View {
                         RoundedRectangle(cornerRadius: 30)
                             .foregroundStyle(isOn ? .darkDarkmode : .white)
                     )
-                
+                    .frame(width: size, height: size * 0.6)
                 Circle()
                     .stroke(.dark, lineWidth: 5)
                     .overlay(
@@ -36,7 +36,7 @@ struct VassToggle: View {
                                 RadialGradient(colors: [.darkDarkmode.opacity(0.3), .darkDarkmode], center: .center, startRadius: size, endRadius: 0)
                             )
                     )
-                    .frame(width: size * 0.5)
+                    .frame(width: size * 0.5, height: size * 0.6)
                     .padding(isOn ? .trailing : .leading, 2)
             }
         }
