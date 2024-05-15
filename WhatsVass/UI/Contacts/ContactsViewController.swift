@@ -20,6 +20,7 @@ final class ContactsViewController: UIHostingController<ContactsView> {
         super.init(rootView: ContactsView(viewModel: viewModel))
 
         viewModel.chatSubject
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.dismiss(animated: true)
             }

@@ -130,6 +130,17 @@
         }
       }
     },
+    "Failed Chat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error en el Chat"
+          }
+        }
+      }
+    },
     "Idioms" : {
       "extractionState" : "manual",
       "localizations" : {

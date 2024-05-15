@@ -6,7 +6,6 @@
 //
 
 import Combine
-import UIKit
 import SwiftUI
 
 final class HomeViewController: UIHostingController<HomeView> {
@@ -21,6 +20,7 @@ final class HomeViewController: UIHostingController<HomeView> {
             super.init(rootView: HomeView(viewModel: viewModel))
 
         self.viewModel.navigateToChatSubject
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] chat in
                 self?.navigateToChat(chat)
             }

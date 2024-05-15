@@ -37,4 +37,17 @@
     "targetonline" : true,
     "source" : "601"
   }
+  {
+    "targetavatar" : "",
+    "targettoken" : "fgjñdjsfgdfj",
+    "chat" : "1234567890",
+    "sourcetoken" : "fgjñdjsfgdfj",
+    "chatcreated" : "2024-04-25T12:00:00Z",
+    "sourcenick" : "Tester102",
+    "targetnick" : "tester1021",
+    "sourceonline" : true,
+    "target" : "166",
+    "targetonline" : true,
+    "source" : "601"
+  }
 ]

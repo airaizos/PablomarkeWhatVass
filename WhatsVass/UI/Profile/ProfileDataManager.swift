@@ -28,4 +28,8 @@ final class ProfileDataManager {
             }
             .eraseToAnyPublisher()
     }
+    func createAndRegisterProfile(params: [String: Any]) async throws {
+        
+    }
+    
 }

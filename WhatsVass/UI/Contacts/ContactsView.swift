@@ -28,7 +28,9 @@ struct ContactsView: View {
                         Section(header: Text(key)) {
                             ForEach(viewModel.contactsBySection[key] ?? [], id: \.id) { contact in
                                 Button(action: {
-                                    viewModel.createChat(with: contact)
+                                    Task {
+                                       try await viewModel.createChat(with: contact)
+                                    }
                                 }, label: {
                                     ContactRow(user: contact)
                                 })
@@ -44,6 +46,9 @@ struct ContactsView: View {
         }
         .onChange(of: searchText) { _,newValue in
             viewModel.filterContacts(searchText: newValue)
+        }
+        .alert(LocalizedStringKey(viewModel.errorMessage), isPresented: $viewModel.showError) {
+            
         }
     }
 

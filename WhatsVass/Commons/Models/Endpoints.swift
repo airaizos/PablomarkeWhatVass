@@ -28,12 +28,12 @@ enum EndpointsUsers {
     static let urlLogin = Base.baseURL.appending(path: login)
     static let urlBiometric = Base.baseURL.appending(path: biometric)
 }
-
+//22cf1f79-ee53-4aa6-9962-da8103e3c592
 enum EndpointsChats {
     static let chats: String = "3eb0304d-b3ce-4619-8c8f-fe786be3a2fe" //"chats" //Response
-    static let chatsView: String = "0b9da98f-ebec-446a-8231-307b236f3bcf" //"chats/view" //GetChats
-    static let createChat: String = "68e19a97-52ee-4c98-87ef-5d07740cbafe" // "chats" //creteChat
-    
+    static let chatsView: String = "db0065d0-ee83-4514-b2a4-b30ea1723071" //"chats/view" //GetChats
+    static let createChat: String = "3e6a389d-a3d6-481d-a0fd-2f2772e60b03" // "chats" //creteChat
+
     static let urlChats: URL = Base.baseURL.appending(path: chatsView)
     static let urlDeleteChat: URL =  Base.baseURL.appending(path: chats)
     static let urlCreateChat: URL = Base.baseURL.appending(path: createChat)

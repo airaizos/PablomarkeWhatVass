@@ -12,7 +12,6 @@ protocol ProfileViewDelegate {
     func createProfile(user: String, nick: String, password: String, confirmPassword: String)
 }
 
-
 final class ProfileViewController: BaseViewController,ProfileViewDelegate {
 
     // MARK: - Properties
@@ -34,19 +33,6 @@ final class ProfileViewController: BaseViewController,ProfileViewDelegate {
     func set(viewModel: ProfileViewModel) {
         self.viewModel = viewModel
     }
-
-    // MARK: - Buttons
-//    @IBAction func btaImageSelector(_ sender: Any) {
-//       // present(createImagesPicker(),
-//         //       animated: true,
-//           //     completion: nil)
-//    }
-//    @IBAction func btaCreateProfile(_ sender: Any) {
-//        viewModel?.comprobeText(user: self.tfUser.text!,
-//                                nick: self.tfNick.text!,
-//                                password: self.tfPassword.text!,
-//                                repeatPassword: self.tfRepeatPassword.text!)
-//    }
     
     //MARK: Create Profile
     

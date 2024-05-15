@@ -66,4 +66,8 @@ private extension ProfileViewModel {
                 self?.navigateToHomeView.send()
             }.store(in: &cancellables)
     }
+    
+    func createAndRegister(params: [String: Any]) async throws {
+        
+    }
 }
