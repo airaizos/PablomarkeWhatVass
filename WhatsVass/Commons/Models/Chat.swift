@@ -50,7 +50,7 @@ extension Chat {
     }
     
     private var myID:String {
-        UserDefaults.standard.string(forKey: Preferences.id) ?? "defaultID"
+        LocalPersistence.shared.getString(forKey: Preferences.id) ?? "defaultID"
     }
     
     var isOtherUserOnline: Bool {

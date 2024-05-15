@@ -33,6 +33,8 @@
 		3A2E17DC2BEAAE6F0039365A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17DB2BEAAE6F0039365A /* Helpers.swift */; };
 		3A370A612BF4E77B0045128F /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A370A602BF4E77B0045128F /* UIImageExtension.swift */; };
 		3A370A632BF4F9630045128F /* ContactsDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A370A622BF4F9630045128F /* ContactsDataManagerMock.swift */; };
+		3A370A652BF529500045128F /* LocalPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A370A642BF529500045128F /* LocalPersistence.swift */; };
+		3A370A672BF52D070045128F /* PhotosPickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A370A662BF52D070045128F /* PhotosPickerExtension.swift */; };
 		3A38C9B62BEA6D270068D8F0 /* HomeAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */; };
 		3A38C9B82BEA7A550068D8F0 /* ChatAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38C9B72BEA7A550068D8F0 /* ChatAPIClientTests.swift */; };
 		3A4329B22BEA35C20027E021 /* Preview+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4329B12BEA35C20027E021 /* Preview+Models.swift */; };
@@ -176,6 +178,8 @@
 		3A2E17DB2BEAAE6F0039365A /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		3A370A602BF4E77B0045128F /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		3A370A622BF4F9630045128F /* ContactsDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDataManagerMock.swift; sourceTree = "<group>"; };
+		3A370A642BF529500045128F /* LocalPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPersistence.swift; sourceTree = "<group>"; };
+		3A370A662BF52D070045128F /* PhotosPickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPickerExtension.swift; sourceTree = "<group>"; };
 		3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPIClientTests.swift; sourceTree = "<group>"; };
 		3A38C9B72BEA7A550068D8F0 /* ChatAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPIClientTests.swift; sourceTree = "<group>"; };
 		3A4329B12BEA35C20027E021 /* Preview+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+Models.swift"; sourceTree = "<group>"; };
@@ -562,6 +566,7 @@
 				3AFD14E02BED3E8200C86030 /* ViewExtensions.swift */,
 				3AFA9E642BF3EF3A000EC67F /* UIViewControllerExtensions.swift */,
 				3A370A602BF4E77B0045128F /* UIImageExtension.swift */,
+				3A370A662BF52D070045128F /* PhotosPickerExtension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -614,6 +619,7 @@
 				3A50D3032BDA9608002007A3 /* NetworkSession.swift */,
 				3A50D3052BDA9F08002007A3 /* NetworkMonitor.swift */,
 				3A50D3072BDAA02C002007A3 /* Interface.swift */,
+				3A370A642BF529500045128F /* LocalPersistence.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -691,12 +697,12 @@
 			children = (
 				3AFA9E632BF3E2FE000EC67F /* Helpers */,
 				838CCE882B9A166800D92B4C /* ProfileViewController.xib */,
+				3AFA9E5C2BF3B067000EC67F /* ProfileView.swift */,
 				838CCE872B9A166800D92B4C /* ProfileViewController.swift */,
 				838CCE8B2B9A16BA00D92B4C /* ProfileViewModel.swift */,
 				838CCE8D2B9A16D900D92B4C /* ProfileDataManager.swift */,
 				838CCE8F2B9A16EF00D92B4C /* ProfileAPIClient.swift */,
 				838CCE912B9A171300D92B4C /* ProfileWireframe.swift */,
-				3AFA9E5C2BF3B067000EC67F /* ProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -873,6 +879,7 @@
 				3AFD14EC2BED4CFD00C86030 /* VassToggle.swift in Sources */,
 				3AFD14DD2BED024600C86030 /* UserInitialCircle.swift in Sources */,
 				838CCE922B9A171300D92B4C /* ProfileWireframe.swift in Sources */,
+				3A370A672BF52D070045128F /* PhotosPickerExtension.swift in Sources */,
 				3A50D3082BDAA02C002007A3 /* Interface.swift in Sources */,
 				8396D2AB2BA3019E0006A4A0 /* SettingsViewModel.swift in Sources */,
 				83D121D82BA82E2500D607BF /* BaseViewController.swift in Sources */,
@@ -931,6 +938,7 @@
 				B3810CC62BA1B97100C30D63 /* HomeViewController.swift in Sources */,
 				B3810CC32B9F1E4100C30D63 /* HomeAPIClient.swift in Sources */,
 				838CCE862B9A114A00D92B4C /* Endpoints.swift in Sources */,
+				3A370A652BF529500045128F /* LocalPersistence.swift in Sources */,
 				83C2526B2B98643A004455A6 /* SplashViewController.swift in Sources */,
 				B3810CD22BA3129400C30D63 /* ContactsWireframe.swift in Sources */,
 				B3810C822B9B075200C30D63 /* HomeView.swift in Sources */,

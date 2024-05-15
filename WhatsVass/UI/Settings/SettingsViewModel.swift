@@ -13,16 +13,18 @@ final class SettingsViewModel: ObservableObject {
     // MARK: - Properties -
     private var dataManager: SettingsDataManagerProtocol
     private var secure: KeychainProvider
-    @Published var notifications: Bool = UserDefaults.standard.bool(forKey: Preferences.notifications)
-    @Published var themes: Bool = UserDefaults.standard.bool(forKey: Preferences.themes)
-    @Published var biometrics: Bool = UserDefaults.standard.bool(forKey: Preferences.biometrics)
+    private var persistence: LocalPersistence
+    @Published var notifications: Bool = LocalPersistence.shared.getBool(forKey: .notifications)
+    @Published var themes: Bool = LocalPersistence.shared.getBool(forKey: Preferences.themes)
+    @Published var biometrics: Bool = LocalPersistence.shared.getBool(forKey: Preferences.biometrics)
     let logOutSuccessSubject = PassthroughSubject<Void, Never>()
     var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Init -
-    init(dataManager: SettingsDataManagerProtocol = SettingsDataManager(), secure: KeychainProvider = KeyChainData()) {
+    init(dataManager: SettingsDataManagerProtocol = SettingsDataManager(), secure: KeychainProvider = KeyChainData(), persistence: LocalPersistence = .shared) {
         self.dataManager = dataManager
         self.secure = secure
+        self.persistence = persistence
     }
 
     // MARK: Public Methods
@@ -30,29 +32,25 @@ final class SettingsViewModel: ObservableObject {
         logOutByAPI()
         KeyChainData().deleteStringKey(key: KeyChainEnum.user)
         KeyChainData().deleteStringKey(key: KeyChainEnum.password)
-        UserDefaults.standard.set(false,
-                                  forKey: Preferences.rememberLogin)
+        persistence.setObject(value: false, forKey: .rememberLogin)
         if let bundleIdentifier = Bundle.main.bundleIdentifier {
-            UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
+            persistence.removePersistenceDomain(forName: bundleIdentifier)
         }
         logOutSuccessSubject.send()
     }
 
     func notificationIsOn(_ bool: Bool) {
-        UserDefaults.standard.setValue(bool,
-                                       forKey: Preferences.notifications)
+        persistence.setObject(value: bool, forKey: .notifications)
         self.activateNotifications(notifications: bool)
     }
 
     func themesIsOn(_ bool: Bool) {
-        UserDefaults.standard.setValue(bool,
-                                       forKey: Preferences.themes)
+        persistence.setObject(value: bool, forKey: .themes)
         self.toggleDarkMode(bool)
     }
 
     func biometricsIsOn(_ bool: Bool) {
-        UserDefaults.standard.setValue(bool,
-                                       forKey: Preferences.biometrics)
+        persistence.setObject(value: bool, forKey: .biometrics)
     }
 }
 

@@ -15,6 +15,8 @@ final class LoginViewController: BaseViewController, LoginViewDelegate {
     var viewModel: LoginViewModel?
     var cancellables: Set<AnyCancellable> = []
 
+    let persistence: LocalPersistence = .shared
+        
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,12 +86,10 @@ extension LoginViewController {
         showSelectAlert(title: "Biometrics",
                         message: "EnterBiometrics",
                         yesAction: {
-            UserDefaults.standard.setValue(true,
-                                           forKey: Preferences.biometrics)
+            self.persistence.setObject(value: true, forKey: .biometrics)
             self.navigateToHomeView()
         }, cancelAction: {
-            UserDefaults.standard.setValue(false,
-                                           forKey: Preferences.biometrics)
+            self.persistence.setObject(value: false,forKey: .biometrics)
             self.navigateToHomeView()
         })
     }

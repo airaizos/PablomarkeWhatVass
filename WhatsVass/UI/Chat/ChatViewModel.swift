@@ -13,13 +13,15 @@ final class ChatViewModel: ObservableObject {
     // MARK: - Properties -
     @Published var chat: Chat
     private var dataManager: ChatDataManagerProtocol
+    private var persistence: LocalPersistence
     var cancellables: Set<AnyCancellable> = []
     @Published var chats: [RowMessage]?
     @Published var name: String = ""
 
-    init(dataManager: ChatDataManagerProtocol, chat: Chat) {
+    init(dataManager: ChatDataManagerProtocol, chat: Chat, persistence: LocalPersistence = .shared) {
         self.dataManager = dataManager
         self.chat = chat
+        self.persistence = persistence
     }
 
     // MARK: Public Methods
@@ -33,7 +35,7 @@ final class ChatViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] messages in
                 self?.chats = messages.rows
-                let myID = UserDefaults.standard.string(forKey: Preferences.id) ?? "defaultID"
+                let myID = self?.persistence.getString(forKey: Preferences.id) ?? "defaultID"
                 self?.name = self?.chat.source == myID ? self?.chat.targetnick ?? "" : self?.chat.sourcenick ?? ""
             }.store(in: &cancellables)
     }
@@ -70,7 +72,7 @@ final class ChatViewModel: ObservableObject {
 
     func sendNewMessage(message: String) {
         let params: [String: Any] = ["chat": chat.chat,
-                                     "source": UserDefaults.standard.string(forKey: Preferences.id) ?? "",
+                                     "source": persistence.getString(forKey: Preferences.id) ?? "",
                                      "message": message]
         dataManager.sendMessage(params: params)
             .sink {  completion in
@@ -85,6 +87,6 @@ final class ChatViewModel: ObservableObject {
     }
 
     func messageIsMine(sentBy: String) -> Bool {
-        sentBy == UserDefaults.standard.string(forKey: Preferences.id)
+        sentBy == persistence.getString(forKey: Preferences.id)
     }
 }

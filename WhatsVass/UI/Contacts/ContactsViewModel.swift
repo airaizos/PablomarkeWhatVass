@@ -49,7 +49,7 @@ final class ContactsViewModel: ObservableObject {
     @MainActor
     func createChat(with contact: User) {
         Task {
-            guard let sourceId = UserDefaults.standard.string(forKey: Preferences.id) else { return }
+            guard let sourceId = UserDefaults.standard.string(forKey: Preferences.id.rawValue) else { return }
             
             let targetId = contact.id
             do {

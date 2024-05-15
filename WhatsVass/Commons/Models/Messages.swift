@@ -31,7 +31,7 @@ struct NewMessageResponse: Codable {
 
 extension RowMessage {
     var  isMine: Bool {
-        source == UserDefaults.standard.string(forKey: Preferences.id)
+        source == LocalPersistence.shared.getString(forKey: Preferences.id)
     }
     var dateTime: Date {
         let dateFormatter = DateFormatter()

@@ -16,6 +16,7 @@ final class HomeViewModel: ObservableObject {
     @Published var searchText = ""
 
     private var dataManager: HomeDataManagerProtocol
+    private var persistence: LocalPersistence
     private var cancellables = Set<AnyCancellable>()
 
     let newChatSelectedSubject = PassthroughSubject<Void, Never>()
@@ -23,7 +24,7 @@ final class HomeViewModel: ObservableObject {
     var navigateToProfileSubject = PassthroughSubject<Void, Never>()
     var navigateToSettingsSubject = PassthroughSubject<Void, Never>()
     var filteredChats: ChatsList {
-        let myNick = UserDefaults.standard.string(forKey: Preferences.id) ?? "defaultID"
+        let myNick = persistence.getString(forKey: Preferences.id) ?? "defaultID"
 
         let filtered = chats.filter { chat in
             let otherNick = chat.source == myNick ? chat.targetnick : chat.sourcenick
@@ -38,8 +39,9 @@ final class HomeViewModel: ObservableObject {
         })
     }
 
-    init(dataManager: HomeDataManagerProtocol) {
+    init(dataManager: HomeDataManagerProtocol, persistence: LocalPersistence = .shared) {
         self.dataManager = dataManager
+        self.persistence = persistence
     }
 
     // MARK: - Public Methods

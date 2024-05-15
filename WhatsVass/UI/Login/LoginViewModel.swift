@@ -12,12 +12,13 @@ final class LoginViewModel {
     // MARK: - Properties
     private var dataManager: LoginDataManagerProtocol
     private var secure: KeyChainData
+    private var persistence: LocalPersistence
     @Published var username: String?
     @Published var password: String?
     @Published var loginExist: Bool?
     @Published var rememberLogin: Bool? {
         didSet {
-            UserDefaults.standard.setValue(rememberLogin,forKey: Preferences.rememberLogin)
+            persistence.setObject(value: rememberLogin,forKey: .rememberLogin)
         }
     }
     let loginSuccessSubject = PassthroughSubject<Bool, Never>()
@@ -27,16 +28,17 @@ final class LoginViewModel {
     var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Init
-    init(dataManager: LoginDataManagerProtocol, secure: KeyChainData) {
+    init(dataManager: LoginDataManagerProtocol, secure: KeyChainData, persistence: LocalPersistence = .shared) {
         self.dataManager = dataManager
         self.secure = secure
         //TODO: Debería ir en el dataManager?
-        self.loginExist = UserDefaults.standard.bool(forKey: Preferences.rememberLogin)
+        self.persistence = persistence
+        self.loginExist = persistence.getBool(forKey: .rememberLogin)
     }
 
     // MARK: - Public Methods
     func rememberLoginPreferences(_ remember: Bool) {
-        UserDefaults.standard.setValue(remember,forKey: Preferences.rememberLogin)
+        persistence.setObject(value: remember,forKey: Preferences.rememberLogin)
     }
     
     func loginButtonWasTapped(remember: Bool) {
@@ -50,7 +52,7 @@ final class LoginViewModel {
     }
 
     func comprobeTokenAndBiometrics() {
-        if UserDefaults.standard.bool(forKey: Preferences.biometrics) {
+        if persistence.getBool(forKey: .biometrics) {
             getBiometric()
         }
     }
@@ -104,22 +106,19 @@ private extension LoginViewModel {
                 }
             } receiveValue: { [weak self] login in
                 
-                UserDefaults.standard.set(login.token,
-                                          forKey: Preferences.token)
-                UserDefaults.standard.set(login.user.id,
-                                          forKey: Preferences.id)
+                self?.persistence.setObject(value: login.token, forKey: .token)
+                self?.persistence.setObject(value: login.user.id, forKey: .id)
                 if remember {
                     self?.secure.setLoginAndPassword(user: (self?.username) ?? "",
                                                      password: (self?.password) ?? "")
-                    UserDefaults.standard.setValue(remember,
-                                                   forKey: Preferences.rememberLogin)
+                    self?.persistence.setObject(value: remember, forKey: .rememberLogin)
                 }
                 self?.loginSuccessSubject.send(remember)
             }.store(in: &cancellables)
     }
 
     func loginWithBiometricUserCredentials() {
-        guard let token = UserDefaults.standard.string(forKey: Preferences.token) else {
+        guard let token = persistence.getString(forKey: Preferences.token) else {
             self.loginFailureSubject.send(BaseError.noToken.description())
             return
         }
@@ -131,8 +130,7 @@ private extension LoginViewModel {
                // print(error.description()
                 }
             } receiveValue: { [weak self] login in
-                UserDefaults.standard.set(login.token,
-                                          forKey: Preferences.token)
+                self?.persistence.setObject(value: login.token, forKey: .token)
                 self?.loginSuccessBiometrics.send()
             }.store(in: &cancellables)
     }
