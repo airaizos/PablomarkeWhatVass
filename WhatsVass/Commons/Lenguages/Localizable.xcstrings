@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
     "22:22" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -54,9 +51,6 @@
           }
         }
       }
-    },
-    "Create Profile" : {
-
     },
     "EmptyField" : {
       "extractionState" : "manual",

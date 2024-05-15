@@ -84,7 +84,7 @@ struct LoginView: View {
                 }
             }
             Spacer()
-            Button(LocalizedStringKey("Create Profile")) {
+            Button(LocalizedStringKey("Sign in")) {
                 delegate?.navigateToProfileView()
             }
             .foregroundStyle(.white)

@@ -33,6 +33,7 @@
 		3A2E17D82BEAA4350039365A /* SettingsAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D72BEAA4350039365A /* SettingsAPIClientTests.swift */; };
 		3A2E17DA2BEAABDB0039365A /* LoginAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D92BEAABDB0039365A /* LoginAPIClientTests.swift */; };
 		3A2E17DC2BEAAE6F0039365A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17DB2BEAAE6F0039365A /* Helpers.swift */; };
+		3A370A612BF4E77B0045128F /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A370A602BF4E77B0045128F /* UIImageExtension.swift */; };
 		3A38C9B62BEA6D270068D8F0 /* HomeAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */; };
 		3A38C9B82BEA7A550068D8F0 /* ChatAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38C9B72BEA7A550068D8F0 /* ChatAPIClientTests.swift */; };
 		3A4329B22BEA35C20027E021 /* Preview+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4329B12BEA35C20027E021 /* Preview+Models.swift */; };
@@ -54,6 +55,8 @@
 		3A6806A42BEC08E800EBD93E /* Preview+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6806A32BEC08E800EBD93E /* Preview+Bundle.swift */; };
 		3AFA9E5D2BF3B067000EC67F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9E5C2BF3B067000EC67F /* ProfileView.swift */; };
 		3AFA9E602BF3C121000EC67F /* VassTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9E5F2BF3C121000EC67F /* VassTextField.swift */; };
+		3AFA9E622BF3E1A9000EC67F /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9E612BF3E1A9000EC67F /* PasswordValidator.swift */; };
+		3AFA9E652BF3EF3A000EC67F /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9E642BF3EF3A000EC67F /* UIViewControllerExtensions.swift */; };
 		3AFD14D72BECBE0500C86030 /* HomeDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14D62BECBE0500C86030 /* HomeDataManagerMock.swift */; };
 		3AFD14D92BECC59A00C86030 /* ChatDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14D82BECC59A00C86030 /* ChatDataManagerMock.swift */; };
 		3AFD14DB2BED020500C86030 /* UserInitialCircleStatusIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD14DA2BED020500C86030 /* UserInitialCircleStatusIndicator.swift */; };
@@ -174,6 +177,7 @@
 		3A2E17D72BEAA4350039365A /* SettingsAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAPIClientTests.swift; sourceTree = "<group>"; };
 		3A2E17D92BEAABDB0039365A /* LoginAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPIClientTests.swift; sourceTree = "<group>"; };
 		3A2E17DB2BEAAE6F0039365A /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		3A370A602BF4E77B0045128F /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		3A38C9B52BEA6D270068D8F0 /* HomeAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPIClientTests.swift; sourceTree = "<group>"; };
 		3A38C9B72BEA7A550068D8F0 /* ChatAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPIClientTests.swift; sourceTree = "<group>"; };
 		3A4329B12BEA35C20027E021 /* Preview+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+Models.swift"; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 		3A6806A32BEC08E800EBD93E /* Preview+Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+Bundle.swift"; sourceTree = "<group>"; };
 		3AFA9E5C2BF3B067000EC67F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3AFA9E5F2BF3C121000EC67F /* VassTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VassTextField.swift; sourceTree = "<group>"; };
+		3AFA9E612BF3E1A9000EC67F /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
+		3AFA9E642BF3EF3A000EC67F /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		3AFD14D62BECBE0500C86030 /* HomeDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataManagerMock.swift; sourceTree = "<group>"; };
 		3AFD14D82BECC59A00C86030 /* ChatDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataManagerMock.swift; sourceTree = "<group>"; };
 		3AFD14DA2BED020500C86030 /* UserInitialCircleStatusIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInitialCircleStatusIndicator.swift; sourceTree = "<group>"; };
@@ -343,6 +349,7 @@
 		3A0923F72BF272E000538A1D /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				3AFA9E5F2BF3C121000EC67F /* VassTextField.swift */,
 				3A0923F82BF272F200538A1D /* LogoVassView.swift */,
 			);
 			path = Design;
@@ -402,12 +409,12 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		3AFA9E5E2BF3C10C000EC67F /* Components */ = {
+		3AFA9E632BF3E2FE000EC67F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				3AFA9E5F2BF3C121000EC67F /* VassTextField.swift */,
+				3AFA9E612BF3E1A9000EC67F /* PasswordValidator.swift */,
 			);
-			path = Components;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		3AFD14E82BED4CCB00C86030 /* Components */ = {
@@ -526,7 +533,6 @@
 		83388A382B97757E006F122D /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				3AFA9E5E2BF3C10C000EC67F /* Components */,
 				83388A352B97715B006F122D /* LoginViewController.xib */,
 				83388A342B97715B006F122D /* LoginViewController.swift */,
 				83388A392B9775A0006F122D /* LoginViewModel.swift */,
@@ -557,6 +563,8 @@
 				8396D2B22BA313B70006A4A0 /* LabelExtension.swift */,
 				8396D2B42BA3173B0006A4A0 /* UISwitchExtension.swift */,
 				3AFD14E02BED3E8200C86030 /* ViewExtensions.swift */,
+				3AFA9E642BF3EF3A000EC67F /* UIViewControllerExtensions.swift */,
+				3A370A602BF4E77B0045128F /* UIImageExtension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -684,6 +692,7 @@
 		83C252682B98635C004455A6 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				3AFA9E632BF3E2FE000EC67F /* Helpers */,
 				838CCE882B9A166800D92B4C /* ProfileViewController.xib */,
 				838CCE872B9A166800D92B4C /* ProfileViewController.swift */,
 				838CCE8B2B9A16BA00D92B4C /* ProfileViewModel.swift */,
@@ -851,6 +860,7 @@
 				3A50D3062BDA9F08002007A3 /* NetworkMonitor.swift in Sources */,
 				B3810CCE2BA3126C00C30D63 /* ContactsDataManager.swift in Sources */,
 				3A0923F92BF272F200538A1D /* LogoVassView.swift in Sources */,
+				3AFA9E622BF3E1A9000EC67F /* PasswordValidator.swift in Sources */,
 				83D121DB2BA8A58E00D607BF /* BiometricAuthentication.swift in Sources */,
 				83388A3C2B9775B2006F122D /* LoginDataManager.swift in Sources */,
 				8347619A2B9F224000485E2F /* MessageRow.swift in Sources */,
@@ -878,6 +888,7 @@
 				839BD23B2BA067F500BEA022 /* MessageSenderView.swift in Sources */,
 				83EF8EBE2BB2F707001F5A28 /* ImageProfileView.swift in Sources */,
 				8396D2B52BA3173B0006A4A0 /* UISwitchExtension.swift in Sources */,
+				3A370A612BF4E77B0045128F /* UIImageExtension.swift in Sources */,
 				838CCE892B9A166800D92B4C /* ProfileViewController.swift in Sources */,
 				3AFD14E52BED4A4F00C86030 /* SettingsDataManagerMock.swift in Sources */,
 				8347619D2B9F2A1700485E2F /* Chat.swift in Sources */,
@@ -895,6 +906,7 @@
 				838CCE8E2B9A16D900D92B4C /* ProfileDataManager.swift in Sources */,
 				3AFA9E602BF3C121000EC67F /* VassTextField.swift in Sources */,
 				8396D2B12BA301E60006A4A0 /* SettingsWireframe.swift in Sources */,
+				3AFA9E652BF3EF3A000EC67F /* UIViewControllerExtensions.swift in Sources */,
 				3AFD14DF2BED250700C86030 /* SplashView.swift in Sources */,
 				3A50D3042BDA9608002007A3 /* NetworkSession.swift in Sources */,
 				3AFD14EE2BED4D0F00C86030 /* VassButton.swift in Sources */,
