@@ -8,9 +8,8 @@
 import Foundation
 
 struct PasswordValidator {
-    
-   // var securePassword: String
-       
+           
+    @discardableResult
     func isStrongPassword(_ text: String) throws -> Bool {
         try verifyIfContainsWhiteSpaces(text)
         try verifyIfItsTooShort(text)

@@ -7,8 +7,6 @@
 
 import SwiftUI
 
- extension LoginView {
-    
     struct VassTextField<Content:View>: View {
         var systemImage: String
         var isValid: Bool
@@ -36,4 +34,4 @@ import SwiftUI
             .shadow(color: .black.opacity(0.8), radius: 5, x:2,y:3)
         }
     }
-}
+

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,15 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="WhatsVass" customModuleProvider="target">
             <connections>
-                <outlet property="btCreateProfile" destination="gum-F4-cVy" id="76k-W0-Dg5"/>
-                <outlet property="btImageSelector" destination="kqz-xe-Yfs" id="ZjP-ls-mrm"/>
-                <outlet property="ivProfile" destination="InO-sQ-iJS" id="pPM-fg-MQY"/>
-                <outlet property="svProfile" destination="Swy-wz-Pcw" id="WHe-e5-G1Q"/>
-                <outlet property="tfNick" destination="qE5-xj-yui" id="VEW-dH-DgE"/>
-                <outlet property="tfPassword" destination="jDX-hU-vUQ" id="75G-Le-cgV"/>
-                <outlet property="tfRepeatPassword" destination="Krl-xn-JaA" id="OBc-sL-bep"/>
-                <outlet property="tfUser" destination="I1F-NA-Kv7" id="3io-7d-zPZ"/>
-                <outlet property="vImage" destination="zYb-Vr-kX0" id="wYu-CZ-UAx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -35,9 +26,6 @@
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                    <connections>
-                        <action selector="btaCreateProfile:" destination="-1" eventType="touchUpInside" id="6ED-CU-SFU"/>
-                    </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Swy-wz-Pcw">
                     <rect key="frame" x="58.666666666666657" y="331" width="276" height="254"/>
@@ -89,9 +77,6 @@
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" cornerStyle="fixed"/>
-                            <connections>
-                                <action selector="btaImageSelector:" destination="-1" eventType="touchUpInside" id="rKI-f4-mgQ"/>
-                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>

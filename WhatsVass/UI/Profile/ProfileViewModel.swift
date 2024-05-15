@@ -50,7 +50,9 @@ final class ProfileViewModel {
 private extension ProfileViewModel {
     func createAndRegister(params: [String: Any]) {
         dataManager.createAndRegisterProfile(params: params)
+            .receive(on: DispatchQueue.main)
             .sink { completion in
+
                 if case .failure = completion {
                   // print Error
                 }

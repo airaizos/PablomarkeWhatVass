@@ -18,7 +18,7 @@ enum EndpointsUsers {
     static let login: String = "f380a68e-676f-4c8f-8d7a-479b9db32ee2" //"users/login //loginResponse"
     static let logOut: String = "3c35da26-67f5-468e-9df5-841491b7312a" //"users/logout" //logoutResponse
     static let online: String = "0e2b6d17-e83c-4535-8657-949816c60e54" //"users/online/"
-    static let register: String = "3c35da26-67f5-468e-9df5-841491b7312a"//"users/register" //logoutResponse
+    static let register: String = "26877e6c-68c4-4b1c-a051-46bbddea8f6d"//"users/register" //createAndRegisterProfile
     static let biometric: String = "62e2639a-576b-4a5b-963a-53d35674bf67" //"users/biometric"
     static let users: String = "4f81b431-e058-438d-ad56-da33b70828fe" //"users" //getContacts
     
