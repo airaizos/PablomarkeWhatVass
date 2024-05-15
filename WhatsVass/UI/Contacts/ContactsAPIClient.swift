@@ -12,6 +12,10 @@ final class ContactsAPIClient: BaseAPIClient {
     func getContacts() -> AnyPublisher<[User], BaseError> {
         requestPublisher(url: EndpointsUsers.urlUsers, type: [User].self)
     }
+    
+    func getContacts() async throws -> [User] {
+        try await fetchCodable(url: EndpointsUsers.urlUsers, type: [User].self)
+    }
 
     func createChat(source: String, target: String) -> AnyPublisher<ChatCreateResponse, BaseError> {
         let params = ["source": source, "target": target]
@@ -19,6 +23,15 @@ final class ContactsAPIClient: BaseAPIClient {
             return Fail(error: BaseError.noCodable).eraseToAnyPublisher()
         }
         return requestPostPublisher(url: EndpointsChats.urlCreateChat, data: chat)
+    }
+    
+    func createChat(source: String, target: String) async throws -> ChatCreateResponse {
+        let params = ["source": source, "target": target]
+        guard let chat = encodeChat(with: params) else {
+            throw BaseError.noCodable
+        }
+//        return fetchCodable(url: EndpointsChats.urlCreateChat, data: chat)
+        return try await postCodable(url: EndpointsChats.urlCreateChat, data: chat)
     }
 
     func getChats() -> AnyPublisher<ChatsList, BaseError> {

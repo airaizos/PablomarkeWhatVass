@@ -26,8 +26,8 @@ final class LoginAPIClientTests: XCTestCase {
 
     func testLoginByAPI_ShouldBetester102() {
         let expectation = XCTestExpectation(description: "Carga de loginByAPI")
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMSIsImlhdCI6MTcxNTA3MjMxMywiZXhwIjoxNzE3NjY0MzEzfQ.b8KfgPABLui3-t745jHz-ggYV9BN7WLgRs5wEhdWazA"
-        let nick = "tester102"
+        let token = "Token Mock"
+        let nick = "Tester Mock"
         
         sut.loginByAPI(with: credentials)
             .sink { completion in
@@ -45,8 +45,8 @@ final class LoginAPIClientTests: XCTestCase {
     
     func testBiometricLogin_ShouldBe() {
         let expectation = XCTestExpectation(description: "Carga de biometricLogin")
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuaWNrIjoiTmFtZSBDb2RlIiwidXNlcklkIjoiMTIzNDU2Nzg5MCIsIm9ubGluZSI6dHJ1ZSwiaWF0IjoxNTE2MjM5MDIyfQ.Dg45lkJH8Km23gnKlP6U8T9sgpFG3mUo9k7tADGnq"
-        let nick = "Nombre Código"
+        let token = "Token Mock"
+        let nick = "Tester Mock"
         sut.biometricLogin(params: params)
             .sink { completion in
                 switchCompletion(completion, expectation)

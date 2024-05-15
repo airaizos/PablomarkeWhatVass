@@ -12,11 +12,11 @@ import Combine
 class BaseAPIClient {
     
     private var isReachable: Bool = true
- //   private var sesionManager: Alamofire.Session!
+    //   private var sesionManager: Alamofire.Session!
     private var baseURL: URL = Base.baseURL
     
     var urlProtocol: URLProtocol.Type?
-        
+    
     private var session: URLSession {
         if let urlProtocol {
             let configuration = URLSessionConfiguration.ephemeral
@@ -28,7 +28,7 @@ class BaseAPIClient {
     }
     
     init(urlProtocol: URLProtocol.Type? = nil) {
-   //     self.sesionManager = Session()
+        //     self.sesionManager = Session()
         startListenerReachability()
         self.urlProtocol = urlProtocol
     }
@@ -46,60 +46,60 @@ class BaseAPIClient {
         return baseError
     }
     
-//    func requestPublisher<T: Decodable>(relativePath: String?,
-//                                        method: HTTPMethod = .get,
-//                                        parameters: Parameters? = nil,
-//                                        urlEncoding: ParameterEncoding = JSONEncoding.default,
-//                                        type: T.Type = T.self,
-//                                        base: URL? = URL(string: Base.mock),
-//                                        customHeaders: HTTPHeaders? = nil) -> AnyPublisher<T, BaseError> {
-//        
-//        guard let url = base, let path = relativePath else {
-//            return Fail(error: .failedURL).eraseToAnyPublisher()
-//        }
-//        
-//        guard let urlAbsolute = url.appendingPathComponent(path).absoluteString.removingPercentEncoding else {
-//            return Fail(error: .noURl).eraseToAnyPublisher()
-//        }
-//        
-//        var headers = HTTPHeaders()
-//        if !((UserDefaults.standard.string(forKey: Preferences.token)?.isEmpty) == nil) {
-//            guard let token = UserDefaults.standard.string(forKey: Preferences.token) else {
-//                return Fail(error: .noToken).eraseToAnyPublisher()
-//            }
-//            headers.add(name: "Authorization",
-//                        value: token)
-//        }
-//        
-//        return sesionManager.request(urlAbsolute,
-//                                     method: method,
-//                                     parameters: parameters,
-//                                     encoding: urlEncoding,
-//                                     headers: headers)
-//        .validate()
-//#if DEBUG
-//        .cURLDescription(on: .main, calling: { _ in })
-//#endif
-//        .publishDecodable(type: T.self, emptyResponseCodes: [204])
-//        .tryMap({ response in
-//            // print(String(decoding: response.data!, as: UTF8.self))
-//            switch response.result {
-//            case let .success(result):
-//                return result
-//            case let .failure(error):
-//                //   print(String(decoding: response.data!,
-//                //               as: UTF8.self))
-//                //  print(response.data)
-//                print("-----------base-----------\(error)")
-//                throw error
-//            }
-//        })
-//        .mapError({ [weak self] error in
-//            guard let self = self else { return .generic }
-//            return self.handler(error: error) ?? .generic
-//        })
-//        .eraseToAnyPublisher()
-//    }
+    //    func requestPublisher<T: Decodable>(relativePath: String?,
+    //                                        method: HTTPMethod = .get,
+    //                                        parameters: Parameters? = nil,
+    //                                        urlEncoding: ParameterEncoding = JSONEncoding.default,
+    //                                        type: T.Type = T.self,
+    //                                        base: URL? = URL(string: Base.mock),
+    //                                        customHeaders: HTTPHeaders? = nil) -> AnyPublisher<T, BaseError> {
+    //
+    //        guard let url = base, let path = relativePath else {
+    //            return Fail(error: .failedURL).eraseToAnyPublisher()
+    //        }
+    //
+    //        guard let urlAbsolute = url.appendingPathComponent(path).absoluteString.removingPercentEncoding else {
+    //            return Fail(error: .noURl).eraseToAnyPublisher()
+    //        }
+    //
+    //        var headers = HTTPHeaders()
+    //        if !((UserDefaults.standard.string(forKey: Preferences.token)?.isEmpty) == nil) {
+    //            guard let token = UserDefaults.standard.string(forKey: Preferences.token) else {
+    //                return Fail(error: .noToken).eraseToAnyPublisher()
+    //            }
+    //            headers.add(name: "Authorization",
+    //                        value: token)
+    //        }
+    //
+    //        return sesionManager.request(urlAbsolute,
+    //                                     method: method,
+    //                                     parameters: parameters,
+    //                                     encoding: urlEncoding,
+    //                                     headers: headers)
+    //        .validate()
+    //#if DEBUG
+    //        .cURLDescription(on: .main, calling: { _ in })
+    //#endif
+    //        .publishDecodable(type: T.self, emptyResponseCodes: [204])
+    //        .tryMap({ response in
+    //            // print(String(decoding: response.data!, as: UTF8.self))
+    //            switch response.result {
+    //            case let .success(result):
+    //                return result
+    //            case let .failure(error):
+    //                //   print(String(decoding: response.data!,
+    //                //               as: UTF8.self))
+    //                //  print(response.data)
+    //                print("-----------base-----------\(error)")
+    //                throw error
+    //            }
+    //        })
+    //        .mapError({ [weak self] error in
+    //            guard let self = self else { return .generic }
+    //            return self.handler(error: error) ?? .generic
+    //        })
+    //        .eraseToAnyPublisher()
+    //    }
     
     func requestPublisher<T: Codable>(url: URL,
                                       method: HTTPMethods = .get,
@@ -122,8 +122,35 @@ class BaseAPIClient {
             .eraseToAnyPublisher()
     }
     
+    func fetchCodable<T: Codable>(url: URL,
+                                 method: HTTPMethods = .get,
+                                 type: T.Type) async throws -> T {
+        
+        guard let token = getToken() else {
+            throw BaseError.noToken
+        }
+        
+        let request = URLRequest.get(url: url, token: token)
+        
+        let (data,response) = try await session.data(for: request)
+        
+        guard let response = response as? HTTPURLResponse else {
+            throw BaseError.noURl
+        }
+        if response.statusCode == 200 {
+            do {
+                return try JSONDecoder().decode(T.self, from: data)
+            } catch {
+                throw BaseError.noCodable
+            }
+        } else {
+            throw BaseError.status(response.statusCode)
+        }
+    }
+    
+    
     func requestPostPublisher<T: Codable, U:Codable>(url: URL,
-                                          data: T) -> AnyPublisher<U, BaseError> {
+                                                     data: T) -> AnyPublisher<U, BaseError> {
         guard let token = getToken() else {
             return Fail(error: .noToken).eraseToAnyPublisher()
         }
@@ -141,13 +168,36 @@ class BaseAPIClient {
             .eraseToAnyPublisher()
     }
     
+    func postCodable<T: Codable, U:Codable>(url: URL,
+                                            data: T) async throws -> U {
+        guard let token = getToken() else {
+            throw BaseError.noToken
+        }
+        
+        let request = URLRequest.post(url: url, data: data,token: token)
+        let (data,response) = try await session.data(for: request)
+        
+        guard let response = response as? HTTPURLResponse else {
+            throw BaseError.noURl
+        }
+        if response.statusCode == 200 {
+            do {
+                return try JSONDecoder().decode(U.self, from: data)
+            } catch {
+                throw BaseError.noCodable
+            }
+        } else {
+            throw BaseError.status(response.statusCode)
+        }
+    }
+    
     // MARK: - Private Method
     private func startListenerReachability() {
         let monitor = NetworkMonitor()
         self.isReachable = monitor.isActive
-//        net?.startListening(onUpdatePerforming: { _ in
-//            self.isReachable = net?.isReachable ?? false
-//        })
+        //        net?.startListening(onUpdatePerforming: { _ in
+        //            self.isReachable = net?.isReachable ?? false
+        //        })
     }
     //FIXME: Este da error
     private func getToken() -> String? {
@@ -159,7 +209,7 @@ class BaseAPIClient {
             }
             return token
         }
-       // return nil
+        // return nil
         return "Mirar este token"
     }
 }

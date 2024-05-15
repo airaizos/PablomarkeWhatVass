@@ -19,7 +19,7 @@ enum EndpointsUsers {
     static let logOut: String = "3c35da26-67f5-468e-9df5-841491b7312a" //"users/logout" //logoutResponse
     static let online: String = "0e2b6d17-e83c-4535-8657-949816c60e54" //"users/online/"
     static let register: String = "26877e6c-68c4-4b1c-a051-46bbddea8f6d"//"users/register" //createAndRegisterProfile
-    static let biometric: String = "62e2639a-576b-4a5b-963a-53d35674bf67" //"users/biometric"
+    static let biometric: String = "f380a68e-676f-4c8f-8d7a-479b9db32ee2" //"users/biometric" //
     static let users: String = "4f81b431-e058-438d-ad56-da33b70828fe" //"users" //getContacts
     
     static let urlRegister = Base.baseURL.appending(path: register)
@@ -41,7 +41,7 @@ enum EndpointsChats {
 
 enum EndpointsMessages {
     static let view: String = "e8e28d23-31ba-4328-98ae-b9b7faf7753f" //"messages/view" //messages
-    static let chat: String = "0b9da98f-ebec-446a-8231-307b236f3bcf"//"messages/list/" //chatlist
+    static let chat: String = "9e80d0ca-a901-48bf-a6b2-3d88aaf6fcdb"//"messages/list/" //getChats
     static let newMessage: String = "3eb0304d-b3ce-4619-8c8f-fe786be3a2fe" //"messages/new" //response
     
     static let urlView = Base.baseURL.appending(path: view)

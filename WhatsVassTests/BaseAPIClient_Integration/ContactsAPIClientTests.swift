@@ -57,7 +57,7 @@ final class ContactsAPIClientTests: XCTestCase {
                 }
             } receiveValue: { response in
                 XCTAssertTrue(response.success)
-                XCTAssertEqual(response.chat.source, "source_id")
+                XCTAssertEqual(response.chat.source, "Mock Source")
             }
             .store(in: &subscribers)
         

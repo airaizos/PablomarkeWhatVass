@@ -30,7 +30,7 @@ final class SettingsAPIClientTests: XCTestCase {
             .sink { completion in
                 switchCompletion(completion, expectation)
             } receiveValue: { response in
-                XCTAssertEqual(response.message,"logout success")
+                XCTAssertEqual(response.message,"Mock Message")
             }
             .store(in: &subscribers)
         
