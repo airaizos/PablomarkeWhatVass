@@ -7,7 +7,7 @@
 
 import UIKit
 import UserNotifications
-import IQKeyboardManagerSwift
+//import IQKeyboardManagerSwift
 
 typealias NotificationPresentation = (UNNotificationPresentationOptions) -> Void
 @main
@@ -16,12 +16,12 @@ final class AppDelegate: UIResponder,
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.toolbarConfiguration.previousNextDisplayMode = .alwaysHide
-        IQKeyboardManager.shared.resignOnTouchOutside = true
-        IQKeyboardManager.shared.enableAutoToolbar = false
-        IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 80
+//        IQKeyboardManager.shared.enable = true
+//        IQKeyboardManager.shared.toolbarConfiguration.previousNextDisplayMode = .alwaysHide
+//        IQKeyboardManager.shared.resignOnTouchOutside = true
+//        IQKeyboardManager.shared.enableAutoToolbar = false
+//        IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
+//        IQKeyboardManager.shared.keyboardDistanceFromTextField = 80
 
         // MARK: - Firebase and notifications -
         UNUserNotificationCenter.current().delegate = self

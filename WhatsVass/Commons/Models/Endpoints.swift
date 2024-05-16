@@ -31,7 +31,7 @@ enum EndpointsUsers {
 //22cf1f79-ee53-4aa6-9962-da8103e3c592
 enum EndpointsChats {
     static let chats: String = "3eb0304d-b3ce-4619-8c8f-fe786be3a2fe" //"chats" //Response
-    static let chatsView: String = "db0065d0-ee83-4514-b2a4-b30ea1723071" //"chats/view" //ChatList
+    static let chatsView: String = "7c7606dc-591a-4a2b-8314-646a9b2e1e33" //"chats/view" //ChatList
     static let createChat: String = "3e6a389d-a3d6-481d-a0fd-2f2772e60b03" // "chats" //creteChat
 
     static let urlChats: URL = Base.baseURL.appending(path: chatsView)
@@ -41,7 +41,7 @@ enum EndpointsChats {
 
 enum EndpointsMessages {
     static let view: String = "e8e28d23-31ba-4328-98ae-b9b7faf7753f" //"messages/view" //messages
-    static let chat: String = "9e80d0ca-a901-48bf-a6b2-3d88aaf6fcdb"//"messages/list/" //getChats
+    static let chat: String = "b043e2cc-71d5-4f2f-b817-586d56143175"//"messages/list/" //getChats
     static let newMessage: String = "3eb0304d-b3ce-4619-8c8f-fe786be3a2fe" //"messages/new" //response
     
     static let urlView = Base.baseURL.appending(path: view)

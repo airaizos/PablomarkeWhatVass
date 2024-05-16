@@ -7,7 +7,7 @@
 
 import UIKit
 import SwiftUI
-import IQKeyboardManagerSwift
+//import IQKeyboardManagerSwift
 
 final class ChatViewController: UIHostingController<ChatView> {
     private let viewModel: ChatViewModel
@@ -24,13 +24,4 @@ final class ChatViewController: UIHostingController<ChatView> {
     }
 
     // MARK: - Lifecycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        IQKeyboardManager.shared.enable = false
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        IQKeyboardManager.shared.enable = true
-    }
 }

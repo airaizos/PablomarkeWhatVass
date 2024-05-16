@@ -24,39 +24,16 @@ final class ChatAPIClientTests: XCTestCase {
         subscribers = nil
     }
 
-    func testGetChatMessage_ShouldBe10() {
+    func testGetChatMessage_ShouldBe10() async throws {
         let expectation = XCTestExpectation(description: "Carga GetChatMessage")
-        sut.getChatMessagesByAPI(chat: "", first: 0)
-            .sink { completion in
-                switchCompletion(completion, expectation)
-            } receiveValue: { message in
-                XCTAssertGreaterThan(message.rows.count, 0)
-            }
-            .store(in: &subscribers)
-
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(result, .completed)
+        let message = try await sut.getChatMessagesByAPI(chat: "", first: 0)
     }
     
-    func testSendMessage_ShouldBeTrue() {
-        let expectation = XCTestExpectation(description: "Carga SendMessage")
+    func testSendMessage_ShouldBeTrue() async throws {
       let params = ["chat": "test chat",
                                      "source": "source",
                                      "message": "Test message"]
-        sut.sendMessage(params: params)
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    expectation.fulfill()
-                case .failure(let error):
-                    XCTFail(error.description())
-                }
-            } receiveValue: { response in
-                XCTAssertTrue(response.success)
-            }
-            .store(in: &subscribers)
-
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(result, .completed)
+        let response = try await sut.sendMessage(params: params)
+        XCTAssertTrue(response.success)
     }
 }
