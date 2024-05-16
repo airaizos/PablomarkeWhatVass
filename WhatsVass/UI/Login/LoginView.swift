@@ -28,6 +28,7 @@ struct LoginView: View {
             LogoVassView()
             Spacer()
             VStack(spacing: 30) {
+                //Mover al viewModel
                 VassTextField(text: userText) {
                     TextField(LocalizedStringKey("User"), text: $userText)
                         .keyboardType(.alphabet)
@@ -58,7 +59,7 @@ struct LoginView: View {
             
             .font(.title3)
             .textFieldStyle(.roundedBorder)
-          
+            
             LabeledContent {
                 VassToggle(isOn: $remember,size: 50) {
                     delegate?.rememberUserAndPassword(remember)

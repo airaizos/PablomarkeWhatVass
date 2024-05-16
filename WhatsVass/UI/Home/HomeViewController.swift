@@ -43,6 +43,8 @@ final class HomeViewController: UIHostingController<HomeView> {
                 self?.navigateToSettings()
             }
             .store(in: &cancellables)
+        
+       
     }
 
     @available(*, unavailable)
@@ -62,6 +64,8 @@ final class HomeViewController: UIHostingController<HomeView> {
         navigationController?.setNavigationBarHidden(false,
                                                      animated: animated)
     }
+    
+    
 }
 
 // MARK: - Navigation
@@ -81,4 +85,6 @@ extension HomeViewController {
     func navigateToSettings() {
         SettingsWireframe().push(navigation: navigationController)
     }
+    
+   
 }

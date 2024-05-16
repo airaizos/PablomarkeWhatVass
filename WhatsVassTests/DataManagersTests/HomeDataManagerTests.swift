@@ -32,7 +32,7 @@ final class HomeDataManagerTests: XCTestCase {
             .sink(receiveCompletion: { completion in
                 switchCompletion(completion, expectation)
             }, receiveValue: { response in
-                XCTAssertEqual(response.count, 3)
+                XCTAssertEqual(response.count, 4)
                 let first = try! XCTUnwrap(response.first)
                 XCTAssertEqual(first.sourcenick, "Mock Nick")
             })
