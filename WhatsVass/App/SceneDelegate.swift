@@ -5,12 +5,12 @@
 //  Created by Pablo Marquez Marin on 5/3/24.
 //
 
-import UIKit
+import SwiftUI
 import Combine
 
-final class SceneDelegate: UIResponder,
-                     UIWindowSceneDelegate {
-
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    
+    @AppStorage(Preferences.themes.rawValue) var isDarkThemeEnabled = false
     var window: UIWindow?
     var apiClient = BaseAPIClient()
     var cancellables: Set<AnyCancellable> = []
@@ -24,6 +24,7 @@ final class SceneDelegate: UIResponder,
         let home = SplashWireframe().viewController
         let navigationController = UINavigationController(rootViewController: home)
         window.rootViewController = navigationController
+        window.overrideUserInterfaceStyle = getTheme() ? .dark : .light
         window.makeKeyAndVisible()
         self.window = window
     }
@@ -45,6 +46,10 @@ final class SceneDelegate: UIResponder,
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         disconnectedNow(online: false)
+    }
+    
+    func getTheme() -> Bool {
+        isDarkThemeEnabled
     }
 }
 

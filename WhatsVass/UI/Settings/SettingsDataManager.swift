@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import Combine
 
 protocol SettingsDataManagerProtocol {
-    func logOut() -> AnyPublisher <LogOutResponse, BaseError>
+    @discardableResult
+    func logout() async throws -> LogOutResponse
 }
 
 final class SettingsDataManager: SettingsDataManagerProtocol {
@@ -21,15 +21,8 @@ final class SettingsDataManager: SettingsDataManagerProtocol {
         self.apiClient = apiClient
     }
 
-    // MARK: - Public Methods
-    func logOut() -> AnyPublisher <LogOutResponse, BaseError> {
-        apiClient.logout()
-            .tryMap { response in
-                return response
-            }
-            .mapError { error in
-                return error as? BaseError ?? .generic
-            }
-            .eraseToAnyPublisher()
+    @discardableResult
+    func logout() async throws -> LogOutResponse {
+        try await apiClient.logout()
     }
 }

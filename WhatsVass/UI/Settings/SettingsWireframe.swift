@@ -12,11 +12,11 @@ final class SettingsWireframe {
     var viewController: SettingsViewController {
         // Generating module components
         let secureDataProvider: KeyChainData = KeyChainData()
-        let viewController: SettingsViewController = SettingsViewController()
+     
         let dataManager: SettingsDataManager = createDataManager(apiClient: apiClient)
         let viewModel: SettingsViewModel = createViewModel(with: dataManager,
                                                            secureDataProvider: secureDataProvider)
-        viewController.set(viewModel: viewModel)
+        let viewController: SettingsViewController = SettingsViewController(viewModel: viewModel)
         return viewController
     }
 

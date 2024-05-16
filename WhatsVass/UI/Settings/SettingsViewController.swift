@@ -6,66 +6,28 @@
 //
 
 import SwiftUI
-import Combine
 
-final class SettingsViewController: BaseViewController, SettingsDelegate {
-
-    // MARK: - Properties
-    private var viewModel: SettingsViewModel?
-    var cancellables: Set<AnyCancellable> = []
+final class SettingsViewController: UIHostingController<SettingsView> {
     
-    // MARK: - Object lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = false
-        prepareAndConfigView(titleForView: "Settings")
-        responseViewModel()
-        
-        let settingsView = SettingsView(delegate: self)
-        let hostingController = UIHostingController(rootView:settingsView)
-        setHostingControllerView(view, hostingController: hostingController)
-    }
+    private var viewModel: SettingsViewModel
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.isHidden = true
-    }
-    
-    // MARK: - Public methods
-    func set(viewModel: SettingsViewModel) {
+    init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
+        super.init(rootView: SettingsView(viewModel: viewModel))
+        
+        NotificationCenter.default.addObserver(forName: .logout, object: nil, queue: .main) { [weak self] _ in
+            self?.navigateToLoginIfDisconnect()
+        }
     }
     
-    // MARK: Delegate
-    func logoutButton() {
-        viewModel?.logOut()
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    
-    func isBiometricsActive(_ isOn: Bool) {
-        viewModel?.biometricsIsOn(isOn)
-    }
-    
-    func isNotificationsActive(_ isOn: Bool) {
-        viewModel?.notificationIsOn(isOn)
-    }
-    
-    func isDarkThemeActive(_ isOn: Bool) {
-        viewModel?.themesIsOn(isOn)
-    }
-    
-}
-
-// MARK: - Private extension for metohds -
-private extension SettingsViewController {
-    func responseViewModel() {
-        viewModel?.logOutSuccessSubject.sink(receiveValue: { _ in
-            self.navigateToLoginIfDisconnect()
-        })
-        .store(in: &cancellables)
-    }
-    
-    // MARK: - Navigation
-    func navigateToLoginIfDisconnect() {
+    private func navigateToLoginIfDisconnect() {
         LoginWireframe().push(navigation: navigationController)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .logout, object: nil)
     }
 }

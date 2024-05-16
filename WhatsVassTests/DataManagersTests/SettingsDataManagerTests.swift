@@ -26,17 +26,8 @@ final class SettingsDataManagerTests: XCTestCase {
         subscribers = nil
     }
 
-    func testLogOut_ShouldBe() {
-        let expectation = XCTestExpectation()
-        sut.logOut()
-            .sink { completion in
-                switchCompletion(completion, expectation)
-            } receiveValue: { response in
-                XCTAssertEqual(response.message, "Mock Message")
-            }
-            .store(in: &subscribers)
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(result, .completed)
+    func testLogOut_ShouldBe() async throws {
+        let response = try await sut.logout()
+        XCTAssertEqual(response.message, "Mock Message")
     }
 }

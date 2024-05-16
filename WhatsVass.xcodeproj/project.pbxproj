@@ -57,6 +57,8 @@
 		3AC0E2B72BF62A5700D86E85 /* NotificatorCenterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0E2B62BF62A5700D86E85 /* NotificatorCenterExtensions.swift */; };
 		3AC0E2B92BF638FF00D86E85 /* ProfileDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0E2B82BF638FF00D86E85 /* ProfileDataManagerMock.swift */; };
 		3AC0E2BB2BF64EA500D86E85 /* PreviewsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0E2BA2BF64EA500D86E85 /* PreviewsExtensions.swift */; };
+		3AC0E2BD2BF672BA00D86E85 /* MockPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0E2BC2BF672BA00D86E85 /* MockPersistence.swift */; };
+		3AC0E2C12BF6770C00D86E85 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0E2C02BF6770C00D86E85 /* KeyChain.swift */; };
 		3AFA9E5D2BF3B067000EC67F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9E5C2BF3B067000EC67F /* ProfileView.swift */; };
 		3AFA9E602BF3C121000EC67F /* VassTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9E5F2BF3C121000EC67F /* VassTextField.swift */; };
 		3AFA9E622BF3E1A9000EC67F /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9E612BF3E1A9000EC67F /* PasswordValidator.swift */; };
@@ -100,7 +102,6 @@
 		838CCE902B9A16EF00D92B4C /* ProfileAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838CCE8F2B9A16EF00D92B4C /* ProfileAPIClient.swift */; };
 		838CCE922B9A171300D92B4C /* ProfileWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838CCE912B9A171300D92B4C /* ProfileWireframe.swift */; };
 		8396D2A82BA301820006A4A0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396D2A62BA301820006A4A0 /* SettingsViewController.swift */; };
-		8396D2A92BA301820006A4A0 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8396D2A72BA301820006A4A0 /* SettingsViewController.xib */; };
 		8396D2AB2BA3019E0006A4A0 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396D2AA2BA3019E0006A4A0 /* SettingsViewModel.swift */; };
 		8396D2AD2BA301B50006A4A0 /* SettingsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396D2AC2BA301B50006A4A0 /* SettingsDataManager.swift */; };
 		8396D2AF2BA301CA0006A4A0 /* SettingsAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396D2AE2BA301CA0006A4A0 /* SettingsAPIClient.swift */; };
@@ -126,7 +127,6 @@
 		83EF8EBE2BB2F707001F5A28 /* ImageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF8EBD2BB2F707001F5A28 /* ImageProfileView.swift */; };
 		B3090FA32BAC3CC900007621 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3090FA22BAC3CC900007621 /* ChatViewController.swift */; };
 		B346CFBB2BB9DAA0003C7CC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B346CFBA2BB9DAA0003C7CC0 /* GoogleService-Info.plist */; };
-		B346CFBE2BB9F5B4003C7CC0 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B346CFBD2BB9F5B4003C7CC0 /* IQKeyboardManagerSwift */; };
 		B37D7CA22BB0E8EA0080B152 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B37D7CA12BB0E8EA0080B152 /* KeychainSwift */; };
 		B3810C822B9B075200C30D63 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3810C812B9B075200C30D63 /* HomeView.swift */; };
 		B3810C862B9B081900C30D63 /* HomeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3810C852B9B081900C30D63 /* HomeDataManager.swift */; };
@@ -206,6 +206,8 @@
 		3AC0E2B62BF62A5700D86E85 /* NotificatorCenterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificatorCenterExtensions.swift; sourceTree = "<group>"; };
 		3AC0E2B82BF638FF00D86E85 /* ProfileDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManagerMock.swift; sourceTree = "<group>"; };
 		3AC0E2BA2BF64EA500D86E85 /* PreviewsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewsExtensions.swift; sourceTree = "<group>"; };
+		3AC0E2BC2BF672BA00D86E85 /* MockPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPersistence.swift; sourceTree = "<group>"; };
+		3AC0E2C02BF6770C00D86E85 /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		3AFA9E5C2BF3B067000EC67F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3AFA9E5F2BF3C121000EC67F /* VassTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VassTextField.swift; sourceTree = "<group>"; };
 		3AFA9E612BF3E1A9000EC67F /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
@@ -252,7 +254,6 @@
 		838CCE8F2B9A16EF00D92B4C /* ProfileAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPIClient.swift; sourceTree = "<group>"; };
 		838CCE912B9A171300D92B4C /* ProfileWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWireframe.swift; sourceTree = "<group>"; };
 		8396D2A62BA301820006A4A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		8396D2A72BA301820006A4A0 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		8396D2AA2BA3019E0006A4A0 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		8396D2AC2BA301B50006A4A0 /* SettingsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataManager.swift; sourceTree = "<group>"; };
 		8396D2AE2BA301CA0006A4A0 /* SettingsAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAPIClient.swift; sourceTree = "<group>"; };
@@ -298,7 +299,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B346CFBE2BB9F5B4003C7CC0 /* IQKeyboardManagerSwift in Frameworks */,
 				B37D7CA22BB0E8EA0080B152 /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,6 +394,7 @@
 				3A370A622BF4F9630045128F /* ContactsDataManagerMock.swift */,
 				3AC0E2B82BF638FF00D86E85 /* ProfileDataManagerMock.swift */,
 				3AC0E2BA2BF64EA500D86E85 /* PreviewsExtensions.swift */,
+				3AC0E2BC2BF672BA00D86E85 /* MockPersistence.swift */,
 			);
 			path = PrewViewContent;
 			sourceTree = "<group>";
@@ -439,6 +440,7 @@
 			children = (
 				83D121D92BA8A52D00D607BF /* Biometric */,
 				8313E3632BA97591001FA804 /* KeyChainDataProvider.swift */,
+				3AC0E2C02BF6770C00D86E85 /* KeyChain.swift */,
 			);
 			path = Secure;
 			sourceTree = "<group>";
@@ -660,13 +662,12 @@
 			isa = PBXGroup;
 			children = (
 				3AFD14E82BED4CCB00C86030 /* Components */,
-				8396D2A72BA301820006A4A0 /* SettingsViewController.xib */,
+				3AFD14E22BED3EB400C86030 /* SettingsView.swift */,
 				8396D2A62BA301820006A4A0 /* SettingsViewController.swift */,
 				8396D2AA2BA3019E0006A4A0 /* SettingsViewModel.swift */,
 				8396D2AC2BA301B50006A4A0 /* SettingsDataManager.swift */,
 				8396D2AE2BA301CA0006A4A0 /* SettingsAPIClient.swift */,
 				8396D2B02BA301E60006A4A0 /* SettingsWireframe.swift */,
-				3AFD14E22BED3EB400C86030 /* SettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -747,7 +748,6 @@
 			name = WhatsVass;
 			packageProductDependencies = (
 				B37D7CA12BB0E8EA0080B152 /* KeychainSwift */,
-				B346CFBD2BB9F5B4003C7CC0 /* IQKeyboardManagerSwift */,
 			);
 			productName = WhatsVass;
 			productReference = 833889FA2B976FC9006F122D /* WhatsVass.app */;
@@ -802,7 +802,6 @@
 			mainGroup = 833889F12B976FC9006F122D;
 			packageReferences = (
 				B37D7CA02BB0E8EA0080B152 /* XCRemoteSwiftPackageReference "keychain-swift" */,
-				B346CFBC2BB9F5B4003C7CC0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 833889FB2B976FC9006F122D /* Products */;
 			projectDirPath = "";
@@ -832,7 +831,6 @@
 				3A68069B2BEC041200EBD93E /* getContacts.json in Resources */,
 				3A68069F2BEC041200EBD93E /* logoutResponse.json in Resources */,
 				3A68069A2BEC041200EBD93E /* getChats.json in Resources */,
-				8396D2A92BA301820006A4A0 /* SettingsViewController.xib in Resources */,
 				3A68069E2BEC041200EBD93E /* createChat.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -914,6 +912,7 @@
 				3AFD14E32BED3EB400C86030 /* SettingsView.swift in Sources */,
 				838CCE8E2B9A16D900D92B4C /* ProfileDataManager.swift in Sources */,
 				3AFA9E602BF3C121000EC67F /* VassTextField.swift in Sources */,
+				3AC0E2C12BF6770C00D86E85 /* KeyChain.swift in Sources */,
 				8396D2B12BA301E60006A4A0 /* SettingsWireframe.swift in Sources */,
 				3AFA9E652BF3EF3A000EC67F /* UIViewControllerExtensions.swift in Sources */,
 				3AFD14DF2BED250700C86030 /* SplashView.swift in Sources */,
@@ -946,6 +945,7 @@
 				838CCE862B9A114A00D92B4C /* Endpoints.swift in Sources */,
 				3A370A652BF529500045128F /* LocalPersistence.swift in Sources */,
 				83C2526B2B98643A004455A6 /* SplashViewController.swift in Sources */,
+				3AC0E2BD2BF672BA00D86E85 /* MockPersistence.swift in Sources */,
 				3AC0E2B92BF638FF00D86E85 /* ProfileDataManagerMock.swift in Sources */,
 				B3810CD22BA3129400C30D63 /* ContactsWireframe.swift in Sources */,
 				B3810C822B9B075200C30D63 /* HomeView.swift in Sources */,
@@ -1238,14 +1238,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B346CFBC2BB9F5B4003C7CC0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.2;
-			};
-		};
 		B37D7CA02BB0E8EA0080B152 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
@@ -1257,11 +1249,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B346CFBD2BB9F5B4003C7CC0 /* IQKeyboardManagerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B346CFBC2BB9F5B4003C7CC0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
-			productName = IQKeyboardManagerSwift;
-		};
 		B37D7CA12BB0E8EA0080B152 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B37D7CA02BB0E8EA0080B152 /* XCRemoteSwiftPackageReference "keychain-swift" */;

@@ -8,25 +8,26 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State var isNotificationsOn = false
-    @State var isDarkThemeOn = false
-    @State var isBiometricOn = false
-    var delegate: SettingsDelegate?
+    @ObservedObject var viewModel: SettingsViewModel
+    @AppStorage(Preferences.notifications.rawValue) var isNotificationsOn = false
+    @AppStorage(Preferences.themes.rawValue) var isDarkThemeOn = false
+    @AppStorage(Preferences.biometrics.rawValue) var isBiometricOn = false
+    
     var body: some View {
         VStack {
             ToggleRow(isOn: $isNotificationsOn, title: "Notifications") {
-                delegate?.isNotificationsActive(isNotificationsOn)
+                viewModel.enableNotification(isNotificationsOn)
             }
             
             ToggleRow(isOn: $isDarkThemeOn, title: "Themes") {
-                delegate?.isDarkThemeActive(isDarkThemeOn)
+                viewModel.enableDarkTheme(isDarkThemeOn)
             }
             ToggleRow(isOn: $isBiometricOn, title: "Biometrics") {
-                delegate?.isBiometricsActive(isBiometricOn)
+                viewModel.enabledBiometrics(isBiometricOn)
             }
             Spacer()
             VassButton(title: "Logout") {
-                delegate?.logoutButton()
+                viewModel.logout()
             }
         }
         .padding()
@@ -36,7 +37,7 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(viewModel: .preview)
 }
 
 protocol SettingsDelegate {

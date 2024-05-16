@@ -23,20 +23,10 @@ final class SettingsAPIClientTests: XCTestCase {
         subscribers = nil
     }
     
-    func testLogout() {
-        let expectation = XCTestExpectation(description: "Carga Logout")
+    func testLogout() async throws {
         
-        sut.logout()
-            .sink { completion in
-                switchCompletion(completion, expectation)
-            } receiveValue: { response in
-                XCTAssertEqual(response.message,"Mock Message")
-            }
-            .store(in: &subscribers)
-        
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(result, .completed)
+        let response = try await sut.logout()
+        XCTAssertEqual(response.message,"Mock Message")
     }
     
 }

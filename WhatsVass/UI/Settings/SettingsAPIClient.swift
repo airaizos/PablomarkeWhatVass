@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class SettingsAPIClient: BaseAPIClient {
-    func logout() -> AnyPublisher <LogOutResponse, BaseError> {
-        requestPublisher(url: EndpointsUsers.urlLogout, type: LogOutResponse.self)
+    func logout() async throws -> LogOutResponse {
+        try await fetchCodable(url: EndpointsUsers.urlLogout, type: LogOutResponse.self)
     }
 }

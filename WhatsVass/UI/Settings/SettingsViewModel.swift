@@ -5,7 +5,7 @@
 //  Created by Pablo Marquez Marin on 14/3/24.
 //
 
-import Combine
+//import Combine
 import UserNotifications
 import UIKit
 
@@ -13,65 +13,67 @@ final class SettingsViewModel: ObservableObject {
     // MARK: - Properties -
     private var dataManager: SettingsDataManagerProtocol
     private var secure: KeychainProvider
-    private var persistence: LocalPersistence
-    @Published var notifications: Bool = LocalPersistence.shared.getBool(forKey: .notifications)
-    @Published var themes: Bool = LocalPersistence.shared.getBool(forKey: Preferences.themes)
-    @Published var biometrics: Bool = LocalPersistence.shared.getBool(forKey: Preferences.biometrics)
-    let logOutSuccessSubject = PassthroughSubject<Void, Never>()
-    var cancellables: Set<AnyCancellable> = []
+    private var persistence: Persistence
+    private var notificationCenter: NotificationCenter
+    private var userNotifications: UNUserNotificationCenter
+    private var application: UIApplication
+    
+    @Published var showError = false
+    @Published var errorMessage = ""
+    
 
     // MARK: - Init -
-    init(dataManager: SettingsDataManagerProtocol = SettingsDataManager(), secure: KeychainProvider = KeyChainData(), persistence: LocalPersistence = .shared) {
+    init(dataManager: SettingsDataManagerProtocol = SettingsDataManager(), secure: KeychainProvider = KeyChainData(), persistence: Persistence = LocalPersistence.shared, notificationCenter: NotificationCenter = .default, userNotifications:  UNUserNotificationCenter = .current(), application: UIApplication = .shared) {
         self.dataManager = dataManager
         self.secure = secure
         self.persistence = persistence
+        self.notificationCenter = notificationCenter
+        self.userNotifications = userNotifications
+        self.application = application
     }
 
     // MARK: Public Methods
-    func logOut() {
-        logOutByAPI()
-        KeyChainData().deleteStringKey(key: KeyChainEnum.user)
-        KeyChainData().deleteStringKey(key: KeyChainEnum.password)
-        persistence.setObject(value: false, forKey: .rememberLogin)
-        if let bundleIdentifier = Bundle.main.bundleIdentifier {
-            persistence.removePersistenceDomain(forName: bundleIdentifier)
+    func logout() {
+        Task {
+            await logOutByAPI()
+            KeyChainData().deleteStringKey(key: KeyChainEnum.user)
+            KeyChainData().deleteStringKey(key: KeyChainEnum.password)
+            persistence.setObject(value: false, forKey: .rememberLogin)
+            if let bundleIdentifier = Bundle.main.bundleIdentifier {
+                persistence.removePersistenceDomain(forName: bundleIdentifier)
+            }
+            notificationCenter.post(name: .logout, object: nil)
         }
-        logOutSuccessSubject.send()
     }
 
-    func notificationIsOn(_ bool: Bool) {
-        persistence.setObject(value: bool, forKey: .notifications)
-        self.activateNotifications(notifications: bool)
+    func enableNotification(_ isEnabled: Bool) {
+        activateNotifications(notifications: isEnabled)
     }
 
-    func themesIsOn(_ bool: Bool) {
-        persistence.setObject(value: bool, forKey: .themes)
-        self.toggleDarkMode(bool)
+    func enableDarkTheme(_ isEnabled: Bool) {
+        self.toggleDarkMode(isEnabled)
     }
 
-    func biometricsIsOn(_ bool: Bool) {
-        persistence.setObject(value: bool, forKey: .biometrics)
+    func enabledBiometrics(_ isEnabled: Bool) {
+        //TODO: Biometrics
     }
 }
 
 private extension SettingsViewModel {
-    func logOutByAPI() {
-        dataManager.logOut()
-            .sink { completion in
-                if case .failure = completion {
-                    
-                }
-            } receiveValue: { offline in
-
-            }.store(in: &cancellables)
+    func logOutByAPI() async {
+        do {
+            try await dataManager.logout()
+        } catch {
+            showErrorMessage(error)
+        }
     }
 
     func activateNotifications(notifications: Bool) {
         if notifications {
-            UNUserNotificationCenter.current().getNotificationSettings { settings in
+            self.userNotifications.getNotificationSettings { settings in
                 if settings.authorizationStatus == .authorized {
                 } else {
-                    UNUserNotificationCenter.current().requestAuthorization(options: [.alert,
+                    self.userNotifications.requestAuthorization(options: [.alert,
                                                                                       .badge]
                     ) { granted, error in
                         granted ? print(granted) : print("\(error?.localizedDescription ?? "")")
@@ -79,13 +81,12 @@ private extension SettingsViewModel {
                 }
             }
         } else {
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            userNotifications.removeAllPendingNotificationRequests()
         }
     }
 
     func toggleDarkMode(_ isEnabled: Bool) {
-        
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+        if let windowScene = application.connectedScenes.first as? UIWindowScene {
             let windows = windowScene.windows
           
             windows.forEach { window in
@@ -93,12 +94,15 @@ private extension SettingsViewModel {
                 
             }
         }
-        
-//        isEnabled ? UIApplication.shared.windows.forEach { window in
-//            window.overrideUserInterfaceStyle = .dark
-//        }
-//        : UIApplication.shared.windows.forEach { window in
-//            window.overrideUserInterfaceStyle = .light
-//        }
+    }
+    
+    //MARK: private methods
+    func showErrorMessage(_ error: Error) {
+        showError.toggle()
+        if let error = error as? PasswordValidator.PasswordError {
+            errorMessage = error.description
+        } else {
+            errorMessage = "There has been a error"
+        }
     }
 }
