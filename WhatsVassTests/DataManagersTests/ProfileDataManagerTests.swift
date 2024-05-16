@@ -28,19 +28,20 @@ final class ProfileDataManagerTests: XCTestCase {
         subscribers = nil
     }
 
-    func testCreateAndRegisterProfile_ShouldBeTrue() {
-        let expection = XCTestExpectation(description: "Carga CreateAnRegisterProfile")
+    func testCreateAndRegisterProfile_ShouldBeTrue() async throws {
+       // let expection = XCTestExpectation(description: "Carga CreateAnRegisterProfile")
         
-        sut.createAndRegisterProfile(params: profileCredentials)
-            .sink { completion in
-                switchCompletion(completion, expection)
-            } receiveValue: { response in
-                XCTAssertTrue(response.success)
-                XCTAssertEqual(response.user.token, "Mock Token")
-            }
-            .store(in: &subscribers)
-        
-        let result = XCTWaiter.wait(for: [expection], timeout: 5)
-        XCTAssertEqual(result, .completed)
+       let response = try await sut.createAndRegisterProfile(params: profileCredentials)
+        XCTAssertTrue(response.success)
+        XCTAssertEqual(response.user.token, "Mock Token")
+//            .sink { completion in
+//                switchCompletion(completion, expection)
+//            } receiveValue: { response in
+//               
+//            }
+//            .store(in: &subscribers)
+//        
+//        let result = XCTWaiter.wait(for: [expection], timeout: 5)
+//        XCTAssertEqual(result, .completed)
     }
 }

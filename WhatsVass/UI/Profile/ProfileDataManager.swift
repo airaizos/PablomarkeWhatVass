@@ -8,7 +8,11 @@
 import Foundation
 import Combine
 
-final class ProfileDataManager {
+protocol ProfileDataManagerProtocol {
+    func createAndRegisterProfile(params: [String: Any]) async throws -> UserResponse
+}
+
+final class ProfileDataManager: ProfileDataManagerProtocol {
     // MARK: - Properties
     private var apiClient: ProfileAPIClient
 
@@ -16,20 +20,9 @@ final class ProfileDataManager {
     init(apiClient: ProfileAPIClient) {
         self.apiClient = apiClient
     }
-    // MARK: - Public Methods
-    func createAndRegisterProfile(params: [String: Any]) -> AnyPublisher<UserResponse, BaseError> {
-        apiClient.createAndRegisterProfileInAPI(params: params)
-            .tryMap { loginResponse in
-                //saveCodableToDocumentsDirectory(loginResponse, fileName: "createAndRegisterProfile.json")
-                return loginResponse
-            }
-            .mapError { error in
-                return error as? BaseError ?? .generic
-            }
-            .eraseToAnyPublisher()
-    }
-    func createAndRegisterProfile(params: [String: Any]) async throws {
-        
+
+    func createAndRegisterProfile(params: [String: Any]) async throws -> UserResponse {
+        try await apiClient.createAndRegisterProfileInAPI(params: params)
     }
     
 }

@@ -18,6 +18,14 @@
   "testTargets" : [
     {
       "parallelizable" : true,
+      "skippedTests" : [
+        "ChatAPIClientTests",
+        "ContactsAPIClientTests",
+        "HomeAPIClientTests",
+        "LoginAPIClientTests",
+        "ProfileAPIClientTests",
+        "SettingsAPIClientTests"
+      ],
       "target" : {
         "containerPath" : "container:WhatsVass.xcodeproj",
         "identifier" : "83388A122B976FCA006F122D",

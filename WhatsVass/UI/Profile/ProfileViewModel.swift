@@ -5,69 +5,134 @@
 //  Created by Pablo Marquez Marin on 7/3/24.
 //
 
-import UIKit
-import Combine
+import SwiftUI
 
-final class ProfileViewModel {
+final class ProfileViewModel: ObservableObject {
+    
     // MARK: - Properties -
-    private var dataManager: ProfileDataManager
+    private var dataManager: ProfileDataManagerProtocol
     private var imageProfile: UIImage?
-    var cancellables: Set<AnyCancellable> = []
-    let navigateToHomeView = PassthroughSubject<Void, Never>()
-    let emptyField = PassthroughSubject<Void, Never>()
-
+    private var passwordValidator: PasswordValidator
+    
+    @Published var showError = false
+    @Published var errorMessage = ""
+    @Published var userText: String = ""
+    @Published var nicknameText: String = ""
+    @Published var passwordText: String = ""
+    @Published var confirmPasswordText: String = ""
+    @Published var profileImage: Image?
+    @Published var isValidPassword: Bool?
+    
     // MARK: - Init -
-    init(dataManager: ProfileDataManager) {
+    init(dataManager: ProfileDataManagerProtocol, passwordValidator: PasswordValidator = .init()) {
         self.dataManager = dataManager
+        self.passwordValidator = passwordValidator
     }
 
-    // MARK: Public Methods
-    func addImage(image: UIImage) {
-        imageProfile = image
+    //MARK: - Public Methods -
+    @discardableResult
+    func isStrongPassword() -> Bool {
+        do {
+            return try passwordValidator.isStrongPassword(passwordText)
+        } catch {
+            showErrorMessage(error)
+        }
+        return false
     }
-
-    func getImage() -> UIImage? {
-        imageProfile
-    }
-
-    func comprobeText(user: String, nick: String, password: String, repeatPassword: String) {
-        if !user.textIsEmpty(),
-            !nick.textIsEmpty(),
-           !password.textIsEmpty(),
-           !repeatPassword.textIsEmpty() && password == repeatPassword {
-            let params = ["login": user,
-                          "password": password,
-                          "nick": nick,
-                          "platform": "ios",
-                          "firebaseToken": "NoTokenNow"]
-            createAndRegister(params: params)
+    
+    @discardableResult
+    func isPasswordConfirmed() -> Bool {
+        if passwordText != confirmPasswordText || confirmPasswordText.isEmpty {
+            errorMessage = "Password do not match"
+            showError.toggle()
+            return false
         } else {
-            emptyField.send()
+            return true
+        }
+    }
+    
+    func errorMessageTapped() {
+        showError.toggle()
+    }
+    
+    func isValidUser() -> Bool {
+        do {
+            return try passwordValidator.isValid(userText)
+        } catch {
+            showErrorMessage(error)
+        }
+        return false
+    }
+    
+    func isValidNickname() -> Bool {
+        do {
+            return try passwordValidator.isValid(nicknameText)
+        } catch {
+            showErrorMessage(error)
+        }
+        return false
+    }
+    
+    
+    
+    func signInTapped() {
+        if isValidUser()
+            && isValidNickname()
+            && isPasswordConfirmed()
+            && isStrongPassword(){
+            createProfile()
         }
     }
 }
 
+//MARK: - Private methods -
 private extension ProfileViewModel {
-    func createAndRegister(params: [String: Any]) {
-        dataManager.createAndRegisterProfile(params: params)
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-
-                if case .failure = completion {
-                  // print Error
-                }
-            } receiveValue: { [weak self] register in
-                UserDefaults.standard.removeObject(forKey: Preferences.token)
-                UserDefaults.standard.set(register.user.token,
-                                          forKey: Preferences.token)
-                UserDefaults.standard.removeObject(forKey: Preferences.id)
-                UserDefaults.standard.set(register.user.id,
-                                          forKey: Preferences.id)
-                self?.navigateToHomeView.send()
-            }.store(in: &cancellables)
+    
+    func showErrorMessage(_ error: Error) {
+        showError.toggle()
+        if let error = error as? PasswordValidator.PasswordError {
+            errorMessage = error.description
+        } else {
+            errorMessage = "There has been a error"
+        }
     }
     
-    func createAndRegister(params: [String: Any]) async throws {
+    func validateTextFields() -> [String:Any]? {
+        if !userText.textIsEmpty(),
+           !nicknameText.textIsEmpty(),
+           !passwordText.textIsEmpty(),
+           !confirmPasswordText.textIsEmpty()
+            && passwordText == confirmPasswordText {
+            return ["login": userText,
+                    "password": passwordText,
+                    "nick": nicknameText,
+                    "platform": "ios",
+                    "firebaseToken": "NoTokenNow"]
+        } else {
+            showError.toggle()
+            errorMessage = "Can't be empty textfields"
+        }
+        return nil
+    }
+    
+    func createProfile() {
+        guard let params = validateTextFields() else { return }
+        Task {
+            do {
+                try await sendRegister(params: params)
+            } catch {
+                showErrorMessage(error)
+            }
+        }
+    }
+    
+    func sendRegister(params: [String: Any]) async throws {
+        let register =  try await dataManager.createAndRegisterProfile(params: params)
+        LocalPersistence.shared.removeObject(forKey: .token)
+        LocalPersistence.shared.setObject(value: register.user.token, forKey: .token)
+        LocalPersistence.shared.removeObject(forKey: .id)
+        LocalPersistence.shared.setObject(value: register.user.id, forKey: .id)
         
+        NotificationCenter.default.post(name: .navigateToHomeView, object: nil)
     }
 }

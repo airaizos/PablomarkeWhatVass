@@ -8,7 +8,15 @@
 import Foundation
 
 struct PasswordValidator {
-           
+        
+    @discardableResult
+    func isValid(_ text: String) throws -> Bool {
+        try verifyIfContainsWhiteSpaces(text)
+        try verifyIfItsTooShort(text)
+        try verifyNotContainsASymbol(text)
+        return true
+    }
+    
     @discardableResult
     func isStrongPassword(_ text: String) throws -> Bool {
         try verifyIfContainsWhiteSpaces(text)
@@ -55,6 +63,10 @@ struct PasswordValidator {
         
     }
     
+    private func verifyNotContainsASymbol(_ text: String) throws {
+        let regexSymbols = try Regex("[^a-zA-Z0-9]")
+        guard !text.contains(regexSymbols) else { throw UserError.symbols }
+    }
     
     enum PasswordError: Error {
         case tooShort, noNumbers, noUppercased, noLowercased, noSymbols, consecutiveCharacters, whiteSpaces
@@ -68,6 +80,18 @@ struct PasswordValidator {
             case .noSymbols: "Incluye al menos 1 símbolo *?-_@%&"
             case .consecutiveCharacters: "No utilices el mismo caracter seguido"
             case .whiteSpaces: "Quita los espacios en blanco"
+            }
+        }
+    }
+    
+    enum UserError: Error {
+        case tooShort, symbols, whiteSpaces
+        
+        var description: String {
+            switch self {
+            case .tooShort: "Demasiado corto"
+            case .symbols: "No debe incluir símbolos"
+            case .whiteSpaces: "No debe incluir espacios en blanco"
             }
         }
     }

@@ -24,25 +24,14 @@ final class ProfileAPIClientTests: XCTestCase {
         subscribers = nil
     }
 
-    func testCreateAndRegisterProfileInAPI_ShouldBe() {
-        let expectation = XCTestExpectation(description: "Carga createAndRegisterProfileInAPI")
+    func testCreateAndRegisterProfileInAPI_ShouldBe() async throws {
         let params = ["login": "usuario",
                       "password": "password",
                       "nick": "nick",
                       "platform": "ios",
                       "firebaseToken": "NoTokenNow"]
-        sut.createAndRegisterProfileInAPI(params: params)
-       
-            .sink { completion in
-                switchCompletion(completion, expectation)
-            } receiveValue: { response in
-                XCTAssertTrue(response.success)
-            }
-            .store(in: &subscribers)
-        
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(result, .completed)
+        let response = try await sut.createAndRegisterProfileInAPI(params: params)
+        XCTAssertTrue(response.success)
     }
    
 

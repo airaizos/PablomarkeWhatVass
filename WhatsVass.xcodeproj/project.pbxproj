@@ -54,6 +54,8 @@
 		3A6806A12BEC041200EBD93E /* createAndRegisterProfile.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6806972BEC041200EBD93E /* createAndRegisterProfile.json */; };
 		3A6806A22BEC041200EBD93E /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6806982BEC041200EBD93E /* response.json */; };
 		3A6806A42BEC08E800EBD93E /* Preview+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6806A32BEC08E800EBD93E /* Preview+Bundle.swift */; };
+		3AC0E2B72BF62A5700D86E85 /* NotificatorCenterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0E2B62BF62A5700D86E85 /* NotificatorCenterExtensions.swift */; };
+		3AC0E2B92BF638FF00D86E85 /* ProfileDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0E2B82BF638FF00D86E85 /* ProfileDataManagerMock.swift */; };
 		3AFA9E5D2BF3B067000EC67F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9E5C2BF3B067000EC67F /* ProfileView.swift */; };
 		3AFA9E602BF3C121000EC67F /* VassTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9E5F2BF3C121000EC67F /* VassTextField.swift */; };
 		3AFA9E622BF3E1A9000EC67F /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9E612BF3E1A9000EC67F /* PasswordValidator.swift */; };
@@ -201,6 +203,8 @@
 		3A6806972BEC041200EBD93E /* createAndRegisterProfile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = createAndRegisterProfile.json; path = WhatsVassTests/Resources/createAndRegisterProfile.json; sourceTree = SOURCE_ROOT; };
 		3A6806982BEC041200EBD93E /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = response.json; path = WhatsVassTests/Resources/response.json; sourceTree = SOURCE_ROOT; };
 		3A6806A32BEC08E800EBD93E /* Preview+Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+Bundle.swift"; sourceTree = "<group>"; };
+		3AC0E2B62BF62A5700D86E85 /* NotificatorCenterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificatorCenterExtensions.swift; sourceTree = "<group>"; };
+		3AC0E2B82BF638FF00D86E85 /* ProfileDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManagerMock.swift; sourceTree = "<group>"; };
 		3AFA9E5C2BF3B067000EC67F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3AFA9E5F2BF3C121000EC67F /* VassTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VassTextField.swift; sourceTree = "<group>"; };
 		3AFA9E612BF3E1A9000EC67F /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
@@ -388,6 +392,7 @@
 				3AFD14E42BED4A4F00C86030 /* SettingsDataManagerMock.swift */,
 				3A0923F32BF2692F00538A1D /* LoginDataManagerMock.swift */,
 				3A370A622BF4F9630045128F /* ContactsDataManagerMock.swift */,
+				3AC0E2B82BF638FF00D86E85 /* ProfileDataManagerMock.swift */,
 			);
 			path = PrewViewContent;
 			sourceTree = "<group>";
@@ -567,6 +572,7 @@
 				3AFA9E642BF3EF3A000EC67F /* UIViewControllerExtensions.swift */,
 				3A370A602BF4E77B0045128F /* UIImageExtension.swift */,
 				3A370A662BF52D070045128F /* PhotosPickerExtension.swift */,
+				3AC0E2B62BF62A5700D86E85 /* NotificatorCenterExtensions.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -928,6 +934,7 @@
 				83388A002B976FC9006F122D /* SceneDelegate.swift in Sources */,
 				B3810CC42B9F1E4500C30D63 /* HomeWireframe.swift in Sources */,
 				3AFD14E12BED3E8200C86030 /* ViewExtensions.swift in Sources */,
+				3AC0E2B72BF62A5700D86E85 /* NotificatorCenterExtensions.swift in Sources */,
 				3A370A632BF4F9630045128F /* ContactsDataManagerMock.swift in Sources */,
 				3A6806A42BEC08E800EBD93E /* Preview+Bundle.swift in Sources */,
 				839896BA2BAC4390001146CE /* AssetsEnum.swift in Sources */,
@@ -940,6 +947,7 @@
 				838CCE862B9A114A00D92B4C /* Endpoints.swift in Sources */,
 				3A370A652BF529500045128F /* LocalPersistence.swift in Sources */,
 				83C2526B2B98643A004455A6 /* SplashViewController.swift in Sources */,
+				3AC0E2B92BF638FF00D86E85 /* ProfileDataManagerMock.swift in Sources */,
 				B3810CD22BA3129400C30D63 /* ContactsWireframe.swift in Sources */,
 				B3810C822B9B075200C30D63 /* HomeView.swift in Sources */,
 				8313E3642BA97591001FA804 /* KeyChainDataProvider.swift in Sources */,

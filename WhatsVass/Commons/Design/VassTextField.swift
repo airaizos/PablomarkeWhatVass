@@ -9,12 +9,10 @@ import SwiftUI
 
     struct VassTextField<Content:View>: View {
         var systemImage: String
-        var isValid: Bool
         @ViewBuilder let content: Content
         
         init(systemImage: String = "person", text: String, @ViewBuilder content: () -> Content) {
             self.systemImage = systemImage
-            self.isValid = text.count > 5
             self.content = content()
         }
         var body: some View {
@@ -27,9 +25,10 @@ import SwiftUI
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(.darkDarkmode,lineWidth: 3)
                     )
-                Image(systemName: isValid ? "checkmark.circle" : "xmark.circle")
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(.white, isValid ? .green : .red)
+                //TODO: Hay que hacerlo dinámico
+//                Image(systemName: isValid ? "checkmark.circle" : "xmark.circle")
+//                        .symbolRenderingMode(.palette)
+//                        .foregroundStyle(.white, isValid ? .green : .red)
             }
             .shadow(color: .black.opacity(0.8), radius: 5, x:2,y:3)
         }

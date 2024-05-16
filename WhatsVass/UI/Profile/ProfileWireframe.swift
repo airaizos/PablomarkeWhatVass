@@ -11,9 +11,10 @@ final class ProfileWireframe {
     // MARK: - Properties
     var viewController: ProfileViewController {
         // Generating module components
-        let viewController = ProfileViewController()
+      
         let dataManager = createDataManager(apiClient: apiClient)
         let viewModel = createViewModel(with: dataManager)
+        let viewController = ProfileViewController(viewModel: viewModel)
         viewController.set(viewModel: viewModel)
         return viewController
     }
@@ -23,11 +24,11 @@ final class ProfileWireframe {
     }
 
     // MARK: - Private methods
-    private func createViewModel(with dataManager: ProfileDataManager) -> ProfileViewModel {
+    private func createViewModel(with dataManager: ProfileDataManagerProtocol) -> ProfileViewModel {
         return ProfileViewModel(dataManager: dataManager)
     }
 
-    private func createDataManager(apiClient: ProfileAPIClient) -> ProfileDataManager {
+    private func createDataManager(apiClient: ProfileAPIClient) -> ProfileDataManagerProtocol {
         let dataManager = ProfileDataManager(apiClient: apiClient)
         return dataManager
     }

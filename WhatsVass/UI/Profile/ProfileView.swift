@@ -15,86 +15,70 @@ extension ProfileView {
 }
 
 struct ProfileView: View {
-    var passwordValidator = PasswordValidator()
-    @State var userText: String = ""
-    @State var nicknameText: String = ""
-    @State var passwordText: String = ""
-    @State var confirmPasswordText: String = ""
-    @State var isValidPassword: Bool?
-    @State var errorMessage: String = ""
-    @State var showError = false
+    @ObservedObject var viewModel: ProfileViewModel
     @FocusState var nameFields: NameFields?
-    var delegate: ProfileViewDelegate?
+    
     var body: some View {
         VStack(spacing:20) {
-            ProfileImageView()
+            ProfileImageView(profileImage: $viewModel.profileImage)
                 .padding()
-            VassTextField(text: userText) {
-                TextField(LocalizedStringKey("User"), text: $userText)
+            VassTextField(text: viewModel.userText) {
+                TextField(LocalizedStringKey("User"), text: $viewModel.userText)
                     .keyboardType(.alphabet)
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
                     .submitLabel(.next)
                     .focused($nameFields, equals: .user)
                     .onSubmit {
-                        nameFields = .nickname
+                        if viewModel.isValidUser() {
+                            nameFields = .nickname
+                        }
                     }
             }
-            VassTextField(systemImage: "sunglasses",text: nicknameText) {
-                TextField(LocalizedStringKey("Nick"), text: $nicknameText)
+          
+            VassTextField(systemImage: "sunglasses",text: viewModel.nicknameText) {
+                TextField(LocalizedStringKey("Nick"), text: $viewModel.nicknameText)
                     .keyboardType(.alphabet)
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
                     .submitLabel(.next)
                     .focused($nameFields, equals: .nickname)
                     .onSubmit {
-                        nameFields = .password
-                    }
-            }
-            VassTextField(systemImage: "key", text: passwordText) {
-                SecureField(LocalizedStringKey("Password"), text: $passwordText)
-                    .focused($nameFields, equals: .password)
-                    .submitLabel(.join)
-                    .onSubmit {
-                        Task {
-                            //TODO: Pasar al viewModel
-                            do {
-                                try passwordValidator.isStrongPassword(passwordText)
-                            } catch let error {
-                                if let passwordError = error as? PasswordValidator.PasswordError {
-                                    errorMessage = passwordError.description
-                                    showError.toggle()
-                                }
-                            }
+                        if viewModel.isValidNickname() {
+                            nameFields = .password
                         }
                     }
             }
-            if isValidPassword == false {
-                Text("*" + errorMessage)
+            VassTextField(systemImage: "key", text: viewModel.passwordText) {
+                SecureField(LocalizedStringKey("Password"), text: $viewModel.passwordText)
+                    .focused($nameFields, equals: .password)
+                    .submitLabel(.join)
+                    .onSubmit {
+                        if viewModel.isStrongPassword() {
+                            nameFields = .confirmPassword
+                        }
+                    }
+            }
+            if viewModel.isValidPassword == false {
+                Text("*" + viewModel.errorMessage)
                     .foregroundStyle(.red)
                     .font(.subheadline)
             }
             
-            VassTextField(systemImage:"key.horizontal", text: confirmPasswordText) {
-                SecureField(LocalizedStringKey("RepeatPassword"), text: $confirmPasswordText)
+            VassTextField(systemImage:"key.horizontal", text: viewModel.confirmPasswordText) {
+                SecureField(LocalizedStringKey("RepeatPassword"), text: $viewModel.confirmPasswordText)
                     .focused($nameFields, equals: .confirmPassword)
                     .submitLabel(.join)
                     .onSubmit {
-                        if passwordText != confirmPasswordText || confirmPasswordText.isEmpty {
-                            errorMessage = "Password do not match"
-                            showError.toggle()
+                        if viewModel.isPasswordConfirmed() {
+                            viewModel.signInTapped()
                         }
                     }
             }
             Spacer()
             VassButton(title: "Sign in") {
-                // validar que el user y el nickname no existan ya
-                
-                //validar que el pasword sea seguro
-                //validar que coincida el password y el confirm
-                delegate?.createProfile(user: userText, nick: nicknameText, password: passwordText, confirmPassword: confirmPasswordText)
+                viewModel.signInTapped()
             }
-            
         }
         .font(.title3)
         .textFieldStyle(.roundedBorder)
@@ -105,23 +89,21 @@ struct ProfileView: View {
             nameFields = .user
         }
         
-        .alert(errorMessage, isPresented: $showError) {
+        .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
             Button("OK") {
-                passwordText = ""
-                nameFields = .password
-                showError.toggle()
+                viewModel.errorMessageTapped()
             }
         }
     }
 }
 
 #Preview {
-    ProfileView(userText: "", nicknameText: "", passwordText: "", confirmPasswordText: "")
+    ProfileView(viewModel: ProfileViewModel(dataManager: ProfileDataManagerMock()))
 }
 
 struct ProfileImageView: View {
     @State var photItem: PhotosPickerItem?
-    @State var profileImage: Image?
+    @Binding var profileImage: Image?
     var body: some View {
         ZStack(alignment:.bottomTrailing) {
             if let profileImage {
@@ -162,22 +144,5 @@ struct ProfileImageView: View {
                 }
             }
         }
-    }
-}
-
-extension PhotosPickerItem {
-    @MainActor
-    func convert() async -> Image {
-        do {
-            if let data = try await self.loadTransferable(type: Data.self) {
-                if let uiimage = UIImage(data: data), let resizedUuimage = uiimage.resizeImage(250) {
-                    return Image(uiImage: resizedUuimage)
-                }
-            }
-        } catch {
-            //no se ha podido cargar la imagen
-            return Image(systemName: "person.crop.circle")
-        }
-        return Image(systemName: "person.crop.circle")
     }
 }

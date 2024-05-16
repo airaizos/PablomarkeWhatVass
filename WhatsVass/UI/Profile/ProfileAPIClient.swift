@@ -10,11 +10,11 @@ import Combine
 //import Alamofire
 
 final class ProfileAPIClient: BaseAPIClient {
-    func createAndRegisterProfileInAPI(params: [String: Any]) -> AnyPublisher <UserResponse, BaseError> {
-       guard let data = encodeRegister(with: params) else {
-            return Fail(error: BaseError.noCodable).eraseToAnyPublisher()
-        }
-        return requestPostPublisher(url: EndpointsUsers.urlRegister, data: data)
+    func createAndRegisterProfileInAPI(params: [String: Any]) async throws -> UserResponse {
+        guard let data = encodeRegister(with: params) else {
+            throw  BaseError.noCodable
+         }
+        return  try await postCodable(url: EndpointsUsers.urlRegister, data: data)
     }
     
     private func encodeRegister(with params: [String: Any]) -> Data? {
@@ -25,5 +25,4 @@ final class ProfileAPIClient: BaseAPIClient {
         guard let data = try? JSONEncoder().encode(newLogin) else { return nil }
         return data
     }
-    
 }

@@ -12,21 +12,30 @@ protocol ProfileViewDelegate {
     func createProfile(user: String, nick: String, password: String, confirmPassword: String)
 }
 
-final class ProfileViewController: BaseViewController,ProfileViewDelegate {
+final class ProfileViewController:UIHostingController<ProfileView> {
 
     // MARK: - Properties
     private var viewModel: ProfileViewModel?
+    
     var cancellables: Set<AnyCancellable> = []
 
+   
+    init(viewModel: ProfileViewModel) {
+        self.viewModel = viewModel
+        super.init(rootView: ProfileView(viewModel: viewModel))
+    }
+    
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: - Object lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepareAndConfigView(titleForView: "Create profile")
-        responseViewModel()
         
-        let profileView = ProfileView(delegate: self)
-        let hostingController = UIHostingController(rootView: profileView)
-        setHostingControllerView(view, hostingController: hostingController)
+        NotificationCenter.default.addObserver(forName: .navigateToHomeView, object: nil, queue: .main) { [weak self] _ in
+            self?.navigateToHome()
+        }
     }
 
     // MARK: - Public methods
@@ -34,28 +43,14 @@ final class ProfileViewController: BaseViewController,ProfileViewDelegate {
         self.viewModel = viewModel
     }
     
-    //MARK: Create Profile
-    
-    func createProfile(user: String, nick: String, password: String, confirmPassword: String) {
-        //TODO: añadir imagen
-        viewModel?.comprobeText(user: user, nick: nick, password: password, repeatPassword: confirmPassword)
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .navigateToHomeView, object: nil)
     }
 }
 
 // MARK: - Private extension for metohds -
 private extension ProfileViewController {
-
-    func responseViewModel() {
-        viewModel?.navigateToHomeView.sink { [weak self] _ in
-            self?.navigateToHome()
-        }.store(in: &cancellables)
-        viewModel?.emptyField.sink(receiveValue: { [weak self]_ in
-            self?.showAlertSimple(title: "EmptyField",
-                                  message: "EmptyFieldText")
-        }).store(in: &cancellables)
-    }
-
-    // MARK: - Navigation
+    
     func navigateToHome() {
             HomeWireframe().push(navigation: navigationController)
     }
