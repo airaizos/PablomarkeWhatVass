@@ -56,6 +56,7 @@
 		3A6806A42BEC08E800EBD93E /* Preview+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6806A32BEC08E800EBD93E /* Preview+Bundle.swift */; };
 		3AC0E2B72BF62A5700D86E85 /* NotificatorCenterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0E2B62BF62A5700D86E85 /* NotificatorCenterExtensions.swift */; };
 		3AC0E2B92BF638FF00D86E85 /* ProfileDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0E2B82BF638FF00D86E85 /* ProfileDataManagerMock.swift */; };
+		3AC0E2BB2BF64EA500D86E85 /* PreviewsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0E2BA2BF64EA500D86E85 /* PreviewsExtensions.swift */; };
 		3AFA9E5D2BF3B067000EC67F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9E5C2BF3B067000EC67F /* ProfileView.swift */; };
 		3AFA9E602BF3C121000EC67F /* VassTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9E5F2BF3C121000EC67F /* VassTextField.swift */; };
 		3AFA9E622BF3E1A9000EC67F /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9E612BF3E1A9000EC67F /* PasswordValidator.swift */; };
@@ -204,6 +205,7 @@
 		3A6806A32BEC08E800EBD93E /* Preview+Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+Bundle.swift"; sourceTree = "<group>"; };
 		3AC0E2B62BF62A5700D86E85 /* NotificatorCenterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificatorCenterExtensions.swift; sourceTree = "<group>"; };
 		3AC0E2B82BF638FF00D86E85 /* ProfileDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManagerMock.swift; sourceTree = "<group>"; };
+		3AC0E2BA2BF64EA500D86E85 /* PreviewsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewsExtensions.swift; sourceTree = "<group>"; };
 		3AFA9E5C2BF3B067000EC67F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3AFA9E5F2BF3C121000EC67F /* VassTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VassTextField.swift; sourceTree = "<group>"; };
 		3AFA9E612BF3E1A9000EC67F /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				3A0923F32BF2692F00538A1D /* LoginDataManagerMock.swift */,
 				3A370A622BF4F9630045128F /* ContactsDataManagerMock.swift */,
 				3AC0E2B82BF638FF00D86E85 /* ProfileDataManagerMock.swift */,
+				3AC0E2BA2BF64EA500D86E85 /* PreviewsExtensions.swift */,
 			);
 			path = PrewViewContent;
 			sourceTree = "<group>";
@@ -946,6 +949,7 @@
 				3AC0E2B92BF638FF00D86E85 /* ProfileDataManagerMock.swift in Sources */,
 				B3810CD22BA3129400C30D63 /* ContactsWireframe.swift in Sources */,
 				B3810C822B9B075200C30D63 /* HomeView.swift in Sources */,
+				3AC0E2BB2BF64EA500D86E85 /* PreviewsExtensions.swift in Sources */,
 				8313E3642BA97591001FA804 /* KeyChainDataProvider.swift in Sources */,
 				3A0923F62BF2728100538A1D /* LoginView.swift in Sources */,
 				839896B82BAC40A4001146CE /* KeyChainEnum.swift in Sources */,

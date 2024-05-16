@@ -31,8 +31,10 @@ struct MessageSenderView: View {
                                }
             if !buttonDisabled {
                 Button {
-                    viewModel.sendNewMessage(message: text)
-                    text = ""
+                    Task {
+                        await viewModel.sendNewMessage(message: text)
+                        text = ""
+                    }
                 } label: {
                     Image(systemName: "paperplane.fill")
                         .font(.title)

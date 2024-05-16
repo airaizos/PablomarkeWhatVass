@@ -1,7 +1,7 @@
 [
   {
     "sourcetoken" : "fgjñdjsfgdfj",
-    "targetavatar" : "",
+    "targetavatar" : "https://api.dicebear.com/8.x/big-ears-neutral/png",
     "source" : "601",
     "targetnick" : "Mock Nick",
     "target" : "234",
@@ -19,13 +19,13 @@
     "chatcreated" : "2024-05-07T06:59:34.928Z",
     "targetonline" : true,
     "target" : "370",
-    "targetavatar" : "",
+    "targetavatar" : "https://api.dicebear.com/8.x/bottts/png",
     "targetnick" : "Paco Torres",
     "sourcetoken" : "fgjñdjsfgdfj",
     "sourcenick" : "tester102"
   },
   {
-    "targetavatar" : "",
+    "targetavatar" : "https://api.dicebear.com/8.x/personas/png",
     "targettoken" : "fgjñdjsfgdfj",
     "chat" : "1295",
     "sourcetoken" : "fgjñdjsfgdfj",
@@ -38,7 +38,7 @@
     "source" : "601"
   },
   {
-    "targetavatar" : "",
+    "targetavatar" : "https://api.dicebear.com/8.x/thumbs/png",
     "targettoken" : "fgjñdjsfgdfj",
     "chat" : "1234567890",
     "sourcetoken" : "fgjñdjsfgdfj",

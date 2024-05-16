@@ -15,4 +15,11 @@ extension View {
                 LinearGradient(colors: [Color.darkDarkmode.opacity(0.5),Color.darkDarkmode.opacity(0.7),Color.darkDarkmode.opacity(0.9),Color.darkDarkmode], startPoint: .top, endPoint: .bottom)
             )
     }
+    
+    func hideKeyboard() {
+        UIApplication
+            .shared
+            .sendAction(#selector(UIResponder.resignFirstResponder),
+                        to: nil, from: nil, for: nil)
+    }
 }

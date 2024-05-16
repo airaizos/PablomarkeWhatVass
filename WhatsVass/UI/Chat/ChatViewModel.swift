@@ -7,61 +7,66 @@
 
 import Foundation
 import SwiftUI
-import Combine
 
 final class ChatViewModel: ObservableObject {
     // MARK: - Properties -
     @Published var chat: Chat
     private var dataManager: ChatDataManagerProtocol
     private var persistence: LocalPersistence
-    var cancellables: Set<AnyCancellable> = []
-    @Published var chats: [RowMessage]?
+    private var myId: String
+    @Published var chats: [RowMessage] = []
     @Published var name: String = ""
+    
+    @Published var showError = false
+    @Published var errorMessage = ""
 
     init(dataManager: ChatDataManagerProtocol, chat: Chat, persistence: LocalPersistence = .shared) {
         self.dataManager = dataManager
         self.chat = chat
         self.persistence = persistence
+        myId = persistence.getString(forKey: .id) ?? "defaultID"
     }
 
-    // MARK: Public Methods
-    func getChatList(chat: String, first: Int = 0) {
-        
-        dataManager.getChats(chat: chat, first: first)
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-                if case .failure = completion {
-                  // print error
-                }
-            } receiveValue: { [weak self] messages in
-                self?.chats = messages.rows
-                let myID = self?.persistence.getString(forKey: Preferences.id) ?? "defaultID"
-                self?.name = self?.chat.source == myID ? self?.chat.targetnick ?? "" : self?.chat.sourcenick ?? ""
-            }.store(in: &cancellables)
+    // MARK: ChatView
+    
+    var isChatsEmpty: Bool {
+        chats.isEmpty
     }
-
-    func getMoreMessages(message: RowMessage) {
-        if chats?.last == message {
-            getPreviousMessages()
+    
+    var lastChatId: String {
+            chats.last?.id ?? ""
+        }
+    
+    @MainActor
+    func getChatList(chat: String, first: Int = 0) async {
+        do {
+            chats = try await dataManager.getChats(chat: chat, first: first).rows
+            name = self.chat.source == myId ? self.chat.targetnick : self.chat.sourcenick
+        } catch {
+            showErrorMessage(error)
         }
     }
 
-    func getPreviousMessages() {
+    func getMoreMessages(message: RowMessage) async {
+        if chats.last == message {
+           await getPreviousMessages()
+        }
+    }
+
+    func getPreviousMessages() async {
         var nextMessage: Int {
-            chats?.count ?? 20
+            chats.count
         }
-        dataManager.getChats(chat: chat.chat, first: nextMessage)
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-                if case .failure  = completion {
-                    // print(error)
-                }
-            } receiveValue: { _ in //[weak self] messages in
-                // FIXME:  se duplican al venir de un mock
-            //    self?.chats?.append(contentsOf: messages.rows)
-            }.store(in: &cancellables)
+       
+        // FIXME:  se duplican al venir de un mock
+        do {
+             let newMessages = try await dataManager.getChats(chat: chat.chat, first: nextMessage).rows
+            //chats?.append(contentsOf: newMessages)
+        } catch {
+            showErrorMessage(error)
+        }
     }
-
+    
     func onlineColor() -> Color {
         self.chat.targetonline ? Color.green : Color.red
     }
@@ -69,24 +74,30 @@ final class ChatViewModel: ObservableObject {
     var sourceData: User {
         User(id: chat.target, nick: chat.targetnick, avatar: chat.targetavatar, online: chat.targetonline)
     }
-
-    func sendNewMessage(message: String) {
+    
+    func sendNewMessage(message: String) async {
         let params: [String: Any] = ["chat": chat.chat,
-                                     "source": persistence.getString(forKey: Preferences.id) ?? "",
+                                     "source": persistence.getString(forKey: Preferences.id) ?? "601",
                                      "message": message]
-        dataManager.sendMessage(params: params)
-            .sink {  completion in
-                if case let .failure(error) = completion {
-                    print(error.description())
-                }
-            } receiveValue: { [weak self] _ in
-                if let chatId = self?.chat.chat {
-                    self?.getChatList(chat: chatId)
-                }
-            }.store(in: &cancellables)
+        do {
+            let response = try await dataManager.sendMessage(params: params)
+            await getChatList(chat: chat.chat)
+        } catch {
+            showErrorMessage(error)
+        }
     }
 
     func messageIsMine(sentBy: String) -> Bool {
-        sentBy == persistence.getString(forKey: Preferences.id)
+        sentBy == myId
+    }
+    
+    //MARK: - Private methods -
+    private func showErrorMessage(_ error: Error) {
+        showError.toggle()
+        if let error = error as? BaseError {
+            errorMessage = error.description()
+        } else {
+            errorMessage = "There has been a error"
+        }
     }
 }

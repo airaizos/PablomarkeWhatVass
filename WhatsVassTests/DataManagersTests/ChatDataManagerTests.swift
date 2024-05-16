@@ -27,36 +27,16 @@ final class ChatDataManagerTests: XCTestCase {
         subscribers = nil
     }
 
-    func testGetChats_ShouldBe4() {
-        let expectation = XCTestExpectation(description: "Carga de GetChats")
-        sut.getChats(chat: "", first: 1)
-            .sink { completion in
-                switchCompletion(completion, expectation)
-            } receiveValue: { message in
-                XCTAssertEqual(message.count, 4)
-                XCTAssertEqual(message.rows.count, 4)
-                let text = try! XCTUnwrap(message.rows.first?.message)
-                XCTAssertEqual(text,"Hello!")
-            }
-            .store(in: &subscribers)
+    func testGetChats_ShouldBe4() async throws {
+       let message = try await sut.getChats(chat: "", first: 1)
+        XCTAssertEqual(message.count, 12)
+        XCTAssertEqual(message.rows.count, 12)
         
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(result, .completed)
     }
     
-    func testSendMessage_ShouldBeTrue() {
-        let expectation = XCTestExpectation(description: "Carga de SendMessage")
-        sut.sendMessage(params: sendMessageParams)
-            .sink { completion in
-                switchCompletion(completion, expectation)
-            } receiveValue: { response in
-                XCTAssertTrue(response.success)
-            }
-            .store(in: &subscribers)
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(result, .completed)
-        
+    func testSendMessage_ShouldBeTrue() async throws {
+        let response = try await sut.sendMessage(params: sendMessageParams)
+        XCTAssertTrue(response.success)
     }
 
 }

@@ -84,7 +84,9 @@ struct ProfileView: View {
         .textFieldStyle(.roundedBorder)
         .padding()
         .vassBackground()
-        
+        .onTapGesture {
+            hideKeyboard()
+        }
         .onAppear {
             nameFields = .user
         }

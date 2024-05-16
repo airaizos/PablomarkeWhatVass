@@ -20,6 +20,14 @@ extension ChatMessage {
 }
 
 final class ChatAPIMock: BaseAPIClient, ChatAPI {
+    func getChatMessagesByAPI(chat: String, first: Int, limit: Int) async throws -> ChatMessage {
+        try Bundle.decode(type: ChatMessage.self, from: "getChats")
+    }
+    
+    func sendMessage(params: [String : Any]) async throws -> NewMessageResponse {
+       try Bundle.decode(type: NewMessageResponse.self, from: "response")
+    }
+    
     func getChatMessagesByAPI(chat: String, first: Int, limit: Int) -> AnyPublisher<ChatMessage, BaseError> {
         let chatMessage = ChatMessage.preview
         

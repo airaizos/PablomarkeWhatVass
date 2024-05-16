@@ -56,7 +56,7 @@ struct LoginView: View {
                         }
                 }
             }
-            
+         
             .font(.title3)
             .textFieldStyle(.roundedBorder)
             
@@ -109,6 +109,9 @@ struct LoginView: View {
         }
         .padding()
         .vassBackground()
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
 }
 
