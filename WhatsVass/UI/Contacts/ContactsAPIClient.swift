@@ -17,14 +17,6 @@ final class ContactsAPIClient: BaseAPIClient {
         try await fetchCodable(url: EndpointsUsers.urlUsers, type: [User].self)
     }
 
-    func createChat(source: String, target: String) -> AnyPublisher<ChatCreateResponse, BaseError> {
-        let params = ["source": source, "target": target]
-        guard let chat = encodeChat(with: params) else {
-            return Fail(error: BaseError.noCodable).eraseToAnyPublisher()
-        }
-        return requestPostPublisher(url: EndpointsChats.urlCreateChat, data: chat)
-    }
-    
     func createChat(source: String, target: String) async throws -> ChatCreateResponse {
         let params = ["source": source, "target": target]
         guard let chat = encodeChat(with: params) else {
@@ -32,14 +24,11 @@ final class ContactsAPIClient: BaseAPIClient {
         }
         return try await postCodable(url: EndpointsChats.urlCreateChat, data: chat)
     }
-
-    func getChats() -> AnyPublisher<ChatsList, BaseError> {
-        requestPublisher(url: EndpointsChats.urlChats, type: ChatsList.self)
-    }
     
     func getChats() async throws -> ChatsList {
        try await fetchCodable(url: EndpointsChats.urlChats, type: ChatsList.self)
     }
+    
     private func encodeChat(with params: [String: Any]) -> Data? {
         guard let source = params["source"] as? String,  let target = params["target"] as? String else { return nil }
 

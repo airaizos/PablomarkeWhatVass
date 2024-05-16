@@ -43,41 +43,43 @@ final class ContactsAPIClientTests: XCTestCase {
         XCTAssertEqual(result, .completed)
     }
     
-    func testCreateChate_shouldBeTrue() {
+    func testCreateChate_shouldBeTrue() async throws {
         let expectation = XCTestExpectation(description: "Carga CreateChat")
         let source = "Test Source"
         let target = "test target"
-        sut.createChat(source: source, target: target)
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    expectation.fulfill()
-                case .failure(let error):
-                    XCTFail(error.description())
-                }
-            } receiveValue: { response in
-                XCTAssertTrue(response.success)
-                XCTAssertEqual(response.chat.source, "Mock Source")
-            }
-            .store(in: &subscribers)
-        
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(result, .completed)
+        let response = try await sut.createChat(source: source, target: target)
+        XCTAssertTrue(response.success)
+        XCTAssertEqual(response.chat.source, "Mock Source")
+//            .sink { completion in
+//                switch completion {
+//                case .finished:
+//                    expectation.fulfill()
+//                case .failure(let error):
+//                    XCTFail(error.description())
+//                }
+//            } receiveValue: { response in
+//               
+//            }
+//            .store(in: &subscribers)
+//        
+//        
+//        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
+//        XCTAssertEqual(result, .completed)
     }
     
-    func testGetChats_ShouldBe() {
-        let expectation = XCTestExpectation(description: "Carga GetChats")
+    func testGetChats_ShouldBe() async throws {
+       // let expectation = XCTestExpectation(description: "Carga GetChats")
         
-        sut.getChats()
-            .sink { completion in
-                switchCompletion(completion, expectation)
-            } receiveValue: { chat in
-                XCTAssertGreaterThan(chat.count, 0)
-            }
-            .store(in: &subscribers)
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(result, .completed)
+     let chat = try await sut.getChats()
+        XCTAssertGreaterThan(chat.count, 0)
+//            .sink { completion in
+//                switchCompletion(completion, expectation)
+//            } receiveValue: { chat in
+//              
+//            }
+//            .store(in: &subscribers)
+//        
+//        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
+//        XCTAssertEqual(result, .completed)
     }
 }

@@ -9,9 +9,9 @@ import Foundation
 import Combine
 
 protocol ContactsDataManagerProtocol {
-    func getContacts() -> AnyPublisher<[User], BaseError>
-    func createChat(source: String, target: String) -> AnyPublisher<ChatCreateResponse, BaseError>
-    func getChats() -> AnyPublisher<ChatsList, BaseError>
+//    func getContacts() -> AnyPublisher<[User], BaseError>
+//    func createChat(source: String, target: String) -> AnyPublisher<ChatCreateResponse, BaseError>
+//    func getChats() -> AnyPublisher<ChatsList, BaseError>
     
     func getContacts() async throws -> [User]
     func createChat(source: String, target: String) async throws -> ChatCreateResponse
@@ -23,20 +23,6 @@ final class ContactsDataManager: ContactsDataManagerProtocol {
 
     init(apiClient: ContactsAPIClient) {
         self.apiClient = apiClient
-    }
-
-    //MARK: Combine
-    func getContacts() -> AnyPublisher<[User], BaseError> {
-        apiClient.getContacts()
-    }
-
-    func createChat(source: String, target: String) -> AnyPublisher<ChatCreateResponse, BaseError> {
-        return apiClient.createChat(source: source,
-                                    target: target)
-    }
-
-    func getChats() -> AnyPublisher<ChatsList, BaseError> {
-        apiClient.getChats()
     }
     
     //MARK: Async-Await
