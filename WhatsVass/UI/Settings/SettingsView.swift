@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @ObservedObject var viewModel = SettingsViewModel()
     @State var isNotificationsOn = false
     @State var isDarkThemeOn = false
     @State var isBiometricOn = false
@@ -36,14 +35,8 @@ struct SettingsView: View {
     }
 }
 
-//extension SettingsView {
-//    init(delegate: SettingsDelegate?) {
-//        self.delegate = delegate
-//    }
-//}
-
 #Preview {
-    SettingsView(viewModel: SettingsViewModel(dataManager: SettingsDataManagerMock(), secure: KeychainMock()))
+    SettingsView()
 }
 
 protocol SettingsDelegate {

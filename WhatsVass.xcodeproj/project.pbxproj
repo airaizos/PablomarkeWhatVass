@@ -94,7 +94,6 @@
 		838CCE842B9A07A600D92B4C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838CCE832B9A07A600D92B4C /* User.swift */; };
 		838CCE862B9A114A00D92B4C /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838CCE852B9A114A00D92B4C /* Endpoints.swift */; };
 		838CCE892B9A166800D92B4C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838CCE872B9A166800D92B4C /* ProfileViewController.swift */; };
-		838CCE8A2B9A166800D92B4C /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 838CCE882B9A166800D92B4C /* ProfileViewController.xib */; };
 		838CCE8C2B9A16BA00D92B4C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838CCE8B2B9A16BA00D92B4C /* ProfileViewModel.swift */; };
 		838CCE8E2B9A16D900D92B4C /* ProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838CCE8D2B9A16D900D92B4C /* ProfileDataManager.swift */; };
 		838CCE902B9A16EF00D92B4C /* ProfileAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838CCE8F2B9A16EF00D92B4C /* ProfileAPIClient.swift */; };
@@ -246,7 +245,6 @@
 		838CCE832B9A07A600D92B4C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		838CCE852B9A114A00D92B4C /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		838CCE872B9A166800D92B4C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		838CCE882B9A166800D92B4C /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		838CCE8B2B9A16BA00D92B4C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		838CCE8D2B9A16D900D92B4C /* ProfileDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManager.swift; sourceTree = "<group>"; };
 		838CCE8F2B9A16EF00D92B4C /* ProfileAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPIClient.swift; sourceTree = "<group>"; };
@@ -702,7 +700,6 @@
 			isa = PBXGroup;
 			children = (
 				3AFA9E632BF3E2FE000EC67F /* Helpers */,
-				838CCE882B9A166800D92B4C /* ProfileViewController.xib */,
 				3AFA9E5C2BF3B067000EC67F /* ProfileView.swift */,
 				838CCE872B9A166800D92B4C /* ProfileViewController.swift */,
 				838CCE8B2B9A16BA00D92B4C /* ProfileViewModel.swift */,
@@ -828,7 +825,6 @@
 				3A68069C2BEC041200EBD93E /* messages.json in Resources */,
 				8396D2C02BA32A2D0006A4A0 /* Localizable.xcstrings in Resources */,
 				3A68069D2BEC041200EBD93E /* newChat.json in Resources */,
-				838CCE8A2B9A166800D92B4C /* ProfileViewController.xib in Resources */,
 				83388A372B97715B006F122D /* LoginViewController.xib in Resources */,
 				3A68069B2BEC041200EBD93E /* getContacts.json in Resources */,
 				3A68069F2BEC041200EBD93E /* logoutResponse.json in Resources */,

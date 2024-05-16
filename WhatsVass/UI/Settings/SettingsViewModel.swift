@@ -85,11 +85,20 @@ private extension SettingsViewModel {
 
     func toggleDarkMode(_ isEnabled: Bool) {
         
-        isEnabled ? UIApplication.shared.windows.forEach { window in
-            window.overrideUserInterfaceStyle = .dark
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            let windows = windowScene.windows
+          
+            windows.forEach { window in
+                window.overrideUserInterfaceStyle = isEnabled ? .dark : .light
+                
+            }
         }
-        : UIApplication.shared.windows.forEach { window in
-            window.overrideUserInterfaceStyle = .light
-        }
+        
+//        isEnabled ? UIApplication.shared.windows.forEach { window in
+//            window.overrideUserInterfaceStyle = .dark
+//        }
+//        : UIApplication.shared.windows.forEach { window in
+//            window.overrideUserInterfaceStyle = .light
+//        }
     }
 }
