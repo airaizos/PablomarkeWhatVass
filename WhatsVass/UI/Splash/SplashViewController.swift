@@ -7,30 +7,33 @@
 
 import SwiftUI
 
-final class SplashViewController: BaseViewController, SplashDelegate {
+final class SplashViewController: UIHostingController<SplashView> {
 
     // MARK: - Properties
     private var viewModel: SplashViewModel?
 
+    init(viewModel: SplashViewModel) {
+        self.viewModel = viewModel
+        super.init(rootView: SplashView(viewModel: viewModel))
+    }
+    
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: - Object lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let splashView = SplashView(delegate: self)
-        let hostingController =  UIHostingController(rootView: splashView)
-    
-        setHostingControllerView(view, hostingController: hostingController)
-        
-        prepareAndConfigView(titleForView: "",
-                             navBarHidden: true)
-        viewModel?.initPreferences()
-    }
-
-    // MARK: - Public methods
-    func set(viewModel: SplashViewModel) {
-        self.viewModel = viewModel
+        NotificationCenter.default.addObserver(forName: .splash, object: nil, queue: .main) { [weak self] _ in
+            self?.navigateToLogin()
+        }
     }
     
     func navigateToLogin() {
         LoginWireframe().push(navigation: self.navigationController)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .splash, object: nil)
     }
 }

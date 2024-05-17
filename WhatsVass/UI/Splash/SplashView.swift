@@ -7,13 +7,9 @@
 
 import SwiftUI
 
-protocol SplashDelegate: AnyObject {
-    func navigateToLogin()
-}
 
 struct SplashView: View {
-    @ObservedObject var viewModel = SplashViewModel()
-    var delegate: SplashDelegate?
+    @ObservedObject var viewModel: SplashViewModel
     var body: some View {
         VStack {
             Image(uiImage: AssetsImages.logo)
@@ -40,18 +36,12 @@ struct SplashView: View {
         .onAppear {
             Task {
                 try await Task.sleep(for: .seconds(1.5))
-                delegate?.navigateToLogin()
+                viewModel.navigateToLogin()
             }
         }
     }
 }
 
-extension SplashView {
-    init(delegate: SplashDelegate?) {
-        self.delegate = delegate
-    }
-}
-
 #Preview {
-    SplashView()
+    SplashView(viewModel: SplashViewModel())
 }

@@ -49,6 +49,7 @@ final class LoginViewModel: ObservableObject, ErrorHandling {
         NotificationCenter.default.post(name: .signIn, object: nil)
     }
    
+    @MainActor
     func initData() {
         comprobeTokenAndBiometrics()
         comprobeRememberLogin()
@@ -74,6 +75,7 @@ private extension LoginViewModel {
         }
     }
     
+ 
     func comprobeRememberLogin() {
         if rememberLogin {
             loginExist = getUserAndPasswordFromSecure()
@@ -88,6 +90,7 @@ private extension LoginViewModel {
         }
     }
     
+  
     func getUserAndPasswordFromSecure() -> Bool {
         let keys = secure.getUserAndPassword()
         guard let userKey = keys.0, let passwordKey = keys.1 else {

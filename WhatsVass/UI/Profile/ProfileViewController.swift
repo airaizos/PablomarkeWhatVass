@@ -8,10 +8,6 @@
 import SwiftUI
 import Combine
 
-protocol ProfileViewDelegate {
-    func createProfile(user: String, nick: String, password: String, confirmPassword: String)
-}
-
 final class ProfileViewController:UIHostingController<ProfileView> {
 
     // MARK: - Properties

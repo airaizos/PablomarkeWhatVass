@@ -125,7 +125,6 @@
 		83EF4C792BBBE358001EBDC7 /* ChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF4C782BBBE358001EBDC7 /* ChatRow.swift */; };
 		83EF8EBE2BB2F707001F5A28 /* ImageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF8EBD2BB2F707001F5A28 /* ImageProfileView.swift */; };
 		B3090FA32BAC3CC900007621 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3090FA22BAC3CC900007621 /* ChatViewController.swift */; };
-		B346CFBB2BB9DAA0003C7CC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B346CFBA2BB9DAA0003C7CC0 /* GoogleService-Info.plist */; };
 		B37D7CA22BB0E8EA0080B152 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B37D7CA12BB0E8EA0080B152 /* KeychainSwift */; };
 		B3810C822B9B075200C30D63 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3810C812B9B075200C30D63 /* HomeView.swift */; };
 		B3810C862B9B081900C30D63 /* HomeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3810C852B9B081900C30D63 /* HomeDataManager.swift */; };
@@ -277,7 +276,6 @@
 		83EF8EBD2BB2F707001F5A28 /* ImageProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProfileView.swift; sourceTree = "<group>"; };
 		83EF8EDC2BB32DA4001F5A28 /* WhatsVass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatsVass.entitlements; sourceTree = "<group>"; };
 		B3090FA22BAC3CC900007621 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		B346CFBA2BB9DAA0003C7CC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3810C812B9B075200C30D63 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B3810C852B9B081900C30D63 /* HomeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataManager.swift; sourceTree = "<group>"; };
 		B3810C872B9B082700C30D63 /* HomeAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPIClient.swift; sourceTree = "<group>"; };
@@ -474,7 +472,6 @@
 				83388A312B9770EB006F122D /* Commons */,
 				83388A332B9770F9006F122D /* UI */,
 				83388A0E2B976FCA006F122D /* Info.plist */,
-				B346CFBA2BB9DAA0003C7CC0 /* GoogleService-Info.plist */,
 			);
 			path = WhatsVass;
 			sourceTree = "<group>";
@@ -633,10 +630,10 @@
 		83C252632B986318004455A6 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				3AFD14DE2BED250700C86030 /* SplashView.swift */,
 				83C252692B98643A004455A6 /* SplashViewController.swift */,
 				83A71A0D2B98CDDF00060030 /* SplashViewModel.swift */,
 				83A71A0F2B98CDF300060030 /* SplashWireframe.swift */,
-				3AFD14DE2BED250700C86030 /* SplashView.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -816,7 +813,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				83388A0A2B976FCA006F122D /* Assets.xcassets in Resources */,
-				B346CFBB2BB9DAA0003C7CC0 /* GoogleService-Info.plist in Resources */,
 				3A6806A12BEC041200EBD93E /* createAndRegisterProfile.json in Resources */,
 				3A6806992BEC041200EBD93E /* loginResponse.json in Resources */,
 				3A6806A22BEC041200EBD93E /* response.json in Resources */,
