@@ -26,34 +26,15 @@ final class LoginDataManagersTests: XCTestCase {
         subscribers = nil
     }
     
-    func testLoginWithCredentials_ShouldBeTokenMock() {
-        let expectation = XCTestExpectation(description: "Carga de LoginWithCredentials-Mock")
-        sut.login(with: credentials)
-            .sink { completion in
-                switchCompletion(completion, expectation)
-            } receiveValue: { response in
-                XCTAssertEqual(response.token,"Token Mock")
-                XCTAssertEqual(response.user.nick,"Tester Mock")
-            }
-            .store(in: &subscribers)
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(result, .completed)
+    func testLoginWithCredentials_ShouldBeTokenMock() async throws {
+        let response = try await sut.login(with: credentials)
+        XCTAssertEqual(response.token,"Token Mock")
+        XCTAssertEqual(response.user.nick,"Tester Mock")
     }
     
-    func testLoginWithBiometrics_ShouldBeTockenMock() {
-        let expectation = XCTestExpectation(description: "Carga deLoginWithBiometrics")
-        sut.loginWithBiometric(params: params)
-            .sink { completion in
-                switchCompletion(completion, expectation)
-            } receiveValue: { response in
-                XCTAssertEqual(response.token, "Token Mock")
-                XCTAssertEqual(response.user.nick, "Tester Mock")
-            }
-            .store(in: &subscribers)
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(result, .completed)
+    func testLoginWithBiometrics_ShouldBeTockenMock() async throws{
+        let response = try await sut.loginWithBiometric(params: params)
+        XCTAssertEqual(response.token, "Token Mock")
+        XCTAssertEqual(response.user.nick, "Tester Mock")
     }
-    
 }

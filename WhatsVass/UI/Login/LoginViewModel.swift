@@ -5,133 +5,140 @@
 //  Created by Pablo Marquez Marin on 5/3/24.
 //
 
-import Combine
-import Foundation
+import SwiftUI
 
-final class LoginViewModel {
-    // MARK: - Properties
+final class LoginViewModel: ObservableObject, ErrorHandling {
+    // MARK: - Properties -
     private var dataManager: LoginDataManagerProtocol
-    private var secure: KeyChainData
-    private var persistence: LocalPersistence
-    @Published var username: String?
-    @Published var password: String?
-    @Published var loginExist: Bool?
-    @Published var rememberLogin: Bool? {
-        didSet {
-            persistence.setObject(value: rememberLogin,forKey: .rememberLogin)
-        }
-    }
-    let loginSuccessSubject = PassthroughSubject<Bool, Never>()
-    let loginSuccessBiometrics = PassthroughSubject<Void, Never>()
-    let loginFailureBiometrics = PassthroughSubject<Void, Never>()
-    let loginFailureSubject = PassthroughSubject<String, Never>()
-    var cancellables: Set<AnyCancellable> = []
-
-    // MARK: - Init
-    init(dataManager: LoginDataManagerProtocol, secure: KeyChainData, persistence: LocalPersistence = .shared) {
+    private var secure: KeychainProvider
+    private var biometrics: BiometricAuthentication
+    
+    @Published var username: String = ""
+    @Published var password: String = ""
+    @Published var showError = false
+    @Published var errorMessage = ""
+    
+    @AppStorage(Preferences.rememberLogin.rawValue) var loginExist = false
+    @AppStorage(Preferences.rememberLogin.rawValue) var rememberLogin = false
+    @AppStorage(Preferences.biometrics.rawValue) var isBiometricOn = false
+   
+    
+    // MARK: - Init -
+    init(dataManager: LoginDataManagerProtocol, secure: KeychainProvider,  biometrics: BiometricAuthentication = BiometricAuthentication()) {
         self.dataManager = dataManager
         self.secure = secure
-        //TODO: Debería ir en el dataManager?
-        self.persistence = persistence
-        self.loginExist = persistence.getBool(forKey: .rememberLogin)
-    }
-
-    // MARK: - Public Methods
-    func rememberLoginPreferences(_ remember: Bool) {
-        persistence.setObject(value: remember,forKey: Preferences.rememberLogin)
+        self.biometrics = biometrics
     }
     
-    func loginButtonWasTapped(remember: Bool) {
-        rememberLoginPreferences(remember)
-        comprobeUserAndPassword(remember: remember)
+    //MARK: - View Methods -
+   
+    func loginTapped() {
+        securingCredentials()
+            loginWithCredentials()
     }
-
+    
+    func securingCredentials() {
+        if rememberLogin {
+            secure.setUserAndPassword(username,password)
+        } else {
+            secure.deleteUserAndPasword(username,password)
+        }
+    }
+    
+    func signInTapped() {
+        NotificationCenter.default.post(name: .signIn, object: nil)
+    }
+   
     func initData() {
         comprobeTokenAndBiometrics()
         comprobeRememberLogin()
     }
+}
 
-    func comprobeTokenAndBiometrics() {
-        if persistence.getBool(forKey: .biometrics) {
+//MARK: - Private methods -
+private extension LoginViewModel {
+     func isUserAndPasswordEmpty() -> Bool {
+         if username.isEmpty {
+             showErrorMessage(BaseError.userEmpty)
+             return true
+         } else if password.isEmpty {
+             showErrorMessage(BaseError.passwordEmpty)
+             return true
+         }
+         return false
+     }
+    
+    func comprobeTokenAndBiometrics()  {
+        if isBiometricOn {
             getBiometric()
         }
     }
-
+    
     func comprobeRememberLogin() {
-        if rememberLogin ?? false {
-            loginExist = comprobeLoginAndPassword()
+        if rememberLogin {
+            loginExist = getUserAndPasswordFromSecure()
         }
     }
-}
-
-private extension LoginViewModel {
+    
     func getBiometric() {
-        BiometricAuthentication().authenticationWithBiometric { [weak self] in
-            self?.loginWithBiometricUserCredentials()
-        } onFailure: { [weak self] error in
-            print(error.localizedDescription)
-            self?.loginFailureBiometrics.send()
+        biometrics.authenticationWithBiometric {
+            self.loginWithBiometricUserCredentials()
+        } onFailure: { error in
+            self.showErrorMessage(error)
         }
     }
-
-    func comprobeLoginAndPassword() -> Bool {
-        username = secure.getStringKey(key: KeyChainEnum.user)
-        password = secure.getStringKey(key: KeyChainEnum.password)
-        return ((username?.isEmpty) != nil)
-    }
-
-    func comprobeUserAndPassword(remember: Bool) {
-        guard let username = username, !username.isEmpty,
-              let password = password, !password.isEmpty else {
-            loginFailureSubject.send("EmptyLoginField")
-            return
+    
+    func getUserAndPasswordFromSecure() -> Bool {
+        let keys = secure.getUserAndPassword()
+        guard let userKey = keys.0, let passwordKey = keys.1 else {
+            return false
         }
-
+        username = userKey
+        password = passwordKey
+        return true
+    }
+    
+    func loginWithCredentials() {
+        guard !isUserAndPasswordEmpty() else { return }
         let credentials = ["password": password,
                            "login": username,
                            "platform": "ios",
                            "firebaseToken": "fgjñdjsfgdfj"]
-        loginWithCredentials(remember: remember, credentials: credentials)
+        Task {
+            await loginWithCredentials(credentials: credentials)
+        }
     }
-
-    func loginWithCredentials(remember: Bool, credentials: [String: Any]) {
-        dataManager.login(with: credentials)
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                
-                if case let .failure(error) = completion {
-                    
-                    self?.loginFailureSubject.send(error.localizedDescription)
-                    print("Error \(error)")
-                }
-            } receiveValue: { [weak self] login in
-                
-                self?.persistence.setObject(value: login.token, forKey: .token)
-                self?.persistence.setObject(value: login.user.id, forKey: .id)
-                if remember {
-                    self?.secure.setLoginAndPassword(user: (self?.username) ?? "",
-                                                     password: (self?.password) ?? "")
-                    self?.persistence.setObject(value: remember, forKey: .rememberLogin)
-                }
-                self?.loginSuccessSubject.send(remember)
-            }.store(in: &cancellables)
+    
+    func loginWithBiometrics() {
+        loginWithBiometricUserCredentials()
     }
-
-    func loginWithBiometricUserCredentials() {
-        guard let token = persistence.getString(forKey: Preferences.token) else {
-            self.loginFailureSubject.send(BaseError.noToken.description())
+    
+    //MARK: Async await
+    private func loginWithCredentials(credentials: [String: Any]) async  {
+        do {
+            let _ = try await dataManager.login(with: credentials)
+            //1. guardar el login.token
+            //2. guard el login.user.id
+            
+            NotificationCenter.default.post(name: .login, object: nil)
+        } catch {
+            showErrorMessage(error)
+        }
+    }
+    private func loginWithBiometricUserCredentials()  {
+        guard let token = secure.getToken() else {
+            showErrorMessage(BaseError.noToken)
             return
         }
-
+        
         let params = ["Authorization": token]
-        dataManager.loginWithBiometric(params: params)
-            .sink { completion in
-                if case .failure = completion {
-               // print(error.description()
-                }
-            } receiveValue: { [weak self] login in
-                self?.persistence.setObject(value: login.token, forKey: .token)
-                self?.loginSuccessBiometrics.send()
-            }.store(in: &cancellables)
+        Task {
+            do {
+                let _ = try await dataManager.loginWithBiometric(params: params)
+                NotificationCenter.default.post(name: .login, object: nil)
+            } catch {
+                showErrorMessage(error)
+            }
+        }
     }
 }

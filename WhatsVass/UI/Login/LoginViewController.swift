@@ -6,73 +6,40 @@
 //
 
 import SwiftUI
-import Combine
-//import IQKeyboardManagerSwift
 
-final class LoginViewController: BaseViewController, LoginViewDelegate {
+final class LoginViewController: UIHostingController<LoginView> {
 
     // MARK: - Properties
-    var viewModel: LoginViewModel?
-    var cancellables: Set<AnyCancellable> = []
+    var viewModel: LoginViewModel
 
     let persistence: LocalPersistence = .shared
         
-    // MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        initView()
+    init(viewModel: LoginViewModel)  {
+        self.viewModel = viewModel
+        super.init(rootView: LoginView(viewModel: viewModel))
         
-        let loginView = LoginView(delegate: self)
-        let hostingController = UIHostingController(rootView: loginView)
-        setHostingControllerView(view, hostingController: hostingController)
+        NotificationCenter.default.addObserver(forName: .signIn, object: nil, queue: .main) { [weak self] _ in
+            self?.navigateToProfileView()
+        }
+        
+        NotificationCenter.default.addObserver(forName: .login, object: nil, queue: .main) { [weak self] _ in
+            self?.navigateToHomeView()
+        }
+    }
+    
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Public methods
-    func set(viewModel: LoginViewModel) {
-        self.viewModel = viewModel
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .signIn, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: .login, object: nil)
     }
 }
 
 extension LoginViewController {
-    func initView() {
-        viewModel?.initData()
-        responseViewModel()
-    }
-    
-    func loginTapped(remember: Bool) {
-        viewModel?.loginButtonWasTapped(remember: remember)
-    }
-
-    func responseViewModel() {
-        viewModel?.loginSuccessSubject
-            .sink { [weak self] remember in
-                remember ? self?.rememberEnterWithBiometrics() : self?.navigateToHomeView()
-            }.store(in: &cancellables)
-
-        viewModel?.loginSuccessBiometrics
-            .sink(receiveValue: { [weak self] _ in
-                self?.navigateToHomeView()
-            }).store(in: &cancellables)
-
-        viewModel?.loginFailureSubject
-            .sink { [weak self] _ in
-                self?.showAlertSimple(title: "Login error",
-                                      message: "Incorrect username or password")
-            }.store(in: &cancellables)
-        viewModel?.loginFailureBiometrics
-            .sink(receiveValue: { _ in
-                self.reset()
-            }).store(in: &cancellables)
-    }
-
-    func reset() {
-//        DispatchQueue.main.async {
-//            self.tfUser.text = ""
-//            self.tfPassword.text = ""
-//            self.tfUser.setNeedsDisplay()
-//            self.tfPassword.setNeedsDisplay()
-//        }
-    }
 
     func navigateToHomeView() {
         HomeWireframe().push(navigation: navigationController)
@@ -81,39 +48,5 @@ extension LoginViewController {
     func navigateToProfileView() {
         ProfileWireframe().push(navigation: navigationController)
     }
-
-    func rememberEnterWithBiometrics() {
-        showSelectAlert(title: "Biometrics",
-                        message: "EnterBiometrics",
-                        yesAction: {
-            self.persistence.setObject(value: true, forKey: .biometrics)
-            self.navigateToHomeView()
-        }, cancelAction: {
-            self.persistence.setObject(value: false,forKey: .biometrics)
-            self.navigateToHomeView()
-        })
-    }
-    
-    //MARK: Delegate
-    func loginUser(_ user: String) {
-        viewModel?.username = user
-    }
-    
-    func loginPassword(_ pass: String) {
-        viewModel?.password = pass
-    }
-    
-    func rememberUserAndPassword(_ remember:Bool) {
-        viewModel?.rememberLoginPreferences(remember)
-    }
 }
 
-protocol LoginViewDelegate {
-    func initView()
-    func rememberEnterWithBiometrics()
-    func loginTapped(remember: Bool)
-    func navigateToProfileView()
-    func rememberUserAndPassword(_ remember:Bool)
-    func loginUser(_ user: String)
-    func loginPassword(_ pass: String)
-}

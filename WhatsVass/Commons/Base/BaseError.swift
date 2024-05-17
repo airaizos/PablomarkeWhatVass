@@ -22,6 +22,8 @@ enum BaseError: Error {
     case failedChat
     case noCodable
     case status(Int)
+    case userEmpty
+    case passwordEmpty
 
     func description() -> String {
         switch self {
@@ -53,6 +55,8 @@ enum BaseError: Error {
             "Incorrect data"
         case .status(let code):
             "Error statusCode \(code)"
+        case .userEmpty: "User can not be empty"
+        case .passwordEmpty: "Password can not be empty"
         }
     }
 }

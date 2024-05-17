@@ -24,40 +24,21 @@ final class LoginAPIClientTests: XCTestCase {
         subscribers = nil
     }
 
-    func testLoginByAPI_ShouldBetester102() {
-        let expectation = XCTestExpectation(description: "Carga de loginByAPI")
+    func testLoginByAPI_ShouldBetester102() async throws {
         let token = "Token Mock"
         let nick = "Tester Mock"
         
-        sut.loginByAPI(with: credentials)
-            .sink { completion in
-                switchCompletion(completion, expectation)
-            } receiveValue: { response in
-                XCTAssertEqual(response.token,token)
-                XCTAssertEqual(response.user.nick, nick)
-            }
-            .store(in: &subscribers)
-        
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(result, .completed)
+        let response = try await sut.loginByAPI(with: credentials)
+        XCTAssertEqual(response.token,token)
+        XCTAssertEqual(response.user.nick, nick)
     }
     
-    func testBiometricLogin_ShouldBe() {
-        let expectation = XCTestExpectation(description: "Carga de biometricLogin")
+    func testBiometricLogin_ShouldBe() async throws {
         let token = "Token Mock"
         let nick = "Tester Mock"
-        sut.biometricLogin(params: params)
-            .sink { completion in
-                switchCompletion(completion, expectation)
-            } receiveValue: { response in
-                XCTAssertEqual(response.token,token)
-                XCTAssertEqual(response.user.nick,nick)
-            }
-            .store(in: &subscribers)
-        
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(result, .completed)
+        let response = try await sut.biometricLogin(params: params)
+        XCTAssertEqual(response.token,token)
+        XCTAssertEqual(response.user.nick,nick)
     }
 }
 

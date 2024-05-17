@@ -8,6 +8,7 @@
 import Foundation
 
 enum KeyChainEnum {
-    static let user: String = "USER"
-    static let password: String = "PASSWORD"
+    static let user = "USER"
+    static let password = "PASSWORD"
+    static let token = "TOKEN"
 }

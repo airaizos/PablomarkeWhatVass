@@ -6,42 +6,25 @@
 //
 
 import Foundation
-import Combine
 
 protocol LoginDataManagerProtocol {
-    func login(with credentials: [String: Any]) -> AnyPublisher <LoginResponse, BaseError>
-    func loginWithBiometric(params: [String: Any]) -> AnyPublisher <LoginResponse, BaseError>
+    func login(with credentials: [String: Any])  async throws -> LoginResponse
+    func loginWithBiometric(params: [String: Any]) async throws -> LoginResponse
 }
 
 final class LoginDataManager: LoginDataManagerProtocol {
-    // MARK: - Properties
     private var apiClient: LoginAPIClient
 
-    // MARK: - Object lifecycle
     init(apiClient: LoginAPIClient) {
         self.apiClient = apiClient
     }
-
-    // MARK: - Public Methods
-    func login(with credentials: [String: Any]) -> AnyPublisher <LoginResponse, BaseError> {
-        apiClient.loginByAPI(with: credentials)
-            .tryMap { loginResponse in
-                return loginResponse
-            }
-            .mapError { error in
-                return error as? BaseError ?? .failedLogin
-            }
-            .eraseToAnyPublisher()
+    
+    //MARK: Async await
+    func login(with credentials: [String: Any])  async throws -> LoginResponse {
+        try await apiClient.loginByAPI(with: credentials)
     }
-
-    func loginWithBiometric(params: [String: Any]) -> AnyPublisher <LoginResponse, BaseError> {
-        apiClient.biometricLogin(params: params)
-            .tryMap { loginResponse in
-                return loginResponse
-            }
-            .mapError { error in
-                return error as? BaseError ?? .noBiometrics
-            }
-            .eraseToAnyPublisher()
+    func loginWithBiometric(params: [String: Any]) async throws -> LoginResponse {
+        try await  apiClient.biometricLogin(params: params)
     }
+    
 }

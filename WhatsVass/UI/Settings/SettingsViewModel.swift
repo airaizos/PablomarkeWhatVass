@@ -36,9 +36,9 @@ final class SettingsViewModel: ObservableObject {
     func logout() {
         Task {
             await logOutByAPI()
-            KeyChainData().deleteStringKey(key: KeyChainEnum.user)
-            KeyChainData().deleteStringKey(key: KeyChainEnum.password)
-            persistence.setObject(value: false, forKey: .rememberLogin)
+            //KeyChainData().deleteStringKey(key: KeyChainEnum.user)
+            //KeyChainData().deleteStringKey(key: KeyChainEnum.password)
+            //persistence.setObject(value: false, forKey: .rememberLogin)
             if let bundleIdentifier = Bundle.main.bundleIdentifier {
                 persistence.removePersistenceDomain(forName: bundleIdentifier)
             }

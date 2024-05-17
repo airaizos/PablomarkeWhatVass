@@ -15,3 +15,8 @@ extension ChatViewModel {
 extension SettingsViewModel {
     static let preview = SettingsViewModel(dataManager: SettingsDataManagerMock(), secure: KeychainMock(), persistence: MockPersistence(), notificationCenter: NotificationCenter.default)
 }
+
+
+extension LoginViewModel {
+    static let preview = LoginViewModel(dataManager: LoginDataManagerMock(), secure: KeychainMock())
+}

@@ -80,7 +80,6 @@
 		83388A002B976FC9006F122D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833889FF2B976FC9006F122D /* SceneDelegate.swift */; };
 		83388A0A2B976FCA006F122D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83388A092B976FCA006F122D /* Assets.xcassets */; };
 		83388A362B97715B006F122D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83388A342B97715B006F122D /* LoginViewController.swift */; };
-		83388A372B97715B006F122D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83388A352B97715B006F122D /* LoginViewController.xib */; };
 		83388A3A2B9775A0006F122D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83388A392B9775A0006F122D /* LoginViewModel.swift */; };
 		83388A3C2B9775B2006F122D /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83388A3B2B9775B2006F122D /* LoginDataManager.swift */; };
 		83388A3E2B9775C0006F122D /* LoginAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83388A3D2B9775C0006F122D /* LoginAPIClient.swift */; };
@@ -232,7 +231,6 @@
 		83388A0E2B976FCA006F122D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83388A132B976FCA006F122D /* WhatsVassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatsVassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83388A342B97715B006F122D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		83388A352B97715B006F122D /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		83388A392B9775A0006F122D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		83388A3B2B9775B2006F122D /* LoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManager.swift; sourceTree = "<group>"; };
 		83388A3D2B9775C0006F122D /* LoginAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPIClient.swift; sourceTree = "<group>"; };
@@ -542,13 +540,12 @@
 		83388A382B97757E006F122D /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				83388A352B97715B006F122D /* LoginViewController.xib */,
+				3A0923F52BF2728100538A1D /* LoginView.swift */,
 				83388A342B97715B006F122D /* LoginViewController.swift */,
 				83388A392B9775A0006F122D /* LoginViewModel.swift */,
 				83388A3B2B9775B2006F122D /* LoginDataManager.swift */,
 				83388A3D2B9775C0006F122D /* LoginAPIClient.swift */,
 				83388A3F2B9775E2006F122D /* LoginWireframe.swift */,
-				3A0923F52BF2728100538A1D /* LoginView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -827,7 +824,6 @@
 				3A68069C2BEC041200EBD93E /* messages.json in Resources */,
 				8396D2C02BA32A2D0006A4A0 /* Localizable.xcstrings in Resources */,
 				3A68069D2BEC041200EBD93E /* newChat.json in Resources */,
-				83388A372B97715B006F122D /* LoginViewController.xib in Resources */,
 				3A68069B2BEC041200EBD93E /* getContacts.json in Resources */,
 				3A68069F2BEC041200EBD93E /* logoutResponse.json in Resources */,
 				3A68069A2BEC041200EBD93E /* getChats.json in Resources */,

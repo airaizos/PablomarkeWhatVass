@@ -9,10 +9,6 @@ import Foundation
 import Combine
 
 final class ContactsAPIClient: BaseAPIClient {
-    func getContacts() -> AnyPublisher<[User], BaseError> {
-        requestPublisher(url: EndpointsUsers.urlUsers, type: [User].self)
-    }
-    
     func getContacts() async throws -> [User] {
         try await fetchCodable(url: EndpointsUsers.urlUsers, type: [User].self)
     }

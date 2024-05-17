@@ -12,11 +12,10 @@ final class LoginWireframe {
     var viewController: LoginViewController {
         // Generating module components
         let secureDataProvider: KeyChainData = KeyChainData()
-        let viewController: LoginViewController = LoginViewController()
+        
         let dataManager: LoginDataManagerProtocol = createDataManager(apiClient: apiClient)
-        let viewModel: LoginViewModel = createViewModel(with: dataManager,
-                                                        secureDataProvider: secureDataProvider)
-        viewController.set(viewModel: viewModel)
+        let viewModel: LoginViewModel = createViewModel(with: dataManager,secureDataProvider: secureDataProvider)
+        let viewController: LoginViewController = LoginViewController(viewModel: viewModel)
         return viewController
     }
 

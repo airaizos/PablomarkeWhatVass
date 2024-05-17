@@ -23,3 +23,23 @@ extension View {
                         to: nil, from: nil, for: nil)
     }
 }
+
+
+
+protocol ErrorHandling: ObservableObject {
+     var showError: Bool { get set }
+     var errorMessage: String { get set }
+}
+
+
+extension ObservableObject where Self: ErrorHandling {
+    func showErrorMessage(_ error: Error) {
+        if let error = error as? BaseError {
+            errorMessage = error.description()
+            showError.toggle()
+        } else {
+            showError.toggle()
+            errorMessage = "There has been an error"
+        }
+    }
+}

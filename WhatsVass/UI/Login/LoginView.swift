@@ -14,12 +14,8 @@ extension LoginView {
 }
 
 struct LoginView: View {
-    //  @EnvironmentObject var viewModel = LoginViewModel()
-    @State var userText = ""
-    @State var passwordText  = ""
-    @State var remember = false
+    @ObservedObject var viewModel: LoginViewModel
     @FocusState var namefields: Namefields?
-    var delegate: LoginViewDelegate?
     @State var showAlertBiometrics = false
     @State var showAlertEmtpy = false
     
@@ -28,9 +24,9 @@ struct LoginView: View {
             LogoVassView()
             Spacer()
             VStack(spacing: 30) {
-                //Mover al viewModel
-                VassTextField(text: userText) {
-                    TextField(LocalizedStringKey("User"), text: $userText)
+    
+                VassTextField(text: viewModel.username) {
+                    TextField(LocalizedStringKey("User"), text: $viewModel.username)
                         .keyboardType(.alphabet)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
@@ -38,21 +34,15 @@ struct LoginView: View {
                         .focused($namefields, equals: .user)
                         .onSubmit {
                             namefields = .password
-                            delegate?.loginUser(userText)
                         }
                 }
                 
-                VassTextField(systemImage:"key", text: passwordText) {
-                    SecureField(LocalizedStringKey("Password"), text: $passwordText)
+                VassTextField(systemImage:"key", text: viewModel.password) {
+                    SecureField(LocalizedStringKey("Password"), text: $viewModel.password)
                         .focused($namefields, equals: .password)
                         .submitLabel(.join)
                         .onSubmit {
-                            if !userText.isEmpty && !passwordText.isEmpty {
-                                showAlertEmtpy.toggle()
-                            } else {
-                                delegate?.loginPassword(passwordText)
-                                delegate?.loginTapped(remember: remember)
-                            }
+                            viewModel.loginTapped()
                         }
                 }
             }
@@ -61,8 +51,8 @@ struct LoginView: View {
             .textFieldStyle(.roundedBorder)
             
             LabeledContent {
-                VassToggle(isOn: $remember,size: 50) {
-                    delegate?.rememberUserAndPassword(remember)
+                VassToggle(isOn: $viewModel.rememberLogin,size: 50) {
+                    viewModel.securingCredentials()
                 }
             } label: {
                 Text(LocalizedStringKey("Remember"))
@@ -72,23 +62,17 @@ struct LoginView: View {
             .frame(width: 150)
             
             VassButton(title: "Login") {
-                if userText.isEmpty {
-                    namefields = .user
-                    showAlertEmtpy.toggle()
-                } else if passwordText.isEmpty {
-                    namefields = .password
-                    showAlertEmtpy.toggle()
-                } else {
-                    delegate?.loginUser(userText)
-                    delegate?.loginPassword(passwordText)
-                    delegate?.loginTapped(remember: remember)
-                }
-            }
+                    viewModel.loginTapped()
+                        }
             Spacer()
             Button(LocalizedStringKey("Sign in")) {
-                delegate?.navigateToProfileView()
+                viewModel.signInTapped()
             }
             .foregroundStyle(.white)
+            
+            .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
+                
+            }
             
             .alert(LocalizedStringKey("Biometrics"), isPresented: $showAlertBiometrics) {
                 
@@ -104,7 +88,7 @@ struct LoginView: View {
             }
             .onAppear {
                 namefields = .user
-                delegate?.initView()
+                viewModel.initData()
             }
         }
         .padding()
@@ -116,7 +100,7 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    LoginView(viewModel: .preview)
 }
 
 

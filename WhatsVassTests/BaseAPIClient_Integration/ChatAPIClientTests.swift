@@ -25,8 +25,8 @@ final class ChatAPIClientTests: XCTestCase {
     }
 
     func testGetChatMessage_ShouldBe10() async throws {
-        let expectation = XCTestExpectation(description: "Carga GetChatMessage")
         let message = try await sut.getChatMessagesByAPI(chat: "", first: 0)
+        XCTAssertEqual(message.count, 12)
     }
     
     func testSendMessage_ShouldBeTrue() async throws {

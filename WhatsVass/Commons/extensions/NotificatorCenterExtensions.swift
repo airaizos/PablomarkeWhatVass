@@ -10,5 +10,7 @@ import Foundation
 extension Notification.Name {
     static let navigateToHomeView = Notification.Name("navigateToHomeView")
     static let logout = Notification.Name("logout")
+    static let signIn = Notification.Name("signIn")
+    static let login = Notification.Name("login")
 }
 
