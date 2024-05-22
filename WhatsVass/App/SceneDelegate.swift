@@ -6,8 +6,7 @@
 //
 
 import SwiftUI
-import Combine
-
+/*
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     @AppStorage(Preferences.themes.rawValue) var isDarkThemeEnabled = false
@@ -74,3 +73,4 @@ extension SceneDelegate {
             }.store(in: &cancellables)
     }
 }
+*/

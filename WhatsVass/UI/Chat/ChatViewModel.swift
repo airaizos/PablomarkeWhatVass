@@ -20,7 +20,7 @@ final class ChatViewModel: ObservableObject {
     @Published var showError = false
     @Published var errorMessage = ""
 
-    init(dataManager: ChatDataManagerProtocol, chat: Chat, persistence: LocalPersistence = .shared) {
+    init(dataManager: ChatDataManagerProtocol = ChatDataManager(), chat: Chat, persistence: LocalPersistence = .shared) {
         self.dataManager = dataManager
         self.chat = chat
         self.persistence = persistence

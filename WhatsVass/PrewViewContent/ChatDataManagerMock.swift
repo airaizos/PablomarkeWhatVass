@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 final class ChatDataManagerMock: ChatDataManagerProtocol {
     func getChats(chat: String, first: Int) async throws -> ChatMessage {

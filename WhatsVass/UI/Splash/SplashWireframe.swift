@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+/*
 final class SplashWireframe {
     // MARK: - Properties
     var viewController: SplashViewController {
@@ -19,3 +19,4 @@ final class SplashWireframe {
         return SplashViewModel()
     }
 }
+*/

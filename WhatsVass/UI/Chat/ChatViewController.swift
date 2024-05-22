@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 //import IQKeyboardManagerSwift
-
+/*
 final class ChatViewController: UIHostingController<ChatView> {
     private let viewModel: ChatViewModel
 
@@ -25,3 +25,4 @@ final class ChatViewController: UIHostingController<ChatView> {
 
     // MARK: - Lifecycle
 }
+*/

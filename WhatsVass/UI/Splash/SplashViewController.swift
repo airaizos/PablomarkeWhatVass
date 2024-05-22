@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/*
 final class SplashViewController: UIHostingController<SplashView> {
 
     // MARK: - Properties
@@ -14,7 +14,7 @@ final class SplashViewController: UIHostingController<SplashView> {
 
     init(viewModel: SplashViewModel) {
         self.viewModel = viewModel
-        super.init(rootView: SplashView(viewModel: viewModel))
+        super.init(rootView: SplashView())
     }
     
     @available(*, unavailable)
@@ -37,3 +37,4 @@ final class SplashViewController: UIHostingController<SplashView> {
         NotificationCenter.default.removeObserver(self, name: .splash, object: nil)
     }
 }
+*/

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+/*
 final class SettingsWireframe {
     // MARK: - Properties
     var viewController: SettingsViewController {
@@ -44,3 +44,4 @@ final class SettingsWireframe {
                                       animated: true)
     }
 }
+*/

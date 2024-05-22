@@ -26,6 +26,7 @@
 		3A0923F42BF2692F00538A1D /* LoginDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0923F32BF2692F00538A1D /* LoginDataManagerMock.swift */; };
 		3A0923F62BF2728100538A1D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0923F52BF2728100538A1D /* LoginView.swift */; };
 		3A0923F92BF272F200538A1D /* LogoVassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0923F82BF272F200538A1D /* LogoVassView.swift */; };
+		3A1CAAA32BFE36BB0026F63F /* LoginRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CAAA22BFE36BB0026F63F /* LoginRegisterViewModel.swift */; };
 		3A2E17D42BEA93F20039365A /* ProfileAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D32BEA93F20039365A /* ProfileAPIClientTests.swift */; };
 		3A2E17D62BEA9BBE0039365A /* ContactsAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D52BEA9BBE0039365A /* ContactsAPIClientTests.swift */; };
 		3A2E17D82BEAA4350039365A /* SettingsAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D72BEAA4350039365A /* SettingsAPIClientTests.swift */; };
@@ -41,6 +42,7 @@
 		3A50D3042BDA9608002007A3 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50D3032BDA9608002007A3 /* NetworkSession.swift */; };
 		3A50D3062BDA9F08002007A3 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50D3052BDA9F08002007A3 /* NetworkMonitor.swift */; };
 		3A50D3082BDAA02C002007A3 /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50D3072BDAA02C002007A3 /* Interface.swift */; };
+		3A526D152BF7C3E500973D22 /* WhatVassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526D142BF7C3E500973D22 /* WhatVassApp.swift */; };
 		3A6806892BEBCD4E00EBD93E /* ContactsDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6806882BEBCD4E00EBD93E /* ContactsDataManagerTests.swift */; };
 		3A68068B2BEBD17900EBD93E /* SettingsDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68068A2BEBD17900EBD93E /* SettingsDataManagerTests.swift */; };
 		3A6806992BEC041200EBD93E /* loginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A68068F2BEC041100EBD93E /* loginResponse.json */; };
@@ -170,6 +172,7 @@
 		3A0923F32BF2692F00538A1D /* LoginDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManagerMock.swift; sourceTree = "<group>"; };
 		3A0923F52BF2728100538A1D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3A0923F82BF272F200538A1D /* LogoVassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoVassView.swift; sourceTree = "<group>"; };
+		3A1CAAA22BFE36BB0026F63F /* LoginRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterViewModel.swift; sourceTree = "<group>"; };
 		3A2E17D22BEA92F00039365A /* WhatsVassTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WhatsVassTests.xctestplan; sourceTree = "<group>"; };
 		3A2E17D32BEA93F20039365A /* ProfileAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPIClientTests.swift; sourceTree = "<group>"; };
 		3A2E17D52BEA9BBE0039365A /* ContactsAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsAPIClientTests.swift; sourceTree = "<group>"; };
@@ -187,6 +190,7 @@
 		3A50D3032BDA9608002007A3 /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
 		3A50D3052BDA9F08002007A3 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		3A50D3072BDAA02C002007A3 /* Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
+		3A526D142BF7C3E500973D22 /* WhatVassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatVassApp.swift; sourceTree = "<group>"; };
 		3A6806882BEBCD4E00EBD93E /* ContactsDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDataManagerTests.swift; sourceTree = "<group>"; };
 		3A68068A2BEBD17900EBD93E /* SettingsDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataManagerTests.swift; sourceTree = "<group>"; };
 		3A68068C2BEBD41E00EBD93E /* WhatsVassUnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WhatsVassUnitTests.xctestplan; sourceTree = "<group>"; };
@@ -357,6 +361,13 @@
 			path = Design;
 			sourceTree = "<group>";
 		};
+		3A1CAAA12BFE367A0026F63F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		3A2E17CF2BEA8CB40039365A /* WhatsVassUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -491,8 +502,10 @@
 		83388A302B9770E1006F122D /* App */ = {
 			isa = PBXGroup;
 			children = (
+				3A1CAAA12BFE367A0026F63F /* New Group */,
 				833889FD2B976FC9006F122D /* AppDelegate.swift */,
 				833889FF2B976FC9006F122D /* SceneDelegate.swift */,
+				3A526D142BF7C3E500973D22 /* WhatVassApp.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -543,6 +556,7 @@
 				83388A3B2B9775B2006F122D /* LoginDataManager.swift */,
 				83388A3D2B9775C0006F122D /* LoginAPIClient.swift */,
 				83388A3F2B9775E2006F122D /* LoginWireframe.swift */,
+				3A1CAAA22BFE36BB0026F63F /* LoginRegisterViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -892,10 +906,12 @@
 				3AFD14E52BED4A4F00C86030 /* SettingsDataManagerMock.swift in Sources */,
 				8347619D2B9F2A1700485E2F /* Chat.swift in Sources */,
 				83EF4C792BBBE358001EBDC7 /* ChatRow.swift in Sources */,
+				3A526D152BF7C3E500973D22 /* WhatVassApp.swift in Sources */,
 				83388A3E2B9775C0006F122D /* LoginAPIClient.swift in Sources */,
 				834761962B9EED6700485E2F /* ChatAPIClient.swift in Sources */,
 				B3810C862B9B081900C30D63 /* HomeDataManager.swift in Sources */,
 				3AFD14D72BECBE0500C86030 /* HomeDataManagerMock.swift in Sources */,
+				3A1CAAA32BFE36BB0026F63F /* LoginRegisterViewModel.swift in Sources */,
 				8396D2A82BA301820006A4A0 /* SettingsViewController.swift in Sources */,
 				83388A3A2B9775A0006F122D /* LoginViewModel.swift in Sources */,
 				3A0923F42BF2692F00538A1D /* LoginDataManagerMock.swift in Sources */,
@@ -1117,6 +1133,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1146,6 +1163,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

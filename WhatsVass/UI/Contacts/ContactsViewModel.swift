@@ -5,22 +5,22 @@
 //  Created by Juan Carlos Torrejon Cañedo on 14/3/24.
 //
 
-import Foundation
-import Combine
+import SwiftUI
 
 final class ContactsViewModel: ObservableObject {
+    @AppStorage(Preferences.id.rawValue) var sourceId = ""
     // MARK: - Properties -
     @Published var contacts: [User] = []
     @Published var contactsBySection: [String: [User]] = [:]
     @Published var showError = false
     @Published var errorMessage = ""
+    @Published var isNewChatSelected = false
+    @Published var newChat: Chat?
 
     private let dataManager: ContactsDataManagerProtocol
     private var newlyCreatedChatId: String?
     
-    var chatSubject = PassthroughSubject<Chat, Never>()
-
-    init(dataManager: ContactsDataManagerProtocol) {
+    init(dataManager: ContactsDataManagerProtocol = ContactsDataManager()) {
         self.dataManager = dataManager
         Task {
            await getContacts()
@@ -49,8 +49,7 @@ final class ContactsViewModel: ObservableObject {
     @MainActor
     func createChat(with contact: User) {
         Task {
-            guard let sourceId = UserDefaults.standard.string(forKey: Preferences.id.rawValue) else { return }
-            
+//            guard let sourceId = UserDefaults.standard.string(forKey: Preferences.id.rawValue) else { return }
             let targetId = contact.id
             do {
                 let chatCreateResponse = try await dataManager.createChat(source: sourceId, target: targetId)
@@ -61,8 +60,10 @@ final class ContactsViewModel: ObservableObject {
                 guard let newChat = chats.first(where: { $0.chat == chatCreateResponse.chat.id }) else {
                     throw BaseError.failedChat
                 }
+                self.newChat = newChat
                 //Notification
-                self.chatSubject.send(newChat)
+                isNewChatSelected.toggle()
+                
             } catch {
                 showError.toggle()
                 if let error = error as? BaseError {
@@ -80,13 +81,13 @@ final class ContactsViewModel: ObservableObject {
     }
 
     func filterContacts(searchText: String) {
-        let filtered = searchText.isEmpty ? contacts
+       let filtered = searchText.isEmpty ? contacts
         : contacts.filter { $0.nick.localizedCaseInsensitiveContains(searchText) }
 
         contactsBySection = contactsByFirstLetter(filtered)
     }
     
-    private func contactsByFirstLetter(_ contact: [User]) -> [String: [User]] {
+    private func contactsByFirstLetter(_ contacts: [User]) -> [String: [User]] {
       contacts.reduce(into: [:]) { result, contact in
             let key = String(contact.nick.prefix(1)).uppercased()
             result[key, default: []].append(contact)

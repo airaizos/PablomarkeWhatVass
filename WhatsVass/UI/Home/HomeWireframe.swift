@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/*
 final class HomeWireframe {
 
     // MARK: - Properties
@@ -38,3 +38,4 @@ final class HomeWireframe {
                                        animated: true)
     }
 }
+*/

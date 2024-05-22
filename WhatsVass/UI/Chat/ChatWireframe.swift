@@ -7,7 +7,7 @@
 
 import UIKit
 import SwiftUI
-
+/*
 final class ChatWireframe {
 
     // MARK: - Properties
@@ -35,3 +35,4 @@ final class ChatWireframe {
         return ChatDataManager(apiClient: apiClient)
     }
 }
+*/

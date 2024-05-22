@@ -5,7 +5,6 @@
 //  Created by Pablo Marquez Marin on 14/3/24.
 //
 
-//import Combine
 import UserNotifications
 import UIKit
 
@@ -20,6 +19,7 @@ final class SettingsViewModel: ObservableObject {
     
     @Published var showError = false
     @Published var errorMessage = ""
+    @Published var isLoggedOut = false
     
 
     // MARK: - Init -
@@ -34,6 +34,7 @@ final class SettingsViewModel: ObservableObject {
 
     // MARK: Public Methods
     func logout() {
+     
         Task {
             await logOutByAPI()
             //KeyChainData().deleteStringKey(key: KeyChainEnum.user)
@@ -42,7 +43,9 @@ final class SettingsViewModel: ObservableObject {
             if let bundleIdentifier = Bundle.main.bundleIdentifier {
                 persistence.removePersistenceDomain(forName: bundleIdentifier)
             }
-            notificationCenter.post(name: .logout, object: nil)
+            RunLoop.main.perform {
+                self.isLoggedOut = true
+            }
         }
     }
 

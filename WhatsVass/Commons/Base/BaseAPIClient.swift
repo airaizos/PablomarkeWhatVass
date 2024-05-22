@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import Combine
-//import Alamofire
 
 class BaseAPIClient {
     
@@ -45,7 +43,7 @@ class BaseAPIClient {
         
         return baseError
     }
-    
+    /*
     func requestPublisher<T: Codable>(url: URL,
                                       method: HTTPMethods = .get,
                                       type: T.Type) -> AnyPublisher<T, BaseError> {
@@ -67,6 +65,7 @@ class BaseAPIClient {
             .eraseToAnyPublisher()
     }
     
+     */
     func fetchCodable<T: Codable>(url: URL,
                                   method: HTTPMethods = .get,
                                   type: T.Type) async throws -> T {
@@ -93,7 +92,7 @@ class BaseAPIClient {
         }
     }
     
-    
+    /*
     func requestPostPublisher<T: Codable, U:Codable>(url: URL,
                                                      data: T) -> AnyPublisher<U, BaseError> {
         guard let token = getToken() else {
@@ -112,7 +111,7 @@ class BaseAPIClient {
             })
             .eraseToAnyPublisher()
     }
-    
+    */
     func postCodable<T: Codable, U:Codable>(url: URL,
                                             data: T) async throws -> U {
         guard let token = getToken() else {

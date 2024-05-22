@@ -6,13 +6,8 @@
 //
 
 import Foundation
-import Combine
 
 protocol ContactsDataManagerProtocol {
-//    func getContacts() -> AnyPublisher<[User], BaseError>
-//    func createChat(source: String, target: String) -> AnyPublisher<ChatCreateResponse, BaseError>
-//    func getChats() -> AnyPublisher<ChatsList, BaseError>
-    
     func getContacts() async throws -> [User]
     func createChat(source: String, target: String) async throws -> ChatCreateResponse
     func getChats() async throws -> ChatsList 
@@ -21,7 +16,7 @@ protocol ContactsDataManagerProtocol {
 final class ContactsDataManager: ContactsDataManagerProtocol {
     private var apiClient: ContactsAPIClient
 
-    init(apiClient: ContactsAPIClient) {
+    init(apiClient: ContactsAPIClient = ContactsAPIClient()) {
         self.apiClient = apiClient
     }
     

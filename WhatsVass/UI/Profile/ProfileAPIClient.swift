@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import Combine
-//import Alamofire
 
 final class ProfileAPIClient: BaseAPIClient {
     func createAndRegisterProfileInAPI(params: [String: Any]) async throws -> UserResponse {

@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ContactsView: View {
-    @ObservedObject var viewModel: ContactsViewModel
+    @EnvironmentObject var homeViewModel: HomeViewModel
+    @ObservedObject var viewModel = ContactsViewModel()
     @State private var searchText = ""
-
+    var newChat: (Chat) -> ()
     var body: some View {
         VStack {
             searchBar
@@ -27,11 +28,18 @@ struct ContactsView: View {
                     ForEach(viewModel.contactsBySection.keys.sorted(), id: \.self) { key in
                         Section(header: Text(key)) {
                             ForEach(viewModel.contactsBySection[key] ?? [], id: \.id) { contact in
-                                Button(action: {
-                                       viewModel.createChat(with: contact)
-                                }, label: {
+                                Button {
+                                    viewModel.createChat(with: contact)
+                                    
+                                    if let chat = viewModel.newChat {
+                                        newChat(chat)
+                                        homeViewModel.showContacts.toggle()
+                                      
+                    //ChatView(viewModel: ChatViewModel(chat: newChat))
+                                    }
+                                } label: {
                                     ContactRow(user: contact)
-                                })
+                                }
                             }
                         }
                     }
@@ -105,7 +113,9 @@ extension ContactRow {
 }
 
 #Preview {
-    ContactsView(viewModel: ContactsViewModel(dataManager: ContactsDataManagerMock()))
+    NavigationStack {
+        ContactsView(viewModel: ContactsViewModel(dataManager: ContactsDataManagerMock())) { _ in }
+    }
 }
 
 

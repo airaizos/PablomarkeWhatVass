@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 final class ContactsDataManagerMock: ContactsDataManagerProtocol {
     //MARK: Async
@@ -20,18 +19,5 @@ final class ContactsDataManagerMock: ContactsDataManagerProtocol {
     
     func getChats() async throws -> ChatsList {
         try Bundle.decode(type: ChatsList.self, from: "ChatList")
-    }
-    
-    //MARK: Combine
-    func getContacts() -> AnyPublisher<[User], BaseError> {
-        Bundle.loadJsonPublisher(type: [User].self, from: "getContacts")
-    }
-    
-    func createChat(source: String, target: String) -> AnyPublisher<ChatCreateResponse, BaseError> {
-        Bundle.loadJsonPublisher(type: ChatCreateResponse.self, from: "createChat")
-    }
-    
-    func getChats() -> AnyPublisher<ChatsList, BaseError> {
-        Bundle.loadJsonPublisher(type: ChatsList.self, from: "ChatList")
     }
 }

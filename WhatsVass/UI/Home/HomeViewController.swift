@@ -5,9 +5,8 @@
 //  Created by Juan Carlos Torrejon Cañedo on 13/3/24.
 //
 
-import Combine
 import SwiftUI
-
+/*
 final class HomeViewController: UIHostingController<HomeView> {
     private let viewModel: HomeViewModel
     private let contactsWireframe: ContactsWireframe
@@ -88,3 +87,4 @@ extension HomeViewController {
     
    
 }
+*/

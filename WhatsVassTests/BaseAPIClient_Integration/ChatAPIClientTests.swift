@@ -6,22 +6,18 @@
 //
 
 import XCTest
-import Combine
 
 @testable import WhatsVass
 final class ChatAPIClientTests: XCTestCase {
 
     var sut: ChatAPIClient!
-    var subscribers: Set<AnyCancellable>!
     
     override func setUpWithError() throws {
         sut = ChatAPIClient()
-        subscribers = Set<AnyCancellable>()
     }
 
     override func tearDownWithError() throws {
         sut = nil
-        subscribers = nil
     }
 
     func testGetChatMessage_ShouldBe10() async throws {

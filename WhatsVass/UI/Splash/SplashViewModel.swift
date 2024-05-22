@@ -6,14 +6,9 @@
 //
 
 import Foundation
-import Combine
 
 final class SplashViewModel: ObservableObject {
     // MARK: - Properties -
     @Published var isLoading = false
     
-    func navigateToLogin() {
-        NotificationCenter.default.post(name: .splash, object: nil)
-    }
 }
-

@@ -15,7 +15,7 @@ extension ProfileView {
 }
 
 struct ProfileView: View {
-    @ObservedObject var viewModel: ProfileViewModel
+    @ObservedObject var viewModel = ProfileViewModel()
     @FocusState var nameFields: NameFields?
     
     var body: some View {

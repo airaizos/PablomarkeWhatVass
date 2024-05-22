@@ -5,11 +5,8 @@
 //  Created by Juan Carlos Torrejon Cañedo on 14/3/24.
 //
 
-import Combine
-import Foundation
-import UIKit
 import SwiftUI
-
+/*
 final class ContactsViewController: UIHostingController<ContactsView> {
     var viewModel: ContactsViewModel
 
@@ -31,3 +28,4 @@ final class ContactsViewController: UIHostingController<ContactsView> {
         fatalError("init(coder:) has not been implemented")
     }
 }
+*/

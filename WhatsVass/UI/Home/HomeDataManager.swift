@@ -6,59 +6,31 @@
 //
 
 import Foundation
-import Combine
 
 protocol HomeDataManagerProtocol {
-    func getChats() -> AnyPublisher<ChatsList, BaseError>
-    func getMessages() -> AnyPublisher<[MessageViewResponse], BaseError>
-    func deleteChat(chatId: String) -> AnyPublisher<DeleteChatResponse, BaseError>
+    func getChats() async throws -> ChatsList
+    func getMessages() async throws -> [MessageViewResponse]
+    func deleteChat(chatId: String) async throws -> DeleteChatResponse
 }
 
 
 final class HomeDataManager:HomeDataManagerProtocol {
     // MARK: - Properties
     private var apiClient: HomeAPIClient
-    private var cancellables = Set<AnyCancellable>()
 
     // MARK: - Init
-    init(apiClient: HomeAPIClient) {
+    init(apiClient: HomeAPIClient = HomeAPIClient()) {
         self.apiClient = apiClient
     }
 
     // MARK: - Public Methods
-    func getChats() -> AnyPublisher<ChatsList, BaseError> {
-        apiClient.getChats()
-            .tryMap { chats in
-                //saveCodableToDocumentsDirectory(chats, fileName: "ChatList.json")
-                return chats
-            }
-            .mapError { error in
-                return error as? BaseError ?? .failedChat
-            }
-            .eraseToAnyPublisher()
+    func getChats() async throws -> ChatsList {
+       try await apiClient.getChats()
     }
-
-    func getMessages() -> AnyPublisher<[MessageViewResponse], BaseError> {
-        apiClient.getMessages()
-            .tryMap { messages in
-                //saveCodableToDocumentsDirectory(messages, fileName: "MessageViewResponse.json")
-                return messages
-            }
-            .mapError { error in
-                return error as? BaseError ?? .failedChat
-            }
-            .eraseToAnyPublisher()
+    func getMessages() async throws -> [MessageViewResponse] {
+       try await apiClient.getMessages()
     }
-
-    func deleteChat(chatId: String) -> AnyPublisher<DeleteChatResponse, BaseError> {
-        return apiClient.deleteChat(chatId: chatId)
-            .tryMap { deleteChat in
-                //saveCodableToDocumentsDirectory(deleteChat,fileName: "deleteChat.json")
-                return deleteChat
-            }
-            .mapError { error in
-                return error as? BaseError ?? .failedChat
-            }
-            .eraseToAnyPublisher()
+    func deleteChat(chatId: String) async throws -> DeleteChatResponse {
+       try await apiClient.deleteChat(chatId: chatId)
     }
 }

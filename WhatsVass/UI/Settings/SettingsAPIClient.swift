@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 final class SettingsAPIClient: BaseAPIClient {
     func logout() async throws -> LogOutResponse {

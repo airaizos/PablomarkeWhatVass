@@ -6,18 +6,17 @@
 //
 
 import Foundation
-import Combine
 
 final class HomeDataManagerMock: HomeDataManagerProtocol {
-    func getChats() -> AnyPublisher<ChatsList, BaseError> {
-        Bundle.loadJsonPublisher(type: [Chat].self, from: "ChatList")
+    func getChats() async throws -> ChatsList {
+        try Bundle.decode(type: ChatsList.self, from: "ChatList")
     }
     
-    func getMessages() -> AnyPublisher<[MessageViewResponse], BaseError> {
-        Bundle.loadJsonPublisher(type: [MessageViewResponse].self, from: "messages")
+    func getMessages() async throws -> [MessageViewResponse] {
+      try Bundle.decode(type: [MessageViewResponse].self, from: "messages")
     }
     
-    func deleteChat(chatId: String) -> AnyPublisher<DeleteChatResponse, BaseError> {
-        Bundle.loadJsonPublisher(type: DeleteChatResponse.self, from: "response")
+    func deleteChat(chatId: String) async throws -> DeleteChatResponse {
+       try Bundle.decode(type: DeleteChatResponse.self, from: "response")
     }
 }

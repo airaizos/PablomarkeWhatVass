@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 final class ContactsAPIClient: BaseAPIClient {
     func getContacts() async throws -> [User] {

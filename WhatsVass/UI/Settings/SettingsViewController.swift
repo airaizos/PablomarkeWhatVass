@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/*
 final class SettingsViewController: UIHostingController<SettingsView> {
     
     private var viewModel: SettingsViewModel
@@ -31,3 +31,4 @@ final class SettingsViewController: UIHostingController<SettingsView> {
         NotificationCenter.default.removeObserver(self, name: .logout, object: nil)
     }
 }
+*/

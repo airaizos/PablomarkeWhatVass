@@ -5,10 +5,8 @@
 //  Created by Juan Carlos Torrejon Cañedo on 14/3/24.
 //
 
-import Combine
-import UIKit
 import SwiftUI
-
+/*
 final class ContactsWireframe {
 
     private var newChatSubject: PassthroughSubject<Chat, Never>
@@ -51,3 +49,4 @@ final class ContactsWireframe {
         navigation?.present(viewController, animated: true)
     }
 }
+*/

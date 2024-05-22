@@ -24,7 +24,7 @@ struct ChatCreateResponse: Codable {
 
 typealias ChatsList = [Chat]
 
-struct Chat: Codable {
+struct Chat: Codable, Hashable {
     var chat, source, sourcenick: String
     var sourcetoken: String?
     var target, targetnick, targetavatar: String

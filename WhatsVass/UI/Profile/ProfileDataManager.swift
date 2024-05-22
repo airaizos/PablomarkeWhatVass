@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 protocol ProfileDataManagerProtocol {
     func createAndRegisterProfile(params: [String: Any]) async throws -> UserResponse
@@ -17,7 +16,7 @@ final class ProfileDataManager: ProfileDataManagerProtocol {
     private var apiClient: ProfileAPIClient
 
     // MARK: - Object lifecycle
-    init(apiClient: ProfileAPIClient) {
+    init(apiClient: ProfileAPIClient = ProfileAPIClient()) {
         self.apiClient = apiClient
     }
 

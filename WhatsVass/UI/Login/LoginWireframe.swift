@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+/*
 final class LoginWireframe {
     // MARK: - Properties
     var viewController: LoginViewController {
@@ -44,3 +44,4 @@ final class LoginWireframe {
                                       animated: true)
     }
 }
+*/

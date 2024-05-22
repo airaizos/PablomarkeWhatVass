@@ -5,24 +5,27 @@
 //  Created by Juan Carlos Torrejon Cañedo on 8/3/24.
 //
 
-import Combine
 import Foundation
 
-final class HomeViewModel: ObservableObject {
+final class HomeViewModel: ObservableObject, ErrorHandling {
+   
+    
     // MARK: - Properties -
     @Published var chats: ChatsList = []
     @Published var showingDeleteError: Bool = false
     @Published var deleteErrorMessage: String = ""
     @Published var searchText = ""
+    @Published var showContacts = false
+    @Published var showSettings = false
+    @Published var showNewChat = false
+    @Published var newChat: Chat?
+    
+    @Published var showError: Bool = false
+    @Published var errorMessage: String = ""
 
     private var dataManager: HomeDataManagerProtocol
     private var persistence: LocalPersistence
-    private var cancellables = Set<AnyCancellable>()
 
-    let newChatSelectedSubject = PassthroughSubject<Void, Never>()
-    var navigateToChatSubject = PassthroughSubject<Chat, Never>()
-    var navigateToProfileSubject = PassthroughSubject<Void, Never>()
-    var navigateToSettingsSubject = PassthroughSubject<Void, Never>()
     var filteredChats: ChatsList {
         let myNick = persistence.getString(forKey: Preferences.id) ?? "defaultID"
 
@@ -39,109 +42,60 @@ final class HomeViewModel: ObservableObject {
         })
     }
 
-    init(dataManager: HomeDataManagerProtocol, persistence: LocalPersistence = .shared) {
+    init(dataManager: HomeDataManagerProtocol = HomeDataManager(), persistence: LocalPersistence = .shared) {
         self.dataManager = dataManager
         self.persistence = persistence
     }
 
     // MARK: - Public Methods
     func getChats() {
-        dataManager.getChats()
-            .receive(on: DispatchQueue.main)
-            .sink {  completion in
-                if case .failure = completion {
-                    // print Error
-                }
-            } receiveValue: { [weak self] chat in
-                self?.chats = chat
-                self?.updateLastMessages()
-            }.store(in: &cancellables)
-    }
-    
-    func getChatAsync() async throws -> ChatsList {
-              
-        try await withCheckedThrowingContinuation { continuation in
-            dataManager.getChats()
-                .sink { completion in
-                    if case .failure = completion {
-                        continuation.resume(throwing: BaseError.failedChat)
-                    }
-                } receiveValue: { [weak self] chats in
-                    self?.updateLastMessages()
-                    continuation.resume(returning: chats)
-                }
-                .store(in: &cancellables)
+        Task {
+            chats = try await dataManager.getChats()
+            updateLastMessages()
         }
     }
     
-
     func deleteChat(at offsets: IndexSet) {
         offsets.forEach { index in
             let chatId = chats[index].chat
             deleteChat(chatId: chatId)
         }
     }
-
-    // MARK: - Navigation
-    func onChatSelected(_ chat: Chat) {
-        navigateToChatSubject.send(chat)
-    }
-
-    func onNewChatSelected() {
-        newChatSelectedSubject.send(())
-    }
-
-    func navigateToProfile() {
-        navigateToProfileSubject.send()
-    }
-
-    func navigateToSettings() {
-        navigateToSettingsSubject.send()
-    }
 }
 
 private extension HomeViewModel {
     func deleteChat(chatId: String) {
-        dataManager.deleteChat(chatId: chatId)
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { [weak self] completionStatus in
-                guard case .failure = completionStatus else { return }
-
-                self?.showingDeleteError = true
-                self?.deleteErrorMessage = NSLocalizedString("NoChatDeleted",
-                                                             comment: "")
-            }, receiveValue: { [weak self] success in
-                guard success.success, let index = self?.chats.firstIndex(where: { $0.chat == chatId }) else {
-                    self?.showingDeleteError = true
+        Task {
+            do {
+                let result = try await dataManager.deleteChat(chatId: chatId)
+                guard result.success, let index = chats.firstIndex(where: { $0.chat == chatId }) else {
+                    showError.toggle()
+                    errorMessage = "NoChatDeleted"
                     return
                 }
-                self?.chats.remove(at: index)
-            })
-            .store(in: &cancellables)
+                chats.remove(at: index)
+            } catch {
+                showErrorMessage(error)
+            }
+        }
     }
 
     func updateLastMessages() {
-        dataManager.getMessages()
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-                if case  .failure = completion {
-                    // print Error
+        Task {
+            let messages = try await self.dataManager.getMessages()
+            let lastMessages = Dictionary(grouping: messages,
+                                          by: { $0.chat })
+                .mapValues { messages in
+                    messages.max(by: { $0.date < $1.date })
                 }
-            }, receiveValue: { [weak self] messages in
-                let lastMessages = Dictionary(grouping: messages,
-                                              by: { $0.chat })
-                    .mapValues { messages in
-                        messages.max(by: { $0.date < $1.date })
-                    }
-                self?.chats = self?.chats.map { chat in
-                    var chat = chat
-                    if let lastMessage = lastMessages[chat.chat] {
-                        chat.lastMessage = lastMessage?.message
-                        chat.lastMessageTime = lastMessage?.date
-                    }
-                    return chat
-                } ?? []
-            })
-            .store(in: &cancellables)
+            self.chats = chats.map { chat in
+                var chat = chat
+                if let lastMessage = lastMessages[chat.chat] {
+                    chat.lastMessage = lastMessage?.message
+                    chat.lastMessageTime = lastMessage?.date
+                }
+                return chat
+            }
+        }
     }
 }

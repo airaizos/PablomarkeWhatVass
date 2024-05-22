@@ -6,22 +6,18 @@
 //
 
 import XCTest
-import Combine
 
 @testable import WhatsVass
 
 final class ProfileAPIClientTests: XCTestCase {
     var sut: ProfileAPIClient!
-    var subscribers: Set<AnyCancellable>!
     
     override func setUpWithError() throws {
         sut = ProfileAPIClient()
-        subscribers = Set<AnyCancellable>()
     }
 
     override func tearDownWithError() throws {
         sut = nil
-        subscribers = nil
     }
 
     func testCreateAndRegisterProfileInAPI_ShouldBe() async throws {

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 
 extension Chat {
@@ -27,21 +26,4 @@ final class ChatAPIMock: BaseAPIClient, ChatAPI {
     func sendMessage(params: [String : Any]) async throws -> NewMessageResponse {
        try Bundle.decode(type: NewMessageResponse.self, from: "response")
     }
-    
-    func getChatMessagesByAPI(chat: String, first: Int, limit: Int) -> AnyPublisher<ChatMessage, BaseError> {
-        let chatMessage = ChatMessage.preview
-        
-        return Just(chatMessage)
-            .setFailureType(to: BaseError.self)
-                   .eraseToAnyPublisher()
-    }
-    
-    func sendMessage(params: [String : Any]) -> AnyPublisher<NewMessageResponse, BaseError> {
-        let result = NewMessageResponse(success: true)
-        return Just(result)
-            .setFailureType(to: BaseError.self)
-                   .eraseToAnyPublisher()
-    }
-    
-    
 }

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 final class LoginDataManagerMock: LoginDataManagerProtocol {
     func login(with credentials: [String : Any]) async throws -> LoginResponse {

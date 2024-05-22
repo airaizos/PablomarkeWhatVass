@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @ObservedObject var viewModel: SettingsViewModel
+    @EnvironmentObject var viewModel: SettingsViewModel
     @AppStorage(Preferences.notifications.rawValue) var isNotificationsOn = false
     @AppStorage(Preferences.themes.rawValue) var isDarkThemeOn = false
     @AppStorage(Preferences.biometrics.rawValue) var isBiometricOn = false
@@ -37,7 +37,8 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView(viewModel: .preview)
+    SettingsView()
+        .environmentObject(SettingsViewModel.preview)
 }
 
 protocol SettingsDelegate {

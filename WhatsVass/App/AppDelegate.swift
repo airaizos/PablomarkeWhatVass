@@ -10,20 +10,11 @@ import UserNotifications
 //import IQKeyboardManagerSwift
 
 typealias NotificationPresentation = (UNNotificationPresentationOptions) -> Void
-@main
-final class AppDelegate: UIResponder,
-                   UIApplicationDelegate {
+//@UIApplicationMain
+/*final class AppDelegate333: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-//        IQKeyboardManager.shared.enable = true
-//        IQKeyboardManager.shared.toolbarConfiguration.previousNextDisplayMode = .alwaysHide
-//        IQKeyboardManager.shared.resignOnTouchOutside = true
-//        IQKeyboardManager.shared.enableAutoToolbar = false
-//        IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
-//        IQKeyboardManager.shared.keyboardDistanceFromTextField = 80
-
-        // MARK: - Firebase and notifications -
         UNUserNotificationCenter.current().delegate = self
         let authOptions: UNAuthorizationOptions = [
             .alert,
@@ -69,7 +60,7 @@ final class AppDelegate: UIResponder,
 }
 
 // MARK: - Extension for Notifications -
-extension AppDelegate: UNUserNotificationCenterDelegate {
+extension AppDelegate333: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse) async {
         print("New notification")
@@ -88,3 +79,4 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         return .newData
     }
 }
+*/

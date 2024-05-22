@@ -17,7 +17,7 @@ final class ChatDataManager: ChatDataManagerProtocol {
     private var apiClient: ChatAPI
 
     // MARK: - Object lifecycle
-    init(apiClient: ChatAPI) {
+    init(apiClient: ChatAPI = ChatAPIClient()) {
         self.apiClient = apiClient
     }
 

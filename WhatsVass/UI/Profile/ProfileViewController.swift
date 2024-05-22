@@ -6,8 +6,8 @@
 //
 
 import SwiftUI
-import Combine
 
+/*
 final class ProfileViewController:UIHostingController<ProfileView> {
 
     // MARK: - Properties
@@ -51,3 +51,4 @@ private extension ProfileViewController {
             HomeWireframe().push(navigation: navigationController)
     }
 }
+*/

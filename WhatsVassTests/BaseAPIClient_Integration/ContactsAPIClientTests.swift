@@ -6,22 +6,18 @@
 //
 
 import XCTest
-import Combine
 
 @testable import WhatsVass
 final class ContactsAPIClientTests: XCTestCase {
     var sut: ContactsAPIClient!
-    var subscribers: Set<AnyCancellable>!
     
     
     override func setUpWithError() throws {
         sut = ContactsAPIClient()
-        subscribers = Set<AnyCancellable>()
     }
     
     override func tearDownWithError() throws {
         sut = nil
-        subscribers = nil
     }
     
     func testGetContacts_ShouldBe447() async throws {

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/*
 final class LoginViewController: UIHostingController<LoginView> {
 
     // MARK: - Properties
@@ -16,7 +16,7 @@ final class LoginViewController: UIHostingController<LoginView> {
         
     init(viewModel: LoginViewModel)  {
         self.viewModel = viewModel
-        super.init(rootView: LoginView(viewModel: viewModel))
+        super.init(rootView: LoginView())
         
         NotificationCenter.default.addObserver(forName: .signIn, object: nil, queue: .main) { [weak self] _ in
             self?.navigateToProfileView()
@@ -50,3 +50,4 @@ extension LoginViewController {
     }
 }
 
+*/

@@ -8,6 +8,8 @@
 import SwiftUI
 
 final class LoginViewModel: ObservableObject, ErrorHandling {
+    @ObservedObject var loginRegister = LoginRegisterViewModel()
+   
     // MARK: - Properties -
     private var dataManager: LoginDataManagerProtocol
     private var secure: KeychainProvider
@@ -17,24 +19,25 @@ final class LoginViewModel: ObservableObject, ErrorHandling {
     @Published var password: String = ""
     @Published var showError = false
     @Published var errorMessage = ""
+    @Published var isLogged = false
     
     @AppStorage(Preferences.rememberLogin.rawValue) var loginExist = false
     @AppStorage(Preferences.rememberLogin.rawValue) var rememberLogin = false
     @AppStorage(Preferences.biometrics.rawValue) var isBiometricOn = false
-   
+    
     
     // MARK: - Init -
-    init(dataManager: LoginDataManagerProtocol, secure: KeychainProvider,  biometrics: BiometricAuthentication = BiometricAuthentication()) {
+    init(dataManager: LoginDataManagerProtocol = LoginDataManager(), secure: KeychainProvider = KeyChainData(),  biometrics: BiometricAuthentication = BiometricAuthentication()) {
         self.dataManager = dataManager
         self.secure = secure
         self.biometrics = biometrics
     }
     
     //MARK: - View Methods -
-   
+    
     func loginTapped() {
         securingCredentials()
-            loginWithCredentials()
+        loginWithCredentials()
     }
     
     func securingCredentials() {
@@ -48,7 +51,7 @@ final class LoginViewModel: ObservableObject, ErrorHandling {
     func signInTapped() {
         NotificationCenter.default.post(name: .signIn, object: nil)
     }
-   
+    
     @MainActor
     func initData() {
         comprobeTokenAndBiometrics()
@@ -58,16 +61,16 @@ final class LoginViewModel: ObservableObject, ErrorHandling {
 
 //MARK: - Private methods -
 private extension LoginViewModel {
-     func isUserAndPasswordEmpty() -> Bool {
-         if username.isEmpty {
-             showErrorMessage(BaseError.userEmpty)
-             return true
-         } else if password.isEmpty {
-             showErrorMessage(BaseError.passwordEmpty)
-             return true
-         }
-         return false
-     }
+    func isUserAndPasswordEmpty() -> Bool {
+        if username.isEmpty {
+            showErrorMessage(BaseError.userEmpty)
+            return true
+        } else if password.isEmpty {
+            showErrorMessage(BaseError.passwordEmpty)
+            return true
+        }
+        return false
+    }
     
     func comprobeTokenAndBiometrics()  {
         if isBiometricOn {
@@ -75,7 +78,7 @@ private extension LoginViewModel {
         }
     }
     
- 
+    
     func comprobeRememberLogin() {
         if rememberLogin {
             loginExist = getUserAndPasswordFromSecure()
@@ -90,7 +93,7 @@ private extension LoginViewModel {
         }
     }
     
-  
+    
     func getUserAndPasswordFromSecure() -> Bool {
         let keys = secure.getUserAndPassword()
         guard let userKey = keys.0, let passwordKey = keys.1 else {
@@ -102,7 +105,7 @@ private extension LoginViewModel {
     }
     
     func loginWithCredentials() {
-        guard !isUserAndPasswordEmpty() else { return }
+        guard !isUserAndPasswordEmpty() else { return  }
         let credentials = ["password": password,
                            "login": username,
                            "platform": "ios",
@@ -117,13 +120,14 @@ private extension LoginViewModel {
     }
     
     //MARK: Async await
-    private func loginWithCredentials(credentials: [String: Any]) async  {
+    private func loginWithCredentials(credentials: [String: Any]) async {
         do {
             let _ = try await dataManager.login(with: credentials)
             //1. guardar el login.token
             //2. guard el login.user.id
             
-            NotificationCenter.default.post(name: .login, object: nil)
+            //NotificationCenter.default.post(name: .login, object: nil)
+            isLogged = true
         } catch {
             showErrorMessage(error)
         }

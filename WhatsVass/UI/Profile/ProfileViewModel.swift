@@ -24,7 +24,7 @@ final class ProfileViewModel: ObservableObject {
     @Published var isValidPassword: Bool?
     
     // MARK: - Init -
-    init(dataManager: ProfileDataManagerProtocol, passwordValidator: PasswordValidator = .init()) {
+    init(dataManager: ProfileDataManagerProtocol = ProfileDataManager(), passwordValidator: PasswordValidator = .init()) {
         self.dataManager = dataManager
         self.passwordValidator = passwordValidator
     }

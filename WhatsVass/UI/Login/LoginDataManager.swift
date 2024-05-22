@@ -15,7 +15,7 @@ protocol LoginDataManagerProtocol {
 final class LoginDataManager: LoginDataManagerProtocol {
     private var apiClient: LoginAPIClient
 
-    init(apiClient: LoginAPIClient) {
+    init(apiClient: LoginAPIClient = LoginAPIClient()) {
         self.apiClient = apiClient
     }
     

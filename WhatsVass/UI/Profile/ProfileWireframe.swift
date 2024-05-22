@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+/*
 final class ProfileWireframe {
     // MARK: - Properties
     var viewController: ProfileViewController {
@@ -40,3 +40,4 @@ final class ProfileWireframe {
         navigation.pushViewController(viewController, animated: true)
     }
 }
+*/

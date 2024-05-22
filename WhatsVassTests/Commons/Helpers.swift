@@ -6,17 +6,8 @@
 //
 
 import XCTest
-import Combine
-@testable import WhatsVass
 
-func switchCompletion(_ completion: Subscribers.Completion<BaseError>,_ expectation: XCTestExpectation) {
-    switch completion {
-    case .finished:
-        expectation.fulfill()
-    case .failure(let error):
-        XCTFail(error.description())
-    }
-}
+@testable import WhatsVass
 
 let credentials = ["password": "password",
                    "login": "username",

@@ -14,11 +14,11 @@ extension LoginView {
 }
 
 struct LoginView: View {
-    @ObservedObject var viewModel: LoginViewModel
+    @ObservedObject var viewModel =  LoginViewModel()
     @FocusState var namefields: Namefields?
     @State var showAlertBiometrics = false
     @State var showAlertEmtpy = false
-    
+    @Binding var navState: NavState
     var body: some View {
         VStack(spacing: 30) {
             LogoVassView()
@@ -29,6 +29,7 @@ struct LoginView: View {
                     TextField(LocalizedStringKey("User"), text: $viewModel.username)
                         .keyboardType(.alphabet)
                         .autocorrectionDisabled()
+                        .textContentType(.username)
                         .textInputAutocapitalization(.never)
                         .submitLabel(.next)
                         .focused($namefields, equals: .user)
@@ -43,6 +44,7 @@ struct LoginView: View {
                         .submitLabel(.join)
                         .onSubmit {
                             viewModel.loginTapped()
+                          
                         }
                 }
             }
@@ -62,11 +64,12 @@ struct LoginView: View {
             .frame(width: 150)
             
             VassButton(title: "Login") {
-                    viewModel.loginTapped()
+               viewModel.loginTapped()
+                    navState = .home
                         }
             Spacer()
             Button(LocalizedStringKey("Sign in")) {
-                viewModel.signInTapped()
+                navState = .register
             }
             .foregroundStyle(.white)
             
@@ -90,6 +93,11 @@ struct LoginView: View {
                 namefields = .user
                 viewModel.initData()
             }
+            .onChange(of: viewModel.isLogged) { oldValue, newValue in
+                if newValue {
+                    navState = .home
+                }
+            }
         }
         .padding()
         .vassBackground()
@@ -100,7 +108,7 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView(viewModel: .preview)
+    LoginView(navState: .constant(.register))
 }
 
 

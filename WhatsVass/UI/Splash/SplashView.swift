@@ -9,7 +9,8 @@ import SwiftUI
 
 
 struct SplashView: View {
-    @ObservedObject var viewModel: SplashViewModel
+    @State var isLoading = false
+    @Binding var navState: NavState
     var body: some View {
         VStack {
             Image(uiImage: AssetsImages.logo)
@@ -18,7 +19,7 @@ struct SplashView: View {
                 .frame(width: 334)
                 .padding(.top,50)
             Spacer()
-            if !viewModel.isLoading {
+            if !isLoading {
                 ProgressView(LocalizedStringKey("Loading"))
                     .tint(.white)
                     .controlSize(.extraLarge)
@@ -35,13 +36,13 @@ struct SplashView: View {
         .vassBackground()
         .onAppear {
             Task {
-                try await Task.sleep(for: .seconds(1.5))
-                viewModel.navigateToLogin()
+                try await Task.sleep(for: .seconds(0.7))
+                navState = .login
             }
         }
     }
 }
 
 #Preview {
-    SplashView(viewModel: SplashViewModel())
+    SplashView(navState: .constant(.splash))
 }
