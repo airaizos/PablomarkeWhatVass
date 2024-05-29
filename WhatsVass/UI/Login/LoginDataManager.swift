@@ -26,5 +26,4 @@ final class LoginDataManager: LoginDataManagerProtocol {
     func loginWithBiometric(params: [String: Any]) async throws -> LoginResponse {
         try await  apiClient.biometricLogin(params: params)
     }
-    
 }

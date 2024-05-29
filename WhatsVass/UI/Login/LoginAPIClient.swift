@@ -11,8 +11,9 @@ final class LoginAPIClient: BaseAPIClient {
 
     //MARK: - Async Await -
     func loginByAPI(with credentials: [String: Any]) async throws -> LoginResponse {
-        let data = try encodeRegister(with: credentials)
-        return try await postCodable(url: EndpointsUsers.urlLogin, data: data)
+      //  let data = try encodeRegister(with: credentials)
+        let login = try constructLoginWith(credentials)
+        return try await postCodable(url: EndpointsUsers.urlLogin, data: login)
     }
     
     func biometricLogin(params: [String: Any]) async throws -> LoginResponse {

@@ -28,7 +28,6 @@ struct NewMessageResponse: Codable {
     var success: Bool
 }
 
-
 extension RowMessage {
     var  isMine: Bool {
         source == LocalPersistence.shared.getString(forKey: Preferences.id)

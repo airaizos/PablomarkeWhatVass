@@ -5,7 +5,7 @@
 //  Created by Adrian Iraizos Mendoza on 15/5/24.
 //
 
-import UIKit
+import SwiftUI
 
 
 extension UIImage {
@@ -24,4 +24,23 @@ extension UIImage {
         return self
         #endif
     }
+    
+    convenience init?(from image: Image?, size: CGFloat) {
+        guard let image else { return nil }
+        let controller = UIHostingController(rootView: image)
+        let view = controller.view
+
+        let targetSize = CGSize(width: size, height: size) // Ajusta esto según tus necesidades
+        view?.bounds = CGRect(origin: .zero, size: targetSize)
+        view?.backgroundColor = .clear
+
+        let renderer = UIGraphicsImageRenderer(size: targetSize)
+
+        let rawImage = renderer.image { context in
+            view?.drawHierarchy(in: view!.bounds, afterScreenUpdates: true)
+        }
+
+        self.init(cgImage: rawImage.cgImage!)
+    }
 }
+

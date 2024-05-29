@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Environment(\.theme) private var theme: Theme
     @EnvironmentObject var viewModel: SettingsViewModel
     @AppStorage(Preferences.notifications.rawValue) var isNotificationsOn = false
     @AppStorage(Preferences.themes.rawValue) var isDarkThemeOn = false
@@ -32,7 +33,7 @@ struct SettingsView: View {
         }
         .padding()
         .animation(.bouncy.delay(0.1), value: isNotificationsOn)
-        .vassBackground()
+        .vassBackground(theme)
     }
 }
 

@@ -8,12 +8,17 @@
 import SwiftUI
 
 extension View {
-    func vassBackground() -> some View {
+    
+    func vassBackground(_ theme: Theme) -> some View {
         self
             .frame(maxWidth: .infinity,maxHeight: .infinity)
             .background(
-                LinearGradient(colors: [Color.darkDarkmode.opacity(0.5),Color.darkDarkmode.opacity(0.7),Color.darkDarkmode.opacity(0.9),Color.darkDarkmode], startPoint: .top, endPoint: .bottom)
-            )
+//                LinearGradient(colors: [Color.darkDarkmode.opacity(0.5),Color.darkDarkmode.opacity(0.7),Color.darkDarkmode.opacity(0.9),Color.darkDarkmode], startPoint: .top, endPoint: .bottom)
+//            )
+//
+                
+        LinearGradient(colors: [theme.secondaryColor.opacity(0.5),theme.secondaryColor.opacity(0.7),theme.secondaryColor.opacity(0.9),theme.secondaryColor], startPoint: .top, endPoint: .bottom)
+    )
     }
     
     func hideKeyboard() {

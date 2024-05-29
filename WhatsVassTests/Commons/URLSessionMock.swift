@@ -21,15 +21,15 @@ final class URLSessionMock: URLProtocol {
     override func startLoading() {
         if let url = request.url {
             switch url.lastPathComponent {
-            case EndpointsUsers.login,
+            case "login",
                 EndpointsUsers.biometric: getMockData(from: URLJsonLocator.login)
-            case EndpointsUsers.users: getMockData(from: URLJsonLocator.users)
+            case "users": getMockData(from: URLJsonLocator.users)
                 
-            case EndpointsChats.chatsView: getMockData(from: URLJsonLocator.chatsList)
+            case "list": getMockData(from: URLJsonLocator.chatsList)
             case EndpointsChats.createChat: getMockData(from: URLJsonLocator.createChat)
                 
-            case EndpointsMessages.view: getMockData(from: URLJsonLocator.messages)
-            case EndpointsMessages.chat: getMockData(from: URLJsonLocator.getMessages)
+            case "messages": getMockData(from: URLJsonLocator.messages)
+            case "chatMessages": getMockData(from: URLJsonLocator.getMessages)
                 
             case EndpointsUsers.register: getMockData(from: URLJsonLocator.registerProfile)
             case EndpointsMessages.newMessage,

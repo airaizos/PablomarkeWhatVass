@@ -15,11 +15,14 @@ extension ProfileView {
 }
 
 struct ProfileView: View {
+    @Environment(\.theme) private var theme: Theme
     @ObservedObject var viewModel = ProfileViewModel()
     @FocusState var nameFields: NameFields?
+    @Binding var navState: NavState
     
     var body: some View {
         VStack(spacing:20) {
+        
             ProfileImageView(profileImage: $viewModel.profileImage)
                 .padding()
             VassTextField(text: viewModel.userText) {
@@ -83,7 +86,18 @@ struct ProfileView: View {
         .font(.title3)
         .textFieldStyle(.roundedBorder)
         .padding()
-        .vassBackground()
+        .vassBackground(theme)
+        .safeAreaInset(edge: .bottom) {
+            VStack {
+                Divider()
+                Button("Volver") {
+                    navState = .login
+                }
+                .font(.title3.bold())
+                .foregroundStyle(theme.accentColor)
+            }
+            .background(.thinMaterial)
+        }
         .onTapGesture {
             hideKeyboard()
         }
@@ -96,11 +110,16 @@ struct ProfileView: View {
                 viewModel.errorMessageTapped()
             }
         }
+        .onChange(of: viewModel.profileCreated) { _, newValue in
+            if newValue {
+                navState = .home
+            }
+        }
     }
 }
 
 #Preview {
-    ProfileView(viewModel: ProfileViewModel(dataManager: ProfileDataManagerMock()))
+    ProfileView(viewModel: ProfileViewModel(dataManager: ProfileDataManagerMock()), navState: .constant(.login))
 }
 
 struct ProfileImageView: View {

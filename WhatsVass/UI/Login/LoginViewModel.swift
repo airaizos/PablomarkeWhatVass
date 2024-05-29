@@ -8,8 +8,6 @@
 import SwiftUI
 
 final class LoginViewModel: ObservableObject, ErrorHandling {
-    @ObservedObject var loginRegister = LoginRegisterViewModel()
-   
     // MARK: - Properties -
     private var dataManager: LoginDataManagerProtocol
     private var secure: KeychainProvider
@@ -34,10 +32,16 @@ final class LoginViewModel: ObservableObject, ErrorHandling {
     }
     
     //MARK: - View Methods -
+    @MainActor
+    func initData() {
+        comprobeTokenAndBiometrics()
+        comprobeRememberLogin()
+    }
+    
     
     func loginTapped() {
         securingCredentials()
-        loginWithCredentials()
+        requestLogin()
     }
     
     func securingCredentials() {
@@ -48,15 +52,19 @@ final class LoginViewModel: ObservableObject, ErrorHandling {
         }
     }
     
-    func signInTapped() {
-        NotificationCenter.default.post(name: .signIn, object: nil)
+   
+    func requestLogin() {
+        guard !isUserAndPasswordEmpty() else { return  }
+        let credentials = ["password": password,
+                           "login": username,
+                           "platform": "ios",
+                           "firebaseToken": "fgjñdjsfgdfj"]
+        Task {
+            await requestAccess(credentials: credentials)
+        }
     }
     
-    @MainActor
-    func initData() {
-        comprobeTokenAndBiometrics()
-        comprobeRememberLogin()
-    }
+ 
 }
 
 //MARK: - Private methods -
@@ -77,7 +85,6 @@ private extension LoginViewModel {
             getBiometric()
         }
     }
-    
     
     func comprobeRememberLogin() {
         if rememberLogin {
@@ -104,34 +111,26 @@ private extension LoginViewModel {
         return true
     }
     
-    func loginWithCredentials() {
-        guard !isUserAndPasswordEmpty() else { return  }
-        let credentials = ["password": password,
-                           "login": username,
-                           "platform": "ios",
-                           "firebaseToken": "fgjñdjsfgdfj"]
-        Task {
-            await loginWithCredentials(credentials: credentials)
-        }
-    }
+   
     
     func loginWithBiometrics() {
         loginWithBiometricUserCredentials()
     }
     
     //MARK: Async await
-    private func loginWithCredentials(credentials: [String: Any]) async {
+    
+    //FIXME: tiene que devolver un Bool
+    private func requestAccess(credentials: [String: Any]) async {
         do {
             let _ = try await dataManager.login(with: credentials)
-            //1. guardar el login.token
-            //2. guard el login.user.id
-            
-            //NotificationCenter.default.post(name: .login, object: nil)
+ // si devuelve token y usarioo entra
             isLogged = true
         } catch {
             showErrorMessage(error)
         }
     }
+    
+    //FIXME: tiene que devolver un Bool
     private func loginWithBiometricUserCredentials()  {
         guard let token = secure.getToken() else {
             showErrorMessage(BaseError.noToken)
@@ -142,7 +141,8 @@ private extension LoginViewModel {
         Task {
             do {
                 let _ = try await dataManager.loginWithBiometric(params: params)
-                NotificationCenter.default.post(name: .login, object: nil)
+              //  NotificationCenter.default.post(name: .login, object: nil)
+                isLogged = true
             } catch {
                 showErrorMessage(error)
             }

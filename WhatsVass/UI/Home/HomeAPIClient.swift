@@ -9,12 +9,14 @@ import Foundation
 
 final class HomeAPIClient: BaseAPIClient {
     // MARK: - Public methods -
+    
+    // TODO: Habrá que pasarle el source id,
     func getChats() async throws -> ChatsList {
         try await fetchCodable(url: EndpointsChats.urlChats, type: ChatsList.self)
     }
     
     func getMessages() async throws -> [MessageViewResponse] {
-        try await fetchCodable(url: EndpointsMessages.urlView, type: [MessageViewResponse].self)
+        try await fetchCodable(url: EndpointsMessages.urlMessages, type: [MessageViewResponse].self)
     }
     
     func deleteChat(chatId: String) async throws -> DeleteChatResponse {

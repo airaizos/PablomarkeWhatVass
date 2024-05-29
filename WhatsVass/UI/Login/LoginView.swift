@@ -14,6 +14,7 @@ extension LoginView {
 }
 
 struct LoginView: View {
+    @Environment(\.theme) private var theme: Theme
     @ObservedObject var viewModel =  LoginViewModel()
     @FocusState var namefields: Namefields?
     @State var showAlertBiometrics = false
@@ -65,7 +66,8 @@ struct LoginView: View {
             
             VassButton(title: "Login") {
                viewModel.loginTapped()
-                    navState = .home
+                //FIX: navega solo si autoriza
+                 //   navState = .home
                         }
             Spacer()
             Button(LocalizedStringKey("Sign in")) {
@@ -90,8 +92,10 @@ struct LoginView: View {
                 Text(LocalizedStringKey("Incorrect username or password"))
             }
             .onAppear {
-                namefields = .user
                 viewModel.initData()
+                // Tiene que devolver un valor, sino no se utilzian los nameFields
+                
+                namefields = .user
             }
             .onChange(of: viewModel.isLogged) { oldValue, newValue in
                 if newValue {
@@ -100,12 +104,12 @@ struct LoginView: View {
             }
         }
         .padding()
-        .vassBackground()
+        .vassBackground(theme)
         .onTapGesture {
             hideKeyboard()
         }
     }
-}
+    }
 
 #Preview {
     LoginView(navState: .constant(.register))

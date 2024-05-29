@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct WhatVassApp: App {
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
+   // @Environment(\.colorScheme) var colorScheme: ColorScheme
     @AppStorage(Preferences.themes.rawValue) var isDarkThemeOn = false
     
     @StateObject var homeViewModel = HomeViewModel()
     @StateObject var settingsViewModel = SettingsViewModel()
-    @StateObject var splashViewModel = SplashViewModel()
     @StateObject var loginViewModel = LoginViewModel()
     
     let inactive = NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)
@@ -28,7 +28,7 @@ struct WhatVassApp: App {
                 switch navState {
                 case .splash: SplashView(navState: $navState)
                 case .login: LoginView(navState: $navState)
-                case .register: ProfileView()
+                case .register: ProfileView(navState: $navState)
                 case .home: 
                     NavigationStack {
                         HomeView()
@@ -52,7 +52,8 @@ struct WhatVassApp: App {
                     navState = .login
                 }
             }
-            .preferredColorScheme(isDarkThemeOn ? .dark : .light)
+            .theme(settingsViewModel.theme)
+            .tint(settingsViewModel.theme.accentColor)
         }
     }
     private func isUserOnLine(_ isOnLine: Bool) async {

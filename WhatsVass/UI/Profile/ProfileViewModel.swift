@@ -22,6 +22,8 @@ final class ProfileViewModel: ObservableObject {
     @Published var confirmPasswordText: String = ""
     @Published var profileImage: Image?
     @Published var isValidPassword: Bool?
+    @Published var profileCreated = false
+    
     
     // MARK: - Init -
     init(dataManager: ProfileDataManagerProtocol = ProfileDataManager(), passwordValidator: PasswordValidator = .init()) {
@@ -97,17 +99,24 @@ private extension ProfileViewModel {
         }
     }
     
-    func validateTextFields() -> [String:Any]? {
-        if !userText.textIsEmpty(),
-           !nicknameText.textIsEmpty(),
-           !passwordText.textIsEmpty(),
+    func validateTextFields() -> Bool {
+        !userText.textIsEmpty() &&
+           !nicknameText.textIsEmpty() &&
+           !passwordText.textIsEmpty() &&
            !confirmPasswordText.textIsEmpty()
-            && passwordText == confirmPasswordText {
-            return ["login": userText,
-                    "password": passwordText,
-                    "nick": nicknameText,
-                    "platform": "ios",
-                    "firebaseToken": "NoTokenNow"]
+            && passwordText == confirmPasswordText
+    }
+    
+    func prepareProfile() -> [String:Any]? {
+        if validateTextFields() {
+            let avatar = UIImage(from: profileImage, size: 100)?.jpegData(compressionQuality: 1.0)?.base64EncodedString() ?? ""
+           return  ["email": userText,
+             "password": passwordText, //Hash
+             "nickname": nicknameText,
+             "avatar": avatar,
+             "token": "Token", //Añadir token
+             "platform": "iOS"
+            ]
         } else {
             showError.toggle()
             errorMessage = "Can't be empty textfields"
@@ -116,7 +125,7 @@ private extension ProfileViewModel {
     }
     
     func createProfile() {
-        guard let params = validateTextFields() else { return }
+        guard let params = prepareProfile() else { return }
         Task {
             do {
                 try await sendRegister(params: params)
@@ -128,11 +137,12 @@ private extension ProfileViewModel {
     
     func sendRegister(params: [String: Any]) async throws {
         let register =  try await dataManager.createAndRegisterProfile(params: params)
+        
         LocalPersistence.shared.removeObject(forKey: .token)
         LocalPersistence.shared.setObject(value: register.user.token, forKey: .token)
         LocalPersistence.shared.removeObject(forKey: .id)
         LocalPersistence.shared.setObject(value: register.user.id, forKey: .id)
         
-        NotificationCenter.default.post(name: .navigateToHomeView, object: nil)
+        profileCreated = true
     }
 }

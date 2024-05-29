@@ -11,6 +11,7 @@ struct Login: Codable {
     let password, login, platform, nick, firebaseToken: String
 }
 
+//TODO: En el server
 struct LoginResponse: Codable {
     let token: String
     let user: User

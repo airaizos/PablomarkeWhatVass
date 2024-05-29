@@ -6,9 +6,25 @@
 //
 
 import UserNotifications
-import UIKit
+import SwiftUI
 
 final class SettingsViewModel: ObservableObject {
+    
+    @Published var selectedThemeID: String? = Theme.light.id {
+        didSet {
+            themeID = selectedThemeID ?? "light"
+        }
+    }
+    
+      var theme: Theme {
+        guard let selectedThemeID,
+              let theme = Theme.allThemes.first(where:  { $0.id == selectedThemeID }) else {
+            return Theme.dark
+        }
+        return theme
+    }
+    
+    @AppStorage("ThemeID") var themeID = "light"
     // MARK: - Properties -
     private var dataManager: SettingsDataManagerProtocol
     private var secure: KeychainProvider
@@ -53,8 +69,8 @@ final class SettingsViewModel: ObservableObject {
         activateNotifications(notifications: isEnabled)
     }
 
-    func enableDarkTheme(_ isEnabled: Bool) {
-        self.toggleDarkMode(isEnabled)
+    @MainActor func enableDarkTheme(_ isEnabled: Bool) {
+        toggleDarkMode(isEnabled)
     }
 
     func enabledBiometrics(_ isEnabled: Bool) {
@@ -87,15 +103,10 @@ private extension SettingsViewModel {
             userNotifications.removeAllPendingNotificationRequests()
         }
     }
-
+    
     func toggleDarkMode(_ isEnabled: Bool) {
-        if let windowScene = application.connectedScenes.first as? UIWindowScene {
-            let windows = windowScene.windows
-          
-            windows.forEach { window in
-                window.overrideUserInterfaceStyle = isEnabled ? .dark : .light
-                
-            }
+        RunLoop.main.perform {
+            self.selectedThemeID = isEnabled ? "dark" : "light"
         }
     }
     

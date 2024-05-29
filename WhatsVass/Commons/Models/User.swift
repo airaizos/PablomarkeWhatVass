@@ -25,3 +25,12 @@ struct UserResponseInfo: Codable {
 struct LogOutResponse: Codable {
     let message: String
 }
+
+struct Profile: Codable, Hashable {
+    let email: String //username
+    let password: String //Hash
+    let nickname: String
+    let avatar: String
+    let token: String
+    let platform: String
+}

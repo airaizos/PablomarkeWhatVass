@@ -8,19 +8,24 @@
 import Foundation
 
 final class ProfileAPIClient: BaseAPIClient {
+    //TODO: Manar todos los datos del profile
     func createAndRegisterProfileInAPI(params: [String: Any]) async throws -> UserResponse {
-        guard let data = encodeRegister(with: params) else {
+        guard let profile = prepareProfile(with: params) else {
             throw  BaseError.noCodable
          }
-        return  try await postCodable(url: EndpointsUsers.urlRegister, data: data)
+        return  try await postCodable(url: EndpointsUsers.urlRegister, data: profile)
     }
     
-    private func encodeRegister(with params: [String: Any]) -> Data? {
-        guard let login = params["login"] as? String, let password = params["password"] as? String, let nick = params["nick"] as? String, let platform = params["platform"] as? String, let token = params["firebaseToken"] as? String else {
+    private func prepareProfile(with params: [String: Any]) -> Profile? {
+        guard let email = params["email"] as? String,
+                let password = params["password"] as? String,
+                let nickname = params["nickname"] as? String,
+                let avatar = params["avatar"] as? String,
+                let platform = params["platform"] as? String,
+                let token = params["token"] as? String else {
             return nil
         }
-        let newLogin = Login(password: password, login: login, platform: platform, nick: nick, firebaseToken: token)
-        guard let data = try? JSONEncoder().encode(newLogin) else { return nil }
-        return data
+        return Profile(email: email, password: password, nickname: nickname, avatar: avatar, token: token, platform: platform)
+       
     }
 }

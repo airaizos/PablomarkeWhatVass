@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChatView: View {
+    @Environment(\.theme) private var theme: Theme
     // MARK: - Properties
     @ObservedObject var viewModel: ChatViewModel
     @State private var scrollToFirstMessage = true
@@ -33,8 +34,10 @@ struct ChatView: View {
                         }
                     }
                     .padding(.horizontal)
+                  
                 }
             }
+          
             .opacity(viewModel.isChatsEmpty ? 0 : 1)
             .overlay {
                 Text("No messages")

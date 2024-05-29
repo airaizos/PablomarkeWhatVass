@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct SplashView: View {
+    @Environment(\.theme) private var theme: Theme
     @State var isLoading = false
     @Binding var navState: NavState
     var body: some View {
@@ -33,7 +34,7 @@ struct SplashView: View {
                 .frame(width: 100)
                 .padding(.bottom,30)
         }
-        .vassBackground()
+        .vassBackground(theme)
         .onAppear {
             Task {
                 try await Task.sleep(for: .seconds(0.7))

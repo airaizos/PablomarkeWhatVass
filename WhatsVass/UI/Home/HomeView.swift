@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Environment(\.theme) private var theme: Theme
     // MARK: - Properties -
     @EnvironmentObject var viewModel: HomeViewModel
 
@@ -25,8 +26,10 @@ struct HomeView: View {
                         }
                         .onDelete(perform: viewModel.deleteChat)
                     }
+                    .scrollContentBackground(.hidden)
                 }
             }
+            .vassBackground(theme)
             .navigationDestination(for: Chat.self) { value in
                 ChatView(viewModel: ChatViewModel(chat: value))
             }
@@ -62,6 +65,7 @@ struct HomeView: View {
         .onAppear {
             viewModel.getChats()
         }
+        
     }
 
     private var plusButtonOverlay: some View {

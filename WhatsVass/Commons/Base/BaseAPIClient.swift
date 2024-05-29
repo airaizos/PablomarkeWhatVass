@@ -118,7 +118,8 @@ class BaseAPIClient {
             throw BaseError.noToken
         }
         
-        let request = URLRequest.post(url: url, data: data,token: token)
+        //let request = URLRequest.post(url: url, data: data, token: token)
+        let request = URLRequest.post(url: url, data: data)
         let (data,response) = try await session.data(for: request)
         
         guard let response = response as? HTTPURLResponse else {

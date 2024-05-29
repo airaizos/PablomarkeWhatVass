@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContactsView: View {
+    @Environment(\.theme) private var theme: Theme
     @EnvironmentObject var homeViewModel: HomeViewModel
     @ObservedObject var viewModel = ContactsViewModel()
     @State private var searchText = ""
@@ -44,9 +45,10 @@ struct ContactsView: View {
                         }
                     }
                 }
+                .scrollContentBackground(.hidden)
             }
         }
-        .background(Color.main)
+        .background(theme.secondaryColor)
         .onAppear {
             viewModel.getContacts()
         }
