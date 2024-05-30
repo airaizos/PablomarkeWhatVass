@@ -53,7 +53,8 @@ struct ProfileView: View {
                     }
             }
             VassTextField(systemImage: "key", text: viewModel.passwordText) {
-                SecureField(LocalizedStringKey("Password"), text: $viewModel.passwordText)
+            //    SecureField(LocalizedStringKey("Password"), text: $viewModel.passwordText)
+                TextField(LocalizedStringKey("Password"), text: $viewModel.passwordText)
                     .focused($nameFields, equals: .password)
                     .submitLabel(.join)
                     .onSubmit {
@@ -69,7 +70,8 @@ struct ProfileView: View {
             }
             
             VassTextField(systemImage:"key.horizontal", text: viewModel.confirmPasswordText) {
-                SecureField(LocalizedStringKey("RepeatPassword"), text: $viewModel.confirmPasswordText)
+              //  SecureField(LocalizedStringKey("RepeatPassword"), text: $viewModel.confirmPasswordText)
+                TextField(LocalizedStringKey("RepeatPassword"), text: $viewModel.confirmPasswordText)
                     .focused($nameFields, equals: .confirmPassword)
                     .submitLabel(.join)
                     .onSubmit {
@@ -114,6 +116,7 @@ struct ProfileView: View {
             if newValue {
                 navState = .home
             }
+          
         }
     }
 }

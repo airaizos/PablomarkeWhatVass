@@ -9,7 +9,7 @@ import Foundation
 
 final class ContactsAPIClient: BaseAPIClient {
     func getContacts() async throws -> [User] {
-        try await fetchCodable(url: EndpointsUsers.urlUsers, type: [User].self)
+        try await fetchCodable(url: Base.getContacts, type: [User].self)
     }
 
     func createChat(source: String, target: String) async throws -> ChatCreateResponse {

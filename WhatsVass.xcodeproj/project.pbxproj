@@ -26,6 +26,7 @@
 		3A0923F42BF2692F00538A1D /* LoginDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0923F32BF2692F00538A1D /* LoginDataManagerMock.swift */; };
 		3A0923F62BF2728100538A1D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0923F52BF2728100538A1D /* LoginView.swift */; };
 		3A0923F92BF272F200538A1D /* LogoVassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0923F82BF272F200538A1D /* LogoVassView.swift */; };
+		3A14DE882C087E020013FE57 /* SecureKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A14DE872C087E020013FE57 /* SecureKit.swift */; };
 		3A1CAAA62BFE7B720026F63F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CAAA52BFE7B720026F63F /* Theme.swift */; };
 		3A2E17D42BEA93F20039365A /* ProfileAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D32BEA93F20039365A /* ProfileAPIClientTests.swift */; };
 		3A2E17D62BEA9BBE0039365A /* ContactsAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E17D52BEA9BBE0039365A /* ContactsAPIClientTests.swift */; };
@@ -158,6 +159,7 @@
 		3A0923F32BF2692F00538A1D /* LoginDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManagerMock.swift; sourceTree = "<group>"; };
 		3A0923F52BF2728100538A1D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3A0923F82BF272F200538A1D /* LogoVassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoVassView.swift; sourceTree = "<group>"; };
+		3A14DE872C087E020013FE57 /* SecureKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureKit.swift; sourceTree = "<group>"; };
 		3A1CAAA52BFE7B720026F63F /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3A2E17D22BEA92F00039365A /* WhatsVassTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WhatsVassTests.xctestplan; sourceTree = "<group>"; };
 		3A2E17D32BEA93F20039365A /* ProfileAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPIClientTests.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 			children = (
 				83D121D92BA8A52D00D607BF /* Biometric */,
 				8313E3632BA97591001FA804 /* KeyChainDataProvider.swift */,
+				3A14DE872C087E020013FE57 /* SecureKit.swift */,
 				3AC0E2C02BF6770C00D86E85 /* KeyChain.swift */,
 			);
 			path = Secure;
@@ -844,6 +847,7 @@
 				83C2525D2B986095004455A6 /* BaseAPIClient.swift in Sources */,
 				3A50D3062BDA9F08002007A3 /* NetworkMonitor.swift in Sources */,
 				B3810CCE2BA3126C00C30D63 /* ContactsDataManager.swift in Sources */,
+				3A14DE882C087E020013FE57 /* SecureKit.swift in Sources */,
 				3A0923F92BF272F200538A1D /* LogoVassView.swift in Sources */,
 				3AFA9E622BF3E1A9000EC67F /* PasswordValidator.swift in Sources */,
 				83D121DB2BA8A58E00D607BF /* BiometricAuthentication.swift in Sources */,

@@ -43,29 +43,7 @@ class BaseAPIClient {
         
         return baseError
     }
-    /*
-    func requestPublisher<T: Codable>(url: URL,
-                                      method: HTTPMethods = .get,
-                                      type: T.Type) -> AnyPublisher<T, BaseError> {
-        
-        guard let token = getToken() else {
-            return Fail(error: .noToken).eraseToAnyPublisher()
-        }
-        
-        let request = URLRequest.get(url: url, token: token)
-        
-        return session.dataTaskPublisher(for: request)
-            .tryMap({ result in
-                return try JSONDecoder().decode(T.self, from: result.data)
-            })
-            .mapError({ [weak self] error in
-                guard let self = self else { return .generic }
-                return self.handler(error: error) ?? .generic
-            })
-            .eraseToAnyPublisher()
-    }
-    
-     */
+
     func fetchCodable<T: Codable>(url: URL,
                                   method: HTTPMethods = .get,
                                   type: T.Type) async throws -> T {
@@ -92,26 +70,6 @@ class BaseAPIClient {
         }
     }
     
-    /*
-    func requestPostPublisher<T: Codable, U:Codable>(url: URL,
-                                                     data: T) -> AnyPublisher<U, BaseError> {
-        guard let token = getToken() else {
-            return Fail(error: .noToken).eraseToAnyPublisher()
-        }
-        
-        let request = URLRequest.post(url: url, data: data,token: token)
-        
-        return session.dataTaskPublisher(for: request)
-            .tryMap({ result in
-                return try JSONDecoder().decode(U.self, from: result.data)
-            })
-            .mapError({ [weak self] error in
-                guard let self = self else { return .generic }
-                return self.handler(error: error) ?? .generic
-            })
-            .eraseToAnyPublisher()
-    }
-    */
     func postCodable<T: Codable, U:Codable>(url: URL,
                                             data: T) async throws -> U {
         guard let token = getToken() else {
@@ -153,3 +111,9 @@ class BaseAPIClient {
 
 
 
+func generateRandomAlphabetLetter() -> String {
+    let letters = "abcdefghijklmnopqrstuvwxyz"
+    let randomIndex = Int(arc4random_uniform(UInt32(letters.count)))
+    let randomLetter = letters[letters.index(letters.startIndex, offsetBy: randomIndex)]
+    return String(randomLetter)
+}

@@ -14,8 +14,27 @@ struct SettingsView: View {
     @AppStorage(Preferences.themes.rawValue) var isDarkThemeOn = false
     @AppStorage(Preferences.biometrics.rawValue) var isBiometricOn = false
     
+    @AppStorage(Preferences.nickname.rawValue) var userNickname = ""
+    @AppStorage(Preferences.avatar.rawValue) var userAvatar = ""
+    @AppStorage(Preferences.id.rawValue) var userId = ""
+    
     var body: some View {
         VStack {
+            AsyncImage(url: URL(string: userAvatar)) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                Image(systemName: "person.circle")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100)
+                    .foregroundStyle(.white)
+            }
+        
+            Text(userNickname)
+                .font(.title)
+            
             ToggleRow(isOn: $isNotificationsOn, title: "Notifications") {
                 viewModel.enableNotification(isNotificationsOn)
             }

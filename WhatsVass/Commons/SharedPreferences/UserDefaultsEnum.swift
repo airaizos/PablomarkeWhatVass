@@ -8,6 +8,8 @@
 import Foundation
 
 enum Preferences: String {
+    case nickname = "userNickname"
+    case avatar = "userAvatar"
     case token = "userToken"
     case id = "userId"
     case notifications = "NOTIFICATIONS"

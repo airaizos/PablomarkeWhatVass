@@ -63,7 +63,7 @@ struct ContactsView: View {
         if searchText.isEmpty {
             return viewModel.contacts
         } else {
-            return viewModel.contacts.filter { $0.nick.localizedCaseInsensitiveContains(searchText) }
+            return viewModel.contacts.filter { $0.nickname.localizedCaseInsensitiveContains(searchText) }
         }
     }
 
@@ -109,7 +109,7 @@ struct ContactRow: View {
 
 extension ContactRow {
     init(user: User) {
-        self.nick = user.nick
+        self.nick = user.nickname
         self.avatar = user.avatar
     }
 }

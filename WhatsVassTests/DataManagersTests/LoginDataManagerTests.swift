@@ -25,12 +25,12 @@ final class LoginDataManagersTests: XCTestCase {
     func testLoginWithCredentials_ShouldBeTokenMock() async throws {
         let response = try await sut.login(with: credentials)
         XCTAssertEqual(response.token,"Token Mock")
-        XCTAssertEqual(response.user.nick,"Tester Mock")
+        XCTAssertEqual(response.user.nickname,"Tester Mock")
     }
     
     func testLoginWithBiometrics_ShouldBeTockenMock() async throws{
         let response = try await sut.loginWithBiometric(params: params)
         XCTAssertEqual(response.token, "Token Mock")
-        XCTAssertEqual(response.user.nick, "Tester Mock")
+        XCTAssertEqual(response.user.nickname, "Tester Mock")
     }
 }

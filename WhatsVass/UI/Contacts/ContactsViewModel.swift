@@ -76,20 +76,20 @@ final class ContactsViewModel: ObservableObject {
     }
     
     func sortContactsAlphabetically() {
-       contacts.sort { $0.nick.localizedCaseInsensitiveCompare($1.nick) == .orderedAscending }
+       contacts.sort { $0.nickname.localizedCaseInsensitiveCompare($1.nickname) == .orderedAscending }
        contactsBySection = contactsByFirstLetter(contacts)
     }
 
     func filterContacts(searchText: String) {
        let filtered = searchText.isEmpty ? contacts
-        : contacts.filter { $0.nick.localizedCaseInsensitiveContains(searchText) }
+        : contacts.filter { $0.nickname.localizedCaseInsensitiveContains(searchText) }
 
         contactsBySection = contactsByFirstLetter(filtered)
     }
     
     private func contactsByFirstLetter(_ contacts: [User]) -> [String: [User]] {
       contacts.reduce(into: [:]) { result, contact in
-            let key = String(contact.nick.prefix(1)).uppercased()
+            let key = String(contact.nickname.prefix(1)).uppercased()
             result[key, default: []].append(contact)
         }
     }

@@ -28,6 +28,6 @@ final class ProfileDataManagerTests: XCTestCase {
         
        let response = try await sut.createAndRegisterProfile(params: profileCredentials)
         XCTAssertTrue(response.success)
-        XCTAssertEqual(response.user.token, "Mock Token")
+        XCTAssertEqual(response.nickname, "Mock Token")
     }
 }

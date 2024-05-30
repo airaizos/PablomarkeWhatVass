@@ -23,7 +23,7 @@ final class URLSessionMock: URLProtocol {
             switch url.lastPathComponent {
             case "login",
                 EndpointsUsers.biometric: getMockData(from: URLJsonLocator.login)
-            case "users": getMockData(from: URLJsonLocator.users)
+            case "getContacts": getMockData(from: URLJsonLocator.users)
                 
             case "list": getMockData(from: URLJsonLocator.chatsList)
             case EndpointsChats.createChat: getMockData(from: URLJsonLocator.createChat)
@@ -31,7 +31,7 @@ final class URLSessionMock: URLProtocol {
             case "messages": getMockData(from: URLJsonLocator.messages)
             case "chatMessages": getMockData(from: URLJsonLocator.getMessages)
                 
-            case EndpointsUsers.register: getMockData(from: URLJsonLocator.registerProfile)
+            case "profile": getMockData(from: URLJsonLocator.registerProfile)
             case EndpointsMessages.newMessage,
                 EndpointsChats.chats : getMockData(from: URLJsonLocator.response)
                 

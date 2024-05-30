@@ -1,20 +1,20 @@
 [
   {
-    "nick" : "Mock Nick",
-    "online" : true,
+    "nickname" : "Mock Nick",
+    "onLine" : true,
     "id" : "164",
     "avatar" : "https://api.dicebear.com/8.x/lorelei/png"
   },
   {
-    "online" : true,
-    "nick" : "Ramen",
+    "onLine" : true,
+    "nickname" : "Ramen",
     "avatar" : "https://api.dicebear.com/8.x/adventurer/png",
     "id" : "167"
   },
   {
     "id" : "166",
     "avatar" : "https://api.dicebear.com/8.x/bottts-neutral/png",
-    "online" : true,
-    "nick" : "Ale"
+    "onLine" : true,
+    "nickname" : "Ale"
   }
 ]

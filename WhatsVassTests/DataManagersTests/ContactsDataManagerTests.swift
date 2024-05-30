@@ -27,7 +27,7 @@ final class ContactsDataManagerTests: XCTestCase {
         let result = try await sut.getContacts()
         XCTAssertEqual(result.count, 3)
         let contact = try! XCTUnwrap(result.first)
-        XCTAssertEqual(contact.nick, "Mock Nick")
+        XCTAssertEqual(contact.nickname, "Mock Nick")
     }
 
     func testCreateChat_ShouldBeMockSource() async throws {

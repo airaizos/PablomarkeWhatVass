@@ -21,11 +21,11 @@ final class ProfileAPIClient: BaseAPIClient {
                 let password = params["password"] as? String,
                 let nickname = params["nickname"] as? String,
                 let avatar = params["avatar"] as? String,
-                let platform = params["platform"] as? String,
+                let onLine = params["onLine"] as? Bool,
                 let token = params["token"] as? String else {
             return nil
         }
-        return Profile(email: email, password: password, nickname: nickname, avatar: avatar, token: token, platform: platform)
+        return Profile(email: email, password: password, nickname: nickname, avatar: avatar, token: token, onLine: onLine)
        
     }
 }

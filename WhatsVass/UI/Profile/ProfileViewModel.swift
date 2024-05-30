@@ -24,6 +24,9 @@ final class ProfileViewModel: ObservableObject {
     @Published var isValidPassword: Bool?
     @Published var profileCreated = false
     
+    @AppStorage(Preferences.nickname.rawValue) var userNickname = ""
+    @AppStorage(Preferences.avatar.rawValue) var userAvatar = ""
+    @AppStorage(Preferences.id.rawValue) var userId = ""
     
     // MARK: - Init -
     init(dataManager: ProfileDataManagerProtocol = ProfileDataManager(), passwordValidator: PasswordValidator = .init()) {
@@ -70,7 +73,9 @@ final class ProfileViewModel: ObservableObject {
         do {
             return try passwordValidator.isValid(nicknameText)
         } catch {
-            showErrorMessage(error)
+            Task {
+                await showErrorMessage(error)
+            }
         }
         return false
     }
@@ -90,12 +95,15 @@ final class ProfileViewModel: ObservableObject {
 //MARK: - Private methods -
 private extension ProfileViewModel {
     
+ 
     func showErrorMessage(_ error: Error) {
-        showError.toggle()
-        if let error = error as? PasswordValidator.PasswordError {
-            errorMessage = error.description
-        } else {
-            errorMessage = "There has been a error"
+        Task { @MainActor in
+            showError.toggle()
+            if let error = error as? PasswordValidator.PasswordError {
+                errorMessage = error.description
+            } else {
+                errorMessage = "There has been a error"
+            }
         }
     }
     
@@ -109,13 +117,17 @@ private extension ProfileViewModel {
     
     func prepareProfile() -> [String:Any]? {
         if validateTextFields() {
-            let avatar = UIImage(from: profileImage, size: 100)?.jpegData(compressionQuality: 1.0)?.base64EncodedString() ?? ""
+          //  let avatar = UIImage(from: profileImage, size: 100)?.jpegData(compressionQuality: 1.0)?.base64EncodedString() ?? ""
+            var token:String {
+                UUID().uuidString
+            }
            return  ["email": userText,
              "password": passwordText, //Hash
              "nickname": nicknameText,
-             "avatar": avatar,
-             "token": "Token", //Añadir token
-             "platform": "iOS"
+             "avatar": "https://robohash.org/\(token)",
+              "token": "Token\(token)", //Añadir token
+             "platform": "iOS",
+             "onLine":false
             ]
         } else {
             showError.toggle()
@@ -137,12 +149,11 @@ private extension ProfileViewModel {
     
     func sendRegister(params: [String: Any]) async throws {
         let register =  try await dataManager.createAndRegisterProfile(params: params)
-        
-        LocalPersistence.shared.removeObject(forKey: .token)
-        LocalPersistence.shared.setObject(value: register.user.token, forKey: .token)
-        LocalPersistence.shared.removeObject(forKey: .id)
-        LocalPersistence.shared.setObject(value: register.user.id, forKey: .id)
-        
-        profileCreated = true
+        if register.success {
+            userId = register.id
+            userAvatar = register.avatar
+            userNickname = register.nickname
+            profileCreated = true
+        }
     }
 }

@@ -8,14 +8,21 @@
 import Foundation
 
 struct User: Codable, Hashable {
-    let id, nick, avatar: String
-    let online: Bool
+    let id, nickname, avatar: String
+    let onLine: Bool
 }
 
 struct UserResponse: Codable {
     let success: Bool
-    let user: UserResponseInfo
+    let id: String
+    let nickname:String
+    let avatar: String
 }
+
+//struct UserResponse: Codable {
+//    let success: Bool
+//    let user: UserResponseInfo
+//}
 
 struct UserResponseInfo: Codable {
     let id, login, password, nick, platform, avatar, uuid, token: String
@@ -32,5 +39,5 @@ struct Profile: Codable, Hashable {
     let nickname: String
     let avatar: String
     let token: String
-    let platform: String
+    let onLine: Bool
 }

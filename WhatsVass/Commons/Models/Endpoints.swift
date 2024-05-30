@@ -8,19 +8,19 @@
 import Foundation
 
 enum Base {
+    static let local: URL = URL(string: "http://127.0.0.1:8081/what")!
+    static let localTests: URL = URL(string: "http://127.0.0.1:8081/whats")!
     static let chats = Base.local.appending(path: "chats")
     static let login = Base.local.appending(path: "loging")
+    static let getContacts = Base.local.appending(path: "getContacts")
     
     //MARK: -OLD-
-    //   static let mockMovilidad: String = "https://mock-movilidad.vass.es/chatvass/api/"
-    //  static let mock: String = "https://run.mocky.io/v3/"
     static let baseURL: URL = URL(string: "https://run.mocky.io/v3/")!
-    static let local: URL = URL(string: "http://127.0.0.1:8081/whats")!
 }
 enum EndpointsUsers {
     static let urlLogin = Base.login.appending(path: "login")
     static let urlUsers = Base.login.appending(path: "users")
-    static let urlRegister = Base.login.appending(path: "profile")
+    static let urlRegister = Base.local.appending(path: "createUser")
     
     //MARK: -OLD-
    // static let login: String =   "login"                 //"f380a68e-676f-4c8f-8d7a-479b9db32ee2" //"users/login //loginResponse"

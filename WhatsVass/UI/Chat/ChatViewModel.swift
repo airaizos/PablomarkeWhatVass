@@ -72,7 +72,7 @@ final class ChatViewModel: ObservableObject {
     }
     
     var sourceData: User {
-        User(id: chat.target, nick: chat.targetnick, avatar: chat.targetavatar, online: chat.targetonline)
+        User(id: chat.target, nickname: chat.targetnick, avatar: chat.targetavatar, onLine: chat.targetonline)
     }
     
     func sendNewMessage(message: String) async {

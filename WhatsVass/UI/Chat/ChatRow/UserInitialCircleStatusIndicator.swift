@@ -24,9 +24,9 @@ struct UserInitialCircleStatusIndicator:View {
 
 extension UserInitialCircleStatusIndicator {
     init(user: User, width: Double = 60) {
-        self.nick = user.nick
+        self.nick = user.nickname
         self.avatar = user.avatar
-        self.isOnLine = user.online
+        self.isOnLine = user.onLine
         self.width = width
     }
 }

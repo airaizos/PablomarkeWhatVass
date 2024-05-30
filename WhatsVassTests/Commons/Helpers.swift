@@ -14,11 +14,12 @@ let credentials = ["password": "password",
                    "platform": "ios",
                    "firebaseToken": "fgjñdjsfgdfj"]
 
-let profileCredentials = ["password": "password",
-                          "login": "username",
-                          "nick":"nick",
+let profileCredentials = ["password": "passwordValue",
+                          "email": "usernameValue",
+                          "nickname": "nicknameValue",
+                          "avatar": "avatarValue",
                           "platform": "ios",
-                          "firebaseToken": "fgjñdjsfgdfj"]
+                          "token": "token Value"]
 
 let params = ["Authorization": "token"]
 
