@@ -9,25 +9,28 @@ import Foundation
 
 typealias AllChatResponse = [ChatResponse]
 
-struct ChatResponse: Codable {
-    var id, source, target, created: String
-}
-
-struct ChatCreate: Codable {
-    var source, target: String
-}
-
 struct ChatCreateResponse: Codable {
     var success, created: Bool
     var chat: ChatResponse
 }
+struct ChatResponse: Codable {
+    var id, created: String
+    var source, target: UUID
+}
+
+struct ChatCreate: Codable {
+    var source, target: UUID
+}
+
+
 
 typealias ChatsList = [Chat]
 
 struct Chat: Codable, Hashable {
     var chat, source, sourcenick: String
     var sourcetoken: String?
-    var target, targetnick, targetavatar: String
+    var target: UUID
+    var targetnick, targetavatar: String
     var targettoken: String?
     var sourceonline, targetonline: Bool
     var chatcreated: String

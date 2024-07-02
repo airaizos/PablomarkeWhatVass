@@ -8,11 +8,13 @@
 import Foundation
 
 struct Login: Codable {
-    let password, login, platform, nick, firebaseToken: String
+    let password, username, platform, token: String
 }
 
 //TODO: En el server
 struct LoginResponse: Codable {
-    let token: String
-    let user: User
+    let success: Bool
+    let id: String
+    let nickname: String
+    let avatar: String
 }

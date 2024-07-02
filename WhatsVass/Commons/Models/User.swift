@@ -8,7 +8,8 @@
 import Foundation
 
 struct User: Codable, Hashable {
-    let id, nickname, avatar: String
+    let id: UUID
+    let nickname, avatar: String
     let onLine: Bool
 }
 

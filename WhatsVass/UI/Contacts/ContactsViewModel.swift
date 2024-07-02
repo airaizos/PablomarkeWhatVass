@@ -8,8 +8,9 @@
 import SwiftUI
 
 final class ContactsViewModel: ObservableObject {
-    @AppStorage(Preferences.id.rawValue) var sourceId = ""
+    private var secure: KeychainProvider
     // MARK: - Properties -
+    
     @Published var contacts: [User] = []
     @Published var contactsBySection: [String: [User]] = [:]
     @Published var showError = false
@@ -20,17 +21,16 @@ final class ContactsViewModel: ObservableObject {
     private let dataManager: ContactsDataManagerProtocol
     private var newlyCreatedChatId: String?
     
-    init(dataManager: ContactsDataManagerProtocol = ContactsDataManager()) {
+    init(dataManager: ContactsDataManagerProtocol = ContactsDataManager(), secure: KeychainProvider = Crypto()) {
         self.dataManager = dataManager
-        Task {
-           await getContacts()
-        }
+        self.secure = secure
+        getContacts()
     }
 
     // MARK: - Public methods -
-    @MainActor
+
     func getContacts() {
-        Task {
+        Task { @MainActor in
             do {
                 contacts = try await dataManager.getContacts()
                 sortContactsAlphabetically()
@@ -49,9 +49,10 @@ final class ContactsViewModel: ObservableObject {
     @MainActor
     func createChat(with contact: User) {
         Task {
-//            guard let sourceId = UserDefaults.standard.string(forKey: Preferences.id.rawValue) else { return }
             let targetId = contact.id
             do {
+                guard let usernameIDKey = secure.getUserId(),
+                        let sourceId = UUID(uuidString: usernameIDKey) else { return }
                 let chatCreateResponse = try await dataManager.createChat(source: sourceId, target: targetId)
                 newlyCreatedChatId = chatCreateResponse.chat.id
                 

@@ -11,9 +11,9 @@ final class LoginAPIClient: BaseAPIClient {
 
     //MARK: - Async Await -
     func loginByAPI(with credentials: [String: Any]) async throws -> LoginResponse {
-      //  let data = try encodeRegister(with: credentials)
+        //TODO: cambiar
         let login = try constructLoginWith(credentials)
-        return try await postCodable(url: EndpointsUsers.urlLogin, data: login)
+        return try await postCodable(url: Base.login, data: login)
     }
     
     func biometricLogin(params: [String: Any]) async throws -> LoginResponse {
@@ -24,10 +24,10 @@ final class LoginAPIClient: BaseAPIClient {
     
     //MARK: private Methods
     func constructLoginWith(_ params:[String: Any]) throws -> Login {
-        guard let login = params["login"] as? String, let password = params["password"] as? String, let platform = params["platform"] as? String, let token = params["firebaseToken"] as? String else {
+        guard let username = params["username"] as? String, let password = params["password"] as? String, let platform = params["platform"] as? String, let token = params["token"] as? String else {
             throw BaseError.failedLogin
         }
-        return Login(password: password, login: login, platform: platform, nick: "nick", firebaseToken: token)
+        return Login(password: password, username: username, platform: platform, token: token)
     }
     
     private func encodeRegister(with params: [String: Any]) throws -> Data {

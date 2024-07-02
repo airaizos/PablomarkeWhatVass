@@ -25,8 +25,8 @@ final class LoginAPIClientTests: XCTestCase {
         let nick = "Tester Mock"
         
         let response = try await sut.loginByAPI(with: credentials)
-        XCTAssertEqual(response.token,token)
-        XCTAssertEqual(response.user.nickname, nick)
+        XCTAssertEqual(response.nickname,token)
+        XCTAssertEqual(response.nickname, nick)
     }
     
     func testBiometricLogin_ShouldBe() async throws {

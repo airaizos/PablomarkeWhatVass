@@ -12,24 +12,20 @@ final class ContactsAPIClient: BaseAPIClient {
         try await fetchCodable(url: Base.getContacts, type: [User].self)
     }
 
-    func createChat(source: String, target: String) async throws -> ChatCreateResponse {
+    func createChat(source: UUID, target: UUID) async throws -> ChatCreateResponse {
         let params = ["source": source, "target": target]
         guard let chat = encodeChat(with: params) else {
             throw BaseError.noCodable
         }
-        return try await postCodable(url: EndpointsChats.urlCreateChat, data: chat)
+        return try await postCodable(url: Base.createChat, data: chat)
     }
     
     func getChats() async throws -> ChatsList {
        try await fetchCodable(url: EndpointsChats.urlChats, type: ChatsList.self)
     }
     
-    private func encodeChat(with params: [String: Any]) -> Data? {
-        guard let source = params["source"] as? String,  let target = params["target"] as? String else { return nil }
-
-        let chat = ChatCreate(source: source, target: target)
-        guard let data = try? JSONEncoder().encode(chat) else { return nil }
-        return data
-        
+    private func encodeChat(with params: [String: Any]) -> ChatCreate? {
+        guard let source = params["source"] as? UUID,  let target = params["target"] as? UUID else { return nil }
+        return ChatCreate(source: source, target: target)
     }
 }

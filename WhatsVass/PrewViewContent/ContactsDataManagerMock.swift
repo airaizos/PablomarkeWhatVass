@@ -13,7 +13,7 @@ final class ContactsDataManagerMock: ContactsDataManagerProtocol {
        try Bundle.decode(type: [User].self, from: "getContacts")
     }
     
-    func createChat(source: String, target: String) async throws -> ChatCreateResponse {
+    func createChat(source: UUID, target: UUID) async throws -> ChatCreateResponse {
         try Bundle.decode(type: ChatCreateResponse.self, from: "createChat")
     }
     

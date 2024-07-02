@@ -8,15 +8,25 @@
 import Foundation
 
 final class KeychainMock: KeychainProvider {
-    func setToken(_ token: String) {
+    func getUsername() -> String? {
+        ""
+    }
+    
+    func setUserId(_ id: String) {
         
     }
     
+    func getUserId() -> String? {
+        ""
+    }
+    
+    func setToken(_ token: String) {
+    }
     func getToken() -> String? {
         ""
     }
     
-    func deleteUserAndPasword(_ user: String, _ password: String) {
+    func deleteUserAndPasword() {
         
     }
     

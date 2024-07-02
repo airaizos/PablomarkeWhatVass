@@ -11,4 +11,5 @@ enum KeyChainEnum {
     static let user = "USER"
     static let password = "PASSWORD"
     static let token = "TOKEN"
+    static let userId = "USERID"
 }

@@ -72,9 +72,10 @@ class BaseAPIClient {
     
     func postCodable<T: Codable, U:Codable>(url: URL,
                                             data: T) async throws -> U {
-        guard let token = getToken() else {
-            throw BaseError.noToken
-        }
+//        guard let token = getToken() else {
+//            throw BaseError.noToken
+//        }
+    //    let token = "TokenBC35B387-7575-48C9-BE5F-604FA8EBFCBD"
         
         //let request = URLRequest.post(url: url, data: data, token: token)
         let request = URLRequest.post(url: url, data: data)
@@ -116,4 +117,8 @@ func generateRandomAlphabetLetter() -> String {
     let randomIndex = Int(arc4random_uniform(UInt32(letters.count)))
     let randomLetter = letters[letters.index(letters.startIndex, offsetBy: randomIndex)]
     return String(randomLetter)
+}
+
+func generateRandomPassword() -> String {
+    String("abcBCD123-()".shuffled())
 }

@@ -9,8 +9,8 @@ import Foundation
 
 protocol ContactsDataManagerProtocol {
     func getContacts() async throws -> [User]
-    func createChat(source: String, target: String) async throws -> ChatCreateResponse
-    func getChats() async throws -> ChatsList 
+    func createChat(source: UUID, target: UUID) async throws -> ChatCreateResponse
+    func getChats() async throws -> ChatsList
 }
 
 final class ContactsDataManager: ContactsDataManagerProtocol {
@@ -25,7 +25,7 @@ final class ContactsDataManager: ContactsDataManagerProtocol {
         try await apiClient.getContacts()
     }
     
-    func createChat(source: String, target: String) async throws -> ChatCreateResponse {
+    func createChat(source: UUID, target: UUID) async throws -> ChatCreateResponse {
         try await apiClient.createChat(source: source, target: target)
     }
     

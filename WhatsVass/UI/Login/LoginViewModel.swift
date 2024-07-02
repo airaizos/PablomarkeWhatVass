@@ -13,6 +13,7 @@ final class LoginViewModel: ObservableObject, ErrorHandling {
     private var secure: KeychainProvider
     private var biometrics: BiometricAuthentication
     
+
     @Published var username: String = ""
     @Published var password: String = ""
     @Published var showError = false
@@ -23,9 +24,8 @@ final class LoginViewModel: ObservableObject, ErrorHandling {
     @AppStorage(Preferences.rememberLogin.rawValue) var rememberLogin = false
     @AppStorage(Preferences.biometrics.rawValue) var isBiometricOn = false
     
-    
     // MARK: - Init -
-    init(dataManager: LoginDataManagerProtocol = LoginDataManager(), secure: KeychainProvider = KeyChainData(),  biometrics: BiometricAuthentication = BiometricAuthentication()) {
+    init(dataManager: LoginDataManagerProtocol = LoginDataManager(), secure: KeychainProvider = Crypto(),  biometrics: BiometricAuthentication = BiometricAuthentication()) {
         self.dataManager = dataManager
         self.secure = secure
         self.biometrics = biometrics
@@ -46,25 +46,22 @@ final class LoginViewModel: ObservableObject, ErrorHandling {
     
     func securingCredentials() {
         if rememberLogin {
-            secure.setUserAndPassword(username,password)
+            secure.setUserAndPassword(username, password)
         } else {
-            secure.deleteUserAndPasword(username,password)
+            secure.deleteUserAndPasword()
         }
     }
-    
    
     func requestLogin() {
         guard !isUserAndPasswordEmpty() else { return  }
         let credentials = ["password": password,
-                           "login": username,
+                           "username": username,
                            "platform": "ios",
-                           "firebaseToken": "fgjñdjsfgdfj"]
+                           "token": "TokenBC35B387-7575-48C9-BE5F-604FA8EBFCBD"]
         Task {
             await requestAccess(credentials: credentials)
         }
     }
-    
- 
 }
 
 //MARK: - Private methods -
@@ -122,9 +119,13 @@ private extension LoginViewModel {
     //FIXME: tiene que devolver un Bool
     private func requestAccess(credentials: [String: Any]) async {
         do {
-            let _ = try await dataManager.login(with: credentials)
- // si devuelve token y usarioo entra
-            isLogged = true
+            let login = try await dataManager.login(with: credentials)
+            if login.success {
+                secure.setUserId(login.id)
+                isLogged = true
+            } else {
+                showErrorMessage(BaseError.failedLogin)
+            }
         } catch {
             showErrorMessage(error)
         }

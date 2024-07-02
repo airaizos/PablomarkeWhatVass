@@ -115,17 +115,19 @@ private extension ProfileViewModel {
             && passwordText == confirmPasswordText
     }
     
-    func prepareProfile() -> [String:Any]? {
+    func prepareProfile() throws -> [String:Any]? {
         if validateTextFields() {
           //  let avatar = UIImage(from: profileImage, size: 100)?.jpegData(compressionQuality: 1.0)?.base64EncodedString() ?? ""
             var token:String {
                 UUID().uuidString
             }
+            
+            let passwordHash = try HashKit.shared.sha256(value:passwordText)
            return  ["email": userText,
-             "password": passwordText, //Hash
+             "password": passwordHash, //Hash
              "nickname": nicknameText,
              "avatar": "https://robohash.org/\(token)",
-              "token": "Token\(token)", //Añadir token
+              "token": token, //Añadir token
              "platform": "iOS",
              "onLine":false
             ]
@@ -137,9 +139,9 @@ private extension ProfileViewModel {
     }
     
     func createProfile() {
-        guard let params = prepareProfile() else { return }
         Task {
             do {
+                guard let params = try prepareProfile() else { return }
                 try await sendRegister(params: params)
             } catch {
                 showErrorMessage(error)
@@ -154,6 +156,18 @@ private extension ProfileViewModel {
             userAvatar = register.avatar
             userNickname = register.nickname
             profileCreated = true
+            
         }
+    }
+    
+    func clearFields() {
+        userText = ""
+        passwordText = ""
+        confirmPasswordText = ""
+        userAvatar = ""
+        isValidPassword = false
+        profileCreated = false
+        profileImage = nil
+        
     }
 }

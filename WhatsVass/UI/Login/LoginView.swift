@@ -45,11 +45,9 @@ struct LoginView: View {
                         .submitLabel(.join)
                         .onSubmit {
                             viewModel.loginTapped()
-                          
                         }
                 }
             }
-         
             .font(.title3)
             .textFieldStyle(.roundedBorder)
             

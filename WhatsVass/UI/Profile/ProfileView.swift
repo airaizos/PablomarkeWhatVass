@@ -112,12 +112,17 @@ struct ProfileView: View {
                 viewModel.errorMessageTapped()
             }
         }
-        .onChange(of: viewModel.profileCreated) { _, newValue in
-            if newValue {
-                navState = .home
+//        .onChange(of: viewModel.profileCreated) { _, newValue in
+//            if newValue {
+//                navState = .login
+//            }
+//        }
+        .alert("User created successfully", isPresented: $viewModel.profileCreated) {
+            Button("OK") {
+                navState = .login
             }
-          
         }
+        .animation(.linear(duration: 0.5), value: navState)
     }
 }
 
